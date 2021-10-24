@@ -2,7 +2,6 @@
 ## Build, check, test, code coverage
 ## Required secrets
 ## CODECOV_TOKEN
-## TOKEN
 
 name: build
 on:

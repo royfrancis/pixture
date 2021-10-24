@@ -31,6 +31,7 @@ For detailed demonstration and description, refer the vignette.
 - [ ] Does not work with one image
 - [ ] Freewall/Lightbox arguments does not work correctly
 - [ ] Fix resizing js error
+- [ ] Multiple galleries per table is not enabled
 
 ## Disclaimer
 
@@ -38,4 +39,4 @@ This R package is offered free and without warranty of any kind, either expresse
 
 ## Contact
 
-If you have any comments, suggestions, corrections or ideas on ways to improve or extend this package, feel free to contact me. Submit an issue on the [Github issues page](https://github.com/royfrancis/pixture/issues).
+If you have any comments, suggestions, corrections or enchancements, kindly submit an issue on the [Github issues page](https://github.com/royfrancis/pixture/issues).
