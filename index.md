@@ -2,6 +2,10 @@
 
 `pixture` is an R package to create an HTML image gallery. This can be standalone, included in an Rmarkdown document or in a shiny app.
 
+<p class="boxy boxy-yellow" style="inline-block">
+<i class="fas fa-exclamation-circle"></i> &nbsp; This package is experimental and not recommended for general use.
+</p>
+
 ## Installation  
 
 You need to have R (>= 4.0) statistical package installed on your system. [R](https://www.r-project.org/) is open-source and freely available to download for Windows, Mac and other OS.

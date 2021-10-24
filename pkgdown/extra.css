@@ -317,3 +317,85 @@ body {
     background-color: #fcf8e3;
     border-color: #faebcc;
 }
+
+/* div styles --------------------------------------------------------------- */
+
+/** div style for instructions **/
+
+.boxy p {
+  margin: 0;
+  padding: 0;
+}
+
+.boxy {
+ color: var(--color-text);
+ background-color: var(--color-boxy-bg);
+ border: 1px solid var(--color-border);
+ /*border-left: 6px solid var(--color-primary-dark);*/
+ border-radius: 4px 4px 4px 4px;
+ padding: 10px 10px 10px 20px;
+ margin: 10px 0px 10px 0px;
+ position: relative;
+ box-shadow: 1px 1px 6px var(--color-shadow);
+}
+
+.boxy-orange {
+ color: #bf6300;
+ background-color: #fdf1e5;
+ border-color: #fad7b2;
+ // border-left-color: #bf6300;
+}
+
+.boxy-yellow {
+ color: #8a6d3b;
+ background-color: #fcf8e3;
+ border-color: #faebcc;
+ // border-left-color: #8a6d3b;
+}
+
+.boxy-green {
+ color: #3c763d;
+ background-color: #dff0d8;
+ border-color: #d6e9c6;
+ // border-left-color: #3c763d;
+}
+
+.boxy-red {
+ color: #a94442;
+ background-color: #f2dede;
+ border-color: #ebccd1;
+ // border-left-color: #a94442;
+}
+
+.boxy-blue {
+ color: #31708f;
+ background-color: #d9edf7;
+ border-color: #bce8f1;
+ // border-left-color: #31708f;
+}
+
+/* change colours for blockquote and links inside boxy */
+.boxy a {
+  color: var(--color-text);
+}
+
+.boxy a:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.boxy-orange blockquote {
+  border-left-color: #bf6300;
+}
+.boxy-green blockquote {
+  border-left-color: #3c763d;
+}
+.boxy-yellow blockquote{
+  border-left-color: #8a6d3b;
+}
+.boxy-red blockquote {
+  border-left-color: #a94442;
+}
+.boxy-blue blockquote {
+  border-left-color: #31708f;
+}
