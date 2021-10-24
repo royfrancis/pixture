@@ -31,7 +31,6 @@ For detailed demonstration and description, refer the vignette.
 - [ ] Does not work with one image
 - [ ] Freewall/Lightbox arguments does not work correctly
 - [ ] Fix resizing js error
-- [ ] Multiple galleries per table is not enabled
 
 ## Disclaimer
 
