@@ -1,0 +1,20 @@
+Package: pixture
+Type: Package
+Title: HTML Image Gallery
+Version: 0.1.0
+Date: 2021-10-24
+Author: Roy Francis
+Maintainer: Roy Francis <roy.m.francis@outlook.com>
+Description: Generates an HTML photo gallery.
+URL: https://github.com/royfrancis/pixture
+License: GPL (>= 3)
+Encoding: UTF-8
+Depends:
+ R (>= 4.0)
+Imports:
+ htmlwidgets,
+ shiny
+Suggests:
+ testthat
+BugReports: https://github.com/royfrancis/pixture/issues
+RoxygenNote: 7.1.1

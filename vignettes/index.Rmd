@@ -1,0 +1,154 @@
+---
+title: "Pixture"
+date: "`r format(Sys.time(), '%d-%b-%Y')`"
+output:
+  html_document:
+    theme: flatly
+    self_contained: false
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Usage
+
+This is a demo of the **pixture** image gallery. The only input required is a vector of paths to images.
+
+```{r}
+library(pixture)
+paths <- c("https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/7919/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/2437291/pexels-photo-2437291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/1679772/pexels-photo-1679772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/1813513/pexels-photo-1813513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/267074/pexels-photo-267074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+           "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+```
+
+Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
+
+```{r}
+pixture(paths[1:2])
+```
+
+```{r}
+pixture(paths)
+```
+
+# Captions
+
+Optionally, captions can be added to the images which are visible when viewed in the lightbox.
+
+```{r}
+pixture(paths,caption=c("night","forest","shark","coconut trees","flowers","field","fog",
+                        "leaves","sunset","mountains","swamp","rainstorm","leaves","beach",
+                        "leopard","sunflower"))
+```
+
+# Options
+
+There are few different options that can be tweaked. These are listed [here](http://kombai.github.io/freewall/#options).
+
+## Rows/Columns
+
+The number of thumbnails per row is determined by the size of each thumbnail.
+
+```{r}
+pixture(paths,options=list(cellW=80,cellH=80))
+```
+
+```{r}
+pixture(paths,options=list(cellW=80))
+```
+
+```{r}
+pixture(paths[1:6],preset="mixedwidth", options=list(cellH=30))
+```
+
+Spacing between thumbnails can be controlled using `gutterX` and `gutterY`.
+
+```{r}
+pixture(paths[1:6],options=list(gutterX=25,gutterY=25))
+```
+
+# Shiny
+
+This is an example of a shiny app using pixture.
+
+```{r,eval=FALSE}
+# pixture shiny app
+
+library(shiny)
+library(pixture)
+
+ids <- c("572897",
+          "7604425",
+          "4666748",
+          "4932184",
+          "4210900",
+          "3126574",
+          "167699",
+          "1376201",
+          "2437291",
+          "1679772",
+          "1183099",
+          "1813513",
+          "931018",
+          "267074",
+          "4622893")
+
+caption <- c("night;forest;shark;coconut trees;flowers;field;leaves;sunset;mountains;swamp;rainstorm;leaves;beach;leopard;sunflower")
+
+ui <- fluidPage(
+    titlePanel("Pixture Demo"),
+    sidebarLayout(
+        sidebarPanel(width=3,
+            selectInput("ids","Image IDs",choices=ids,
+                        selected=ids,multiple=TRUE),
+            checkboxInput("caption_check","Use captions",value=FALSE),
+            uiOutput("caption_ui"),
+            HTML("Images from <a href='https://unsplash.com/'>Unsplash.</a>")
+        ),
+        mainPanel(width=9,
+            pixture::pixtureOutput("pixture")
+        )
+    )
+)
+
+server <- function(input, output) {
+    output$caption_ui <- renderUI({
+        if(input$caption_check) {
+            textInput("caption","Caption",value=caption)
+        }
+    })
+
+    output$pixture <- pixture::renderPixture({
+        paths <- paste0("https://images.pexels.com/photos/",input$ids,"/pexels-photo-",input$ids,".jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+
+        if(input$caption_check){
+            cpt <- unlist(strsplit(input$caption,";"))
+            if(length(cpt)!=length(paths)) stop("Number of captions do not match number of images.")
+            pixture::pixture(paths,caption=cpt)
+        }else{
+            pixture::pixture(paths)
+        }
+
+
+    })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+To try out this demo app, run `pixture::runPixture()`.
