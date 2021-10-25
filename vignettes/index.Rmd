@@ -16,6 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is a demo of the **pixture** image gallery. The only input required is a vector of paths to images.
 
+<p class="boxy boxy-yellow" style="inline-block">
+<i class="fas fa-exclamation-circle"></i> &nbsp; Only online image URLs are currently supported.
+</p>
+
 ```{r}
 library(pixture)
 paths <- c("https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -70,10 +74,6 @@ pixture(paths,options=list(cellW=80,cellH=80))
 
 ```{r}
 pixture(paths,options=list(cellW=80))
-```
-
-```{r}
-pixture(paths[1:6],preset="mixedwidth", options=list(cellH=30))
 ```
 
 Spacing between thumbnails can be controlled using `gutterX` and `gutterY`.

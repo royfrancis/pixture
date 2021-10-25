@@ -8,33 +8,33 @@
 
 ## Installation  
 
-You need to have R (>= 4.0) statistical package installed on your system. [R](https://www.r-project.org/) is open-source and freely available to download for Windows, Mac and other OS.
+You need to have R (>= 4.0) installed on your system. [R](https://www.r-project.org/) is open-source and freely available to download for Windows, Mac and other OS.
 
-First install the dependency packages and some helper packages. Then, you can install the package from Github using the `remotes` package. 
+Run the following to install the dependencies, helper package and pixture package itself.
 
 ```coffee
 install.packages(c("htmlwidgets","remotes"))
 remotes::install_github('royfrancis/pixture')
 ```
 
-Once the package is installed, the package is loaded as shown below.
+Once the package is installed, the package is loaded for use as shown below.
 
 ```coffee
 # load library
 library(pixture)
 
 # check version
-packageVersion("pixture")
+# packageVersion("pixture")
 ```
 
-For detailed demonstration and description, refer the vignette.
+For usage and demonstration, refer the vignette.
 
 ## Issues/To-do list
 
-- [ ] Local images do not work. Images need to be a web link.
-- [ ] Does not work with one image
-- [ ] Freewall/Lightbox arguments does not work correctly
-- [ ] Fix resizing js error
+- [ ] Local images do not work. Images need to be a web link  
+- [ ] Does not work with one image  
+- [ ] Freewall/Lightbox arguments does not work correctly  
+- [ ] Fix resizing js error  
 
 ## Disclaimer
 
