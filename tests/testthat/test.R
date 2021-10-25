@@ -30,3 +30,6 @@ expect_equal(length(obj$x$path),length(paths))
 caps <- sample(x=letters,size=length(paths))
 obj <- pixture(paths,caption=caps)
 expect_equal(length(obj$x$caption),length(paths))
+expect_error(pixture(paths,caption=caps[-1]))
+
+expect_error(pixture(paths,options=c("100px")))
