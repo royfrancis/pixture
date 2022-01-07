@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elegant HTML Image Gallery • pixture</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,13 +19,15 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Elegant HTML Image Gallery">
-<meta property="og:description" content="Elegant HTML image gallery in R with responsive grid layout and lightbox.">
+<meta property="og:description" content="HTML image gallery in R with responsive grid layout and lightbox.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -32,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pixture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.1.0000</span>
       </span>
     </div>
 
@@ -85,17 +93,15 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="pixture" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#pixture" class="anchor"></a>pixture</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="pixture-">pixture <img src="android-chrome-192x192.png" style="height:96px;" align="right"><a class="anchor" aria-label="anchor" href="#pixture-"></a>
+</h1></div>
+
 <p><code>pixture</code> is an R package to create an HTML image gallery. This can be standalone, included in an Rmarkdown document or in a shiny app.</p>
-<p class="boxy boxy-yellow" style="inline-block">
-<i class="fas fa-exclamation-circle"></i>   This package is experimental and not recommended for general use.
-</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You need to have R (&gt;= 4.0) installed on your system. <a href="https://www.r-project.org/">R</a> is open-source and freely available to download for Windows, Mac and other OS.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You need to have R (&gt;= 3.5) installed on your system. <a href="https://www.r-project.org/" class="external-link">R</a> is open-source and freely available to download for Windows, Mac and other OS.</p>
 <p>Run the following to install the dependencies, helper package and pixture package itself.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode coffee"><code class="sourceCode coffee"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>install<span class="kw">.</span>packages<span class="kw">(</span>c<span class="kw">(</span><span class="st">"htmlwidgets"</span><span class="kw">,</span><span class="st">"remotes"</span><span class="kw">))</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="kw">::</span>install_github<span class="kw">(</span><span class="st">'royfrancis/pixture'</span><span class="kw">)</span></span></code></pre></div>
@@ -107,35 +113,19 @@
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># packageVersion("pixture")</span></span></code></pre></div>
 <p>For usage and demonstration, refer the vignette.</p>
 </div>
-<div id="issuesto-do-list" class="section level2">
-<h2 class="hasAnchor">
-<a href="#issuesto-do-list" class="anchor"></a>Issues/To-do list</h2>
-<ul class="task-list">
-<li>
-<input type="checkbox" disabled>
-Local images do not work. Images need to be a web link<br>
-</li>
-<li>
-<input type="checkbox" disabled>
-Does not work with one image<br>
-</li>
-<li>
-<input type="checkbox" disabled>
-Freewall/Lightbox arguments does not work correctly<br>
-</li>
-<li>
-<input type="checkbox" disabled>
-Fix resizing js error</li>
-</ul>
+<div class="section level2">
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h2>
+<p>The lightbox uses <a href="https://github.com/dbrekalo/simpleLightbox" class="external-link">simplelightbox</a> created by <a href="https://dbrekalo.github.io/simpleLightbox/" class="external-link">Damir Brekalo</a>.</p>
 </div>
-<div id="disclaimer" class="section level2">
-<h2 class="hasAnchor">
-<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
+<div class="section level2">
+<h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
+</h2>
 <p>This R package is offered free and without warranty of any kind, either expressed or implied. I will not be held liable to you for any damage arising out of the use, modification or inability to use this program. This R package can be used, redistributed and/or modified freely for non-commercial purposes subject to the original source being properly cited. Licensed under GPL-3.</p>
 </div>
-<div id="contact" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contact" class="anchor"></a>Contact</h2>
+<div class="section level2">
+<h2 id="contact">Contact<a class="anchor" aria-label="anchor" href="#contact"></a>
+</h2>
 <p>If you have any comments, suggestions, corrections or enchancements, kindly submit an issue on the <a href="https://github.com/royfrancis/pixture/issues">Github issues page</a>.</p>
 </div>
 </div>
@@ -143,25 +133,42 @@ Fix resizing js error</li>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/royfrancis/pixture/">https://​github.com/​royfrancis/​pixture/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/royfrancis/pixture/issues">https://​github.com/​royfrancis/​pixture/​issues</a>
-</li>
+<li><a href="https://github.com/royfrancis/pixture/">Browse source code</a></li>
+<li><a href="https://github.com/royfrancis/pixture/issues">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>GPL (&gt;= 3)</small></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Roy Francis <br><small class="roles"> Maintainer </small>  </li>
+<li><a href="authors.html#citation">Citing pixture</a></li>
+</ul>
+</div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://royfrancis.com" class="external-link">Roy Francis</a> <br><small class="roles"> Maintainer </small>  </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/royfrancis/pixture/actions?workflow=build"><img src="https://github.com/royfrancis/pixture/workflows/build/badge.svg" alt="ci_badge"></a></li>
+<li><a href="https://app.codecov.io/gh/royfrancis/pixture/" class="external-link"><img src="https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK" alt="codecov"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg" alt="lifecycle_badge"></a></li>
 </ul>
 </div>
 
@@ -170,11 +177,13 @@ Fix resizing js error</li>
 
 
       <footer><div class="copyright">
-  <p>Developed by Roy Francis.</p>
+  <p></p>
+<p>Developed by <a href="https://royfrancis.com" class="external-link">Roy Francis</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -182,6 +191,8 @@ Fix resizing js error</li>
 
   
 
+
+  
 
   </body>
 </html>

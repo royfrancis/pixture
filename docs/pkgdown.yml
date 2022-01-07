@@ -1,9 +1,9 @@
-pandoc: '2.14'
-pkgdown: 1.6.1
+pandoc: 2.14.0.3
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   index: index.html
-last_built: 2021-10-25T08:36Z
+last_built: 2022-01-07T17:45Z
 urls:
   reference: https://github.com/royfrancis/pixture/reference
   article: https://github.com/royfrancis/pixture/articles

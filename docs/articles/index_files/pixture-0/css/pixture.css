@@ -1,0 +1,37 @@
+/* css styles for pixture gallery */
+
+.pixture-gallery {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ align-items: stretch;
+ align-content: stretch;
+ margin: 1em 0;
+}
+
+.pixture-child {
+ flex-grow: 0;
+ flex-shrink: 0;
+}
+
+.pixture-image {
+ background-size: cover;
+ background-position: center;
+ cursor: pointer;
+}
+
+.pixture-gallery .pixture-image:hover {
+ opacity: 0.9;
+ transition: 0.4s ease;
+}
+
+.pixture-gallery .pixture-image:hover {
+ box-shadow: 0 .08rem .25rem rgba(0,0,0,.15);
+}
+
+.slbCaption {
+ font-size: 1em;
+ white-space: normal;
+}
+
