@@ -3,47 +3,37 @@
 #' @description Create an image gallery.
 #' @param path A character vector of paths to images.
 #' @param caption A character vector of captions for the images (Optional).
-#' @param preset A character denoting predefined layout style. Defaults to "grid".
-#' @param options A named list of freewall options, See \url{http://kombai.github.io/freewall/#options}.
-#' @param height A numeric in pixel denoting height of the widget.
-#' @param width A numeric denoting width of the widget.
+#' @param h Image height in the grid as a string in valid css units.
+#' @param w Image width in the grid as a string in valid css units.
+#' @param gap Gap between cells as a string in valid css units.
+#' @param height Height of the widget as a string.
+#' @param width Width of the widget as a string.
 #' @param elementId A character denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @export
 #'
-pixture <- function(path, caption = NULL, preset = "grid", options = list(),
-                    width = "100%", height = NULL, elementId = NULL) {
+pixture <- function(path, caption = NULL, h = "200px", w = "200px", gap = "6px",
+                    width = "100%", height = "100%", elementId = NULL) {
 
   if(!is.null(caption)) {
-    if(length(caption) != length(path)) stop("Length of caption must be same as path.")
+    if(length(caption) != length(path)) stop(paste("Length of 'caption' (", length(caption), ") is not not equal to the length of 'path' (", length(path), "). If 'caption' is used, it must be the same length as 'path'."))
   } else {
-    caption <- rep(NULL,length(path))
+    if(!is.null(names(path))){
+      caption <- names(path)
+    }else{
+      caption <- rep(NULL, length(path))
+    }
   }
 
-  if(length(options)!=0) {
-    if(any(is.null(names(options)))) stop("Argument 'options' must be a named list.")
-    if(any(is.na(names(options)))) stop("Argument 'options' must be a named list.")
-  }
-
-  if(is.null(options$draggable)) options$draggable <- FALSE
-  if(is.null(options$animate)) options$animate <- TRUE
-  if(is.null(options$cellW)) options$cellW <- 200
-  if(is.null(options$cellH)) options$cellH <- 200
-  if(is.null(options$delay)) options$delay <- 30
-  if(is.null(options$gutterX)) options$gutterX <- 5
-  if(is.null(options$gutterY)) options$gutterY <- 5
-  options$selector <- '.fw-cell'
-  if(is.null(options$cacheSize)) options$cacheSize <- TRUE
-  if(is.null(options$keepOrder)) options$keepOrder <- TRUE
-  if(is.null(options$rightToLeft)) options$rightToLeft <- FALSE
-  if(is.null(options$bottomToTop)) options$bottomToTop <- FALSE
+  names(path) <- NULL
 
   # forward options using x
   x = list(
-    path = path,
+    path = as.list(path),
     caption = caption,
-    preset = preset,
-    options = options
+    w = w,
+    h = h,
+    gap = gap
   )
 
   # create widget
@@ -81,7 +71,7 @@ pixture <- function(path, caption = NULL, preset = "grid", options = list(),
 #' @importFrom htmlwidgets shinyWidgetOutput
 #' @export
 #'
-pixtureOutput <- function(outputId, width = '100%', height = '400px'){
+pixtureOutput <- function(outputId, width = '100%', height = '100%'){
   shinyWidgetOutput(outputId, 'pixture', width, height, package = 'pixture')
 }
 
@@ -96,9 +86,7 @@ renderPixture <- function(expr, env = parent.frame(), quoted = FALSE) {
 
 #' @title Launch pixture demo shiny application
 #' @description Launches interactive shiny session in the browser.
-#' @param display.mode Display mode. See \code{\link{runApp}}.
-#' @param launch.browser Logical indicating if the app is to be launched in the system browser.
-#' @param ... Further arguments are passed to \code{\link{runApp}}.
+#' @param ... Arguments are passed to \code{\link{runApp}}.
 #' @return This function does not return anything
 #' @seealso \code{\link{runApp}}
 #' @examples
@@ -110,11 +98,11 @@ renderPixture <- function(expr, env = parent.frame(), quoted = FALSE) {
 #' @importFrom shiny fluidPage titlePanel sidebarLayout sidebarPanel selectInput checkboxInput uiOutput mainPanel shinyApp
 #' @export
 #'
-runPixture <- function(display.mode="normal",launch.browser=TRUE,...) {
-  appDir <- system.file("app", package="pixture")
+runPixture <- function(...) {
+  appDir <- system.file("app", package = "pixture")
   if (appDir == "") {
     stop("Could not find app directory. Try re-installing `pixture`.", call. = FALSE)
   }
 
-  shiny::runApp(appDir,display.mode=display.mode,launch.browser=launch.browser,...)
+  shiny::runApp(appDir, ...)
 }

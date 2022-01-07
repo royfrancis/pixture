@@ -1,14 +1,12 @@
-# pixture
+# pixture <img src="android-chrome-192x192.png" style="height:96px;" align="right" />
+
+[![ci_badge](https://github.com/royfrancis/pixture/workflows/build/badge.svg)](https://github.com/royfrancis/pixture/actions?workflow=build) [![codecov](https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK)](https://app.codecov.io/gh/royfrancis/pixture/) [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) 
 
 `pixture` is an R package to create an HTML image gallery. This can be standalone, included in an Rmarkdown document or in a shiny app.
 
-<p class="boxy boxy-yellow" style="inline-block">
-<i class="fas fa-exclamation-circle"></i> &nbsp; This package is experimental and not recommended for general use.
-</p>
-
 ## Installation  
 
-You need to have R (>= 4.0) installed on your system. [R](https://www.r-project.org/) is open-source and freely available to download for Windows, Mac and other OS.
+You need to have R (>= 3.5) installed on your system. [R](https://www.r-project.org/) is open-source and freely available to download for Windows, Mac and other OS.
 
 Run the following to install the dependencies, helper package and pixture package itself.
 
@@ -29,12 +27,9 @@ library(pixture)
 
 For usage and demonstration, refer the vignette.
 
-## Issues/To-do list
+## Acknowledgements
 
-- [ ] Local images do not work. Images need to be a web link  
-- [ ] Does not work with one image  
-- [ ] Freewall/Lightbox arguments does not work correctly  
-- [ ] Fix resizing js error  
+The lightbox uses [simplelightbox](https://github.com/dbrekalo/simpleLightbox) created by [Damir Brekalo](https://dbrekalo.github.io/simpleLightbox/).
 
 ## Disclaimer
 

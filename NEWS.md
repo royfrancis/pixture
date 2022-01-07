@@ -1,3 +1,11 @@
+# pixture 0.0.1.0000
+
+- 07-Jan-2022
+- Dropped freewall, lightbox and jquery
+- Gallery using flex-grid
+- Lightbox using simplelightbox
+- Gallery with single image fixed
+
 # pixture 0.0.0.9000
 
 * 25-Oct-2021

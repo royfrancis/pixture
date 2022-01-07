@@ -6,7 +6,7 @@
 \alias{renderPixture}
 \title{Shiny bindings for pixture}
 \usage{
-pixtureOutput(outputId, width = "100\%", height = "400px")
+pixtureOutput(outputId, width = "100\%", height = "100\%")
 
 renderPixture(expr, env = parent.frame(), quoted = FALSE)
 }

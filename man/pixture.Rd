@@ -7,10 +7,11 @@
 pixture(
   path,
   caption = NULL,
-  preset = "grid",
-  options = list(),
+  h = "200px",
+  w = "200px",
+  gap = "6px",
   width = "100\%",
-  height = NULL,
+  height = "100\%",
   elementId = NULL
 )
 }
@@ -19,13 +20,15 @@ pixture(
 
 \item{caption}{A character vector of captions for the images (Optional).}
 
-\item{preset}{A character denoting predefined layout style. Defaults to "grid".}
+\item{h}{Image height in the grid as a string in valid css units.}
 
-\item{options}{A named list of freewall options, See \url{http://kombai.github.io/freewall/#options}.}
+\item{w}{Image width in the grid as a string in valid css units.}
 
-\item{width}{A numeric denoting width of the widget.}
+\item{gap}{Gap between cells as a string in valid css units.}
 
-\item{height}{A numeric in pixel denoting height of the widget.}
+\item{width}{Width of the widget as a string.}
+
+\item{height}{Height of the widget as a string.}
 
 \item{elementId}{A character denoting parent container ID.}
 }

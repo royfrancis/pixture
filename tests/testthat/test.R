@@ -22,6 +22,7 @@ paths <- c("https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?aut
            "https://images.pexels.com/photos/267074/pexels-photo-267074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
            "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 
+expect_error(pixture())
 expect_silent(pixture(paths))
 obj <- pixture(paths)
 expect_equal(class(obj),c("pixture","htmlwidget"))
@@ -32,4 +33,8 @@ obj <- pixture(paths,caption=caps)
 expect_equal(length(obj$x$caption),length(paths))
 expect_error(pixture(paths,caption=caps[-1]))
 
-expect_error(pixture(paths,options=c("100px")))
+expect_silent(pixture(paths,h="100px"))
+expect_silent(pixture(paths,w="100px"))
+expect_silent(pixture(paths,h="100px",w="100px"))
+expect_silent(pixture(paths,gap="10px"))
+expect_silent(pixture(paths,h="100px",w="50px",gap="5px"))

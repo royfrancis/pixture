@@ -4,14 +4,10 @@
 \alias{runPixture}
 \title{Launch pixture demo shiny application}
 \usage{
-runPixture(display.mode = "normal", launch.browser = TRUE, ...)
+runPixture(...)
 }
 \arguments{
-\item{display.mode}{Display mode. See \code{\link{runApp}}.}
-
-\item{launch.browser}{Logical indicating if the app is to be launched in the system browser.}
-
-\item{...}{Further arguments are passed to \code{\link{runApp}}.}
+\item{...}{Arguments are passed to \code{\link{runApp}}.}
 }
 \value{
 This function does not return anything

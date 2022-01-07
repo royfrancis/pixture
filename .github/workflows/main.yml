@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        r: [4.0,4.1]
+        r: [3.5,3.6,4.0,4.1]
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
@@ -59,7 +59,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        r: [4.0,4.1]
+        r: [3.5,3.6,4.0,4.1]
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master

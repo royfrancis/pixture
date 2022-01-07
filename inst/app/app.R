@@ -25,10 +25,12 @@ ui <- fluidPage(
     titlePanel("Pixture Demo"),
     sidebarLayout(
         sidebarPanel(width=3,
-            selectInput("ids","Image IDs",choices=ids,
-                        selected=ids,multiple=TRUE),
-            checkboxInput("caption_check","Use captions",value=FALSE),
+            selectInput("ids", "Image IDs", choices=ids, selected=ids, multiple=TRUE),
+            checkboxInput("caption_check", "Use captions", value=FALSE),
             uiOutput("caption_ui"),
+            textInput("h", label = "Image height", value="200px"),
+            textInput("w", label = "Image width", value="200px"),
+            textInput("gap", label = "Grid gap", value="6px"),
             HTML("Images from <a href='https://unsplash.com/'>Unsplash.</a>")
         ),
         mainPanel(width=9,
@@ -40,19 +42,21 @@ ui <- fluidPage(
 server <- function(input, output) {
     output$caption_ui <- renderUI({
         if(input$caption_check) {
-            textInput("caption","Caption",value=caption)
+            textInput("caption", "Caption", value=caption)
         }
     })
 
     output$pixture <- pixture::renderPixture({
-        paths <- paste0("https://images.pexels.com/photos/",input$ids,"/pexels-photo-",input$ids,".jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+        paths <- paste0("https://images.pexels.com/photos/", input$ids, "/pexels-photo-", input$ids, ".jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 
         if(input$caption_check){
-            cpt <- unlist(strsplit(input$caption,";"))
+          if(!is.null(input$caption)){
+            cpt <- unlist(strsplit(input$caption, ";"))
             if(length(cpt)!=length(paths)) stop("Number of captions do not match number of images.")
-            pixture::pixture(paths,caption=cpt)
+            pixture::pixture(paths, caption=cpt, h = input$h, w = input$w, gap = input$gap)
+          }
         }else{
-            pixture::pixture(paths)
+            pixture::pixture(paths, h = input$h, w = input$w, gap = input$gap)
         }
 
 

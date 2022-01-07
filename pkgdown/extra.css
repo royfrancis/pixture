@@ -1,5 +1,5 @@
 /* CSS Bootstrap custom style */
-/* 2021 Roy Francis */
+/* 2022 Roy Francis */
 
 /* define font */
 @import url('https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro:300,400,600|Ubuntu+Mono&subset=latin-ext');
@@ -79,107 +79,8 @@ code {
   font-size: 16px;
 }
 
-/* report title style */
-.title {
-  margin-top: 25px;
-  margin-bottom: 5px;
-  margin-right: 70px;
-  font-size: 1.9em;
-}
-
-/* report subtitle style */
-.subtitle {
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-size: 1.7em;
-}
-
-/* report author style */
-.author {
-  font-size: 1em;
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
-
-/* report date style */
-.date {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-/* new font size classes */
-.largest { font-size: 2.488em; }
-.larger { font-size: 2.074em; }
-.large { font-size: 1.44em;}
-.small { font-size: 0.833em; }
-.smaller { font-size: 0.694em; }
-.smallest{ font-size: 0.579em; }
-
-blockquote {
-  border-left: 5px solid var(--color-primary);
-  background: var(--color-code-bg);
-  padding: 10px;
-  padding-left: 12px;
-  margin-left: 16px;
-  margin-right: 0;
-  border-radius: 0px 4px 4px 0px;
-}
-
-/* abstract paragraph style */
-.abstract {
-    line-height: 170%;
-}
-
-/* div styles --------------------------------------------------------------- */
-
-/** div style for instrauctions **/
-.instruction {
- font-size: 18px;
- border: 1px solid var(--color-primary);
- border-left: 6px solid var(--color-primary);
- border-radius: 4px 4px 4px 4px;
- padding: 10px 10px 0px 10px;
- margin: 20px 0px 10px 0px;
-}
-
-.optional {
- border: 1px solid #EF7C00;
- border-left: 6px solid #EF7C00;
- border-radius: 4px 4px 4px 4px;
- padding: 10px 10px 0px 10px;
- margin: 20px 0px 10px 0px;
-}
-
-/* IMAGES ------------------------------------------------------------------- */
-
-/* image styling */
-img {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-}
-
-.fancyimage {
-  box-shadow: 1px 1px 5px grey;
-  border-radius: 2px;
-}
-
-.trlogo {
-  position:absolute;
-  height:50px;
-  /*top:2.5em; with code folding*/
-  top:1em;
-  right:0;
-  padding-right:40px;
-  margin-top:7px;
-}
-
-.figure {
- margin-bottom: 12px;
-}
-
 /* Buttons and Links -------------------------------------------------------- */
-/* link colour: scilife */
+
 a {
   color: var(--color-primary);
 }
@@ -189,99 +90,12 @@ a:hover {
   text-decoration: underline;
 }
 
-/* floating bar highlight */
-.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-  z-index: 2;
-  background-color: var(--color-primary);
-  border-color: var(--border-color);
-}
 
 /* table even shading colour */
 .even {
     background-color: var(--color-code-bg);
 }
 
-/* hover effect footer icons */
-.footericon:hover {
-  opacity: 10;
-}
-
-button.btn-collapse {
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-
-button.btn-collapse-normal {
-  color: white;
-  border-color: var(--color-primary);
-  background-color: var(--color-primary);
-}
-
-button.btn-collapse-normal:hover {
-    background-color: white;
-    color: var(--color-primary);
-    border-color: white;
-    box-shadow: 0px 3px 40px -9px var(--color-primary);
-    -webkit-box-shadow: 0px 3px 40px -9px var(--color-primary);
-    -moz-box-shadow: 0px 3px 40px -9px var(--color-primary);
-}
-
-button.btn-collapse-optional {
-  color: white;
-  border-color: #EF7C00;
-  background-color: #EF7C00;
-}
-
-button.btn-collapse-optional:hover {
-    background-color: white;
-    color: #EF7C00;
-    border-color: white;
-    box-shadow: 0px 3px 30px -9px #EF7C00;
-    -webkit-box-shadow: 0px 3px 30px -9px #EF7C00;
-    -moz-box-shadow: 0px 3px 30px -9px #EF7C00;
-}
-
-button.btn-accordion.collapsed:before
-{
-    content: '+' ;
-    display: block;
-    width: 15px;
-    font-size: 120%;
-    font-weight: bold;
-}
-
-button.btn-accordion:before
-{
-    content: '-' ;
-    display: block;
-    width: 15px;
-    font-size: 120%;
-    font-weight: bold;
-}
-
-/* code folding button properties */
-.code-folding-btn {
-  margin-bottom: 4px;
-  margin-top: 4px;
-  margin-right: -15px;
-}
-
-/** top title code **/
-div.block-title {
-  font-weight: bold;
-  text-transform: uppercase;
-  background-color: var(--color-border);
-  border-top: 1px solid var(--color-border);
-  border-left: 1px solid var(--color-border);
-  border-right: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 2px 2px 2px 10px;
-  margin-top: auto;
-  margin-bottom: auto;
-  color: white;
-}
 
 /* pkgdown navbar */
 
@@ -310,92 +124,4 @@ div.block-title {
 
 body {
   line-height: 1.6;
-}
-
-.alert-warning {
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-    border-color: #faebcc;
-}
-
-/* div styles --------------------------------------------------------------- */
-
-/** div style for instructions **/
-
-.boxy p {
-  margin: 0;
-  padding: 0;
-}
-
-.boxy {
- color: var(--color-text);
- background-color: var(--color-boxy-bg);
- border: 1px solid var(--color-border);
- /*border-left: 6px solid var(--color-primary-dark);*/
- border-radius: 4px 4px 4px 4px;
- padding: 10px 10px 10px 20px;
- margin: 10px 0px 10px 0px;
- position: relative;
- box-shadow: 1px 1px 6px var(--color-shadow);
-}
-
-.boxy-orange {
- color: #bf6300;
- background-color: #fdf1e5;
- border-color: #fad7b2;
- // border-left-color: #bf6300;
-}
-
-.boxy-yellow {
- color: #8a6d3b;
- background-color: #fcf8e3;
- border-color: #faebcc;
- // border-left-color: #8a6d3b;
-}
-
-.boxy-green {
- color: #3c763d;
- background-color: #dff0d8;
- border-color: #d6e9c6;
- // border-left-color: #3c763d;
-}
-
-.boxy-red {
- color: #a94442;
- background-color: #f2dede;
- border-color: #ebccd1;
- // border-left-color: #a94442;
-}
-
-.boxy-blue {
- color: #31708f;
- background-color: #d9edf7;
- border-color: #bce8f1;
- // border-left-color: #31708f;
-}
-
-/* change colours for blockquote and links inside boxy */
-.boxy a {
-  color: var(--color-text);
-}
-
-.boxy a:hover {
-  color: var(--color-text);
-  text-decoration: underline;
-}
-
-.boxy-orange blockquote {
-  border-left-color: #bf6300;
-}
-.boxy-green blockquote {
-  border-left-color: #3c763d;
-}
-.boxy-yellow blockquote{
-  border-left-color: #8a6d3b;
-}
-.boxy-red blockquote {
-  border-left-color: #a94442;
-}
-.boxy-blue blockquote {
-  border-left-color: #31708f;
 }
