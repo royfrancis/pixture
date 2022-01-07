@@ -57,15 +57,13 @@ pixture(paths)
 Optionally, captions can be added to the images which are visible when viewed in the lightbox.
 
 ```{r}
-pixture(paths,caption=c("night","forest","shark","coconut trees","flowers","field","fog",
-                        "leaves","sunset","mountains","swamp","rainstorm","leaves","beach",
-                        "leopard","sunflower"))
+pixture(paths,caption=c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower"))
 ```
 
 Images without captions can be set as NA.
 
 ```{r}
-pixture(paths[1:4],caption=c("night","forest",NA,"coconut trees"))
+pixture(paths[1:4], caption=c("night", "forest", NA, "coconut trees"))
 ```
 
 # Dimensions
@@ -129,7 +127,7 @@ ids <- c("572897",
           "267074",
           "4622893")
 
-caption <- c("night;forest;shark;coconut trees;flowers;field;leaves;sunset;mountains;swamp;rainstorm;leaves;beach;leopard;sunflower")
+caption <- c("night;forest;shark;coconut trees;flowers;field;misty;leaves;mountains;swamp;rainstorm;leaves;beach;leopard;sunflower")
 
 ui <- fluidPage(
     titlePanel("Pixture Demo"),
@@ -141,7 +139,7 @@ ui <- fluidPage(
             textInput("h", label = "Image height", value="200px"),
             textInput("w", label = "Image width", value="200px"),
             textInput("gap", label = "Grid gap", value="6px"),
-            HTML("Images from <a href='https://unsplash.com/'>Unsplash.</a>")
+            HTML("Images from <a href='https://www.pexels.com/'>Pexels.</a>")
         ),
         mainPanel(width=9,
             pixture::pixtureOutput("pixture")
@@ -176,7 +174,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-To try out this demo app, run `pixture::runPixture()`.
+To try out a demo app, run `pixture::runPixture()`.
 
 To use local images in Shiny, the images can be added to the `www` directory and the paths are relative. For example; an image at `app/www/images/image.jpg` is referenced in the app as `images/image.jpg`.
 

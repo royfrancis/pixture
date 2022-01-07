@@ -31,6 +31,8 @@ For usage and demonstration, refer the vignette.
 
 The lightbox uses [simplelightbox](https://github.com/dbrekalo/simpleLightbox) created by [Damir Brekalo](https://dbrekalo.github.io/simpleLightbox/).
 
+Images from [Pexels](https://www.pexels.com/).
+
 ## Disclaimer
 
 This R package is offered free and without warranty of any kind, either expressed or implied. I will not be held liable to you for any damage arising out of the use, modification or inability to use this program. This R package can be used, redistributed and/or modified freely for non-commercial purposes subject to the original source being properly cited. Licensed under GPL-3.
