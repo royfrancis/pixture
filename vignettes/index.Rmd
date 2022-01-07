@@ -36,11 +36,13 @@ paths <- c("https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?aut
            "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 ```
 
-Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
+Clicking on the thumbnail opens up the full image in a lightbox.
 
 ```{r}
 pixture::pixture(paths[1])
 ```
+
+The whole gallery can be browsed through the lightbox using left or right arrow keys.
 
 ```{r}
 pixture(paths[1:2])
@@ -92,9 +94,9 @@ pixture::pixture(paths, gap="0", w="45px")
 
 # Local images
 
-Local images can be provided as relative or absolute paths. Here is an example:
+Local images can be provided as relative or absolute paths. Here is an example. Note that this only works locally.
 
-```{r}
+```{r,eval=FALSE}
 paths <- list.files(system.file("extdata/images", package="pixture"), full=TRUE)
 pixture::pixture(paths)
 ```

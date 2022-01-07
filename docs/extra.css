@@ -122,6 +122,10 @@ a:hover {
   color: white;
 }
 
+.navbar-default .navbar-link:hover {
+    color: white;
+}
+
 body {
   line-height: 1.6;
 }
