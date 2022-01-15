@@ -1,0 +1,62 @@
+/* css styles for pixture */
+
+/* common */
+
+.slbCaption {
+ font-size: 1em;
+ white-space: normal;
+}
+
+/* gallery box */
+
+.pixgallery-gallery-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  margin: 1em 0;
+}
+
+.pixgallery-child-box {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.pixgallery-child-box a:hover,
+.pixgallery-child-box a:focus,
+.pixgallery-child-box a:active {
+  filter: brightness(0.8);
+  box-shadow: 0 .08rem .25rem rgba(0,0,0,.15);
+}
+
+.pixgallery-image-box {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+/* gallery grid */
+
+.pixgallery-gallery-grid {
+	display: -ms-grid;
+	display: grid;
+  margin-bottom: 0.5em;
+}
+
+.pixgallery-child-grid a:hover,
+.pixgallery-child-grid a:focus,
+.pixgallery-child-grid a:active {
+    filter: brightness(0.8);
+    box-shadow: 0 .08rem .25rem rgba(0,0,0,.15);
+}
+
+.pixgallery-image-grid {
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+}
+
+
+

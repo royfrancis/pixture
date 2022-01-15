@@ -4,7 +4,7 @@ dependencies:
     src: htmlwidgets/lib/simplelightbox
     script: js/simplelightbox.js
     stylesheet: css/simplelightbox.css
-  - name: pixture
+  - name: pixgallery
     version: 0
-    src: htmlwidgets/lib/pixture
-    stylesheet: css/pixture.css
+    src: htmlwidgets/lib/pixgallery
+    stylesheet: css/pixgallery.css

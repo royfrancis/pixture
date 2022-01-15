@@ -1,11 +1,11 @@
 Package: pixture
 Type: Package
 Title: Elegant HTML Image Gallery
-Version: 0.0.1.0000
-Date: 2022-01-07
+Version: 0.0.2.0000
+Date: 2022-01-15
 Author: Roy Francis
 Maintainer: Roy Francis <roy.m.francis@outlook.com>
-Description: HTML image gallery in R with responsive grid layout and lightbox.
+Description: HTML image gallery in R with responsive layout and lightbox.
 URL: https://github.com/royfrancis/pixture
 License: GPL (>= 3)
 Encoding: UTF-8

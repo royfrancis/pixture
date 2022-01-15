@@ -1,3 +1,10 @@
+# pixture 0.0.2.0000
+
+- 15-Jan-2022
+- Renamed pixture() function to pixgallery()
+- Defined gallery as separate function and widget
+- Gallery using flexbox or grid using img tag
+
 # pixture 0.0.1.0000
 
 - 07-Jan-2022

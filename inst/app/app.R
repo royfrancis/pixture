@@ -11,19 +11,18 @@ ids <- c("572897","7604425","4666748","4932184","4210900","3126574","167699",
 caption <- c("night;forest;shark;coconut trees;flowers;field;misty;leaves;mountains;swamp;rainstorm;leaves;beach;leopard;sunflower;homely;countryside;aurora;cliff;poppy;swan;aerial;snowy;beach;hands;glass;autumn;love")
 
 ui <- fluidPage(
-    titlePanel("Pixture Demo"),
+    titlePanel("Pixgallery Demo"),
     sidebarLayout(
         sidebarPanel(width=3,
             selectInput("ids", "Image IDs", choices=ids, selected=ids, multiple=TRUE),
             checkboxInput("caption_check", "Use captions", value=FALSE),
             uiOutput("caption_ui"),
-            textInput("h", label = "Image height", value="200px"),
-            textInput("w", label = "Image width", value="200px"),
-            textInput("gap", label = "Grid gap", value="6px"),
+            textInput("dim", label = "Dimension", value="120px"),
+            textInput("gap", label = "Grid gap", value="4px"),
             HTML("Images from <a href='https://www.pexels.com/'>Pexels.</a>")
         ),
         mainPanel(width=9,
-            pixture::pixtureOutput("pixture")
+            pixture::pixgalleryOutput("gallery")
         )
     )
 )
@@ -35,17 +34,17 @@ server <- function(input, output) {
         }
     })
 
-    output$pixture <- pixture::renderPixture({
+    output$gallery <- pixture::renderPixgallery({
         paths <- paste0("https://images.pexels.com/photos/", input$ids, "/pexels-photo-", input$ids, ".jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 
         if(input$caption_check){
           if(!is.null(input$caption)){
             cpt <- unlist(strsplit(input$caption, ";"))
             if(length(cpt)!=length(paths)) stop("Number of captions do not match number of images.")
-            pixture::pixture(paths, caption=cpt, h = input$h, w = input$w, gap = input$gap)
+            pixture::pixgallery(paths, caption=cpt, dim = input$dim, gap = input$gap)
           }
         }else{
-            pixture::pixture(paths, h = input$h, w = input$w, gap = input$gap)
+            pixture::pixgallery(paths, dim = input$dim, gap = input$gap)
         }
 
 

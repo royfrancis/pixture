@@ -1,5 +1,5 @@
 ---
-title: "Pixture"
+title: "Pixgallery"
 date: "`r format(Sys.time(), '%d-%b-%Y')`"
 output:
   html_document:
@@ -12,9 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Usage
-
-This is a demo of the **pixture** image gallery. The only mandatory input required is one or more paths/URLs to image(s).
+This is a demo of the **pixgallery** image gallery. The only mandatory input required is one or more paths/URLs to image(s).
 
 ```{r}
 library(pixture)
@@ -36,20 +34,10 @@ paths <- c("https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?aut
            "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 ```
 
-Clicking on the thumbnail opens up the full image in a lightbox.
+Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
 
 ```{r}
-pixture::pixture(paths[1])
-```
-
-The whole gallery can be browsed through the lightbox using left or right arrow keys.
-
-```{r}
-pixture(paths[1:2])
-```
-
-```{r}
-pixture(paths)
+pixgallery(paths)
 ```
 
 # Captions
@@ -57,25 +45,25 @@ pixture(paths)
 Optionally, captions can be added to the images which are visible when viewed in the lightbox.
 
 ```{r}
-pixture(paths,caption=c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower"))
+pixgallery(paths,caption=c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower"))
 ```
 
 Images without captions can be set as NA.
 
 ```{r}
-pixture(paths[1:4], caption=c("night", "forest", NA, "coconut trees"))
+pixgallery(paths[1:4], caption=c("night", "forest", NA, "coconut trees"))
 ```
 
-# Dimensions
+# Dimension
 
-The arguments `h` and `w` is used to adjust the height and width of images in the grid. This value is a string in any valid css unit.
+The argument `dim` is used to adjust the dimension of images in the grid. This value is a string in any valid css unit.
 
 ```{r}
-pixture::pixture(paths, w="50px")
+pixgallery(paths, dim="50px")
 ```
 
 ```{r}
-pixture::pixture(paths, h="3em", w="3em")
+pixgallery(paths, dim="300px")
 ```
 
 # Gap
@@ -83,11 +71,11 @@ pixture::pixture(paths, h="3em", w="3em")
 The argument `gap` is used to control spacing between images in the grid. This value is a string in any valid css unit.
 
 ```{r}
-pixture::pixture(paths[1:4], gap="20px")
+pixgallery(paths[1:4], gap="20px")
 ```
 
 ```{r}
-pixture::pixture(paths, gap="0", w="45px")
+pixgallery(paths, gap="0", dim="40px")
 ```
 
 # Local images
@@ -96,14 +84,14 @@ Local images can be provided as relative or absolute paths. Here is an example. 
 
 ```{r,eval=FALSE}
 paths <- list.files(system.file("extdata/images", package="pixture"), full=TRUE)
-pixture::pixture(paths)
+pixgallery(paths)
 ```
 
 For your own local images, replace `system.file("extdata/images", package="pixture")` with a path like `images/` relative to the Rmd file.
 
 # Shiny
 
-This is an example of a shiny app using pixture.
+This is an example of a shiny app using pixgallery.
 
 ```{r,eval=FALSE}
 # pixture shiny app
@@ -130,19 +118,18 @@ ids <- c("572897",
 caption <- c("night;forest;shark;coconut trees;flowers;field;misty;leaves;mountains;swamp;rainstorm;leaves;beach;leopard;sunflower")
 
 ui <- fluidPage(
-    titlePanel("Pixture Demo"),
+    titlePanel("Pixgallery Demo"),
     sidebarLayout(
         sidebarPanel(width=3,
             selectInput("ids", "Image IDs", choices=ids, selected=ids, multiple=TRUE),
             checkboxInput("caption_check", "Use captions", value=FALSE),
             uiOutput("caption_ui"),
-            textInput("h", label = "Image height", value="200px"),
-            textInput("w", label = "Image width", value="200px"),
-            textInput("gap", label = "Grid gap", value="6px"),
+            textInput("dim", label = "Dim", value="120px"),
+            textInput("gap", label = "Grid gap", value="4px"),
             HTML("Images from <a href='https://www.pexels.com/'>Pexels.</a>")
         ),
         mainPanel(width=9,
-            pixture::pixtureOutput("pixture")
+            pixture::pixgalleryOutput("gallery")
         )
     )
 )
@@ -154,17 +141,17 @@ server <- function(input, output) {
         }
     })
 
-    output$pixture <- pixture::renderPixture({
+    output$gallery <- pixture::renderPixgallery({
         paths <- paste0("https://images.pexels.com/photos/", input$ids, "/pexels-photo-", input$ids, ".jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 
         if(input$caption_check){
           if(!is.null(input$caption)){
             cpt <- unlist(strsplit(input$caption, ";"))
             if(length(cpt)!=length(paths)) stop("Number of captions do not match number of images.")
-            pixture::pixture(paths, caption=cpt, h = input$h, w = input$w, gap = input$gap)
+            pixture::pixgallery(paths, caption=cpt, dim = input$dim, gap = input$gap)
           }
         }else{
-            pixture::pixture(paths, h = input$h, w = input$w, gap = input$gap)
+            pixture::pixgallery(paths, dim = input$dim, gap = input$gap)
         }
 
 
@@ -174,7 +161,7 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 ```
 
-To try out a demo app, run `pixture::runPixture()`.
+To try out a demo app, run `pixture::runPixgallery()`.
 
 To use local images in Shiny, the images can be added to the `www` directory and the paths are relative. For example; an image at `app/www/images/image.jpg` is referenced in the app as `images/image.jpg`.
 
