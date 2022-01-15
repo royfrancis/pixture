@@ -12,7 +12,7 @@
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @export
 #'
-pixgallery <- function(path, caption = NULL, dim = "145px", gap = "6px",
+pixgallery <- function(path, caption = NULL, dim = "200px", gap = "6px",
                         type="grid", width = "100%", height = "100%", elementId = NULL) {
 
   if(!is.null(caption)) {
