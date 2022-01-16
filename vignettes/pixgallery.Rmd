@@ -80,22 +80,24 @@ pixgallery(paths, gap="0", dim="40px")
 
 # Local images
 
-Local images can be provided as relative or absolute paths. Here is an example. Note that this only works locally.
+Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they worked in a rendered document.
+
+```{r}
+pixgallery(list.files("images",full.names=TRUE))
+```
+
+Here is another example. Note that this only works locally.
 
 ```{r,eval=FALSE}
 paths <- list.files(system.file("extdata/images", package="pixture"), full=TRUE)
 pixgallery(paths)
 ```
 
-For your own local images, replace `system.file("extdata/images", package="pixture")` with a path like `images/` relative to the Rmd file.
-
 # Shiny
 
 This is an example of a shiny app using pixgallery.
 
 ```{r,eval=FALSE}
-# pixture shiny app
-
 library(shiny)
 library(pixture)
 
