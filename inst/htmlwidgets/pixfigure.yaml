@@ -1,0 +1,10 @@
+dependencies:
+  - name: simplelightbox
+    version: 0
+    src: htmlwidgets/lib/simplelightbox
+    script: js/simplelightbox.js
+    stylesheet: css/simplelightbox.css
+  - name: pixfigure
+    version: 0
+    src: htmlwidgets/lib/pixfigure
+    stylesheet: css/pixfigure.css
