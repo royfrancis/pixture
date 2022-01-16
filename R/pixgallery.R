@@ -1,7 +1,7 @@
 
 #' @title Create an image gallery.
 #' @description Create an image gallery.
-#' @param path A character vector of paths to images.
+#' @param path A character vector of full paths to images.
 #' @param caption A character vector of captions for the images (Optional).
 #' @param dim Image dimension in valid css units.
 #' @param gap Gap between cells as a string in valid css units.
@@ -18,7 +18,7 @@ pixgallery <- function(path, caption = NULL, dim = "200px", gap = "6px",
   if(!is.null(caption)) {
     if(length(caption) != length(path)) stop(paste("Length of 'caption' (", length(caption), ") is not not equal to the length of 'path' (", length(path), "). If 'caption' is used, it must be the same length as 'path'."))
   } else {
-    if(!is.null(names(path))){
+    if((!is.null(names(path))) & is.null(caption)){
       caption <- names(path)
     }else{
       caption <- rep(NULL, length(path))
@@ -102,7 +102,7 @@ renderPixgallery <- function(expr, env = parent.frame(), quoted = FALSE) {
 #' @export
 #'
 runPixgallery <- function(...) {
-  appDir <- system.file("app", package = "pixture")
+  appDir <- system.file("app-pixgallery", package = "pixture")
   if (appDir == "") {
     stop("Could not find app directory. Try re-installing `pixture`.", call. = FALSE)
   }
