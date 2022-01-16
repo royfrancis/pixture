@@ -16,7 +16,7 @@ pixgallery(
 )
 }
 \arguments{
-\item{path}{A character vector of paths to images.}
+\item{path}{A character vector of full paths to images.}
 
 \item{caption}{A character vector of captions for the images (Optional).}
 

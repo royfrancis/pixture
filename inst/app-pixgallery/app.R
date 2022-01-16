@@ -1,4 +1,4 @@
-# pixture shiny app
+# pixgallery shiny app
 
 #library(shiny)
 #library(pixture)
