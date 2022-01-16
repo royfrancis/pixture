@@ -29,7 +29,7 @@ library(pixture)
 # packageVersion("pixture")
 ```
 
-For usage and demonstration, refer the vignette.
+For usage and demonstration, refer to the articles linked in the menu.
 
 ## Acknowledgements
 

@@ -21,17 +21,11 @@ navbar:
     home:
       icon: fa-home fa-lg
       href: index.html
-    articles:
-      text: Vignette
-      icon: fa-tools
-      href: articles/index.html
     reference:
       text: Reference
-      icon: fa-book
       href: reference/index.html
     news:
       text: Versions
-      icon: fa-history
       href: news/index.html
     github:
       icon: fa-github fa-lg fas
