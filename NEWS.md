@@ -1,3 +1,9 @@
+# pixture 0.0.2.1000
+
+- 16-Jan-2022
+- R dependency changed from 3.5 to 3.6
+- Logo updated
+
 # pixture 0.0.2.0000
 
 - 16-Jan-2022
