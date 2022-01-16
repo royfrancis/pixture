@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pixture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.0000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.1000</span>
       </span>
     </div>
 
@@ -75,9 +75,9 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pixfigure</span><span class="op">(</span>
   <span class="va">path</span>,
   caption <span class="op">=</span> <span class="cn">NULL</span>,
-  h <span class="op">=</span> <span class="st">"100%"</span>,
+  h <span class="op">=</span> <span class="st">"auto"</span>,
   w <span class="op">=</span> <span class="st">"100%"</span>,
-  fit <span class="op">=</span> <span class="st">"fill"</span>,
+  fit <span class="op">=</span> <span class="st">"cover"</span>,
   position <span class="op">=</span> <span class="st">"center"</span>,
   width <span class="op">=</span> <span class="st">"100%"</span>,
   height <span class="op">=</span> <span class="st">"100%"</span>,
@@ -88,17 +88,17 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>path</dt>
-<dd><p>A character vector of paths to images.</p></dd>
+<dd><p>A string denoting full path to an image.</p></dd>
 <dt>caption</dt>
-<dd><p>A character vector of captions for the images (Optional).</p></dd>
+<dd><p>A string denoting caption (Optional).</p></dd>
 <dt>h</dt>
 <dd><p>Height of figure in valid css units.</p></dd>
 <dt>w</dt>
 <dd><p>Width of figure in valid css units.</p></dd>
 <dt>fit</dt>
-<dd><p>String. Passed to 'object-fit' css property.</p></dd>
+<dd><p>String. Passed to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit" class="external-link">object-fit</a> css property.</p></dd>
 <dt>position</dt>
-<dd><p>String. Passed to 'object-position' css property.</p></dd>
+<dd><p>String. Passed to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-position" class="external-link">object-position</a> css property.</p></dd>
 <dt>width</dt>
 <dd><p>Width of the widget as a string.</p></dd>
 <dt>height</dt>
