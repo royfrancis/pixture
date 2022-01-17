@@ -1,8 +1,8 @@
 
 #' @title Create a figure.
 #' @description Create a figure.
-#' @param path A string denoting full path to an image.
-#' @param caption A string denoting caption (Optional).
+#' @param path A character vector of full paths to images.
+#' @param caption A character vector of captions for the images (Optional).
 #' @param h Height of figure in valid css units.
 #' @param w Width of figure in valid css units.
 #' @param fit String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} css property.
@@ -16,17 +16,18 @@
 pixfigure <- function(path, caption = NULL, h = "auto", w = "100%", fit = "cover",
                         position="center", width = "100%", height = "100%", elementId = NULL) {
   
-  if(length(path)>1) stop("Argument 'path' must be of length 1.")
   if(!is.null(caption)) {
-    if(length(caption) >1) stop(paste("Argument 'caption' must be of length 1."))
+    if(length(caption) != length(path)) stop(paste("Length of 'caption' (", length(caption), ") is not not equal to the length of 'path' (", length(path), "). If 'caption' is used, it must be the same length as 'path'."))
+  } else {
+    if(!is.null(names(path))) caption <- names(path)
   }
-  if((!is.null(names(path))) & is.null(caption)) caption <- names(path)
+  
   names(path) <- NULL
 
   # forward options using x
   x = list(
     path = as.list(path),
-    caption = caption,
+    caption = as.list(caption),
     h = h,
     w = w,
     fit = fit,
