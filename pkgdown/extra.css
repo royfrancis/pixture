@@ -81,13 +81,24 @@ code {
 
 /* Buttons and Links -------------------------------------------------------- */
 
-a, a:visited {
+a,
+a:visited,
+code a,
+code a:visited,
+pre a,
+pre a:visited {
   color: #cc6699;
 }
 
 a:hover,
 a:focus,
-a:active {
+a:active,
+code a:hover,
+code a:focus,
+code a:active,
+pre a:hover,
+pre a:focus,
+pre a:active {
   color: #cc3366;
   text-decoration: underline;
 }
@@ -108,18 +119,34 @@ background: linear-gradient(121deg, rgba(0,153,204,1) 0%, rgba(153,153,204,1) 15
 }
 
 .navbar .navbar-nav > li > a,
-.navbar .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .open > a {
     color: white;
     background-color: transparent;
 }
 
+.dropdown-menu > li > a {
+  background-color: transparent;
+}
+
 .navbar .navbar-nav > li > a:hover,
 .navbar .navbar-nav > li > a:focus,
 .navbar .navbar-nav > .active > a:hover,
-.navbar .navbar-nav > .active > a:focus {
+.navbar .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
     color: white;
     background-color: #8e476b;
+}
+
+.navbar .navbar-nav > .active > a,
+.dropdown-menu > .active > a,
+.navbar-default .navbar-nav > .open > a {
+  color: white;
+  background-color: #8e476b;
 }
 
 .navbar-inverse .navbar-brand:hover,

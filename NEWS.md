@@ -3,6 +3,7 @@
 - 17-Jan-2022
 - Logo updated
 - pixfigure() takes multiple images
+- Theme and color updates
 
 # pixture 0.0.2.1000
 
