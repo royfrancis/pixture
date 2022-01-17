@@ -18,22 +18,18 @@ pixgallery <- function(path, caption = NULL, dim = "200px", gap = "6px",
   if(!is.null(caption)) {
     if(length(caption) != length(path)) stop(paste("Length of 'caption' (", length(caption), ") is not not equal to the length of 'path' (", length(path), "). If 'caption' is used, it must be the same length as 'path'."))
   } else {
-    if((!is.null(names(path))) & is.null(caption)){
-      caption <- names(path)
-    }else{
-      caption <- rep(NULL, length(path))
-    }
+    if(!is.null(names(path))) caption <- names(path)
   }
 
   names(path) <- NULL
 
   types <- c("box","grid")
-  if(!type %in% types) stop(paste0("Argument type must be one of ",paste(types,collapse=","),"."))
+  if(!type %in% types) stop(paste0("Argument type must be one of '",paste(types,collapse="', '"),"'."))
 
   # forward options using x
   x = list(
     path = as.list(path),
-    caption = caption,
+    caption = as.list(caption),
     dim = dim,
     gap = gap,
     type = type
