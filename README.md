@@ -1,8 +1,10 @@
-<a href="https://github.com/royfrancis/pixture"><img src="pkgdown/favicon/android-chrome-192x192.png" align="right" width="96" height="96"></a>
+<a href="https://github.com/royfrancis/pixture">
+  <img src="pkgdown/favicon/android-chrome-192x192.png" align="right" width="96" height="96">
+</a>
 
 # pixture
 
-[![ci_badge](https://github.com/royfrancis/pixture/workflows/build/badge.svg)](https://github.com/royfrancis/pixture/actions?workflow=build) [![codecov](https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK)](https://app.codecov.io/gh/royfrancis/pixture/) [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) 
+[![ci_badge](https://github.com/royfrancis/pixture/workflows/r-cmd-check/badge.svg)](https://github.com/royfrancis/pixture/actions?workflow=r-cmd-check) [![codecov](https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK)](https://app.codecov.io/gh/royfrancis/pixture/) [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) 
 
 `pixture` is an R package to create HTML image galleries. This can be standalone, included in an Rmarkdown document or in a shiny app. See the [project website](http://royfrancis.github.io/pixture) for more details.
 

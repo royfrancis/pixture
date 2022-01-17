@@ -1,3 +1,9 @@
+# pixture 0.0.2.2000
+
+- 17-Jan-2022
+- Logo updated
+- pixfigure() takes multiple images
+
 # pixture 0.0.2.1000
 
 - 16-Jan-2022

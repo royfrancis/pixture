@@ -31,18 +31,18 @@ function pixgallery_box(el,x){
   let dim = x.dim;
   let gap = x.gap;
 
-  let temp = '<div class="pixgallery-child-box" style="flex-basis:{dim}" id="pixgallery-{id}"><a href="{index}" title="{caption}"><img class="pixgallery-image-box" style="height:{dim};" src="{index}"></a></div>';
+  let temp = '<div class="pixgallery-child-box" style="flex-basis:{dim}" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-image-box" style="height:{dim};" src="{url}"></a></div>';
 
 	let newValues = '', limitItem = urls.length;
 	for (let i = 0; i < limitItem; ++i) {
 
     if(caption === null) {
-     newValues += temp.replace(/\{dim\}/g, dim).replace(/\{index\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
+     newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
     } else {
       if(caption[i] === null) {
-        newValues += temp.replace(/\{dim\}/g, dim).replace(/\{index\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
+        newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
       } else {
-        newValues += temp.replace(/\{dim\}/g, dim).replace(/\{index\}/g, urls[i]).replace("{id}",el.id).replace("{caption}",caption[i]);
+        newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("{caption}",caption[i]);
       }
     }
 	}
@@ -59,19 +59,15 @@ function pixgallery_grid(el,x){
   let dim = x.dim;
   let gap = x.gap;
 
-  let temp = '<div class="pixgallery-child-grid" id="pixgallery-{id}"><a href="{index}" title="{caption}"><img class="pixgallery-image-grid" style="height:{dim};" src="{index}"></a></div>';
+  let temp = '<div class="pixgallery-child-grid" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-image-grid" style="height:{dim};" src="{url}"></a></div>';
 
 	let newValues = '', limitItem = urls.length;
 	for (let i = 0; i < limitItem; ++i) {
 
-    if(caption === null) {
-     newValues += temp.replace(/\{dim\}/g, dim).replace(/\{index\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
+    if(caption == null || caption[i] == null) {
+      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
     } else {
-      if(caption[i] === null) {
-        newValues += temp.replace(/\{dim\}/g, dim).replace(/\{index\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
-      } else {
-        newValues += temp.replace(/\{dim\}/g, dim).replace(/\{index\}/g, urls[i]).replace("{id}",el.id).replace("{caption}",caption[i]);
-      }
+      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("{caption}",caption[i]);
     }
 	}
 

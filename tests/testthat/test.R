@@ -53,11 +53,16 @@ expect_silent(pixgallery(paths,gap="10px"))
 expect_silent(pixgallery(paths,dim="2em"))
 expect_silent(pixgallery(paths,dim="50px",gap="5px"))
 
+# type
+expect_silent(pixgallery(paths,type="box"))
+expect_silent(pixgallery(paths,type="grid"))
+expect_error(pixgallery(paths,type=""))
+
 # pixfigure --------------------------------------------------------------------
 
 # empty input
 expect_error(pixfigure())
-expect_error(pixfigure(paths))
+expect_silent(pixfigure(paths))
 expect_silent(pixfigure(paths[1]))
 obj <- pixfigure(paths[1])
 # pixfigure class
@@ -65,12 +70,16 @@ expect_equal(class(obj),c("pixfigure","htmlwidget"))
 
 # test captions
 caps <- sample(x=letters,size=length(paths))
+expect_silent(pixfigure(paths,caption=caps))
 expect_silent(pixfigure(paths[1],caption=caps[1]))
 # captions as path names
 names(paths) <- caps
-expect_silent(pixgallery(paths[1]))
+expect_silent(pixgallery(paths))
 # captions both as names and caption argument
+expect_silent(pixfigure(paths,caption=caps))
 expect_silent(pixfigure(paths[1],caption=caps[1]))
+caps[2] <- NA
+expect_silent(pixgallery(paths,caption=caps))
 
 # dimensions
 expect_silent(pixfigure(paths[1],height="200px"))
@@ -81,3 +90,6 @@ expect_silent(pixfigure(paths[1],width="8em"))
 expect_silent(pixfigure(paths[1],fit="fill"))
 # position
 expect_silent(pixfigure(paths[1],position="right"))
+
+# many changes
+expect_silent(pixfigure(paths,position="right",height="20em",fit="cover"))

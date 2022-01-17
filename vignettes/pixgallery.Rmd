@@ -54,6 +54,10 @@ Images without captions can be set as NA.
 pixgallery(paths[1:4], caption=c("night", "forest", NA, "coconut trees"))
 ```
 
+```{r}
+pixgallery(paths[1], caption="night")
+```
+
 # Dimension
 
 The argument `dim` is used to adjust the dimension of images in the grid. This value is a string in any valid css unit.
@@ -63,7 +67,7 @@ pixgallery(paths, dim="50px")
 ```
 
 ```{r}
-pixgallery(paths, dim="300px")
+pixgallery(paths, dim="200px")
 ```
 
 # Gap
