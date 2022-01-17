@@ -17,9 +17,9 @@ pixfigure(
 )
 }
 \arguments{
-\item{path}{A string denoting full path to an image.}
+\item{path}{A character vector of full paths to images.}
 
-\item{caption}{A string denoting caption (Optional).}
+\item{caption}{A character vector of captions for the images (Optional).}
 
 \item{h}{Height of figure in valid css units.}
 

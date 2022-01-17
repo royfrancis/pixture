@@ -3,10 +3,14 @@
 #library(shiny)
 #library(pixture)
 
+path <- "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940;https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940;https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+captions <- "Palm trees;Night sky;Woodland"
+
 ui <- fluidPage(
     titlePanel("Pixfigure Demo"),
     sidebarLayout(
         sidebarPanel(width=3,
+            textAreaInput("path", "Image URLs", value=path, height="200px"),
             checkboxInput("caption_check", "Use captions", value=FALSE),
             uiOutput("caption_ui"),
             textInput("height", label = "Height", value="auto"),
@@ -24,21 +28,23 @@ ui <- fluidPage(
 server <- function(input, output) {
     output$caption_ui <- renderUI({
         if(input$caption_check) {
-            textInput("caption", "Caption", value="Palm trees")
+            textInput("caption", "Caption", value=captions)
         }
     })
 
     output$fig <- pixture::renderPixfigure({
-        path <- "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+      
+      if(!is.null(input$path)) path <- unlist(strsplit(input$path, ";"))
 
-        if(input$caption_check){
-          if(!is.null(input$caption)){
-            cpt <- input$caption
-            pixture::pixfigure(path, caption=cpt, h = input$height, w = input$width, fit = input$fit, position = input$position)
-          }
-        }else{
-            pixture::pixfigure(path, h = input$height, w = input$width, fit = input$fit, position = input$position)
+      if(input$caption_check){
+        if(!is.null(input$caption)){
+          cpt <- unlist(strsplit(input$caption, ";"))
+          if(length(cpt)!=length(path)) stop("Number of captions do not match number of images.")
+          pixture::pixfigure(path, caption=cpt, h = input$height, w = input$width, fit = input$fit, position = input$position)
         }
+      }else{
+          pixture::pixfigure(path, h = input$height, w = input$width, fit = input$fit, position = input$position)
+      }
     })
 }
 

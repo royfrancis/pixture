@@ -1,7 +1,6 @@
 HTMLWidgets.widget({
 
   name: 'pixfigure',
-
   type: 'output',
 
   factory: function(el, width, height) {
@@ -20,21 +19,26 @@ HTMLWidgets.widget({
 });
 
 function pixfigure_basic(el,x){
-  let url = x.path;
+  
+  let urls = x.path;
   let caption = x.caption;
   let h = x.h;
   let w = x.w;
   let fit = x.fit;
   let position = x.position;
 
-  let value = '<figure class="pixfigure" id="pixfigure-' + el.id + '"><a href="' + url +'" title="{caption}"><img class="pixfigure-image" style="height:' + h + ';width:' + w + ';object-fit:' + fit + ';-o-object-fit:' + fit + ';object-position:' + position + ';" src="' + url + '"></a><figcaption>{caption}</figcaption></figure>';
+  let temp = '<figure class="pixfigure" id="pixfigure-{id}"><a href="{url}" title="{caption}"><img class="pixfigure-image" style="height:{height};width:{width};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{url}"></a><figcaption>{caption}</figcaption></figure>';
 
-  if(caption === null) {
-    value = value.replace("title=\"{caption}\"","").replace("<figcaption>{caption}</figcaption>","");
-  } else {
-    value = value.replace("{caption}",caption).replace("{caption}",caption);
-  }
-
-	document.getElementById(el.id).innerHTML = value;
+	let newValues = '', limitItem = urls.length;
+	for (let i = 0; i < limitItem; ++i) {
+    
+    if(caption == null || caption[i] == null) {
+      newValues += temp.replace("title=\"{caption}\"","").replace("<figcaption>{caption}</figcaption>","").replace(/\{height\}/g, h).replace(/\{width\}/g, w).replace(/\{fit\}/g, fit).replace("{position}",position).replace(/\{url\}/g, urls[i]).replace("{id}",el.id);
+    } else {
+      newValues += temp.replace(/\{height\}/g, h).replace(/\{width\}/g, w).replace(/\{url\}/g, urls[i]).replace(/\{fit\}/g, fit).replace("{position}",position).replace("{id}",el.id).replace(/\{caption\}/g,caption[i]);
+    }
+	}
+	
+  document.getElementById(el.id).innerHTML = '<div class="pixfigure-wrapper">' + newValues + '</div>';
   var lightbox = new SimpleLightbox({elements: '#pixfigure-' + el.id + ' a'});
 }

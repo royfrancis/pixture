@@ -20,7 +20,7 @@
     filter: brightness(0.8);
 }
 
-.pixfigure .figcaption {
+.pixfigure figcaption {
   margin-top: 0.5em;
 }
 
