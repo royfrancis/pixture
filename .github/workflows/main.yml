@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        r: [3.6,4.1]
+        r: [3.6,4.1,4.2]
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
@@ -50,7 +50,7 @@ jobs:
           R CMD INSTALL .
 
       - name: Code coverage
-        if: matrix.r == '4.1'
+        if: matrix.r == '4.2'
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: Rscript -e 'covr::codecov(token="${{ secrets.CODECOV_TOKEN }}",quiet=FALSE)'
@@ -60,7 +60,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        r: [3.6,4.1]
+        r: [3.6,4.1,4.2]
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
