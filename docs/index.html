@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">pixture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.2000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.2001</span>
       </span>
     </div>
 
@@ -53,7 +53,7 @@
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -97,7 +97,7 @@
 <div class="page-header"><h1 id="pixture-">pixture <img src="android-chrome-192x192.png" style="height:96px;" align="right"><a class="anchor" aria-label="anchor" href="#pixture-"></a>
 </h1></div>
 
-<p><code>pixture</code> is an R package to create HTML figures and image galleries. This can be standalone, included in an Rmarkdown document or in a shiny app.</p>
+<p><code>pixture</code> is an R package to create HTML figures and image galleries. This can be standalone, included in an Rmarkdown document or in a Shiny app.</p>
 <p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;">
   <i class="fas fa-exclamation-circle"></i>   This project is experimental. The functions and arguments are subject to change.
 </p>
@@ -105,8 +105,8 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You need to have R installed on your system. <a href="https://www.r-project.org/" class="external-link">R</a> is open-source and freely available to download for Windows, Mac and Linux.</p>
-<p>Run the following to install the dependencies, helper package and pixture package itself.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode coffee"><code class="sourceCode coffee"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>install<span class="kw">.</span>packages<span class="kw">(</span>c<span class="kw">(</span><span class="st">"htmlwidgets"</span><span class="kw">,</span><span class="st">"remotes"</span><span class="kw">))</span></span>
+<p>Run the following to install the dependencies and the <strong>pixture</strong> package itself.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode coffee"><code class="sourceCode coffee"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>install<span class="kw">.</span>packages<span class="kw">(</span>c<span class="kw">(</span><span class="st">"htmlwidgets"</span><span class="kw">,</span><span class="st">"shiny"</span><span class="kw">,</span><span class="st">"remotes"</span><span class="kw">))</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="kw">::</span>install_github<span class="kw">(</span><span class="st">'royfrancis/pixture'</span><span class="kw">)</span></span></code></pre></div>
 <p>Once the package is installed, the package is loaded for use as shown below.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode coffee"><code class="sourceCode coffee"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load library</span></span>
@@ -119,7 +119,7 @@
 <div class="section level2">
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
 </h2>
-<p>The lightbox uses <a href="https://github.com/dbrekalo/simpleLightbox" class="external-link">simplelightbox</a> created by <a href="https://dbrekalo.github.io/simpleLightbox/" class="external-link">Damir Brekalo</a>. Images from <a href="https://www.pexels.com/" class="external-link">Pexels</a>.</p>
+<p>This package uses <a href="https://github.com/dbrekalo/simpleLightbox" class="external-link">simplelightbox</a> created by <a href="https://dbrekalo.github.io/simpleLightbox/" class="external-link">Damir Brekalo</a>. Images from <a href="https://www.pexels.com/" class="external-link">Pexels</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
@@ -186,7 +186,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

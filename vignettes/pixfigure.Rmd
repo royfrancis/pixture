@@ -12,13 +12,14 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This is a demo of the **pixfigure** image. The only mandatory input required is one or more paths/URLs to image(s).
+This is a demo of the function `pixfigure()`. This is useful for individual images or a set of images but not in a gallery format. The mandatory input required is one or more paths/URLs to image(s).
 
 ```{r}
 library(pixture)
-paths <- c("https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-           "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-           "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+paths <- c(
+"https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+"https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+"https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 ```
 
 Clicking on the thumbnail opens up the full image in a lightbox.
@@ -49,15 +50,13 @@ pixfigure(paths[3], h="400px", caption="shark")
 
 # Fit
 
-The argument `fit` is used to control css property [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit). Set to `cover` by default.
+The argument `fit` is used to control css property [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit). It is set to `cover` by default.
 
 ```{r}
 pixfigure(paths[1], h="600px")
 ```
 
-Resize the width of the page to see the effect of `fit="cover"`. The image scales within it's frame rather than shrink.
-
-**object-fit** is dicussed on [w3schools](https://www.w3schools.com/css/css3_object-fit.asp) for example.
+Resize the width of the page to see the effect of `fit="cover"`. The image scales within it's frame rather than shrink. Explore css property **object-fit** for more details, for example, on [w3schools](https://www.w3schools.com/css/css3_object-fit.asp).
 
 # Position
 
@@ -73,28 +72,37 @@ pixfigure(paths[1], h="400px", w="400px", position="right")
 
 Here is a [youtube video](https://www.youtube.com/watch?v=6yAAV-uP0po) that discusses fit and position.
 
+# Multiple images
+
+Input can also be a vector images. Images are displayed one after the other.
+
 ```{r}
 pixfigure(paths, caption=c("Night sky over the mountains", "Walking through dense woodland", "Out in the open seas"), h="200px", w="250px", position="left")
 ```
 
 # Local images
 
-Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they worked in a rendered document.
+Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered document.
 
 ```{r}
 pixfigure("images/pexels-photo-3126574.jpg", h="300px")
 ```
 
-Here is another example. Note that this only works locally.
+Here is another example using sample images from the package. Note that this only works locally.
 
-```{r,eval=FALSE}
+```{r}
 paths <- list.files(system.file("extdata/images", package="pixture"), full=TRUE)
+paths
 pixfigure(paths[1])
 ```
 
-# Shiny
+# Shiny app
 
-This is an example of a shiny app using pixfigure.
+This is an example of a shiny app using `pixfigure()`.
+
+![](shiny_pixgallery.png)
+
+To try out a demo app, run `pixture::runPixfigure()`. Use shiny helper functions `pixfigureOutput()` and `renderPixfigure()`. The shiny code is given below:
 
 ```{r,eval=FALSE}
 path <- "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940;https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940;https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
@@ -144,8 +152,6 @@ server <- function(input, output) {
 
 shinyApp(ui = ui, server = server)
 ```
-
-To try out a demo app, run `pixture::runPixfigure()`.
 
 To use local images in Shiny, the images can be added to the `www` directory and the paths are relative. For example; an image at `app/www/images/image.jpg` is referenced in the app as `images/image.jpg`.
 

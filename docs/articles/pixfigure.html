@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pixture</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.2000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2.2001</span>
       </span>
     </div>
 
@@ -53,7 +53,7 @@
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -93,12 +93,12 @@
 
       </header><script src="pixfigure_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="pixfigure_files/simplelightbox-0/css/simplelightbox.css" rel="stylesheet">
 <script src="pixfigure_files/simplelightbox-0/js/simplelightbox.js"></script><link href="pixfigure_files/pixfigure-0/css/pixfigure.css" rel="stylesheet">
-<script src="pixfigure_files/pixfigure-binding-0.0.2.2000/pixfigure.js"></script><div class="row">
+<script src="pixfigure_files/pixfigure-binding-0.0.2.2001/pixfigure.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Pixfigure</h1>
             
-            <h4 data-toc-skip class="date">18-Jan-2022</h4>
+            <h4 data-toc-skip class="date">06-Jul-2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/royfrancis/pixture/blob/HEAD/vignettes/pixfigure.Rmd"><code>vignettes/pixfigure.Rmd</code></a></small>
       <div class="hidden name"><code>pixfigure.Rmd</code></div>
@@ -107,80 +107,115 @@
 
     
     
-<p>This is a demo of the <strong>pixfigure</strong> image. The only mandatory input required is one or more paths/URLs to image(s).</p>
+<p>This is a demo of the function <code><a href="../reference/pixfigure.html">pixfigure()</a></code>. This is
+useful for individual images or a set of images but not in a gallery
+format. The mandatory input required is one or more paths/URLs to
+image(s).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/royfrancis/pixture">pixture</a></span><span class="op">)</span>
-<span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span>,
-           <span class="st">"https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span>,
-           <span class="st">"https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span><span class="op">)</span></code></pre></div>
+<span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
+<span class="st">"https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span>,
+<span class="st">"https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span>,
+<span class="st">"https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span><span class="op">)</span></code></pre></div>
 <p>Clicking on the thumbnail opens up the full image in a lightbox.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-4770a72ddbf8a7423d67" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4770a72ddbf8a7423d67">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><div class="section level1">
-<h1 id="caption">Caption<a class="anchor" aria-label="anchor" href="#caption"></a>
-</h1>
-<p>Optionally, captions can be added to the images which are displayed below the images as well as in the lightbox.</p>
+<div id="htmlwidget-d4a9220bfdd87ad42ef8" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d4a9220bfdd87ad42ef8">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><div class="section level2">
+<h2 id="caption">Caption<a class="anchor" aria-label="anchor" href="#caption"></a>
+</h2>
+<p>Optionally, captions can be added to the images which are displayed
+below the images as well as in the lightbox.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, caption<span class="op">=</span><span class="st">"Night sky over the mountains"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-3babd028748ec9f545b7" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3babd028748ec9f545b7">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains"],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d738f897b750ef22816a" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d738f897b750ef22816a">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains"],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="section level1">
-<h1 id="dimensions">Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a>
-</h1>
-<p>The argument <code>h</code> and <code>w</code> is used to adjust the dimension of the image. This value is a string in any valid css unit.</p>
+<div class="section level2">
+<h2 id="dimensions">Dimensions<a class="anchor" aria-label="anchor" href="#dimensions"></a>
+</h2>
+<p>The argument <code>h</code> and <code>w</code> is used to adjust the
+dimension of the image. This value is a string in any valid css
+unit.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, w<span class="op">=</span><span class="st">"400px"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-d8c63cd626cd77a52d9e" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d8c63cd626cd77a52d9e">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"auto","w":"400px","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div id="htmlwidget-9d8d2d3ea193e4ee1900" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9d8d2d3ea193e4ee1900">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"auto","w":"400px","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, h<span class="op">=</span><span class="st">"400px"</span>, caption<span class="op">=</span><span class="st">"shark"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-387259e418e6440e8b3f" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-387259e418e6440e8b3f">{"x":{"path":["https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["shark"],"h":"400px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0092df9afbc88f4dbedf" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0092df9afbc88f4dbedf">{"x":{"path":["https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["shark"],"h":"400px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="section level1">
-<h1 id="fit">Fit<a class="anchor" aria-label="anchor" href="#fit"></a>
-</h1>
-<p>The argument <code>fit</code> is used to control css property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit" class="external-link"><code>object-fit</code></a>. Set to <code>cover</code> by default.</p>
+<div class="section level2">
+<h2 id="fit">Fit<a class="anchor" aria-label="anchor" href="#fit"></a>
+</h2>
+<p>The argument <code>fit</code> is used to control css property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit" class="external-link"><code>object-fit</code></a>.
+It is set to <code>cover</code> by default.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h<span class="op">=</span><span class="st">"600px"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-6a27714015ce609caafe" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a27714015ce609caafe">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"600px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><p>Resize the width of the page to see the effect of <code>fit="cover"</code>. The image scales within it’s frame rather than shrink.</p>
-<p><strong>object-fit</strong> is dicussed on <a href="https://www.w3schools.com/css/css3_object-fit.asp" class="external-link">w3schools</a> for example.</p>
+<div id="htmlwidget-54cf4dcb7959999fa78f" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-54cf4dcb7959999fa78f">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"600px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><p>Resize the width of the page to see the effect of
+<code>fit="cover"</code>. The image scales within it’s frame rather than
+shrink. Explore css property <strong>object-fit</strong> for more
+details, for example, on <a href="https://www.w3schools.com/css/css3_object-fit.asp" class="external-link">w3schools</a>.</p>
 </div>
-<div class="section level1">
-<h1 id="position">Position<a class="anchor" aria-label="anchor" href="#position"></a>
-</h1>
-<p>The argument <code>position</code> determines how the image is positioned within the frame. This controls css property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-position" class="external-link"><code>object-position</code></a>.</p>
+<div class="section level2">
+<h2 id="position">Position<a class="anchor" aria-label="anchor" href="#position"></a>
+</h2>
+<p>The argument <code>position</code> determines how the image is
+positioned within the frame. This controls css property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-position" class="external-link"><code>object-position</code></a>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h<span class="op">=</span><span class="st">"400px"</span>, w<span class="op">=</span><span class="st">"400px"</span>, position<span class="op">=</span><span class="st">"left"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-6fe15dd711123d79a940" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6fe15dd711123d79a940">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"400px","w":"400px","fit":"cover","position":"left"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div id="htmlwidget-2b8bd190793bbee830fb" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2b8bd190793bbee830fb">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"400px","w":"400px","fit":"cover","position":"left"},"evals":[],"jsHooks":[]}</script><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h<span class="op">=</span><span class="st">"400px"</span>, w<span class="op">=</span><span class="st">"400px"</span>, position<span class="op">=</span><span class="st">"right"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-78a2df70dd0bafd8290c" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-78a2df70dd0bafd8290c">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"400px","w":"400px","fit":"cover","position":"right"},"evals":[],"jsHooks":[]}</script><p>Here is a <a href="https://www.youtube.com/watch?v=6yAAV-uP0po" class="external-link">youtube video</a> that discusses fit and position.</p>
+<div id="htmlwidget-7336e1a16040a2215bbd" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7336e1a16040a2215bbd">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"h":"400px","w":"400px","fit":"cover","position":"right"},"evals":[],"jsHooks":[]}</script><p>Here is a <a href="https://www.youtube.com/watch?v=6yAAV-uP0po" class="external-link">youtube video</a>
+that discusses fit and position.</p>
+</div>
+<div class="section level2">
+<h2 id="multiple-images">Multiple images<a class="anchor" aria-label="anchor" href="#multiple-images"></a>
+</h2>
+<p>Input can also be a vector images. Images are displayed one after the
+other.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span>, caption<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Night sky over the mountains"</span>, <span class="st">"Walking through dense woodland"</span>, <span class="st">"Out in the open seas"</span><span class="op">)</span>, h<span class="op">=</span><span class="st">"200px"</span>, w<span class="op">=</span><span class="st">"250px"</span>, position<span class="op">=</span><span class="st">"left"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-304d0b2ea849b089adba" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-304d0b2ea849b089adba">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Walking through dense woodland","Out in the open seas"],"h":"200px","w":"250px","fit":"cover","position":"left"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dbcf4bae95eb3d226a2c" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dbcf4bae95eb3d226a2c">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Walking through dense woodland","Out in the open seas"],"h":"200px","w":"250px","fit":"cover","position":"left"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="section level1">
-<h1 id="local-images">Local images<a class="anchor" aria-label="anchor" href="#local-images"></a>
-</h1>
-<p>Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they worked in a rendered document.</p>
+<div class="section level2">
+<h2 id="local-images">Local images<a class="anchor" aria-label="anchor" href="#local-images"></a>
+</h2>
+<p>Local images (not on the internet) can be provided as relative or
+absolute paths. The images do not show up in the RStudio notebook
+preview, but they should work in a rendered document.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="st">"images/pexels-photo-3126574.jpg"</span>, h<span class="op">=</span><span class="st">"300px"</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-ff8667e8ed114b2aac0a" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff8667e8ed114b2aac0a">{"x":{"path":["images/pexels-photo-3126574.jpg"],"caption":[],"h":"300px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><p>Here is another example. Note that this only works locally.</p>
+<div id="htmlwidget-3c24e9a9311172e1e520" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3c24e9a9311172e1e520">{"x":{"path":["images/pexels-photo-3126574.jpg"],"caption":[],"h":"300px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script><p>Here is another example using sample images from the package. Note
+that this only works locally.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/images"</span>, package<span class="op">=</span><span class="st">"pixture"</span><span class="op">)</span>, full<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<span class="va">paths</span></code></pre></div>
+<pre><code><span class="co">## [1] "/tmp/Rtmp4V4Jth/temp_libpath11b0c40c80d22/pixture/extdata/images/pexels-photo-3126574.jpg"</span>
+<span class="co">## [2] "/tmp/Rtmp4V4Jth/temp_libpath11b0c40c80d22/pixture/extdata/images/pexels-photo-4210900.jpg"</span>
+<span class="co">## [3] "/tmp/Rtmp4V4Jth/temp_libpath11b0c40c80d22/pixture/extdata/images/pexels-photo-4666748.jpg"</span>
+<span class="co">## [4] "/tmp/Rtmp4V4Jth/temp_libpath11b0c40c80d22/pixture/extdata/images/pexels-photo-4932184.jpg"</span>
+<span class="co">## [5] "/tmp/Rtmp4V4Jth/temp_libpath11b0c40c80d22/pixture/extdata/images/pexels-photo-572897.jpg" </span>
+<span class="co">## [6] "/tmp/Rtmp4V4Jth/temp_libpath11b0c40c80d22/pixture/extdata/images/pexels-photo-7604425.jpg"</span></code></pre>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-8d9556d22c576db98e7f" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8d9556d22c576db98e7f">{"x":{"path":["/tmp/Rtmp4V4Jth/temp_libpath11b0c40c80d22/pixture/extdata/images/pexels-photo-3126574.jpg"],"caption":[],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="section level1">
-<h1 id="shiny">Shiny<a class="anchor" aria-label="anchor" href="#shiny"></a>
-</h1>
-<p>This is an example of a shiny app using pixfigure.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="section level2">
+<h2 id="shiny-app">Shiny app<a class="anchor" aria-label="anchor" href="#shiny-app"></a>
+</h2>
+<p>This is an example of a shiny app using <code><a href="../reference/pixfigure.html">pixfigure()</a></code>.</p>
+<p><img src="shiny_pixgallery.png"></p>
+<p>To try out a demo app, run <code><a href="../reference/runPixfigure.html">pixture::runPixfigure()</a></code>. Use
+shiny helper functions <code><a href="../reference/pixfigure-shiny.html">pixfigureOutput()</a></code> and
+<code><a href="../reference/pixfigure-shiny.html">renderPixfigure()</a></code>. The shiny code is given below:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">"https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940;https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940;https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span>
 <span class="va">captions</span> <span class="op">&lt;-</span> <span class="st">"Palm trees;Night sky;Woodland"</span>
 
@@ -227,8 +262,10 @@
 <span class="op">}</span>
 
 <span class="fu">shinyApp</span><span class="op">(</span>ui <span class="op">=</span> <span class="va">ui</span>, server <span class="op">=</span> <span class="va">server</span><span class="op">)</span></code></pre></div>
-<p>To try out a demo app, run <code><a href="../reference/runPixfigure.html">pixture::runPixfigure()</a></code>.</p>
-<p>To use local images in Shiny, the images can be added to the <code>www</code> directory and the paths are relative. For example; an image at <code>app/www/images/image.jpg</code> is referenced in the app as <code>images/image.jpg</code>.</p>
+<p>To use local images in Shiny, the images can be added to the
+<code>www</code> directory and the paths are relative. For example; an
+image at <code>app/www/images/image.jpg</code> is referenced in the app
+as <code>images/image.jpg</code>.</p>
 </div>
   </div>
 
@@ -249,7 +286,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>

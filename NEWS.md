@@ -1,3 +1,8 @@
+# pixture 0.0.2.2001
+
+- 06-Jul-2022
+- Minor updates to function help and vignettes
+
 # pixture 0.0.2.2000
 
 - 17-Jan-2022

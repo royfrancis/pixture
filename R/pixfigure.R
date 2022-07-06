@@ -3,12 +3,12 @@
 #' @description Create a figure.
 #' @param path A character vector of full paths to images.
 #' @param caption A character vector of captions for the images (Optional).
-#' @param h Height of figure in valid css units.
-#' @param w Width of figure in valid css units.
+#' @param h Height of the image as a string in valid css units.
+#' @param w Width of the image as a string in valid css units.
 #' @param fit String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} css property.
 #' @param position String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} css property.
-#' @param height Height of the widget as a string.
-#' @param width Width of the widget as a string.
+#' @param height Height of the widget as a string in valid css units.
+#' @param width Width of the widget as a string in valid css units.
 #' @param elementId A character denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @export

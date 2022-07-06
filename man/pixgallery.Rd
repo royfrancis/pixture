@@ -20,15 +20,15 @@ pixgallery(
 
 \item{caption}{A character vector of captions for the images (Optional).}
 
-\item{dim}{Image dimension in valid css units.}
+\item{dim}{Image gallery thumbnail dimension as a string in valid css units.}
 
-\item{gap}{Gap between cells as a string in valid css units.}
+\item{gap}{Gap between thumbnails as a string in valid css units.}
 
 \item{type}{Gallery type. "box" or "grid" for now.}
 
-\item{width}{Width of the widget as a string.}
+\item{width}{Width of the widget as a string in valid css units.}
 
-\item{height}{Height of the widget as a string.}
+\item{height}{Height of the widget as a string in valid css units.}
 
 \item{elementId}{A character denoting parent container ID.}
 }

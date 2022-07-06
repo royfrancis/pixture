@@ -21,17 +21,17 @@ pixfigure(
 
 \item{caption}{A character vector of captions for the images (Optional).}
 
-\item{h}{Height of figure in valid css units.}
+\item{h}{Height of the image as a string in valid css units.}
 
-\item{w}{Width of figure in valid css units.}
+\item{w}{Width of the image as a string in valid css units.}
 
 \item{fit}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} css property.}
 
 \item{position}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} css property.}
 
-\item{width}{Width of the widget as a string.}
+\item{width}{Width of the widget as a string in valid css units.}
 
-\item{height}{Height of the widget as a string.}
+\item{height}{Height of the widget as a string in valid css units.}
 
 \item{elementId}{A character denoting parent container ID.}
 }
