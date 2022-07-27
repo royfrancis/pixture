@@ -82,15 +82,25 @@ pixfigure(paths, caption=c("Night sky over the mountains", "Walking through dens
 
 # Local images
 
-Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered document.
+Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered html document.
+
+<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;" style="inline-block">
+&nbsp; <i class="fas fa-exclamation-circle"></i> &nbsp; Pixture does not move, copy or embed images. The images must be in their final intended destination. It is left to the user to handle images as assets. Images are not embedded into the html if you use `self_contained: true`.
+</p>
+
+## Relative path
+
+This example assumes your images are available next to the Rmd/html file in a directory named *images* and that you copy these assets if the Rmd/html is relocated.
 
 ```{r}
 pixfigure("images/pexels-photo-3126574.jpg", h="300px")
 ```
 
-Here is another example using sample images from the package. Note that this only works locally.
+## Absolute path
 
-```{r}
+Here is another example using sample images from the package. These should work locally, but may not work if the rendered html is relocated.
+
+```{r,eval=FALSE}
 paths <- list.files(system.file("extdata/images", package="pixture"), full=TRUE)
 paths
 pixfigure(paths[1])
