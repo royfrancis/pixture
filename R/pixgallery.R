@@ -5,6 +5,7 @@
 #' @param caption A character vector of captions for the images (Optional).
 #' @param dim Image gallery thumbnail dimension as a string in valid css units.
 #' @param gap Gap between thumbnails as a string in valid css units.
+#' @param shuffle Whether to shuffle the images.
 #' @param type Gallery type. "box" or "grid" for now.
 #' @param height Height of the widget as a string in valid css units.
 #' @param width Width of the widget as a string in valid css units.
@@ -12,7 +13,7 @@
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @export
 #'
-pixgallery <- function(path, caption = NULL, dim = "200px", gap = "6px",
+pixgallery <- function(path, caption = NULL, dim = "200px", gap = "6px", shuffle = FALSE,
                         type="grid", width = "100%", height = "100%", elementId = NULL) {
 
   if(!is.null(caption)) {
@@ -32,6 +33,7 @@ pixgallery <- function(path, caption = NULL, dim = "200px", gap = "6px",
     caption = as.list(caption),
     dim = dim,
     gap = gap,
+    shuffle = shuffle,
     type = type
   )
 
