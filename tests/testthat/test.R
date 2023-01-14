@@ -33,7 +33,7 @@ expect_equal(class(obj),c("pixgallery","htmlwidget"))
 expect_equal(length(obj$x$path),length(paths))
 
 # test captions
-caps <- sample(x=letters,size=length(paths))
+caps <- letters[1:length(paths)]
 obj <- pixgallery(paths,caption=caps)
 expect_equal(length(obj$x$caption),length(paths))
 # error if caption length is incorrect
@@ -57,6 +57,18 @@ expect_silent(pixgallery(paths,dim="50px",gap="5px"))
 expect_silent(pixgallery(paths,type="box"))
 expect_silent(pixgallery(paths,type="grid"))
 expect_error(pixgallery(paths,type=""))
+
+# shuffle
+expect_silent(pixgallery(paths,shuffle=FALSE))
+expect_silent(pixgallery(paths,shuffle=TRUE))
+# shuffle test captions
+caps <- letters[1:length(paths)]
+obj <- pixgallery(paths,caption=caps,shuffle=TRUE)
+expect_equal(length(obj$x$caption),length(paths))
+names(paths) <- caps
+expect_silent(pixgallery(paths,shuffle=TRUE))
+
+# check that shuffled order of images match captions (to do)
 
 # pixfigure --------------------------------------------------------------------
 

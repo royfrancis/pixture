@@ -16,4 +16,4 @@ This R package is offered free and without warranty of any kind, either expresse
 
 If you have an comments, suggestions, corrections or enchancements, kindly submit an issue on the [Github issues page](https://github.com/royfrancis/pixture/issues).  
 
-2022 • Roy M Francis  
+2023 • Roy M Francis  

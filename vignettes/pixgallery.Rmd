@@ -83,6 +83,18 @@ pixgallery(paths[1:4], gap="20px")
 pixgallery(paths, gap="0px", dim="40px")
 ```
 
+# Shuffle
+
+Randomly shuffle images around.
+
+```{r}
+pixgallery(paths, dim="50px", shuffle=TRUE)
+```
+
+```{r}
+pixgallery(paths, dim="50px", shuffle=TRUE, caption=c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower"))
+```
+
 # Local images
 
 Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered html document.
