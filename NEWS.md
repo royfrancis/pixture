@@ -1,3 +1,8 @@
+# pixture 0.0.2.3000
+
+- 14-Jan-2023
+- Added shuffle option (Thanks to @Enchufa2)
+
 # pixture 0.0.2.2001
 
 - 06-Jul-2022

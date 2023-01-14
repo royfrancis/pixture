@@ -5,8 +5,8 @@
 #' @param caption A character vector of captions for the images (Optional).
 #' @param dim Image gallery thumbnail dimension as a string in valid css units.
 #' @param gap Gap between thumbnails as a string in valid css units.
-#' @param shuffle Whether to shuffle the images.
-#' @param type Gallery type. "box" or "grid" for now.
+#' @param shuffle A logical indicating whether images are randomly shuffled.
+#' @param type A character indicating gallery type. "box" or "grid" for now.
 #' @param height Height of the widget as a string in valid css units.
 #' @param width Width of the widget as a string in valid css units.
 #' @param elementId A character denoting parent container ID.

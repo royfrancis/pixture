@@ -25,9 +25,9 @@ pixgallery(
 
 \item{gap}{Gap between thumbnails as a string in valid css units.}
 
-\item{shuffle}{Whether to shuffle the images.}
+\item{shuffle}{A logical indicating whether images are randomly shuffled.}
 
-\item{type}{Gallery type. "box" or "grid" for now.}
+\item{type}{A character indicating gallery type. "box" or "grid" for now.}
 
 \item{width}{Width of the widget as a string in valid css units.}
 
