@@ -9,6 +9,7 @@ pixgallery(
   caption = NULL,
   dim = "200px",
   gap = "6px",
+  shuffle = FALSE,
   type = "grid",
   width = "100\%",
   height = "100\%",
@@ -23,6 +24,8 @@ pixgallery(
 \item{dim}{Image gallery thumbnail dimension as a string in valid css units.}
 
 \item{gap}{Gap between thumbnails as a string in valid css units.}
+
+\item{shuffle}{Whether to shuffle the images.}
 
 \item{type}{Gallery type. "box" or "grid" for now.}
 
