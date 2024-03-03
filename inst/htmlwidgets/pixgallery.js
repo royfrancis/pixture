@@ -36,151 +36,426 @@ function shuffle(obj1, obj2) {
 
 function pixgallery_base(el,x){
   if(x.shuffle) shuffle(x.path, x.caption);
-  if(x.layout === "grid") pixgallery_grid(el,x);
-  if(x.layout === "gridfixed") pixgallery_gridfixed(el,x);
+  if(x.layout === "grid") {
+    var fixed = false;
+    pixgallery_grid(el,x,fixed);
+  }
+  if(x.layout === "fixed") {
+    var fixed = true;
+    pixgallery_grid(el,x,fixed);
+  }
   if(x.layout === "masonry") pixgallery_masonry(el,x);
   if(x.layout === "justified") pixgallery_justified(el,x);
   if(x.layout === "elastic") pixgallery_elastic(el,x);
+  if(x.layout === "mosaic") pixgallery_mosaic(el,x);
   if(x.layout === "rhombus") pixgallery_rhombus(el,x);
 }
 
-/* flex grid parent and children divs have images as img -------------------- */
-function pixgallery_grid(el,x){
+function pixgallery_grid(el,x,fixed){
 
-  let urls = x.path;
-  let caption = x.caption;
-  let dim = x.dim;
-  let gap = x.gap;
-  let borderRadius = x.border_radius;
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var captionValign = x.caption_valign;
+  var captionHalign = x.caption_halign;
+  var link = x.link;
+  var h = x.h;
+  var w = x.w;
+  var gap = x.gap;
+  var borderRadius = x.border_radius;
 
-  let temp = '<div class="pixgallery-child pixgallery-child-grid" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-image-grid" style="border-radius:{borderRadius};height:{dim};" src="{url}"></a></div>';
+  if(typeof link[0] !== 'boolean') urls = x.link
+  if(h === null) h = "200px";
+  if(w === null) w = "200px";
 
-	let newValues = '', limitItem = urls.length;
-	for (let i = 0; i < limitItem; ++i) {
-    if(caption == null || caption[i] == null) {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("title=\"{caption}\"","");
+  // initialize template
+  if(caption.length === 0){
+
+    // if captions are not used
+    var temp = '<div class="pixgallery-child pixgallery-grid-child" id="pixgallery-{id}"><a href="{url}"><img class="pixgallery-grid-image" style="border-radius:{borderRadius};height:{h};" src="{src}"></a></div>';
+
+  } else {
+    if(captionValign == "none"){
+
+      // if captions are not displayed
+      var temp = '<div class="pixgallery-child pixgallery-grid-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image" style="border-radius:{borderRadius};height:{h};" src="{src}"></a></div>';
+
+    } else if(captionValign == "below") {
+
+      if(fixed) {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-below" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      } else {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-grid-child-below" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      }
+      
+    } else if(captionValign == "top") {
+
+      if(fixed) {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      } else {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      }
+      
+    } else if(captionValign == "center") {
+
+      if(fixed) {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      } else {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      }
+
     } else {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("{caption}",caption[i]);
-    }
-	}
 
-	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-gallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + dim + ',1fr));grid-auto-rows:' + dim + ';">' + newValues + '</div>';
-  var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+      if(fixed) {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      } else {
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      }
+    }
+  }
+
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{h\}/g, h).replace(/\{w\}/g, w).replace(/\{borderRadius\}/g, borderRadius).replace(/\{src\}/g, src[i]).replace(/\{min-height\}/g, h)
+
+    // if link is false or url is null, disable link
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    newValues += newValue
+  }
+
+  if(fixed) {
+    document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, ' + w + ');grid-auto-rows:' + h + ';">' + newValues + '</div>';
+  } else {
+    if(captionValign == "none") {
+      document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));grid-auto-rows:' + h + ';">' + newValues + '</div>';
+    } else {
+      document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));">' + newValues + '</div>';
+    }
+  }
+
+	//style="min-height:{h};"
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
 }
 
-/* flex grid parent and children divs have images as img -------------------- */
-function pixgallery_gridfixed(el,x){
+function pixgallery_mosaic(el,x){
 
-  let urls = x.path;
-  let caption = x.caption;
-  let dim = x.dim;
-  let gap = x.gap;
-  let borderRadius = x.border_radius;
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var captionValign = x.caption_valign;
+  var captionHalign = x.caption_halign;
+  var link = x.link;
+  var h = x.h;
+  var w = x.w;
+  var gap = x.gap;
+  var borderRadius = x.border_radius;
 
-  let temp = '<div class="pixgallery-child pixgallery-child-gridfixed" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-image-gridfixed" style="border-radius:{borderRadius};height:{dim};" src="{url}"></a></div>';
+  if(typeof link[0] !== 'boolean') urls = x.link
+  if(h === null) h = "200px";
+  if(w === null) w = "200px";
 
-	let newValues = '', limitItem = urls.length;
-	for (let i = 0; i < limitItem; ++i) {
-    if(caption == null || caption[i] == null) {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("title=\"{caption}\"","");
+  // initialize template
+  if(caption.length === 0){
+
+    // if captions are not used
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child" id="pixgallery-{id}"><a href="{url}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+
+  } else {
+    if(captionValign == "none"){
+
+    // if captions are not displayed
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+
+    } else if(captionValign == "below") {
+
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-mosaic-child-below" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
+      
+    } else if(captionValign == "top") {
+
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      
+    } else if(captionValign == "center") {
+
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
     } else {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("{caption}",caption[i]);
-    }
-	}
 
-	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-gallery-gridfixed" style="gap:' + gap + ';gridfixed-template-columns: repeat(auto-fit, ' + dim + ');gridfixed-auto-rows:' + dim + ';">' + newValues + '</div>';
-  var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
+    }
+  }
+
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{h\}/g, h).replace(/\{w\}/g, w).replace(/\{borderRadius\}/g, borderRadius).replace(/\{src\}/g, src[i]).replace(/\{min-height\}/g, h)
+
+    // if link is false or url is null, disable link
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    newValues += newValue
+  }
+
+  if(captionValign == "none") {
+    document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-mosaic" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));grid-auto-rows:' + h + ';">' + newValues + '</div>';
+  } else {
+    document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-mosaic" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));">' + newValues + '</div>';
+  }
+
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
 }
 
-/* flex grid parent and children divs have images as img -------------------- */
-function pixgallery_rhombus(el,x){
-
-  let urls = x.path;
-  let caption = x.caption;
-  let gap = x.gap;
-
-  let temp = '<div class="pixgallery-child pixgallery-child-rhombus" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-image-rhombus" src="{url}"></a></div>';
-
-	let newValues = '', limitItem = urls.length;
-	for (let i = 0; i < limitItem; ++i) {
-    if(caption == null || caption[i] == null) {
-      newValues += temp.replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
-    } else {
-      newValues += temp.replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("{caption}",caption[i]);
-    }
-	}
-
-  document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-gallery-rhombus" style="gap:' + gap + ';">' + newValues + '</div>';
-  var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
-}
-
-/* flex grid parent and children divs have images as img -------------------- */
-function pixgallery_elastic(el,x){
-
-  let urls = x.path;
-  let caption = x.caption;
-  let dim = x.dim;
-  let gap = x.gap;
-
-  let temp = '<div class="pixgallery-child pixgallery-child-elastic" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-image-elastic" src="{url}"></a></div>';
-
-	let newValues = '', limitItem = urls.length;
-	for (let i = 0; i < limitItem; ++i) {
-    if(caption == null || caption[i] == null) {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("title=\"{caption}\"","");
-    } else {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{url\}/g, urls[i]).replace("{id}",el.id).replace("{caption}",caption[i]);
-    }
-	}
-
-	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-gallery-elastic" style="height:' + dim + ';gap:' + gap + ';">' + newValues + '</div>';
-  var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
-}
-
-/* flex grid parent and children divs have images as img -------------------- */
 function pixgallery_masonry(el,x){
 
-  let urls = x.path;
-  let caption = x.caption;
-  let dim = x.dim;
-  let gap = x.gap;
-  let borderRadius = x.border_radius;
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var captionValign = x.caption_valign;
+  var captionHalign = x.caption_halign;
+  var link = x.link;
+  var w = x.w;
+  var gap = x.gap;
+  var borderRadius = x.border_radius;
 
-  let temp = '<div class="pixgallery-child pixgallery-child-masonry" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" title="{caption}"><img class="pixgallery-image-masonry" style="border-radius:{borderRadius};" src="{url}"></a></div>';
+  if(typeof link[0] !== 'boolean') urls = x.link
+  if(w === null) w = "200px";
 
-	let newValues = '', limitItem = urls.length;
-	for (let i = 0; i < limitItem; ++i) {
-    if(caption == null || caption[i] == null) {
-      newValues += temp.replace(/\{gap\}/g, gap).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("title=\"{caption}\"","");
+    // initialize template
+  if(caption.length === 0){
+
+    // if captions are not used
+    var temp = '<div class="pixgallery-child pixgallery-masonry-child" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+
+  } else {
+
+    if(captionValign == "none"){
+
+      // if captions are not displayed
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" title="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+
+    } else if(captionValign == "below") {
+
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-below" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" title="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
+    } else if(captionValign == "top") {
+
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" title="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
+    } else if(captionValign == "center") {
+
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" title="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
     } else {
-      newValues += temp.replace(/\{gap\}/g, gap).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("{caption}",caption[i]);
-    }
-	}
 
-	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-gallery-masonry" style="column-gap:' + gap + ';column-width:' + dim + ';">' + newValues + '</div>';
-  var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" title="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+    }
+  }
+
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{w\}/g, w).replace(/\{borderRadius\}/g, borderRadius).replace(/\{src\}/g, src[i]).replace(/\{gap\}/g, gap)
+
+    // if link is false or url is null, disable a
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    newValues += newValue
+  }
+
+	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-masonry" style="column-gap:' + gap + ';column-width:' + w + ';">' + newValues + '</div>';
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
 }
 
-/* flex grid parent and children divs have images as img -------------------- */
 function pixgallery_justified(el,x){
 
-  let urls = x.path;
-  let caption = x.caption;
-  let dim = x.dim;
-  let gap = x.gap;
-  let borderRadius = x.border_radius;
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var captionValign = x.caption_valign;
+  var captionHalign = x.caption_halign;
+  var link = x.link;
+  var h = x.h;
+  var gap = x.gap;
+  var borderRadius = x.border_radius;
 
-  let temp = '<div class="pixgallery-child pixgallery-child-justified" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-image-justified" style="height:{dim};border-radius:{borderRadius};" src="{url}"></a></div>';
+  if(typeof link[0] !== 'boolean') urls = x.link
+  if(h === null) h = "200px";
 
-	let newValues = '', limitItem = urls.length;
-	for (let i = 0; i < limitItem; ++i) {
-    if(caption == null || caption[i] == null) {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{gap\}/g, gap).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("title=\"{caption}\"","");
+  // initialize template
+  if(caption.length === 0){
+
+    // if captions are not used
+    var temp = '<div class="pixgallery-child pixgallery-justified-child" id="pixgallery-{id}"><a href="{url}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a></div>';
+
+  } else {
+    if(captionValign == "none"){
+
+      // if captions are not displayed
+      var temp = '<div class="pixgallery-child pixgallery-justified-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a></div>';
+
+    } else  if(captionValign == "below") {
+
+      var temp = '<div class="pixgallery-child pixgallery-justified-child pixgallery-child-below" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
+    } else if(captionValign == "top") {
+
+      var temp = '<div class="pixgallery-child pixgallery-justified-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
+    } else if(captionValign == "center") {
+
+      var temp = '<div class="pixgallery-child pixgallery-justified-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+
     } else {
-      newValues += temp.replace(/\{dim\}/g, dim).replace(/\{gap\}/g, gap).replace(/\{url\}/g, urls[i]).replace(/\{borderRadius\}/g, borderRadius).replace("{id}",el.id).replace("{caption}",caption[i]);
-    }
-	}
 
-	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-gallery-justified" style="column-gap:' + gap + ';">' + newValues + '</div>';
-  var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+      var temp = '<div class="pixgallery-child pixgallery-justified-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+    }
+  }
+  
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{h\}/g, h).replace(/\{borderRadius\}/g, borderRadius).replace(/\{src\}/g, src[i]).replace(/\{gap\}/g, gap)
+
+    // if link is false or url is null, disable a
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    newValues += newValue
+  }
+
+	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-justified" style="gap:' + gap + ';">' + newValues + '</div>';
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+}
+
+function pixgallery_elastic(el,x){
+
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var link = x.link;
+  var h = x.h;
+  var gap = x.gap;
+  var borderRadius = x.border_radius;
+
+  if(typeof link[0] !== 'boolean') urls = x.link
+  if(h === null) h = "200px";
+
+    // initialize template
+  if(caption.length === 0){
+    var temp = '<div class="pixgallery-child pixgallery-elastic-child" id="pixgallery-{id}"><a href="{url}"><img class="pixgallery-elastic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+  } else {
+    var temp = '<div class="pixgallery-child pixgallery-elastic-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-elastic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+  }
+  
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{h\}/g, h).replace(/\{borderRadius\}/g, borderRadius).replace(/\{src\}/g, src[i]).replace(/\{gap\}/g, gap)
+
+    // if link is false or url is null, disable a
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i])
+    }
+
+    newValues += newValue
+  }
+
+	document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-elastic" style="height:' + h + ';gap:' + gap + ';">' + newValues + '</div>';
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+}
+
+function pixgallery_rhombus(el,x){
+
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var link = x.link;
+  var gap = x.gap;
+  if(typeof link[0] !== 'boolean') urls = x.link
+
+  // initialize template
+  if(caption.length === 0){
+    var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}"><img class="pixgallery-rhombus-image" src="{src}"></a></div>';
+  } else {
+    var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-rhombus-image" src="{src}"></a></div>';
+  }
+  
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{src\}/g, src[i])
+
+    // if link is false or url is null, disable a
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i])
+    }
+
+    newValues += newValue
+  }
+
+  document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-rhombus" style="gap:' + gap + ';">' + newValues + '</div>';
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
 }
