@@ -1,8 +1,8 @@
 title: pixture
 url: https://github.com/royfrancis/pixture
 template:
-  params:
-    bootswatch: flatly
+  bootstrap: 5
+  bootswatch: zephyr
 
 authors:
   Roy Francis:

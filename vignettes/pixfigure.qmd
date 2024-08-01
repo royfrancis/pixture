@@ -1,0 +1,135 @@
+---
+title: "Pixfigure usage"
+date: last-modified
+date-format: "DD-MMM-YYYY"
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-overflow: wrap
+    resources:
+      - images
+---
+
+This is a demo of the function `pixfigure()`. This is useful for individual images or a set of images but not in a gallery format. The mandatory input required is one or more paths/URLs to image(s).
+
+```{r}
+library(pixture)
+paths <- c(
+  "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+)
+```
+
+Clicking on the thumbnail opens up the full image in a lightbox.
+
+```{r}
+pixfigure(paths[1])
+```
+
+## Caption
+
+Optionally, captions can be added to the images which are displayed below the images as well as in the lightbox.
+
+```{r}
+pixfigure(paths[1], caption = "Night sky over the mountains")
+```
+
+## Link
+
+The default is TRUE, which means that clicking on the thumbnail opens the image in a lightbox. Setting this to FALSE turns off links.
+
+```{r}
+pixfigure(paths[1:2], link = FALSE)
+```
+
+```{r}
+pixfigure(paths[1:2], caption = c("Night sky over the mountains", "Though the dense rainforest"), link = FALSE)
+```
+
+By setting this to a character vector, you can add custom links.
+
+```{r}
+pixfigure(paths[1:2], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest"))
+```
+
+```{r}
+pixfigure(paths[1:2], caption = c("Night sky over the mountains", "Through the dense rainforest"), link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest"))
+```
+
+## Dimensions
+
+The argument `h` and `w` is used to adjust the dimension of the image. This value is a string in any valid css unit.
+
+```{r}
+pixfigure(paths[1], w = "400px")
+```
+
+```{r}
+pixfigure(paths[3], h = "400px", caption = "shark")
+```
+
+## Fit
+
+The argument `fit` is used to control css property [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit). It is set to `cover` by default.
+
+```{r}
+pixfigure(paths[1], h = "600px")
+```
+
+Resize the width of the page to see the effect of `fit="cover"`. The image scales within it's frame rather than shrink. Explore css property **object-fit** for more details, for example, on [w3schools](https://www.w3schools.com/css/css3_object-fit.asp).
+
+## Position
+
+The argument `position` determines how the image is positioned within the frame. This controls css property [`object-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position).
+
+```{r}
+pixfigure(paths[1], h = "400px", w = "400px", position = "left")
+```
+
+```{r}
+pixfigure(paths[1], h = "400px", w = "400px", position = "right")
+```
+
+Here is a [youtube video](https://www.youtube.com/watch?v=6yAAV-uP0po) that discusses fit and position.
+
+## Multiple images
+
+Input can also be a vector images. Images are displayed one after the other.
+
+```{r}
+pixfigure(paths, caption = c("Night sky over the mountains", "Walking through dense woodland", "Out in the open seas"), h = "200px", w = "250px", position = "left")
+```
+
+## Local images
+
+Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered HTML document.
+
+<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;" style="inline-block">
+&nbsp; <i class="fas fa-exclamation-circle"></i> &nbsp; Pixture does not move, copy or embed images. The images must be in their final intended destination. It is left to the user to handle images as assets. Images are not embedded into self contained documents.
+</p>
+
+### Relative path
+
+This example assumes your images are available next to the Rmd/qmd/HTML file in a directory named *images* and that you copy these assets if the Rmd/qmd/HTML is relocated.
+
+```{r}
+pixfigure("images/pexels-photo-3126574.jpg", h = "300px")
+```
+
+### Absolute path
+
+Here is an example using sample images from the package. These should work locally, but may not work if the rendered HTML is relocated.
+
+```{r}
+paths <- list.files(system.file("extdata/images", package = "pixture"), full = TRUE)
+paths
+# pixfigure(paths[1])
+```
+
+## Session
+
+```{r}
+sessionInfo()
+```

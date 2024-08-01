@@ -1,4 +1,4 @@
 library(testthat)
 library(pixture)
 
-test_check("pixture")
+test_check("testthat")

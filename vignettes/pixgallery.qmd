@@ -1,0 +1,370 @@
+---
+title: "Pixgallery usage"
+date: last-modified
+date-format: "DD-MMM-YYYY"
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-overflow: wrap
+    resources:
+      - images
+---
+
+This is a demo of the function `pixgallery()`. This creates an interactive gallery of images. The mandatory input required is one or more paths/URLs to image(s).
+
+```{r}
+#| code-fold: true
+
+library(pixture)
+paths_a <- c(
+  "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/7919/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/2437291/pexels-photo-2437291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1679772/pexels-photo-1679772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1813513/pexels-photo-1813513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/267074/pexels-photo-267074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+)
+
+paths_b <- c(
+  "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/7919/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/2437291/pexels-photo-2437291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1679772/pexels-photo-1679772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1813513/pexels-photo-1813513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/267074/pexels-photo-267074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1624600/pexels-photo-1624600.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/851023/pexels-photo-851023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1694631/pexels-photo-1694631.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/2325447/pexels-photo-2325447.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/2743287/pexels-photo-2743287.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+)
+```
+
+Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
+
+```{r}
+pixgallery(paths_a)
+```
+
+## Captions
+
+Optionally, captions can be added to the images which are visible when viewed in the lightbox.
+
+```{r}
+captions <- c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower")
+pixgallery(paths_a, caption = captions)
+```
+
+Images without captions can be set as NA.
+
+```{r}
+pixgallery(paths_a[1:4], caption = c("night", "forest", NA, "coconut trees"))
+```
+
+```{r}
+pixgallery(paths_a[1], caption = "night")
+```
+
+### Caption parameters
+
+Captions have further properties `caption_valign` and `caption_halign` which allows for captions to be displayed on the thumbnails.
+
+`caption_valign` options are `top`, `center`, `bottom` or `below`.
+
+```{r}
+pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "top")
+```
+
+```{r}
+pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "center")
+```
+
+```{r}
+pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "bottom")
+```
+
+```{r}
+pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below")
+```
+
+`caption_halign` options are `left`, `center` or `right`.
+
+```{r}
+pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "center", caption_halign = "center")
+```
+
+```{r}
+pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below", caption_halign = "center")
+```
+
+## Link
+
+The default is TRUE, which means that clicking on the thumbnail opens the image in a lightbox. Setting this to FALSE turns off links.
+
+```{r}
+pixgallery(paths_a[1:4], link = FALSE)
+```
+
+By setting this to a character vector, you can add custom links.
+
+```{r}
+pixgallery(paths_a[1:4], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest", "https://en.wikipedia.org/wiki/Shark", "https://en.wikipedia.org/wiki/Hawaii"))
+```
+
+## Dimension
+
+The parameters `h` and `w` is used to adjust the dimension of images in the grid. This value is a string in any valid CSS unit.
+
+```{r}
+pixgallery(paths_a, h = "50px")
+```
+
+```{r}
+pixgallery(paths_b, w = "100px")
+```
+
+## Gap
+
+The parameter `gap` is used to control spacing between images in the grid. This value is a string in any valid css unit.
+
+```{r}
+pixgallery(paths_a[1:8], gap = "20px")
+```
+
+```{r}
+pixgallery(paths_a, gap = "0", w = "40px")
+```
+
+## Border radius
+
+Adjust the corner radius of image thumbnails.
+
+```{r}
+pixgallery(paths_a, w = "100px", border_radius = "10px")
+```
+
+## Shuffle
+
+Randomly shuffle images around.
+
+```{r}
+pixgallery(paths_a, w = "50px", shuffle = TRUE)
+```
+
+```{r}
+pixgallery(paths_a, w = "50px", shuffle = TRUE, caption = c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower"))
+```
+
+## Local images
+
+Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered HTML document.
+
+<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;" style="inline-block">
+&nbsp; <i class="fas fa-exclamation-circle"></i> &nbsp; Pixture does not move, copy or embed images. The images must be in their final intended destination. It is left to the user to handle images as assets. Images are not embedded into the HTML if you use `self_contained: true`.
+</p>
+
+### Relative path
+
+This example assumes your images are available next to the Rmd/qmd/HTML file in a directory named *images* and that you copy these assets if the Rmd/qmd/HTML is relocated.
+
+```{r}
+paths <- list.files("images", full.names = TRUE)
+paths
+pixgallery(paths)
+```
+
+### Absolute path
+
+Here is another example using sample images from the package. These should work locally, but may not work if the rendered HTML is relocated.
+
+```{r,eval=FALSE}
+paths <- list.files(system.file("extdata/images", package = "pixture"), full = TRUE)
+paths
+pixgallery(paths)
+```
+
+## Layout
+
+You can set different layouts using the `layout` parameter, with the default being `layout="grid"` for a responsive grid design.
+
+Please note that not all parameters are applicable to every layout. The table below indicates which parameters are active for each layout type.
+
+:::{.column-body-outset}
+
+```{r,echo=FALSE}
+dfr <- data.frame(
+  "parameter" = c("caption", "caption_valign", "", "", "", "caption_halign", "link", "h", "w", "gap", "border_radius", "shuffle"),
+  "option"    = c("", "none", "top/bottom", "center", "below", "", "", "", "", "", "", ""),
+  "grid"      = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
+  "fixed"     = c("🟩", "🟩", "🟡", "🟡", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
+  "mosaic"    = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
+  "masonry"   = c("🟩", "🟩", "🟡", "🟡", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩", "🟩"),
+  "justified" = c("🟩", "🟩", "🟡", "🟡", "🟠", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
+  "elastic"   = c("🟩", "🟩", "🔴", "🔴", "🔴", "🔴", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
+  "rhombus"   = c("🟩", "🟩", "🔴", "🔴", "🔴", "🔴", "🟩", "🔴", "🔴", "🟩", "🔴", "🟩")
+)
+# rownames(dfr) <- dfr$parameter
+# dfr$parameter <- NULL
+knitr::kable(dfr)
+```
+
+:::
+
+<br>
+🟩 *Functional*  
+🟡/🟠/🔵 *Impaired*  
+🔴 *Inactive/Disabled*  
+  
+🟡 *Long captions extend beyond the images and/or clipped*  
+🟠 *Long captions force images to be stretched*  
+🔵 *Height cannot be adjusted when captions are displayed*  
+
+### Fixed
+
+With the default 'grid' layout, the height is fixed and the width is mostly fixed, but has some flexibility such that the whole gallery takes up the entire width of available parent space. In 'fixed' layout, the thumbnail dimensions are strictly fixed. Adjust the width of the page to see the difference in responsiveness compared to 'grid' layout.
+
+```{r}
+pixgallery(paths_a[1:8], layout = "fixed")
+```
+
+```{r}
+pixgallery(paths_a[1:8], layout = "fixed", caption = captions[1:8], caption_valign = "center", caption_halign = "center", border_radius = "50%", gap = "10px")
+```
+
+### Mosaic
+
+Similar to grid layout but with some mixed size cells.
+
+```{r}
+pixgallery(paths_b, layout = "mosaic")
+```
+
+```{r}
+pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "bottom", h = "100px", w = "100px")
+```
+
+```{r}
+pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "below", h = "100px", w = "100px", border_radius = "5px", shuffle = TRUE)
+```
+
+### Masonry
+
+Column-wise layout with free height. The thumbnail width can be adjusted.
+
+```{r}
+pixgallery(paths_b, layout = "masonry")
+```
+
+```{r}
+pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "bottom", w = "100px")
+```
+
+```{r}
+pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "below", w = "100px", border_radius = "5px", shuffle = TRUE)
+```
+
+### Justified
+
+Row-wise layout with free width. The thumbnail height can be adjusted.
+
+```{r}
+pixgallery(paths_b, layout = "justified")
+```
+
+```{r}
+pixgallery(paths_a, layout = "justified", caption = captions, caption_valign = "bottom", h = "100px")
+```
+
+```{r}
+pixgallery(paths_a, layout = "justified", caption = captions, caption_valign = "below", h = "100px", border_radius = "5px", shuffle = TRUE)
+```
+
+### Elastic
+
+Single row gallery where images expand on hover. `h` sets the height of the gallery. `gap` adjusts spacing between thumbnails.
+
+```{r}
+pixgallery(paths_b, layout = "elastic")
+```
+
+```{r}
+pixgallery(paths_a, layout = "elastic", gap = "0", h = "50px")
+```
+
+```{r}
+pixgallery(paths_a, layout = "elastic", border_radius = "5px", caption = captions)
+```
+
+Works better when there are more than a handful of images.
+
+```{r}
+pixgallery(paths_a[1:4], layout = "elastic")
+```
+
+### Rhombus
+
+Thumbnails are diamond shaped. `gap` sets spacing between thumbnails. Thumbnail dimensions and number of items per row are fixed for now. This is a completely non-responsive layout.
+
+```{r}
+pixgallery(paths_b, layout = "rhombus")
+```
+
+```{r}
+pixgallery(paths_a, layout = "rhombus", gap = "0px", caption = captions, shuffle = TRUE)
+```
+
+## Local images
+
+Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered HTML document.
+
+<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;" style="inline-block">
+&nbsp; <i class="fas fa-exclamation-circle"></i> &nbsp; Pixture does not move, copy or embed images. The images must be in their final intended destination. It is left to the user to handle images as assets. Images are not embedded into self contained documents.
+</p>
+
+### Relative path
+
+This example assumes your images are available next to the Rmd/qmd/HTML file in a directory named *images* and that you copy these assets if the Rmd/qmd/HTML is relocated.
+
+```{r}
+paths <- list.files("images", full.names = TRUE)
+paths
+pixgallery(paths, h = "300px")
+```
+
+### Absolute path
+
+Here is an example using sample images from the package. These should work locally, but may not work if the rendered HTML is relocated.
+
+```{r}
+paths <- list.files(system.file("extdata/images", package = "pixture"), full = TRUE)
+paths
+# pixgallery(paths)
+```
+
+## Session
+
+```{r}
+sessionInfo()
+```

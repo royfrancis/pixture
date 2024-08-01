@@ -1,3 +1,18 @@
+# pixture 0.0.2.4000
+
+- 01-Aug-2024
+- Pixgallery
+  - Split parameter 'dim' into 'h' and 'w'
+  - Added parameters 'caption_valign', 'caption_halign', 'link', 'border_radius'
+  - Parameter 'type' changed to 'layout'
+  - Added more layouts: fixed, mosaic, masonry, justified, elastic, rhombus
+- Pixfigure
+  - Added parameter 'link'
+- Updated shiny demo apps and added run functions
+- Updated logo
+- Updated vignettes to quarto
+- Updated tests
+
 # pixture 0.0.2.3000
 
 - 14-Jan-2023

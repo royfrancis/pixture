@@ -2,11 +2,12 @@
 % Please edit documentation in R/pixfigure.R
 \name{pixfigure}
 \alias{pixfigure}
-\title{Create a figure.}
+\title{Create a figure}
 \usage{
 pixfigure(
   path,
   caption = NULL,
+  link = TRUE,
   h = "auto",
   w = "100\%",
   fit = "cover",
@@ -21,20 +22,28 @@ pixfigure(
 
 \item{caption}{A character vector of captions for the images (Optional).}
 
-\item{h}{Height of the image as a string in valid css units.}
+\item{link}{A logical or character vector. What happens when you click on the image? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.}
 
-\item{w}{Width of the image as a string in valid css units.}
+\item{h}{A character denoting height of the image in valid CSS units.}
 
-\item{fit}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} css property.}
+\item{w}{A character denoting width of the image in valid CSS units.}
 
-\item{position}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} css property.}
+\item{fit}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} CSS property.}
 
-\item{width}{Width of the widget as a string in valid css units.}
+\item{position}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} CSS property.}
 
-\item{height}{Height of the widget as a string in valid css units.}
+\item{width}{A character denoting width of the widget as a string in valid CSS units.}
 
-\item{elementId}{A character denoting parent container ID.}
+\item{height}{A character denoting height of the widget as a string in valid CSS units.}
+
+\item{elementId}{A character string denoting parent container ID.}
 }
 \description{
-Create a figure.
+Create a figure
+}
+\examples{
+library(pixture)
+paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+pixfigure(paths)
+
 }
