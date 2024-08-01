@@ -217,7 +217,7 @@ Please note that not all parameters are applicable to every layout. The table be
 dfr <- data.frame(
   "parameter" = c("caption", "caption_valign", "", "", "", "caption_halign", "link", "h", "w", "gap", "border_radius", "shuffle"),
   "option"    = c("", "none", "top/bottom", "center", "below", "", "", "", "", "", "", ""),
-  "grid"      = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
+  "grid"      = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
   "fixed"     = c("🟩", "🟩", "🟡", "🟡", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
   "mosaic"    = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
   "masonry"   = c("🟩", "🟩", "🟡", "🟡", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩", "🟩"),
