@@ -2,39 +2,75 @@
 % Please edit documentation in R/pixgallery.R
 \name{pixgallery}
 \alias{pixgallery}
-\title{Create an image gallery.}
+\title{Create An HTML Image Gallery}
 \usage{
 pixgallery(
   path,
   caption = NULL,
-  dim = "200px",
-  gap = "6px",
+  caption_valign = "none",
+  caption_halign = "left",
+  link = TRUE,
+  h = NULL,
+  w = NULL,
+  gap = "5px",
+  border_radius = "0px",
+  layout = "grid",
   shuffle = FALSE,
-  type = "grid",
   width = "100\%",
   height = "100\%",
-  elementId = NULL
+  elementId = NULL,
+  dim = NULL,
+  type = NULL
 )
 }
 \arguments{
 \item{path}{A character vector of full paths to images.}
 
-\item{caption}{A character vector of captions for the images (Optional).}
+\item{caption}{A character vector of captions for the images (Optional). It must be equal to the length of path.}
 
-\item{dim}{Image gallery thumbnail dimension as a string in valid css units.}
+\item{caption_valign}{A character denoting position of the caption. Options are 'none', 'top', 'center', 'bottom' or 'below'.}
 
-\item{gap}{Gap between thumbnails as a string in valid css units.}
+\item{caption_halign}{A character denoting horizontal justification of the caption. Options are 'left', 'center' or 'right'.}
+
+\item{link}{A logical or character vector. What happens when you click on the thumbnail? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.}
+
+\item{h}{A character denoting height of the image thumbnails in valid CSS units.}
+
+\item{w}{A character denoting width of the image thumbnails in valid CSS units.}
+
+\item{gap}{A character denoting spacing between thumbnails in valid CSS units.}
+
+\item{border_radius}{A character denoting corner radius of image thumbnails in valid CSS units.}
+
+\item{layout}{A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "elastic" or "rhombus". See details.}
 
 \item{shuffle}{A logical indicating whether images are randomly shuffled.}
 
-\item{type}{A character indicating gallery type. "box" or "grid" for now.}
+\item{width}{A character denoting width of the widget in valid CSS units.}
 
-\item{width}{Width of the widget as a string in valid css units.}
+\item{height}{A character denoting height of the widget in valid CSS units.}
 
-\item{height}{Height of the widget as a string in valid css units.}
+\item{elementId}{A character string denoting parent container ID.}
 
-\item{elementId}{A character denoting parent container ID.}
+\item{dim}{Deprecated. Use 'h' and 'w'.}
+
+\item{type}{Deprecated. Use 'layout'.}
 }
 \description{
-Create an image gallery.
+Create an HTML image gallery
+}
+\details{
+**grid**: Grid responsive layout. Width is flexible to fit parent. \cr
+**fixed**: Same as grid but non-responsive. Strictly fixed dimensions. Defaults to square image. When using `caption_valign` options 'top','bottom' or 'center', note that long captions may overflow. \cr
+**mosaic**: Grid layout with mixed sizes. \cr
+**masonry**: Column layout where images flow vertically. Image height cannot be set. When using `caption_valign` options 'top','bottom' or 'center', note that long captions may overflow. \cr
+**justified**: Similar to masonry but images flow horizontally. Image width cannot be set. When using `caption_valign` options 'top','bottom' or 'center', note that long captions are clipped. Option 'below' may cause images to be stretched if captions are too long. \cr
+**elastic**: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
+**rhombus**: Diamond shaped layout with three columns. Image size and number of columns are fixed. Completely non-responsive without breakpoints. Captions cannot be displayed on thumbnails. \cr
+}
+\examples{
+library(pixture)
+paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+pixgallery(paths)
+
 }

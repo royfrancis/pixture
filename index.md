@@ -1,12 +1,8 @@
-# pixture <img src="android-chrome-192x192.png" style="height:96px;" align="right" />
+# pixture <img src="logo.webp" style="width:120px;float:right;" align="right" />
 
 [![ci_badge](https://github.com/royfrancis/pixture/workflows/r-cmd-check/badge.svg)](https://github.com/royfrancis/pixture/actions?workflow=r-cmd-check) [![codecov](https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK)](https://app.codecov.io/gh/royfrancis/pixture/) [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
-`pixture` is an R package to create HTML figures and image galleries. This can be standalone, included in an Rmarkdown document or in a Shiny app.
-
-<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;" style="inline-block">
-&nbsp; <i class="fas fa-exclamation-circle"></i> &nbsp; This project is experimental. The functions and arguments are subject to change.
-</p>
+`pixture` is an R package to create HTML image galleries. This can be standalone, included in an Rmarkdown/Quarto document or in a Shiny app.
 
 ## Installation  
 
@@ -17,15 +13,7 @@ Run the following to install the dependencies and the **pixture** package itself
 ```coffee
 install.packages(c("htmlwidgets","shiny","remotes"))
 remotes::install_github('royfrancis/pixture')
-```
-
-Once the package is installed, the package is loaded for use as shown below.
-
-```coffee
-# load library
 library(pixture)
-
-# check version
 # packageVersion("pixture")
 ```
 
@@ -33,7 +21,9 @@ For usage and demonstration, refer to the articles linked in the menu.
 
 ## Acknowledgements
 
-This package uses [simplelightbox](https://github.com/dbrekalo/simpleLightbox) created by [Damir Brekalo](https://dbrekalo.github.io/simpleLightbox/). Images from [Pexels](https://www.pexels.com/).
+- [simplelightbox](https://github.com/dbrekalo/simpleLightbox) created by [Damir Brekalo](https://dbrekalo.github.io/simpleLightbox/).
+- Diamond gallery layout based on [this post](https://dev.to/alvaromontoro/creating-an-interactive-image-gallery-with-html-and-css-35pi) by Alvaro Montoro. 
+- Images from [Pexels](https://www.pexels.com/).
 
 ## Disclaimer
 

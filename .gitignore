@@ -4,4 +4,6 @@
 .Ruserdata
 inst/doc
 *.Rproj
-
+.DS_Store
+to-do.txt
+.quarto

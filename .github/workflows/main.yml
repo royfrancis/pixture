@@ -5,19 +5,21 @@
 
 name: r-cmd-check
 on:
-  pull_request:
+  workflow_dispatch:
   push:
+    tags:
+      - v*
 
 jobs:
   linux:
     name: ubuntu
-    runs-on: "ubuntu-20.04"
+    runs-on: "ubuntu-latest"
     strategy:
       fail-fast: false
       matrix:
-        r: [3.6,4.1,4.2]
+        r: [4.0,4.4]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{matrix.r}}
@@ -30,25 +32,25 @@ jobs:
       - name: Check R installation
         run: Rscript -e "print('R installation works!')"
 
-      - name: Cache R packages
-        id: cache-r-packages
-        uses: actions/cache@v2
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          path: "/home/runner/work/_temp/Library"
-          key: ${{runner.os}}-${{matrix.r}}-$(ls /home/runner/work/_temp/Library/ | sha256sum)
+          cache-version: 2
+          extra-packages: |
+            any::rcmdcheck
+            any::pkgdepends
+            any::covr
+          needs: check
 
-      - name: Install R dependencies
-        if: steps.cache-r-packages.outputs.cache-hit != 'true'
-        run: |
-          Rscript -e "install.packages(c('remotes','covr','rcmdcheck'))"
-          Rscript -e "remotes::install_deps(pkgdir='.',dependencies=TRUE,repos='https://cran.rstudio.com/')"
-      - name: RMD check and install package
-        run: |
-          Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'warning', check_dir = 'check')"
-          R CMD INSTALL .
+      - name: R CMD check
+        uses: r-lib/actions/check-r-package@v2
+        with:
+          args: 'c("--no-manual", "--as-cran")'
+          error-on: '"warning"'
+          check-dir: '"check"'
 
       - name: Code coverage
-        if: matrix.r == '4.2'
+        if: matrix.r == '4.4'
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: Rscript -e 'covr::codecov(token="${{ secrets.CODECOV_TOKEN }}",quiet=FALSE)'
@@ -58,26 +60,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        r: [3.6,4.1,4.2]
+        r: [4.0,4.4]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{matrix.r}}
 
-      - name: Cache R packages
-        id: cache-r-packages
-        uses: actions/cache@v2
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          path: "C:/R/library"
-          key: ${{runner.os}}-${{matrix.r}}
+          cache-version: 2
+          extra-packages: |
+            any::rcmdcheck
+            any::pkgdepends
+            any::covr
+          needs: check
 
-      - name: Install R dependencies
-        if: steps.cache-r-packages.outputs.cache-hit != 'true'
-        run: |
-          Rscript -e "install.packages(c('remotes','rcmdcheck','stringi'),lib='C:/R/library')"
-          Rscript -e "remotes::install_deps(pkgdir='.',dependencies=TRUE,repos='https://cran.rstudio.com/',lib='C:/R/library')"
-          Rscript -e "(print(.libPaths()))"
-      - name: RMD check and install package
-        run: |
-          Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'warning', check_dir = 'check')"
+      - name: R CMD check
+        uses: r-lib/actions/check-r-package@v2
+        with:
+          args: 'c("--no-manual", "--as-cran")'
+          error-on: '"warning"'
+          check-dir: '"check"'

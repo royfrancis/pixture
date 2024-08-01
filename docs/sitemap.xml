@@ -1,48 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://github.com/royfrancis/pixture/404.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/articles/pixfigure.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/articles/pixgallery.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/reference/pixfigure-shiny.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/reference/pixfigure.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/reference/pixgallery-shiny.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/reference/pixgallery.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/reference/runPixfigure.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/royfrancis/pixture/reference/runPixgallery.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://github.com/royfrancis/pixture/404.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/LICENSE.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/articles/index.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/articles/pixfigure.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/articles/pixgallery.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/articles/shiny.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/authors.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/index.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/news/index.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/reference/index.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/reference/pixfigure-shiny.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/reference/pixfigure.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/reference/pixgallery-shiny.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/reference/pixgallery.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/reference/runPixfigure.html</loc></url>
+<url><loc>https://github.com/royfrancis/pixture/reference/runPixgallery.html</loc></url>
 </urlset>
+

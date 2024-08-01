@@ -1,33 +1,57 @@
-
-#' @title Create a figure.
-#' @description Create a figure.
+#' @title Create a figure
+#' @description Create a figure
 #' @param path A character vector of full paths to images.
 #' @param caption A character vector of captions for the images (Optional).
-#' @param h Height of the image as a string in valid css units.
-#' @param w Width of the image as a string in valid css units.
-#' @param fit String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} css property.
-#' @param position String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} css property.
-#' @param height Height of the widget as a string in valid css units.
-#' @param width Width of the widget as a string in valid css units.
-#' @param elementId A character denoting parent container ID.
+#' @param link A logical or character vector. What happens when you click on the image? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.
+#' @param h A character denoting height of the image in valid CSS units.
+#' @param w A character denoting width of the image in valid CSS units.
+#' @param fit String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} CSS property.
+#' @param position String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} CSS property.
+#' @param height A character denoting height of the widget as a string in valid CSS units.
+#' @param width A character denoting width of the widget as a string in valid CSS units.
+#' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
+#' 
+#' @examples
+#' library(pixture)
+#' paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+#' pixfigure(paths)
+#' 
 #' @export
 #'
-pixfigure <- function(path, caption = NULL, h = "auto", w = "100%", fit = "cover",
-                        position="center", width = "100%", height = "100%", elementId = NULL) {
-  
-  if(!is.null(caption)) {
-    if(length(caption) != length(path)) stop(paste("Length of 'caption' (", length(caption), ") is not not equal to the length of 'path' (", length(path), "). If 'caption' is used, it must be the same length as 'path'."))
+pixfigure <- function(
+    path,
+    caption = NULL,
+    link = TRUE,
+    h = "auto",
+    w = "100%",
+    fit = "cover",
+    position = "center",
+    width = "100%",
+    height = "100%",
+    elementId = NULL) {
+  if (!is.null(caption)) {
+    if (length(caption) != length(path)) stop(paste0("Length of 'caption' (", length(caption), ") is not not equal to the length of 'path' (", length(path), "). If 'caption' is used, it must be the same length as 'path'."))
   } else {
-    if(!is.null(names(path))) caption <- names(path)
+    if (!is.null(names(path))) caption <- names(path)
   }
-  
+
   names(path) <- NULL
 
+  # check link
+  if (is.null(link) || all(is.na(link))) stop("Parameter 'link' must be a logical or a character vector.")
+  if (is.logical(link) && (length(link) != 1)) stop("Parameter 'link' must be of length 1. TRUE or FALSE.")
+  if (is.character(link)) {
+    if (length(link) != length(path)) {
+      stop(paste0("Length of 'link' (", length(link), ") is not not equal to the length of 'path' (", length(path), "). If 'link' is a character, it must be the same length as 'path'."))
+    }
+  }
+
   # forward options using x
-  x = list(
+  x <- list(
     path = as.list(path),
     caption = as.list(caption),
+    link = as.list(link),
     h = h,
     w = w,
     fit = fit,
@@ -36,11 +60,11 @@ pixfigure <- function(path, caption = NULL, h = "auto", w = "100%", fit = "cover
 
   # create widget
   createWidget(
-    name = 'pixfigure',
+    name = "pixfigure",
     x,
     width = width,
     height = height,
-    package = 'pixture',
+    package = "pixture",
     elementId = elementId,
     sizingPolicy = sizingPolicy(
       defaultWidth = "100%",
@@ -69,8 +93,8 @@ pixfigure <- function(path, caption = NULL, h = "auto", w = "100%", fit = "cover
 #' @importFrom htmlwidgets shinyWidgetOutput
 #' @export
 #'
-pixfigureOutput <- function(outputId, width = '100%', height = 'auto'){
-  shinyWidgetOutput(outputId, 'pixfigure', width, height, package = 'pixture')
+pixfigureOutput <- function(outputId, width = "100%", height = "auto") {
+  shinyWidgetOutput(outputId, "pixfigure", width, height, package = "pixture")
 }
 
 #' @rdname pixfigure-shiny
@@ -78,13 +102,15 @@ pixfigureOutput <- function(outputId, width = '100%', height = 'auto'){
 #' @export
 #'
 renderPixfigure <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
+  if (!quoted) {
+    expr <- substitute(expr)
+  } # force quoted
   shinyRenderWidget(expr, pixfigureOutput, env, quoted = TRUE)
 }
 
 #' @title Launch pixfigure demo shiny application
 #' @description Launches interactive shiny session in the browser.
-#' @param ... Arguments are passed to \code{\link{runApp}}.
+#' @param ... Parameters are passed to \code{\link{runApp}}.
 #' @return This function does not return anything
 #' @seealso \code{\link{runApp}}
 #' @examples

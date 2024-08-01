@@ -1,121 +1,43 @@
-/* CSS Bootstrap custom style */
-/* 2022 Roy Francis */
+/* Extra CSS */
 
-/* define font */
-@import url('https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro:300,400,600|Ubuntu+Mono&subset=latin-ext');
-
-:root {
-  --color-primary: #4b6584;
-  --color-border: #ccc;
-  --color-text: #1A1A1A;
-  --color-code-bg: #f9f9f9;
-  --color-code-inline: #d72b3f;
-  --font-base: 'Source Sans Pro';
-  --font-highlight: 'Source Sans Pro';
-  --font-code: 'Ubuntu Mono';
-}
-
-/* body font */
-/* body font family */
-body,p,h1,h2,h3,h4,h5,h6 {
-  font-family: var(--font-base, 'Roboto', 'DIN', 'Helvetica', sans-serif);
-  color: var(--color-text);
-  font-weight: 400;
-  font-size: 17px;
-}
-
-/* title font family, weight and size */
-h1,h2 {
-  font-family: var(--font-highlight, 'Roboto', 'DIN', 'Helvetica', sans-serif);
-  color: var(--color-text);
-  font-weight: 600;
-}
-
-h1 {
-  font-size: 1.802em;
-  margin-top: 0.9em;
-  margin-bottom: 0.8em;
-}
-
-h2 {
-  font-size: 1.602em;
-  margin-top: 0.2em;
-  margin-bottom: 0.6em;
-}
-
-h3 {
-  font-size: 1.424em;
-  margin-top: 0.6em;
-  margin-bottom: 0.4em;
-}
-
-h4 {
-  font-size: 1.266em;
-  margin-top: 0.5em;
-  margin-bottom: 0.3em;
-}
-
-h5 {
-  font-size: 1.266em;
-  margin-top: 0.5em;
-  margin-bottom: 0.3em;
-}
-
-h6 {
-  font-size: 1.125em;
-  margin-top: 0.5em;
-  margin-bottom: 0.3em;
-}
-
-/* code style */
-pre {
-  font-family: var(--font-code,"Menlo","Monaco", "Consolas","Liberation Mono", "Courier New", monospace);
-  background-color: var(--color-code-bg);
-  border: 1px solid var(--color-border);
-  font-size: 16px;
-}
-code {
-  font-family: var(--font-code,"Menlo","Monaco", "Consolas","Liberation Mono", "Courier New", monospace);
-  font-size: 16px;
-}
-
-/* Buttons and Links -------------------------------------------------------- */
-
-a,
-a:visited,
-code a,
-code a:visited,
-pre a,
-pre a:visited {
-  color: #cc6699;
-}
-
-a:hover,
-a:focus,
-a:active,
-code a:hover,
-code a:focus,
-code a:active,
-pre a:hover,
-pre a:focus,
-pre a:active {
-  color: #cc3366;
-  text-decoration: underline;
-}
-
-/* table even shading colour */
-.even {
-    background-color: var(--color-code-bg);
-}
-
+/* Navbar -------------------------------------------------------------------- */
 
 /* pkgdown navbar */
 
-.navbar-default {
-    background-color: var(--color-primary);
-    border-color: transparent;
-    background: -o-linear-gradient(329deg, rgba(0,153,204,1) 0%, rgba(153,153,204,1) 15%, rgba(153,153,204,1) 30%, rgba(204,102,153,1) 45%, rgba(204,51,102,1) 60%, rgba(204,51,51,1) 81%, rgba(255,51,51,1) 100%);
-background: linear-gradient(121deg, rgba(0,153,204,1) 0%, rgba(153,153,204,1) 15%, rgba(153,153,204,1) 30%, rgba(204,102,153,1) 45%, rgba(204,51,102,1) 60%, rgba(204,51,51,1) 81%, rgba(255,51,51,1) 100%); 
+.navbar {
+  border-color: transparent;
+  background: -o-linear-gradient(
+    330deg,
+    hsl(221deg 79% 9%) 0%,
+    hsl(214deg 77% 13%) 5%,
+    hsl(210deg 74% 16%) 11%,
+    hsl(206deg 74% 19%) 20%,
+    hsl(264deg 34% 31%) 31%,
+    hsl(327deg 62% 32%) 43%,
+    hsl(357deg 68% 38%) 56%,
+    hsl(5deg 63% 46%) 67%,
+    hsl(12deg 74% 53%) 78%,
+    hsl(17deg 99% 60%) 86%,
+    hsl(30deg 100% 58%) 93%,
+    hsl(41deg 100% 58%) 98%,
+    hsl(52deg 95% 61%) 100%
+  );
+  background: linear-gradient(
+    120deg,
+    hsl(221deg 79% 9%) 0%,
+    hsl(214deg 77% 13%) 5%,
+    hsl(210deg 74% 16%) 11%,
+    hsl(206deg 74% 19%) 20%,
+    hsl(264deg 34% 31%) 31%,
+    hsl(327deg 62% 32%) 43%,
+    hsl(357deg 68% 38%) 56%,
+    hsl(5deg 63% 46%) 67%,
+    hsl(12deg 74% 53%) 78%,
+    hsl(17deg 99% 60%) 86%,
+    hsl(30deg 100% 58%) 93%,
+    hsl(41deg 100% 58%) 98%,
+    hsl(52deg 95% 61%) 100%
+  );
 }
 
 .navbar .navbar-nav > li > a,
@@ -139,30 +61,44 @@ background: linear-gradient(121deg, rgba(0,153,204,1) 0%, rgba(153,153,204,1) 15
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
     color: white;
-    background-color: #8e476b;
+    background-color: #d6dbdf;
+;
 }
 
-.navbar .navbar-nav > .active > a,
-.dropdown-menu > .active > a,
-.navbar-default .navbar-nav > .open > a {
+.dropdown-menu {
+  background-color:  #f8f9f9;
+}
+
+/* Buttons and Links -------------------------------------------------------- */
+
+a,
+a:visited,
+code a,
+code a:visited,
+pre a,
+pre a:visited {
+  color: #a11f25;
+}
+
+a:hover,
+a:focus,
+a:active,
+code a:hover,
+code a:focus,
+code a:active,
+pre a:hover,
+pre a:focus,
+pre a:active {
+  color: #d73223;
+  text-decoration: underline;
+}
+
+a.navbar-brand {
   color: white;
-  background-color: #8e476b;
 }
 
-.navbar-inverse .navbar-brand:hover,
-.navbar-inverse .navbar-brand:focus {
-  background-color: transparent;
-  color: white;
-}
+/* Table -------------------------------------------------------------------- */
 
-.navbar-default .navbar-link:hover {
-    color: white;
-}
-
-.label-default {
-  background-color: #cc6699;
-}
-
-body {
-  line-height: 1.6;
+table td {
+  padding: 0.3rem !important;
 }

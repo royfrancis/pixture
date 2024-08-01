@@ -15,3 +15,5 @@ vignettes/*
 ^\.\.Rcheck/
 Dockerfile
 man/figures
+to-do.txt
+.quarto/
