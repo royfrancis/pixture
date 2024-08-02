@@ -59,3 +59,21 @@ reference:
   contents:
   - runPixfigure
   - runPixgallery
+
+articles:
+
+- title: Usage
+  navbar: Usage
+  contents:
+  - pixfigure
+  - pixgallery
+
+- title: Shiny
+  navbar: Shiny
+  contents:
+  - shiny
+
+- title: Demo
+  navbar: Demo
+  contents:
+  - fern

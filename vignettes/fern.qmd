@@ -1,0 +1,80 @@
+---
+title: Seychelles ferns
+subtitle: Gallery with custom HTML
+date: last-modified
+date-format: "DD-MMM-YYYY"
+format:
+  html:
+    page-layout: full
+---
+
+A recreation of the [Seychelles plant gallery](https://plantgallery.bio.gov.sc/Fern.html).
+
+```{r}
+library(pixture)
+
+dfr <- data.frame(
+  paths = c(
+    "https://plantgallery.bio.gov.sc/Image/BS2012_0160.JPG",
+    "https://plantgallery.bio.gov.sc/Image/BS2012_0161.JPG",
+    "https://plantgallery.bio.gov.sc/Image/BS2012_0164.JPG",
+    "https://plantgallery.bio.gov.sc/Image/Gendron_00105.JPG",
+    "https://plantgallery.bio.gov.sc/Image/Gendron_00158.JPG",
+    "https://plantgallery.bio.gov.sc/Image/Gendron_00166.JPG",
+    "https://plantgallery.bio.gov.sc/Image/Gendron_00183.JPG",
+    "https://plantgallery.bio.gov.sc/Image/SenterreB_005005.JPG"
+  ),
+  info = c(
+    "Senterre, Bruno (29-11-2012)",
+    "Senterre, Bruno (29-11-2012)",
+    "Senterre, Bruno (29-11-2012)",
+    "Gendron, Gilberte (16-03-2013)",
+    "Gendron, Gilberte (16-03-2013)",
+    "Gendron, Gilberte (16-03-2013)",
+    "Gendron, Gilberte (16-03-2013)",
+    "Senterre, Bruno (16-04-2012)"
+  ),
+  image_id = c("15730", "15731", "15734", "602", "629", "633", "642", "17285"),
+  species = c(
+    "Asplenium aethiopicum",
+    "Asplenium aethiopicum",
+    "Asplenium aethiopicum",
+    "Asplenium affine",
+    "Asplenium affine",
+    "Asplenium affine",
+    "Asplenium affine",
+    "Asplenium caudatum var. minor"
+  ),
+  location = c(
+    "Silhouette, Rivière Quatre Cent",
+    "Silhouette, Rivière Quatre Cent",
+    "Silhouette, Rivière Quatre Cent",
+    "Mahé, Pérard",
+    "Mahé, Pérard",
+    "Mahé, Pérard",
+    "Mahé, Pérard",
+    "Mahé, Morne Seychellois Est"
+  ),
+  url = c(
+    "https://www.fernsoftheworld.com/2023/10/28/asplenium-aethiopicum/",
+    "https://www.fernsoftheworld.com/2023/10/28/asplenium-aethiopicum/",
+    "https://www.fernsoftheworld.com/2023/10/28/asplenium-aethiopicum/",
+    "https://www.fernsoftheworld.com/2019/12/21/asplenium-affine/",
+    "https://www.fernsoftheworld.com/2019/12/21/asplenium-affine/",
+    "https://www.fernsoftheworld.com/2019/12/21/asplenium-affine/",
+    "https://www.fernsoftheworld.com/2019/12/21/asplenium-affine/",
+    "https://www.fernsoftheworld.com/2020/10/31/asplenium_caudatum/"
+  )
+)
+
+captions <- paste(
+  paste0("<b>", dfr$info, "</b><br>"),
+  paste0("<b>ID</b>: ", dfr$image_id, "<br>"),
+  paste0("<b>Species</b>: <a href='",dfr$url,"'>", dfr$species, "</a><br>"),
+  paste0("<b>Location</b>: ", dfr$location)
+)
+```
+
+```{r}
+pixgallery(dfr$paths, captions, caption_valign = "below")
+```

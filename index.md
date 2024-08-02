@@ -1,4 +1,4 @@
-# pixture <img src="logo.webp" style="width:120px;float:right;" align="right" />
+# pixture <img src="logo.webp" alt="pixture-logo" style="width:120px;float:right;" align="right" />
 
 [![ci_badge](https://github.com/royfrancis/pixture/workflows/r-cmd-check/badge.svg)](https://github.com/royfrancis/pixture/actions?workflow=r-cmd-check) [![codecov](https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK)](https://app.codecov.io/gh/royfrancis/pixture/) [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
