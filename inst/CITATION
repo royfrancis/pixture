@@ -1,0 +1,11 @@
+bibentry(
+  bibtype = "Manual",
+  title = "pixture: Responsive HTML image gallery in R",
+  author = c(
+    person("Roy", "Francis")
+  ),
+  year = 2024,
+  version = "0.0.3",
+  note = "R package version 0.0.3",
+  url = "https://github.com/royfrancis/pixture"
+)
