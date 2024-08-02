@@ -2,7 +2,7 @@
 % Please edit documentation in R/pixgallery.R
 \name{pixgallery}
 \alias{pixgallery}
-\title{Create An HTML Image Gallery}
+\title{Create an image gallery}
 \usage{
 pixgallery(
   path,
@@ -57,20 +57,35 @@ pixgallery(
 \item{type}{Deprecated. Use 'layout'.}
 }
 \description{
-Create an HTML image gallery
+Create an image gallery
 }
 \details{
-**grid**: Grid responsive layout. Width is flexible to fit parent. \cr
-**fixed**: Same as grid but non-responsive. Strictly fixed dimensions. Defaults to square image. When using `caption_valign` options 'top','bottom' or 'center', note that long captions may overflow. \cr
-**mosaic**: Grid layout with mixed sizes. \cr
-**masonry**: Column layout where images flow vertically. Image height cannot be set. When using `caption_valign` options 'top','bottom' or 'center', note that long captions may overflow. \cr
-**justified**: Similar to masonry but images flow horizontally. Image width cannot be set. When using `caption_valign` options 'top','bottom' or 'center', note that long captions are clipped. Option 'below' may cause images to be stretched if captions are too long. \cr
-**elastic**: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
-**rhombus**: Diamond shaped layout with three columns. Image size and number of columns are fixed. Completely non-responsive without breakpoints. Captions cannot be displayed on thumbnails. \cr
+\strong{grid}: Grid responsive layout. Dimensions are mostly fluid to fit parent. \cr
+\strong{fixed}: Same as grid but with strictly fixed dimensions. Defaults to square image. When using `caption_valign` options 'top', 'bottom' or 'center', note that long captions may overflow. \cr
+\strong{mosaic}: Grid layout with mixed sizes. \cr
+\strong{masonry}: Column layout where images flow vertically. Image height cannot be set. When using `caption_valign` options 'top', 'bottom' or 'center', note that long captions may overflow. \cr
+\strong{justified}: Similar to masonry but images flow horizontally. Image width cannot be set. When using `caption_valign` options 'top', 'bottom' or 'center', note that long captions are clipped. Option 'below' may cause images to be stretched if captions are too long. \cr
+\strong{elastic}: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
+\strong{rhombus}: Diamond shaped layout with three columns. Image size and number of columns are fixed. Completely non-responsive without breakpoints. Captions cannot be displayed on thumbnails. \cr
 }
 \examples{
 library(pixture)
-paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+paths <- c(
+ "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg",
+ "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg",
+ "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg",
+ "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg",
+ "https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg",
+ "https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg",
+ "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg",
+ "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg"
+)
 pixgallery(paths)
 
+# local example
+\dontrun{
+library(pixture)
+paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+pixgallery(paths)
+}
 }

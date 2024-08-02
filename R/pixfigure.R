@@ -1,5 +1,7 @@
-#' @title Create a figure
-#' @description Create a figure
+#' Create a simple layout of images
+#' @description 
+#' Create a simple sequential layout of images
+#' 
 #' @param path A character vector of full paths to images.
 #' @param caption A character vector of captions for the images (Optional).
 #' @param link A logical or character vector. What happens when you click on the image? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.
@@ -14,9 +16,19 @@
 #' 
 #' @examples
 #' library(pixture)
-#' paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+#' paths <- c(
+#'   "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg",
+#'   "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg",
+#'   "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg"
+#' )
 #' pixfigure(paths)
 #' 
+#' # local example
+#' \dontrun{
+#' library(pixture)
+#' paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+#' pixfigure(paths)
+#' }
 #' @export
 #'
 pixfigure <- function(
@@ -78,7 +90,7 @@ pixfigure <- function(
 #' Shiny bindings for pixfigure
 #'
 #' Output and render functions for using pixfigure within Shiny
-#' applications and interactive Rmd documents.
+#' applications and interactive documents.
 #'
 #' @param outputId output variable to read from
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
@@ -108,11 +120,12 @@ renderPixfigure <- function(expr, env = parent.frame(), quoted = FALSE) {
   shinyRenderWidget(expr, pixfigureOutput, env, quoted = TRUE)
 }
 
-#' @title Launch pixfigure demo shiny application
-#' @description Launches interactive shiny session in the browser.
-#' @param ... Parameters are passed to \code{\link{runApp}}.
+#' Interactive pixfigure demo
+#' @description
+#' Launches interactive shiny demo app
+#' 
+#' @param ... Parameters are passed to \code{runApp()}.
 #' @return This function does not return anything
-#' @seealso \code{\link{runApp}}
 #' @examples
 #' \dontrun{
 #' library(pixture)

@@ -1,5 +1,10 @@
 /* Extra CSS */
 
+/* Wrap code rather than scroll */
+pre {
+  white-space: pre-wrap;
+}
+
 /* Navbar -------------------------------------------------------------------- */
 
 /* pkgdown navbar */
@@ -41,7 +46,11 @@
 }
 
 .navbar .navbar-nav > li > a,
-.navbar-default .navbar-nav > .open > a {
+.navbar-default .navbar-nav > .open > a, 
+.dropdown-menu > li > a, 
+.dropdown-menu > .active > a,
+.dropdown-menu > li > a:visited, 
+.dropdown-menu > .active > a:visited {
     color: white;
     background-color: transparent;
 }
@@ -60,13 +69,39 @@
 .dropdown-menu > li > a:focus,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-    color: white;
-    background-color: #d6dbdf;
+  color: white;
+  background-color: transparent;
+  filter: brightness(80%);
 ;
 }
 
 .dropdown-menu {
-  background-color:  #f8f9f9;
+  background-image: -o-linear-gradient(
+    335deg,
+    hsl(221deg 79% 9%) 0%,
+    hsl(217deg 79% 10%) 7%,
+    hsl(215deg 78% 12%) 16%,
+    hsl(214deg 77% 13%) 28%,
+    hsl(212deg 76% 14%) 41%,
+    hsl(211deg 75% 15%) 55%,
+    hsl(210deg 74% 16%) 69%,
+    hsl(208deg 74% 17%) 82%,
+    hsl(207deg 74% 18%) 92%,
+    hsl(206deg 74% 19%) 100%
+  );
+  background-image: linear-gradient(
+    115deg,
+    hsl(221deg 79% 9%) 0%,
+    hsl(217deg 79% 10%) 7%,
+    hsl(215deg 78% 12%) 16%,
+    hsl(214deg 77% 13%) 28%,
+    hsl(212deg 76% 14%) 41%,
+    hsl(211deg 75% 15%) 55%,
+    hsl(210deg 74% 16%) 69%,
+    hsl(208deg 74% 17%) 82%,
+    hsl(207deg 74% 18%) 92%,
+    hsl(206deg 74% 19%) 100%
+  );
 }
 
 /* Buttons and Links -------------------------------------------------------- */

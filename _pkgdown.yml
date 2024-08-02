@@ -34,3 +34,28 @@ navbar:
 home:
   sidebar:
     structure: [links, license, citation, authors, dev]
+
+reference:
+
+- title: Core functions
+  desc: >
+    Functions to generate simple and complex layouts
+  contents:
+  - pixfigure
+  - pixgallery
+
+- title: Usage in Shiny Apps
+  desc: >
+    Output and render functions for use in Shiny apps
+  contents:
+  - pixfigureOutput
+  - renderPixfigure
+  - pixgalleryOutput
+  - renderPixgallery
+
+- title: Demo shiny apps
+  desc: >
+    Functions to launch demo apps
+  contents:
+  - runPixfigure
+  - runPixgallery

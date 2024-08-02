@@ -2,7 +2,7 @@
 % Please edit documentation in R/pixfigure.R
 \name{pixfigure}
 \alias{pixfigure}
-\title{Create a figure}
+\title{Create a simple layout of images}
 \usage{
 pixfigure(
   path,
@@ -39,11 +39,21 @@ pixfigure(
 \item{elementId}{A character string denoting parent container ID.}
 }
 \description{
-Create a figure
+Create a simple sequential layout of images
 }
 \examples{
 library(pixture)
-paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+paths <- c(
+  "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg",
+  "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg",
+  "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg"
+)
 pixfigure(paths)
 
+# local example
+\dontrun{
+library(pixture)
+paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+pixfigure(paths)
+}
 }

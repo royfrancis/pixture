@@ -1,5 +1,6 @@
 ---
 title: "Pixgallery usage"
+subtitle: "Generate an image gallery"
 date: last-modified
 date-format: "DD-MMM-YYYY"
 format:
@@ -339,8 +340,8 @@ pixgallery(paths_a, layout = "rhombus", gap = "0px", caption = captions, shuffle
 
 Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered HTML document.
 
-<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;" style="inline-block">
-&nbsp; <i class="fas fa-exclamation-circle"></i> &nbsp; Pixture does not move, copy or embed images. The images must be in their final intended destination. It is left to the user to handle images as assets. Images are not embedded into self contained documents.
+<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 1em;border-radius: 4px;" style="inline-block">
+<i class="fas fa-exclamation-circle"></i> &nbsp; Pixture does not move, copy or embed images. The images must be in their final intended destination. It is left to the user to handle images as assets. Images are not embedded into self contained documents.
 </p>
 
 ### Relative path
