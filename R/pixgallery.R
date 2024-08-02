@@ -20,7 +20,7 @@
 #' @param type Deprecated. Use 'layout'.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @details
-#' \strong{grid}: Grid responsive layout. Width is fluid to fit parent. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions may overflow. Manually set height in this case. \cr
+#' \strong{grid}: Grid responsive layout. Width is fluid to fit parent. When using \code{caption_valign} options 'top', 'bottom' or 'center', height cannot be adjusted. \cr
 #' \cr
 #' \strong{fixed}: Same as grid but with strictly fixed dimensions. Defaults to square image. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions may overflow. Manually set height in this case. \cr
 #' \cr
