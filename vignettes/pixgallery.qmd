@@ -221,7 +221,7 @@ dfr <- data.frame(
   "grid"      = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
   "fixed"     = c("🟩", "🟩", "🟡", "🟡", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
   "mosaic"    = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
-  "masonry"   = c("🟩", "🟩", "🟡", "🟡", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩", "🟩"),
+  "masonry"   = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩", "🟩"),
   "justified" = c("🟩", "🟩", "🟡", "🟡", "🟠", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
   "elastic"   = c("🟩", "🟩", "🔴", "🔴", "🔴", "🔴", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
   "rhombus"   = c("🟩", "🟩", "🔴", "🔴", "🔴", "🔴", "🟩", "🔴", "🔴", "🟩", "🔴", "🟩")
@@ -235,12 +235,14 @@ knitr::kable(dfr)
 
 <br>
 🟩 *Functional*  
-🟡/🟠/🔵 *Impaired*  
+🟡/🟠/🔵 *Known issues*  
 🔴 *Inactive/Disabled*  
   
-🟡 *Long captions extend beyond the images and/or clipped*  
+🟡 *Long captions may extend beyond the images and/or clipped. Set height manually (`h="300px"`, `h="100%"` etc)*  
 🟠 *Long captions force images to be stretched*  
 🔵 *Height cannot be adjusted when captions are displayed*  
+
+This may not be complete. This is work in progress.
 
 ### Fixed
 
@@ -272,7 +274,7 @@ pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "bel
 
 ### Masonry
 
-Column-wise layout with free height. The thumbnail width can be adjusted.
+Column-wise layout with free height. The thumbnail width can be adjusted. This works best for a set of images with mixed aspect ratios, for example; a mix of portrait and landscape images.
 
 ```{r}
 pixgallery(paths_b, layout = "masonry")
@@ -288,7 +290,7 @@ pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "be
 
 ### Justified
 
-Row-wise layout with free width. The thumbnail height can be adjusted.
+Row-wise layout with free width. The thumbnail height can be adjusted. This works best for a set of images with mixed aspect ratios, for example; a mix of portrait and landscape images.
 
 ```{r}
 pixgallery(paths_b, layout = "justified")

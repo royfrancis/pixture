@@ -73,7 +73,8 @@ articles:
   contents:
   - shiny
 
-- title: Demo
-  navbar: Demo
+- title: Showcase
+  navbar: Showcase
   contents:
   - fern
+  - cities
