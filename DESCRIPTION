@@ -1,7 +1,7 @@
 Package: pixture
 Type: Package
 Title: Responsive HTML Image Gallery
-Version: 0.0.3.1
+Version: 0.1.0
 Date: 2024-08-03
 Author: Roy Francis
 Maintainer: Roy Francis <zydoosu@gmail.com>
