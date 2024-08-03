@@ -183,28 +183,3 @@ renderPixgallery <- function(expr, env = parent.frame(), quoted = FALSE) {
   } # force quoted
   shinyRenderWidget(expr, pixgalleryOutput, env, quoted = TRUE)
 }
-
-#' Interactive pixgallery demo
-#' 
-#' @description
-#' Launches interactive shiny demo app
-#' 
-#' @param ... Parameters are passed to \code{runApp()}.
-#' @return This function does not return anything
-#' @examples
-#' \dontrun{
-#' library(pixture)
-#' runPixgallery()
-#' }
-#' @import htmlwidgets
-#' @importFrom shiny fluidPage titlePanel sidebarLayout sidebarPanel selectInput checkboxInput uiOutput mainPanel shinyApp
-#' @export
-#'
-runPixgallery <- function(...) {
-  appDir <- system.file("app-pixgallery", package = "pixture")
-  if (appDir == "") {
-    stop("Could not find app directory. Try re-installing `pixture`.", call. = FALSE)
-  }
-
-  shiny::runApp(appDir, ...)
-}

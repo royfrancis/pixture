@@ -55,10 +55,9 @@ reference:
 
 - title: Demo shiny apps
   desc: >
-    Functions to launch demo apps
+    Function to launch demo apps
   contents:
-  - runPixfigure
-  - runPixgallery
+  - launchApp
 
 articles:
 
