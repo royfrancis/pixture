@@ -1,11 +1,14 @@
 ---
 title: Seychelles ferns
-subtitle: Gallery with custom HTML
+subtitle: Gallery with information
 date: last-modified
 date-format: "DD-MMM-YYYY"
 format:
   html:
     page-layout: full
+    theme: none
+    minimal: true
+    toc: false
 ---
 
 A recreation of the [Seychelles plant gallery](https://plantgallery.bio.gov.sc/Fern.html).

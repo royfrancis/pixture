@@ -1,6 +1,6 @@
 ---
-title: 100 Cities
-subtitle: Card gallery style with overlay
+title: 100 Cities Variant
+subtitle: Card gallery style with info below
 date: last-modified
 date-format: "DD-MMM-YYYY"
 format:
@@ -433,10 +433,12 @@ dfr <- data.frame(
 Generate captions.
 
 ```{r}
-captions <- paste(
-  paste0("<div style='text-transform:uppercase;letter-spacing:3px;margin-bottom:0.2em;line-height:1.2;font-size:0.95em;'><b>", dfr$country, "</b></div><br>"),
-  paste0("<div style='font-size:1.8em;margin-bottom:0.3em;line-height:1;'><b>", dfr$city, "</b></div><br>"),
-  paste0("<div style='line-height:1.2;font-size:0.9em;'>", dfr$tagline, "</div>")
+captions <- paste0(
+  "<div style='line-height:0.1;'>",
+  paste0("<div style='text-transform:uppercase;letter-spacing:3px;margin-bottom:0.2em;line-height:1.2;font-size:0.8em;color:#abb2b9;'><b>", dfr$country, "</b></div><br>"),
+  paste0("<div style='font-size:1.6em;margin-bottom:0.2em;line-height:1;color:#34495e;'><b>", dfr$city, "</b></div><br>"),
+  paste0("<div style='line-height:1.2;font-size:0.9em;color:#808b96;'>", dfr$tagline, "</div>"),
+  "</div>"
 )
 ```
 
@@ -446,10 +448,10 @@ It would be better to just add CSS classes above and set the styles in a separat
 pixgallery(
   dfr$paths, 
   captions, 
-  caption_valign = "center", 
-  caption_halign = "center", 
-  layout = "mosaic",
-  border_radius = "10px",
+  caption_valign = "below", 
+  h = "250px", 
+  w = "200px",
+  layout = "grid",
   shuffle = TRUE,
   link = FALSE
 )
