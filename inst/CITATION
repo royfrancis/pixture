@@ -5,7 +5,7 @@ bibentry(
     person("Roy", "Francis")
   ),
   year = 2024,
-  version = "0.0.3",
-  note = "R package version 0.0.3",
+  version = "0.0.3.1",
+  note = "R package version 0.0.3.1",
   url = "https://github.com/royfrancis/pixture"
 )

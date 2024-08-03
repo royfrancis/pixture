@@ -1,3 +1,12 @@
+# pixture 0.0.3.1
+
+- 03-Aug-2024
+- Add showcase: ferns, cities to documentation
+- Combined shiny apps into single launcher `launchApp()`
+- Fixed caption overflow in masonry
+- Justified layout without caption is now full width
+- Grid layout height can be adjusted
+
 # pixture 0.0.3
 
 - 01-Aug-2024

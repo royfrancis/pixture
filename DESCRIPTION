@@ -1,8 +1,8 @@
 Package: pixture
 Type: Package
 Title: Responsive HTML Image Gallery
-Version: 0.0.3
-Date: 2024-08-01
+Version: 0.0.3.1
+Date: 2024-08-03
 Author: Roy Francis
 Maintainer: Roy Francis <zydoosu@gmail.com>
 Description: HTML image gallery in R with responsive layout and lightbox.

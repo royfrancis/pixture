@@ -143,10 +143,10 @@ function pixgallery_grid(el,x,fixed){
   } else {
     if(captionValign == "none") {
       document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));grid-auto-rows:' + h + ';">' + newValues + '</div>';
-    } else if(captionValign == "below"){
+    } else if(captionValign == "below") {
       document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));">' + newValues + '</div>';
     } else {
-      document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));grid-template-rows: repeat(auto-fit, minmax(' + h + ',1fr));">' + newValues + '</div>';
+      document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-grid" style="gap:' + gap + ';grid-template-columns: repeat(auto-fit, minmax(' + w + ',1fr));grid-auto-rows: minmax(' + h + ',1fr);">' + newValues + '</div>';
     }
   }
 

@@ -435,7 +435,7 @@ Generate captions.
 ```{r}
 captions <- paste(
   paste0("<div style='text-transform:uppercase;letter-spacing:3px;margin-bottom:0.2em;line-height:1.2;font-size:0.95em;'><b>", dfr$country, "</b></div><br>"),
-  paste0("<div style='font-size:1.8em;margin-bottom:0.3em;line-height:1;'><b>", dfr$city, "</b></div><br>"),
+  paste0("<div style='font-size:1.8em;margin-bottom:0.3em;line-height:1;letter-spacing:2px;'><b>", dfr$city, "</b></div><br>"),
   paste0("<div style='line-height:1.2;font-size:0.9em;'>", dfr$tagline, "</div>")
 )
 ```
