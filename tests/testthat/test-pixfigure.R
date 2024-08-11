@@ -44,6 +44,7 @@ test_that("Link", {
   expect_error(pixfigure(paths, link = NULL))
   expect_error(pixfigure(paths, link = NA))
   expect_error(pixfigure(paths, link = "bla"))
+  expect_error(pixfigure(paths, link = c(FALSE,FALSE)))
 })
 
 test_that("Captions", {

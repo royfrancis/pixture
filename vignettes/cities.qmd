@@ -6,8 +6,6 @@ date-format: "DD-MMM-YYYY"
 format:
   html:
     page-layout: full
-    theme: none
-    minimal: true
     toc: false
 ---
 
@@ -15,8 +13,6 @@ A recreation of the [100 cities bucket list](https://www.delicious.com.au/travel
 
 ```{r}
 #| code-fold: true
-
-library(pixture)
 
 dfr <- data.frame(
   paths = c(
@@ -434,20 +430,24 @@ Generate captions.
 
 ```{r}
 captions <- paste(
-  paste0("<div style='text-transform:uppercase;letter-spacing:3px;margin-bottom:0.2em;line-height:1.2;font-size:0.95em;'><b>", dfr$country, "</b></div><br>"),
-  paste0("<div style='font-size:1.8em;margin-bottom:0.3em;line-height:1;letter-spacing:2px;'><b>", dfr$city, "</b></div><br>"),
-  paste0("<div style='line-height:1.2;font-size:0.9em;'>", dfr$tagline, "</div>")
+  "<div style='text-shadow:1px 1px 4px gray;'>",
+  paste0("<div style='text-transform:uppercase;letter-spacing:3px;margin-bottom:0.2em;line-height:1.2;font-size:0.9rem;'><b>", dfr$country, "</b></div>"),
+  paste0("<div style='font-size:1.5rem;margin-bottom:0.2em;line-height:1;letter-spacing:2px;'><b>", dfr$city, "</b></div>"),
+  paste0("<div style='line-height:1.2;font-size:0.85rem;'>", dfr$tagline, "</div>"),
+  "</div>"
 )
 ```
 
 It would be better to just add CSS classes above and set the styles in a separate CSS document. Refresh the page to see shuffle in action.
 
 ```{r}
+library(pixture)
+
 pixgallery(
-  dfr$paths, 
-  captions, 
-  caption_valign = "center", 
-  caption_halign = "center", 
+  dfr$paths,
+  captions,
+  caption_valign = "center",
+  caption_halign = "center",
   layout = "mosaic",
   border_radius = "10px",
   shuffle = TRUE,

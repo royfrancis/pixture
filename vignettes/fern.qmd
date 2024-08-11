@@ -6,16 +6,12 @@ date-format: "DD-MMM-YYYY"
 format:
   html:
     page-layout: full
-    theme: none
-    minimal: true
     toc: false
 ---
 
 A recreation of the [Seychelles plant gallery](https://plantgallery.bio.gov.sc/Fern.html).
 
 ```{r}
-library(pixture)
-
 dfr <- data.frame(
   paths = c(
     "https://plantgallery.bio.gov.sc/Image/BS2012_0160.JPG",
@@ -79,5 +75,6 @@ captions <- paste(
 ```
 
 ```{r}
+library(pixture)
 pixgallery(dfr$paths, captions, caption_valign = "below")
 ```

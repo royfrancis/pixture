@@ -13,6 +13,7 @@ To install the dependencies and the **pixture** package, run the following comma
 ```r
 install.packages(c("htmlwidgets","shiny","remotes"))
 remotes::install_github('royfrancis/pixture')
+
 library(pixture)
 # packageVersion("pixture")
 ```

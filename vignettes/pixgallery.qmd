@@ -315,8 +315,8 @@ All parameters are not applicable to every layout. The table below indicates whi
 
 dfr <- data.frame(
   "parameter" = c("caption", "caption_valign", "", "caption_halign", "link", "h", "w", "gap", "border_radius", "shuffle"),
-  "option"    = c("", "over*", "below", "", "", "", "", "", "", ""),
-  "grid"      = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
+  "option"    = c("", "over^1^", "below", "", "", "", "", "", "", ""),
+  "grid"      = c("🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
   "fixed"     = c("🟩", "🟡", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
   "mosaic"    = c("🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
   "masonry"   = c("🟩", "🟩", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩", "🟩"),
@@ -328,13 +328,14 @@ dfr <- data.frame(
 # dfr$parameter <- NULL
 knitr::kable(dfr)
 ```
-* top/center/bottom  
+
+^1^ top/center/bottom  
 <br>
 🟩 *Functional*  
 🟡/🟠/🔵 *Known issues*  
 🔴 *Inactive/Disabled*  
   
-🟡 *Long captions may extend beyond the images and/or clipped. Set height manually (`h="300px"`, `h="100%"` etc)*  
+🟡 *Long captions may extend beyond the images and/or clipped. Set height/width manually (`h="300px"`, `h="100%"` etc)*  
 🟠 *Long captions force images to be stretched*  
 🔵 *Height cannot be adjusted when captions are displayed*  
 

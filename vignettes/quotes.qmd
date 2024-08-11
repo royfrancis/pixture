@@ -1,0 +1,109 @@
+---
+title: Quotes
+subtitle: Masonry grid gallery with text
+date: last-modified
+date-format: "DD-MMM-YYYY"
+format:
+  html:
+    page-layout: full
+    toc: false
+---
+
+```{r}
+#| code-fold: true
+
+dfr <- data.frame(
+  paths = c(
+    "https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/5943844/pexels-photo-5943844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/2743739/pexels-photo-2743739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/4132337/pexels-photo-4132337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/1687093/pexels-photo-1687093.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/4584387/pexels-photo-4584387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/5254061/pexels-photo-5254061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/7195272/pexels-photo-7195272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/4587995/pexels-photo-4587995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/4012670/pexels-photo-4012670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/1600757/pexels-photo-1600757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/8560383/pexels-photo-8560383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/3368844/pexels-photo-3368844.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "https://images.pexels.com/photos/20316911/pexels-photo-20316911/free-photo-of-woman-driving-at-night.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/4584462/pexels-photo-4584462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/7203718/pexels-photo-7203718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/1767434/pexels-photo-1767434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/15300927/pexels-photo-15300927/free-photo-of-flowers-in-boot.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/2304253/pexels-photo-2304253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "https://images.pexels.com/photos/7114749/pexels-photo-7114749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  ),
+  quote = c(
+    "The best way to appreciate your job is to imagine yourself without one.",
+    "If at first you don't succeed, then skydiving definitely isn't for you.",
+    "It could be that your purpose in life is to serve as a warning to others.",
+    "Hard work never killed anybody, but why take a chance?",
+    "I always wanted to be somebody, but now I realize I should have been more specific.",
+    "A pessimist is a person who has had to listen to too many optimists.",
+    "If you think you are too small to make a difference, try sleeping with a mosquito.",
+    "Remember, you are unique, just like everyone else.",
+    "If you try to fail, and succeed, which have you done?",
+    "I am not afraid of death, I just don't want to be there when it happens.",
+    "Why do they call it rush hour when nothing moves?",
+    "I love being married. It's so great to find one special person you want to annoy for the rest of your life.",
+    "A bank is a place that will lend you money if you can prove that you don't need it.",
+    "Speed has never killed anyone. Suddenly becoming stationary, that's what gets you.",
+    "Have you ever noticed that anybody driving slower than you is an idiot, and anyone going faster than you is a maniac?",
+    "Always forgive your enemies; nothing annoys them so much.",
+    "The trouble with having an open mind, of course, is that people will insist on coming along and trying to put things in it.",
+    "My husband and I fell in love at first sight. Maybe I should have taken a second look.",
+    "Before you criticize someone, you should walk a mile in their shoes. That way when you criticize them, you are a mile away from them and you have their shoes.",
+    "Everybody wants to save the earth. No one wants to help mom do the dishes.",
+    "I'm not crazy — I've just been in a very bad mood for 40 years."
+  ),
+  author = c(
+    "Oscar Wilde",
+    "Steven Wright",
+    "Ashleigh Brilliant",
+    "Edgar Bergen",
+    "Lily Tomlin",
+    "Don Marquis",
+    "Dalai Lama",
+    "Margaret Mead",
+    "George Carlin",
+    "Woody Allen",
+    "Robin Williams",
+    "Rita Rudner",
+    "Bob Hope",
+    "Jeremy Clarkson",
+    "George Carlin",
+    "Oscar Wilde",
+    "Terry Pratchett",
+    "Halley Reed",
+    "Jack Handey",
+    "P J O'Rourke",
+    "Ouiser Boudreaux"
+  )
+)
+```
+
+```{r}
+captions <- paste(
+  "<div style='text-shadow:1px 1px 4px gray;'>",
+  paste0("<div style='line-height:1.2;margin-bottom:0.5em;'>“", dfr$quote, "”</div>"),
+  paste0("<div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>", dfr$author, "</strong></div>"),
+  "</div>"
+)
+```
+
+```{r}
+library(pixture)
+
+pixgallery(
+  dfr$paths,
+  captions,
+  layout = "masonry",
+  caption_valign = "center",
+  caption_halign = "center",
+  shuffle = TRUE
+)
+```
+
