@@ -74,15 +74,15 @@ function pixcarousel(el,x){
 
     } else if(captionValign == "top") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image pixcarousel-image-over" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-top" style="text-align:{captionHalign};">{caption}</div></div>';
       
     } else if(captionValign == "center") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image pixcarousel-image-over" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-center" style="text-align:{captionHalign};">{caption}</div></div>';
 
     } else if(captionValign == "bottom") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image pixcarousel-image-over" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-bottom" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-bottom" style="text-align:{captionHalign};">{caption}</div></div>';
     }
   }
 
