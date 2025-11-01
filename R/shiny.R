@@ -1,8 +1,7 @@
 #' Interactive shiny app
 #' @description
 #' Launches interactive shiny demo app
-#'
-#' @param app A character string denoting the app. Options are "pixfigure", "pixgallery", "pixgallery-simple"
+#' @param app A character string denoting the app. Options are "pixfigure", "pixgallery", "pixgallery-simple", "pixcarousel".
 #' @param ... Parameters are passed to \code{runApp()}.
 #' @return This function does not return anything
 #' @examples
