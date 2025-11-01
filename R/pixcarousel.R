@@ -121,7 +121,12 @@ pixcarousel <- function(
   }
 
   # check if shuffle is logical, length 1 and not NA or NULL
-  if (is.null(shuffle) || is.na(shuffle) || !is.logical(shuffle) || (length(shuffle) != 1)) {
+  if (
+    is.null(shuffle) ||
+      is.na(shuffle) ||
+      !is.logical(shuffle) ||
+      (length(shuffle) != 1)
+  ) {
     stop("Parameter 'shuffle' must be a logical of length 1 (TRUE or FALSE).")
   }
 
@@ -179,13 +184,21 @@ pixcarousel <- function(
 #' @name pixcarousel-shiny
 #'
 #' @export
-pixcarouselOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'pixcarousel', width, height, package = 'pixture')
+pixcarouselOutput <- function(outputId, width = '100%', height = '400px') {
+  htmlwidgets::shinyWidgetOutput(
+    outputId,
+    'pixcarousel',
+    width,
+    height,
+    package = 'pixture'
+  )
 }
 
 #' @rdname pixcarousel-shiny
 #' @export
 renderPixcarousel <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
+  if (!quoted) {
+    expr <- substitute(expr)
+  } # force quoted
   htmlwidgets::shinyRenderWidget(expr, pixcarouselOutput, env, quoted = TRUE)
 }

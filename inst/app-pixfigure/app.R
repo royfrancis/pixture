@@ -34,16 +34,35 @@ server <- function(input, output) {
   })
 
   output$fig <- pixture::renderPixfigure({
-    if (!is.null(input$path)) path <- unlist(strsplit(input$path, input$sep))
+    if (!is.null(input$path)) {
+      path <- unlist(strsplit(input$path, input$sep))
+    }
 
     if (input$caption_check) {
       if (!is.null(input$caption)) {
         cpt <- unlist(strsplit(input$caption, ";"))
-        if (length(cpt) != length(path)) stop("Number of captions do not match number of images.")
-        pixture::pixfigure(path, caption = cpt, link = input$link, h = input$h, w = input$w, fit = input$fit, position = input$position)
+        if (length(cpt) != length(path)) {
+          stop("Number of captions do not match number of images.")
+        }
+        pixture::pixfigure(
+          path,
+          caption = cpt,
+          link = input$link,
+          h = input$h,
+          w = input$w,
+          fit = input$fit,
+          position = input$position
+        )
       }
     } else {
-      pixture::pixfigure(path, link = input$link, h = input$h, w = input$w, fit = input$fit, position = input$position)
+      pixture::pixfigure(
+        path,
+        link = input$link,
+        h = input$h,
+        w = input$w,
+        fit = input$fit,
+        position = input$position
+      )
     }
   })
 }

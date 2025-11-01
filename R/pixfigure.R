@@ -1,7 +1,7 @@
 #' Create a simple layout of images
-#' @description 
+#' @description
 #' Create a simple sequential layout of images
-#' 
+#'
 #' @param path A character vector of full paths to images.
 #' @param caption A character vector of captions for the images (Optional).
 #' @param link A logical or character vector. What happens when you click on the image? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.
@@ -13,7 +13,7 @@
 #' @param width A character denoting width of the widget as a string in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
-#' 
+#'
 #' @examples
 #' library(pixture)
 #' paths <- c(
@@ -22,7 +22,7 @@
 #'   "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg"
 #' )
 #' pixfigure(paths)
-#' 
+#'
 #' # local example
 #' \dontrun{
 #' library(pixture)
@@ -32,18 +32,27 @@
 #' @export
 #'
 pixfigure <- function(
-    path,
-    caption = NULL,
-    link = TRUE,
-    h = "auto",
-    w = "100%",
-    fit = "cover",
-    position = "center",
-    width = "100%",
-    height = "100%",
-    elementId = NULL) {
+  path,
+  caption = NULL,
+  link = TRUE,
+  h = "auto",
+  w = "100%",
+  fit = "cover",
+  position = "center",
+  width = "100%",
+  height = "100%",
+  elementId = NULL
+) {
   if (!is.null(caption)) {
-    if (length(caption) != length(path)) stop(paste0("Length of 'caption' (", length(caption), ") is not not equal to the length of 'path' (", length(path), "). If 'caption' is used, it must be the same length as 'path'."))
+    if (length(caption) != length(path)) {
+      stop(paste0(
+        "Length of 'caption' (",
+        length(caption),
+        ") is not not equal to the length of 'path' (",
+        length(path),
+        "). If 'caption' is used, it must be the same length as 'path'."
+      ))
+    }
   } else {
     if (!is.null(names(path))) caption <- names(path)
   }
@@ -51,11 +60,21 @@ pixfigure <- function(
   names(path) <- NULL
 
   # check link
-  if (is.null(link) || all(is.na(link))) stop("Parameter 'link' must be a logical or a character vector.")
-  if (is.logical(link) && (length(link) != 1)) stop("Parameter 'link' must be of length 1. TRUE or FALSE.")
+  if (is.null(link) || all(is.na(link))) {
+    stop("Parameter 'link' must be a logical or a character vector.")
+  }
+  if (is.logical(link) && (length(link) != 1)) {
+    stop("Parameter 'link' must be of length 1. TRUE or FALSE.")
+  }
   if (is.character(link)) {
     if (length(link) != length(path)) {
-      stop(paste0("Length of 'link' (", length(link), ") is not not equal to the length of 'path' (", length(path), "). If 'link' is a character, it must be the same length as 'path'."))
+      stop(paste0(
+        "Length of 'link' (",
+        length(link),
+        ") is not not equal to the length of 'path' (",
+        length(path),
+        "). If 'link' is a character, it must be the same length as 'path'."
+      ))
     }
   }
 

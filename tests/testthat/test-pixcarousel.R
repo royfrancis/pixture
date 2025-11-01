@@ -22,7 +22,24 @@ paths <- c(
   "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 )
 
-captions <- c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower")
+captions <- c(
+  "night",
+  "forest",
+  "shark",
+  "coconut trees",
+  "flowers",
+  "field",
+  "misty",
+  "leaves",
+  "sunset",
+  "mountains",
+  "swamp",
+  "rainstorm",
+  "leaves",
+  "beach",
+  "leopard",
+  "sunflower"
+)
 
 # pixcarousel -------------------------------------------------------------------
 
@@ -30,7 +47,7 @@ test_that("No input", {
   expect_error(pixcarousel())
 })
 
-test_that("Default",{
+test_that("Default", {
   expect_no_error(pixcarousel(paths))
   obj <- pixcarousel(paths)
   expect_equal(class(obj), c("pixcarousel", "htmlwidget"))
@@ -38,7 +55,7 @@ test_that("Default",{
   expect_equal(length(obj$x$path), length(paths))
 })
 
-test_that("Captions",{
+test_that("Captions", {
   expect_no_error(pixcarousel(paths, caption = captions))
   obj <- pixcarousel(paths, caption = captions)
   expect_equal(length(obj$x$caption), length(paths))
@@ -54,7 +71,7 @@ test_that("Captions with NA", {
 })
 
 test_that("Captions with all NA", {
-  captions1 <- rep(NA,length(paths))
+  captions1 <- rep(NA, length(paths))
   expect_no_error(pixcarousel(paths, caption = captions1))
 })
 
@@ -71,18 +88,42 @@ test_that("Captions and captions as path names", {
 })
 
 test_that("Captions caption_valign", {
-  expect_no_error(pixcarousel(paths, caption = captions, caption_valign = "top"))
-  expect_no_error(pixcarousel(paths, caption = captions, caption_valign = "center"))
-  expect_no_error(pixcarousel(paths, caption = captions, caption_valign = "bottom"))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_valign = "top"
+  ))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_valign = "center"
+  ))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_valign = "bottom"
+  ))
   expect_error(pixcarousel(paths, caption = captions, caption_valign = "bla"))
   expect_error(pixcarousel(paths, caption = captions, caption_valign = NA))
   expect_error(pixcarousel(paths, caption = captions, caption_valign = NULL))
 })
 
 test_that("Captions caption_halign", {
-  expect_no_error(pixcarousel(paths, caption = captions, caption_halign = "left"))
-  expect_no_error(pixcarousel(paths, caption = captions, caption_halign = "center"))
-  expect_no_error(pixcarousel(paths, caption = captions, caption_halign = "right"))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_halign = "left"
+  ))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_halign = "center"
+  ))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_halign = "right"
+  ))
   expect_error(pixcarousel(paths, caption = captions, caption_halign = "bla"))
   expect_error(pixcarousel(paths, caption = captions, caption_halign = NA))
   expect_error(pixcarousel(paths, caption = captions, caption_halign = NULL))
@@ -90,11 +131,15 @@ test_that("Captions caption_halign", {
 
 test_that("Captions and link", {
   expect_no_error(pixcarousel(paths, caption = captions, link = FALSE))
-  expect_no_error(pixcarousel(paths, caption = captions, link = rep("bla",length(captions))))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions))
+  ))
   expect_error(pixcarousel(paths, caption = captions, link = "bla"))
   expect_error(pixcarousel(paths, caption = captions, link = NA))
   expect_error(pixcarousel(paths, caption = captions, link = NULL))
-  expect_error(pixcarousel(paths, caption = captions, link = c(T,F)))
+  expect_error(pixcarousel(paths, caption = captions, link = c(T, F)))
 })
 
 test_that("Slides", {
@@ -102,7 +147,14 @@ test_that("Slides", {
 })
 
 test_that("Other", {
-  expect_no_error(pixcarousel(paths, draggable = TRUE, show_buttons = FALSE, show_dots = FALSE, scroll_lock = FALSE, rewind = TRUE))
+  expect_no_error(pixcarousel(
+    paths,
+    draggable = TRUE,
+    show_buttons = FALSE,
+    show_dots = FALSE,
+    scroll_lock = FALSE,
+    rewind = TRUE
+  ))
 })
 
 test_that("Dimensions", {
@@ -112,8 +164,8 @@ test_that("Dimensions", {
 })
 
 test_that("Shuffle default", {
-  expect_no_error(pixcarousel(paths,shuffle=TRUE))
-  obj <- pixcarousel(paths,shuffle=TRUE)
+  expect_no_error(pixcarousel(paths, shuffle = TRUE))
+  obj <- pixcarousel(paths, shuffle = TRUE)
   expect_equal(length(obj$x$path), length(paths))
 })
 
