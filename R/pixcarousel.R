@@ -120,6 +120,11 @@ pixcarousel <- function(
     }
   }
 
+  # check if shuffle is logical, length 1 and not NA or NULL
+  if (is.null(shuffle) || is.na(shuffle) || !is.logical(shuffle) || (length(shuffle) != 1)) {
+    stop("Parameter 'shuffle' must be a logical of length 1 (TRUE or FALSE).")
+  }
+
   # forward options using x
   x = list(
     path = as.list(path),
