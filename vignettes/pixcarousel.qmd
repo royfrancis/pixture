@@ -38,17 +38,143 @@ paths <- c(
 )
 ```
 
-Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
+Clicking on the image opens up the full image in a lightbox. The whole gallery can be browsed through in the lightbox using left or right arrow keys.
 
 ```{r}
 pixcarousel(paths)
 ```
 
-Here are some aspects of the carousel that can be adjusted. Adjust the number of images displayed per slide using `slides_to_show` and the number of images to scroll when navigating using `slides_to_scroll`.
+## Captions
+
+Optionally, captions can be added to the images which are visible when viewed in the lightbox.
 
 ```{r}
-pixcarousel(paths, slides_to_show = 3, slides_to_scroll = 2)
+#| code-fold: true
+captions <- c(
+  "A beautiful night sky filled with stars.",
+  "A dense forest with tall trees.",
+  "A shark swimming in the ocean.",
+  "Coconut trees swaying in the breeze.",
+  "A vibrant field of flowers in bloom.",
+  "A vast field under a clear sky.",
+  "A misty morning in the mountains.",
+  "Close-up of green leaves on a tree.",
+  "A stunning sunset over the horizon.",
+  "Majestic mountains behind an idyllic landscape.",
+  "A swamp with lush vegetation.",
+  "A rainstorm with dark clouds and lightning.",
+  "Raindrops on lush green tropical leaves.",
+  "A sandy beach with crystal clear water.",
+  "A leopard in snowy weather conditions.",
+  "A close-up of a bright sunflower."
+)
+pixcarousel(paths, caption = captions)
 ```
+
+Images without captions can be set as NA.
+
+```{r}
+pixcarousel(paths[1:4], caption = c("night", "forest", NA, "coconut trees"))
+```
+
+```{r}
+pixcarousel(paths[1], caption = "night")
+```
+
+### Caption parameters
+
+Captions have further properties `caption_valign` and `caption_halign` which allows for captions to be displayed on the images.
+
+`caption_valign` options are `top`, `center`, or `bottom`.
+
+```{r}
+pixcarousel(paths[1:4], caption = captions[1:4], caption_valign = "top")
+```
+
+```{r}
+pixcarousel(paths[1:4], caption = captions[1:4], caption_valign = "center")
+```
+
+```{r}
+pixcarousel(paths[1:4], caption = captions[1:4], caption_valign = "bottom")
+```
+
+`caption_halign` options are `left`, `center` or `right`.
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption = captions[1:4],
+  caption_valign = "center",
+  caption_halign = "center"
+)
+```
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption = captions[1:4],
+  caption_valign = "bottom",
+  caption_halign = "center"
+)
+```
+
+## Link
+
+The default is TRUE, which means that clicking on the thumbnail opens the image in a lightbox. Setting this to FALSE turns off links.
+
+```{r}
+pixcarousel(paths[1:4], link = FALSE)
+```
+
+By setting this to a character vector, you can add custom links.
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest",
+    "https://en.wikipedia.org/wiki/Shark",
+    "https://en.wikipedia.org/wiki/Hawaii"
+  )
+)
+```
+
+## Border radius
+
+Adjust the corner radius of the carousel.
+
+```{r}
+pixcarousel(paths, border_radius = "10px")
+```
+
+## Slides
+
+Adjust the number of images displayed per slide using `slides_to_show` and the number of images to scroll when navigating using `slides_to_scroll`. Set the border radius of the carousel using `border_radius` (in valid CSS units).
+
+```{r}
+pixcarousel(
+  paths,
+  slides_to_show = 3,
+  slides_to_scroll = 2
+)
+```
+
+## Gap
+
+The parameter `gap` is used to control spacing between images in the grid. This value is a string in any valid css unit.
+
+```{r}
+pixcarousel(
+  paths,
+  slides_to_show = 4,
+  slides_to_scroll = 4,
+  gap = "4px"
+)
+```
+
+## Hide buttons and dots
 
 You can also choose to hide the navigation buttons or the dots below the carousel using `show_buttons` and `show_dots`. Drag or swipe the images to navigate.
 
@@ -56,16 +182,43 @@ You can also choose to hide the navigation buttons or the dots below the carouse
 pixcarousel(paths, show_buttons = FALSE, show_dots = FALSE)
 ```
 
+```{r}
+pixcarousel(
+  paths,
+  slides_to_show = 4,
+  slides_to_scroll = 4,
+  gap = "4px",
+  show_buttons = FALSE,
+  show_dots = FALSE
+)
+```
+
+## Scroll lock and rewind
+
 Do not lock to nearest image when scrolling using `scroll_lock = FALSE`. ie; you can slide partially across images. Enable rewinding (`rewind = TRUE`) to jump to beginning or end at endpoints.
 
 ```{r}
-pixcarousel(paths, scroll_lock = FALSE, rewind = TRUE)
+pixcarousel(paths[1:4], scroll_lock = FALSE, rewind = TRUE)
 ```
+
+## Dimensions
 
 Control the height of the image thumbnails using `h` (in valid CSS units). `h` defaults to "400px". You can also set the width of the carousel using `w`.
 
 ```{r}
-pixcarousel(paths, h = "300px", height = "fit-content", width = "60%")
+pixcarousel(paths[1:4], h = "300px", height = "fit-content", width = "60%")
+```
+
+## Shuffle
+
+Randomly shuffle images around.
+
+```{r}
+pixcarousel(paths, shuffle = TRUE)
+```
+
+```{r}
+pixcarousel(paths, caption = captions, shuffle = TRUE)
 ```
 
 ## Session
