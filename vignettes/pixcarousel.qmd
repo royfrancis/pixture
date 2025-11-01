@@ -71,6 +71,10 @@ captions <- c(
 pixcarousel(paths, caption = captions)
 ```
 
+::: {.callout-caution}
+Long captions may extend outside the image since image height is fixed!
+:::
+
 Images without captions can be set as NA.
 
 ```{r}
