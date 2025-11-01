@@ -1,4 +1,9 @@
 dependencies:
+  - name: simplelightbox
+    version: 2.1.0
+    src: htmlwidgets/lib/simplelightbox
+    script: js/simplelightbox.js
+    stylesheet: css/simplelightbox.css
   - name: glider
     version: 1.7.4
     src: htmlwidgets/lib/glider

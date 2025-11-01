@@ -13,7 +13,7 @@
 }
 
 .pixcarousel .dots {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .pixcarousel-child {
@@ -46,13 +46,20 @@
   width: 100%;
 }
 
+.pixcarousel-image-over {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
 .glider-prev,
 .glider-next {
   position: absolute;
-  top: calc(50% - 20px);
+  top: calc(50% - 29px);
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -98,4 +105,85 @@
 
 .glider-dot.active {
   background: #808080;
+}
+
+.pixcarousel-child a {
+  display: block;
+}
+
+.pixcarousel-child-over {
+  display: -ms-grid;
+  display: grid;
+  /*overflow: hidden;*/
+}
+
+.pixcarousel-child-over a {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+/* caption */
+
+.slbCaption, .pixcarousel-caption {
+  white-space: normal;
+  font-family: system-ui, sans-serif;
+  font-weight: normal;
+  padding: 1em;
+}
+
+.pixcarousel-caption-top {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-row-align: start;
+      align-self: start;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  pointer-events: none;
+  color: white;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.6)));
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+.pixcarousel-caption-center {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-row-align: stretch;
+      align-self: stretch;
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  pointer-events: none;
+  color: white;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0)));
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+}
+
+.pixcarousel-caption-bottom {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-row-align: end;
+      align-self: end;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  pointer-events: none;
+  color: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.6)));
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 }

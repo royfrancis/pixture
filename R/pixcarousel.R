@@ -1,8 +1,15 @@
 #' Create a carousel
 #'
-#' Generates an image carousel
-#' 
+#' @description
+#' Creates an image carousel
 #' @param path A character vector of full paths to images.
+#' @param caption A character vector of captions for the images (Optional). It must be equal to the length of path.
+#' @param caption_valign A character denoting position of the caption. Options are 'none', 'top', 'center' or 'bottom'.
+#' @param caption_halign A character denoting horizontal justification of the caption. Options are 'left', 'center' or 'right'.
+#' @param link A logical or character vector. What happens when you click on the thumbnail? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.
+#' @param gap A character denoting spacing between thumbnails in valid CSS units.
+#' @param border_radius A character denoting corner radius of the carousel in valid CSS units.
+#' @param shuffle A logical indicating whether images are randomly shuffled.
 #' @param slides_to_show Number of images to be displayed.
 #' @param slides_to_scroll Number of images to scroll.
 #' @param draggable Logical indicating if the carousal is draggable.
@@ -14,12 +21,38 @@
 #' @param height A character denoting height of the widget in valid CSS units.
 #' @param width A character denoting width of the widget in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
-#' @import htmlwidgets
+#' @importFrom htmlwidgets createWidget sizingPolicy
+#' @examples
+#' library(pixture)
+#' paths <- c(
+#'  "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg",
+#'  "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg",
+#'  "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg",
+#'  "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg",
+#'  "https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg",
+#'  "https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg",
+#'  "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg",
+#'  "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg"
+#' )
+#' pixgallery(paths)
 #'
+#' # local example
+#' \dontrun{
+#' library(pixture)
+#' paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+#' pixcarousel(paths)
+#' }
 #' @export
-#' 
+#'
 pixcarousel <- function(
   path,
+  caption = NULL,
+  caption_valign = "none",
+  caption_halign = "left",
+  link = TRUE,
+  gap = "0px",
+  border_radius = "0px",
+  shuffle = FALSE,
   slides_to_show = 1,
   slides_to_scroll = 1,
   draggable = TRUE,
@@ -28,14 +61,75 @@ pixcarousel <- function(
   scroll_lock = TRUE,
   rewind = FALSE,
   h = "400px",
-  width = NULL, 
-  height = NULL, 
+  width = NULL,
+  height = NULL,
   elementId = NULL
-  ) {
+) {
+  # check caption
+  if (!is.null(caption)) {
+    if (length(caption) != length(path)) {
+      stop(paste0(
+        "Length of 'caption' (",
+        length(caption),
+        ") is not not equal to the length of 'path' (",
+        length(path),
+        "). If 'caption' is used, it must be the same length as 'path'."
+      ))
+    }
+  } else {
+    if (!is.null(names(path))) caption <- names(path)
+  }
+  names(path) <- NULL
+
+  # check caption position
+  caption_valigns <- c("none", "top", "center", "bottom")
+  if (is.null(caption_valign) || !caption_valign %in% caption_valigns) {
+    stop(paste0(
+      "Parameter 'caption_valign' must be one of '",
+      paste(caption_valigns, collapse = "', '"),
+      "'."
+    ))
+  }
+
+  # check caption justification
+  caption_haligns <- c("left", "center", "right")
+  if (is.null(caption_halign) || (!caption_halign %in% caption_haligns)) {
+    stop(paste0(
+      "Parameter 'caption_halign' must be one of '",
+      paste(caption_haligns, collapse = "', '"),
+      "'."
+    ))
+  }
+
+  # check link
+  if (is.null(link) || all(is.na(link))) {
+    stop("Parameter 'link' must be a logical or a character vector.")
+  }
+  if (is.logical(link) && (length(link) != 1)) {
+    stop("Parameter 'link' must be of length 1. TRUE or FALSE.")
+  }
+  if (is.character(link)) {
+    if (length(link) != length(path)) {
+      stop(paste0(
+        "Length of 'link' (",
+        length(link),
+        ") is not not equal to the length of 'path' (",
+        length(path),
+        "). If 'link' is a character, it must be the same length as 'path'."
+      ))
+    }
+  }
 
   # forward options using x
   x = list(
     path = as.list(path),
+    caption = as.list(caption),
+    caption_valign = caption_valign,
+    caption_halign = caption_halign,
+    link = as.list(link),
+    gap = gap,
+    border_radius = border_radius,
+    shuffle = shuffle,
     slides_to_show = slides_to_show,
     slides_to_scroll = slides_to_scroll,
     draggable = draggable,

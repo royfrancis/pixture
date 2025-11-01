@@ -6,6 +6,13 @@
 \usage{
 pixcarousel(
   path,
+  caption = NULL,
+  caption_valign = "none",
+  caption_halign = "left",
+  link = TRUE,
+  gap = "0px",
+  border_radius = "0px",
+  shuffle = FALSE,
   slides_to_show = 1,
   slides_to_scroll = 1,
   draggable = TRUE,
@@ -21,6 +28,20 @@ pixcarousel(
 }
 \arguments{
 \item{path}{A character vector of full paths to images.}
+
+\item{caption}{A character vector of captions for the images (Optional). It must be equal to the length of path.}
+
+\item{caption_valign}{A character denoting position of the caption. Options are 'none', 'top', 'center' or 'bottom'.}
+
+\item{caption_halign}{A character denoting horizontal justification of the caption. Options are 'left', 'center' or 'right'.}
+
+\item{link}{A logical or character vector. What happens when you click on the thumbnail? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.}
+
+\item{gap}{A character denoting spacing between thumbnails in valid CSS units.}
+
+\item{border_radius}{A character denoting corner radius of the carousel in valid CSS units.}
+
+\item{shuffle}{A logical indicating whether images are randomly shuffled.}
 
 \item{slides_to_show}{Number of images to be displayed.}
 
@@ -45,5 +66,26 @@ pixcarousel(
 \item{elementId}{A character string denoting parent container ID.}
 }
 \description{
-Generates an image carousel
+Creates an image carousel
+}
+\examples{
+library(pixture)
+paths <- c(
+ "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg",
+ "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg",
+ "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg",
+ "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg",
+ "https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg",
+ "https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg",
+ "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg",
+ "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg"
+)
+pixgallery(paths)
+
+# local example
+\dontrun{
+library(pixture)
+paths <- list.files(path=system.file("extdata/images",package="pixture"),full.names=TRUE)
+pixcarousel(paths)
+}
 }
