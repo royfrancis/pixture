@@ -1,0 +1,10 @@
+dependencies:
+  - name: glider
+    version: 1.7.4
+    src: htmlwidgets/lib/glider
+    script: js/glider.js
+    stylesheet: css/glider.css
+  - name: pixcarousel
+    version: 0
+    src: htmlwidgets/lib/pixcarousel
+    stylesheet: css/pixcarousel.css

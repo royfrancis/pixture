@@ -1,0 +1,75 @@
+---
+title: "Pixcarousel usage"
+subtitle: "Generate an image carousel"
+date: last-modified
+date-format: "DD-MMM-YYYY"
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-overflow: wrap
+    resources:
+      - images
+---
+
+This is a demo of the function `pixcarousel()`. This creates a horizontal carousel gallery. The mandatory input required is one or more paths/URLs to image(s).
+
+```{r}
+#| code-fold: true
+
+library(pixture)
+paths <- c(
+  "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/7919/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/2437291/pexels-photo-2437291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1679772/pexels-photo-1679772.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/1813513/pexels-photo-1813513.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/267074/pexels-photo-267074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+)
+```
+
+Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
+
+```{r}
+pixcarousel(paths)
+```
+
+Here are some aspects of the carousel that can be adjusted. Adjust the number of images displayed per slide using `slides_to_show` and the number of images to scroll when navigating using `slides_to_scroll`.
+
+```{r}
+pixcarousel(paths, slides_to_show = 3, slides_to_scroll = 2)
+```
+
+You can also choose to hide the navigation buttons or the dots below the carousel using `show_buttons` and `show_dots`. Drag or swipe the images to navigate.
+
+```{r}
+pixcarousel(paths, show_buttons = FALSE, show_dots = FALSE)
+```
+
+Do not lock to nearest image when scrolling using `scroll_lock = FALSE`. ie; you can slide partially across images. Enable rewinding (`rewind = TRUE`) to jump to beginning or end at endpoints.
+
+```{r}
+pixcarousel(paths, scroll_lock = FALSE, rewind = TRUE)
+```
+
+Control the height of the image thumbnails using `h` (in valid CSS units). `h` defaults to "400px". You can also set the width of the carousel using `w`.
+
+```{r}
+pixcarousel(paths, h = "300px", height = "fit-content", width = "60%")
+```
+
+## Session
+
+```{r}
+sessionInfo()
+```
