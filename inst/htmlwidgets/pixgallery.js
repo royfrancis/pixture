@@ -49,6 +49,7 @@ function pixgallery_base(el,x){
   if(x.layout === "elastic") pixgallery_elastic(el,x);
   if(x.layout === "mosaic") pixgallery_mosaic(el,x);
   if(x.layout === "rhombus") pixgallery_rhombus(el,x);
+  if(x.layout === "scroll") pixgallery_scroll(el,x);
 }
 
 /* grid -- fixed ------------------------------------------------------------ */
@@ -471,5 +472,87 @@ function pixgallery_rhombus(el,x){
   }
 
   document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-rhombus" style="gap:' + gap + ';">' + newValues + '</div>';
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+}
+
+/* scroll ------------------------------------------------------------------- */
+
+function pixgallery_scroll(el,x,fixed){
+
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var captionValign = x.caption_valign;
+  var captionHalign = x.caption_halign;
+  var link = x.link;
+  var h = x.h;
+  var w = x.w;
+  var gap = x.gap;
+  var borderRadius = x.border_radius;
+
+  if(typeof link[0] !== 'boolean') urls = x.link
+  if(h === null) h = "200px";
+  if(w === null) w = "200px";
+
+  // initialize template
+  if(caption.length === 0){
+
+    // if captions are not used
+    var temp = '<div class="pixgallery-child pixgallery-scroll-child" id="pixgallery-{id}"><a href="{url}"><img class="pixgallery-scroll-image" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a></div>';
+
+  } else {
+    if(captionValign == "none"){
+
+      // if captions are not displayed
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" title="{caption}"><img class="pixgallery-scroll-image" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a></div>';
+
+    } else if(captionValign == "below") {
+
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-scroll-child-below" id="pixgallery-{id}" style="grid-template-rows:{h} 1fr;width:{w};"><a href="{url}" title="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      
+    } else if(captionValign == "top") {
+
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" title="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
+      
+    } else if(captionValign == "center") {
+
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" title="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
+
+    } else if(captionValign == "bottom") {
+
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" title="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
+    }
+  }
+
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{h\}/g, h).replace(/\{w\}/g, w).replace(/\{borderRadius\}/g, borderRadius).replace(/\{src\}/g, src[i]).replace(/\{min-height\}/g, h)
+
+    // if link is false or url is null, disable link
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    newValues += newValue
+  }
+
+  if(captionValign == "none") {
+    document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-scroll" style="gap:' + gap + ';">' + newValues + '</div>';
+  } else if(captionValign == "below") {
+    document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-scroll" style="gap:' + gap + ';">' + newValues + '</div>';
+  } else {
+    document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-scroll" style="gap:' + gap + ';">' + newValues + '</div>';
+  }
+
   if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
 }

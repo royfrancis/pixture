@@ -1,14 +1,73 @@
 # pixgallery shiny app
 
 ids <- c(
-  "572897", "7604425", "4666748", "4932184", "4210900", "3126574", "167699",
-  "1376201", "2437291", "1679772", "1183099", "1813513", "931018", "267074",
-  "4622893", "10519597", "1717071", "1933239", "1374064", "2379653", "845619",
-  "2854416", "3540375", "1142984", "1378723", "2033994", "1582818", "1535288"
+  "572897",
+  "7604425",
+  "4666748",
+  "4932184",
+  "4210900",
+  "3126574",
+  "167699",
+  "1376201",
+  "2437291",
+  "1679772",
+  "1183099",
+  "1813513",
+  "931018",
+  "267074",
+  "4622893",
+  "10519597",
+  "1717071",
+  "1933239",
+  "1374064",
+  "2379653",
+  "845619",
+  "2854416",
+  "3540375",
+  "1142984",
+  "1378723",
+  "2033994",
+  "1582818",
+  "1535288"
 )
-urls <- paste0("https://images.pexels.com/photos/", ids, "/pexels-photo-", ids, ".jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+urls <- paste0(
+  "https://images.pexels.com/photos/",
+  ids,
+  "/pexels-photo-",
+  ids,
+  ".jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+)
 
-captions_short <- c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower", "homely", "countryside", "aurora", "cliff", "poppy", "swan", "aerial", "snowy", "beach", "hands", "glass", "autumn", "love")
+captions_short <- c(
+  "night",
+  "forest",
+  "shark",
+  "coconut trees",
+  "flowers",
+  "field",
+  "misty",
+  "leaves",
+  "mountains",
+  "swamp",
+  "rainstorm",
+  "leaves",
+  "beach",
+  "leopard",
+  "sunflower",
+  "homely",
+  "countryside",
+  "aurora",
+  "cliff",
+  "poppy",
+  "swan",
+  "aerial",
+  "snowy",
+  "beach",
+  "hands",
+  "glass",
+  "autumn",
+  "love"
+)
 
 captions_long <- c(
   "The night sky blanketed the quiet village as stars twinkled in the peaceful darkness.",
@@ -46,17 +105,49 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       width = 3,
-      textAreaInput("paths", "Image paths", value = paste0(urls, collapse = "\n"), width = "100%", height = "200px"),
+      textAreaInput(
+        "paths",
+        "Image paths",
+        value = paste0(urls, collapse = "\n"),
+        width = "100%",
+        height = "200px"
+      ),
       hr(),
-      selectInput("caption_check", "Use captions", choices = c("None", "Short", "Long"), selected = "None"),
+      selectInput(
+        "caption_check",
+        "Use captions",
+        choices = c("None", "Short", "Long"),
+        selected = "None"
+      ),
       uiOutput("caption_ui"),
       hr(),
       checkboxInput("link", "Use lightbox", value = TRUE),
-      selectInput("layout", "Layout", choices = c("grid", "fixed", "mosaic", "masonry", "justified", "elastic", "rhombus"), selected = "grid"),
+      selectInput(
+        "layout",
+        "Layout",
+        choices = c(
+          "grid",
+          "fixed",
+          "mosaic",
+          "masonry",
+          "justified",
+          "elastic",
+          "rhombus",
+          "scroll"
+        ),
+        selected = "grid"
+      ),
       sliderInput("h", "Height", min = 10, max = 500, step = 5, value = 120),
       sliderInput("w", "Width", min = 10, max = 500, step = 5, value = 120),
       sliderInput("gap", "Grid gap", min = 0, max = 30, step = 1, value = 4),
-      sliderInput("border_radius", "Border radius", min = 0, max = 50, step = 1, value = 0),
+      sliderInput(
+        "border_radius",
+        "Border radius",
+        min = 0,
+        max = 50,
+        step = 1,
+        value = 0
+      ),
       checkboxInput("shuffle", "Shuffle", value = FALSE),
       HTML("Images from <a href='https://www.pexels.com/'>Pexels.</a>")
     ),
@@ -70,11 +161,29 @@ ui <- fluidPage(
 server <- function(input, output) {
   output$caption_ui <- renderUI({
     if (input$caption_check != "None") {
-      captions <- ifelse(input$caption_check == "Short", paste0(captions_short, collapse = "\n"), paste0(captions_long, collapse = "\n"))
+      captions <- ifelse(
+        input$caption_check == "Short",
+        paste0(captions_short, collapse = "\n"),
+        paste0(captions_long, collapse = "\n")
+      )
       div(
-        textAreaInput("caption", "Caption", value = captions, width = "100%", height = "150px"),
-        selectInput("valign", "Vertical alignment", choices = c("none", "top", "center", "bottom", "below")),
-        selectInput("halign", "Horiz alignment", choices = c("left", "center", "right")),
+        textAreaInput(
+          "caption",
+          "Caption",
+          value = captions,
+          width = "100%",
+          height = "150px"
+        ),
+        selectInput(
+          "valign",
+          "Vertical alignment",
+          choices = c("none", "top", "center", "bottom", "below")
+        ),
+        selectInput(
+          "halign",
+          "Horiz alignment",
+          choices = c("left", "center", "right")
+        ),
       )
     }
   })
@@ -85,11 +194,34 @@ server <- function(input, output) {
     if (input$caption_check != "None") {
       if (!is.null(input$caption)) {
         cpt <- unlist(strsplit(input$caption, split = "\\n"))
-        if (length(cpt) != length(paths)) stop("Number of captions do not match number of images.")
-        pixture::pixgallery(paths, caption = cpt, caption_valign = input$valign, caption_halign = input$halign, link = input$link, h = paste0(input$h, "px"), w = paste0(input$w, "px"), gap = paste0(input$gap, "px"), border_radius = paste0(input$border_radius, "px"), layout = input$layout, shuffle = input$shuffle)
+        if (length(cpt) != length(paths)) {
+          stop("Number of captions do not match number of images.")
+        }
+        pixture::pixgallery(
+          paths,
+          caption = cpt,
+          caption_valign = input$valign,
+          caption_halign = input$halign,
+          link = input$link,
+          h = paste0(input$h, "px"),
+          w = paste0(input$w, "px"),
+          gap = paste0(input$gap, "px"),
+          border_radius = paste0(input$border_radius, "px"),
+          layout = input$layout,
+          shuffle = input$shuffle
+        )
       }
     } else {
-      pixture::pixgallery(paths, link = input$link, h = paste0(input$h, "px"), w = paste0(input$w, "px"), gap = paste0(input$gap, "px"), border_radius = paste0(input$border_radius, "px"), layout = input$layout, shuffle = input$shuffle)
+      pixture::pixgallery(
+        paths,
+        link = input$link,
+        h = paste0(input$h, "px"),
+        w = paste0(input$w, "px"),
+        gap = paste0(input$gap, "px"),
+        border_radius = paste0(input$border_radius, "px"),
+        layout = input$layout,
+        shuffle = input$shuffle
+      )
     }
   })
 }

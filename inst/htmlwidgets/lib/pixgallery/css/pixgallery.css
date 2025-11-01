@@ -404,3 +404,51 @@
   -ms-grid-column-span: 2;
   grid-column: 2 / span 2;
 }
+
+/* gallery scroll */
+
+.pixgallery-scroll {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  cursor: grab;
+  user-select: none;
+}
+
+.pixgallery-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.pixgallery-scroll-child {
+  flex-shrink: 0;
+}
+
+.pixgallery-scroll-image {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+}
+
+.pixgallery-scroll-image-over {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.pixgallery-scroll-child-below {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 250px auto;
+  grid-template-rows: 250px auto;
+}
+
+.pixgallery-scroll-image-below {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}

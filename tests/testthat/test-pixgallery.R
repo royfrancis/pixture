@@ -22,17 +22,32 @@ paths <- c(
   "https://images.pexels.com/photos/4622893/pexels-photo-4622893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 )
 
-captions <- c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower")
+captions <- c(
+  "night",
+  "forest",
+  "shark",
+  "coconut trees",
+  "flowers",
+  "field",
+  "misty",
+  "leaves",
+  "sunset",
+  "mountains",
+  "swamp",
+  "rainstorm",
+  "leaves",
+  "beach",
+  "leopard",
+  "sunflower"
+)
 
 # pixgallery -------------------------------------------------------------------
-
-testthat::context("pixgallery")
 
 test_that("No input", {
   expect_error(pixgallery())
 })
 
-test_that("Default",{
+test_that("Default", {
   expect_no_error(pixgallery(paths))
   obj <- pixgallery(paths)
   expect_equal(class(obj), c("pixgallery", "htmlwidget"))
@@ -40,7 +55,7 @@ test_that("Default",{
   expect_equal(length(obj$x$path), length(paths))
 })
 
-test_that("Captions",{
+test_that("Captions", {
   expect_no_error(pixgallery(paths, caption = captions))
   obj <- pixgallery(paths, caption = captions)
   expect_equal(length(obj$x$caption), length(paths))
@@ -56,7 +71,7 @@ test_that("Captions with NA", {
 })
 
 test_that("Captions with all NA", {
-  captions1 <- rep(NA,length(paths))
+  captions1 <- rep(NA, length(paths))
   expect_no_error(pixgallery(paths, caption = captions1))
 })
 
@@ -74,17 +89,37 @@ test_that("Captions and captions as path names", {
 
 test_that("Captions caption_valign", {
   expect_no_error(pixgallery(paths, caption = captions, caption_valign = "top"))
-  expect_no_error(pixgallery(paths, caption = captions, caption_valign = "center"))
-  expect_no_error(pixgallery(paths, caption = captions, caption_valign = "bottom"))
-  expect_no_error(pixgallery(paths, caption = captions, caption_valign = "below"))
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    caption_valign = "center"
+  ))
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    caption_valign = "bottom"
+  ))
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    caption_valign = "below"
+  ))
   expect_error(pixgallery(paths, caption = captions, caption_valign = "bla"))
   expect_error(pixgallery(paths, caption = captions, caption_valign = NA))
   expect_error(pixgallery(paths, caption = captions, caption_valign = NULL))
 })
 
 test_that("Captions caption_halign", {
-  expect_no_error(pixgallery(paths, caption = captions, caption_halign = "center"))
-  expect_no_error(pixgallery(paths, caption = captions, caption_halign = "right"))
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    caption_halign = "center"
+  ))
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    caption_halign = "right"
+  ))
   expect_error(pixgallery(paths, caption = captions, caption_halign = "bla"))
   expect_error(pixgallery(paths, caption = captions, caption_halign = NA))
   expect_error(pixgallery(paths, caption = captions, caption_halign = NULL))
@@ -92,11 +127,15 @@ test_that("Captions caption_halign", {
 
 test_that("Captions and link", {
   expect_no_error(pixgallery(paths, caption = captions, link = FALSE))
-  expect_no_error(pixgallery(paths, caption = captions, link = rep("bla",length(captions))))
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions))
+  ))
   expect_error(pixgallery(paths, caption = captions, link = "bla"))
   expect_error(pixgallery(paths, caption = captions, link = NA))
   expect_error(pixgallery(paths, caption = captions, link = NULL))
-  expect_error(pixgallery(paths, caption = captions, link = c(T,F)))
+  expect_error(pixgallery(paths, caption = captions, link = c(T, F)))
 })
 
 test_that("Layouts default", {
@@ -106,6 +145,8 @@ test_that("Layouts default", {
   expect_no_error(pixgallery(paths, layout = "justified"))
   expect_no_error(pixgallery(paths, layout = "elastic"))
   expect_no_error(pixgallery(paths, layout = "rhombus"))
+  expect_no_error(pixgallery(paths, layout = "scroll"))
+  expect_error(pixgallery(paths, layout = "bla"))
   expect_error(pixgallery(paths, layout = NA))
   expect_error(pixgallery(paths, layout = NULL))
 })
@@ -117,6 +158,7 @@ test_that("Layouts default with caption", {
   expect_no_error(pixgallery(paths, caption = captions, layout = "justified"))
   expect_no_error(pixgallery(paths, caption = captions, layout = "elastic"))
   expect_no_error(pixgallery(paths, caption = captions, layout = "rhombus"))
+  expect_no_error(pixgallery(paths, caption = captions, layout = "scroll"))
 })
 
 test_that("Dimensions", {
@@ -124,16 +166,22 @@ test_that("Dimensions", {
   expect_no_error(pixgallery(paths, layout = "fixed", h = "50px", w = "50px"))
   expect_no_error(pixgallery(paths, layout = "mosaic", h = "50px", w = "50px"))
   expect_no_error(pixgallery(paths, layout = "masonry", h = "50px", w = "50px"))
-  expect_no_error(pixgallery(paths, layout = "justified", h = "50px", w = "50px"))
+  expect_no_error(pixgallery(
+    paths,
+    layout = "justified",
+    h = "50px",
+    w = "50px"
+  ))
   expect_no_error(pixgallery(paths, layout = "elastic", h = "50px", w = "50px"))
   expect_no_error(pixgallery(paths, layout = "rhombus", h = "50px", w = "50px"))
+  expect_no_error(pixgallery(paths, layout = "scroll", h = "50px", w = "50px"))
   expect_no_error(pixgallery(paths, h = NA, w = NA))
   expect_no_error(pixgallery(paths, h = NULL, w = NULL))
 })
 
 test_that("Shuffle default", {
-  expect_no_error(pixgallery(paths,shuffle=TRUE))
-  obj <- pixgallery(paths,shuffle=TRUE)
+  expect_no_error(pixgallery(paths, shuffle = TRUE))
+  obj <- pixgallery(paths, shuffle = TRUE)
   expect_equal(length(obj$x$path), length(paths))
 })
 
@@ -146,11 +194,4 @@ test_that("Shuffle with caption", {
 test_that("Shuffle incorrect input", {
   expect_error(pixgallery(paths, shuffle = NA))
   expect_error(pixgallery(paths, shuffle = NULL))
-})
-
-# check that shuffled order of images match captions (to do)
-
-test_that("Deprecated", {
-  expect_warning(pixgallery(paths, type="grid"))
-  expect_warning(pixgallery(paths, dim = "50px"))
 })
