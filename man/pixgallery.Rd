@@ -18,9 +18,7 @@ pixgallery(
   shuffle = FALSE,
   width = "100\%",
   height = "100\%",
-  elementId = NULL,
-  dim = NULL,
-  type = NULL
+  elementId = NULL
 )
 }
 \arguments{
@@ -42,7 +40,7 @@ pixgallery(
 
 \item{border_radius}{A character denoting corner radius of image thumbnails in valid CSS units.}
 
-\item{layout}{A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "elastic" or "rhombus". See details.}
+\item{layout}{A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "scroll", "elastic" or "rhombus". See details.}
 
 \item{shuffle}{A logical indicating whether images are randomly shuffled.}
 
@@ -51,10 +49,6 @@ pixgallery(
 \item{height}{A character denoting height of the widget in valid CSS units.}
 
 \item{elementId}{A character string denoting parent container ID.}
-
-\item{dim}{Deprecated. Use 'h' and 'w'.}
-
-\item{type}{Deprecated. Use 'layout'.}
 }
 \description{
 Create an image gallery
@@ -72,6 +66,7 @@ Create an image gallery
 \cr
 \strong{elastic}: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
 \cr
+\strong{scroll}: Single row layout with horizontal scrolling. Images go offscreen. Thumbnail height and width can be set. \cr
 \strong{rhombus}: Diamond shaped layout with three columns. Image size and number of columns are fixed. Completely non-responsive without breakpoints. Captions cannot be displayed on thumbnails. \cr
 }
 \examples{
