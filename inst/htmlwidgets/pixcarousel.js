@@ -129,5 +129,5 @@ function pixcarousel(el,x){
     }
   })
 
-  /* if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixcarousel-' + el.id + '-glider a'}); */
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixcarousel-' + el.id + '-child a'});
 }
