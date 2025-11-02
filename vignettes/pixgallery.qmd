@@ -3,6 +3,7 @@ title: "Pixgallery usage"
 subtitle: "Generate an image gallery"
 date: last-modified
 date-format: "DD-MMM-YYYY"
+encoding: "UTF-8"
 format:
   html:
     toc: true
@@ -16,8 +17,10 @@ This is a demo of the function `pixgallery()`. This creates an interactive galle
 
 ```{r}
 #| code-fold: true
+#| label: image-paths
 
 library(pixture)
+options(encoding = "UTF-8")
 paths_a <- c(
   "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -66,6 +69,7 @@ paths_b <- c(
 Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
 
 ```{r}
+#| label: default-gallery
 pixgallery(paths_a)
 ```
 
@@ -74,17 +78,44 @@ pixgallery(paths_a)
 Optionally, captions can be added to the images which are visible when viewed in the lightbox.
 
 ```{r}
+#| label: caption-gallery
 captions <- c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower")
 pixgallery(paths_a, caption = captions)
+```
+
+```{r}
+#| code-fold: true
+#| label: long-captions
+
+captions_long <- c(
+  "The night sky blanketed the quiet village as stars twinkled in the peaceful darkness.",
+  "A stroll through the forest reveals nature's hidden gems and the call of wild creatures.",
+  "Snorkeling with a shark is an unforgettable experience for adventure seekers and marine life lovers.",
+  "Sipping coconut water on a hammock under swaying palms is pure tropical bliss.",
+  "Blooming flowers in the meadow create a splash of color and a perfect photo opportunity.",
+  "Children laughed and played in the vast field of golden wheat under the summer sun.",
+  "Misty mornings in the valley offer a surreal, almost dreamlike atmosphere to early risers.",
+  "Autumn leaves crunch underfoot as you hike through the serene woodland trails.",
+  "A breathtaking sunset paints the sky in hues of orange, pink, and purple.",
+  "Snow-capped mountains tower majestically over the valley below, inviting explorers to their icy peaks.",
+  "The dense swamp is teeming with life, from croaking frogs to towering mangroves.",
+  "Caught in a rainstorm, we sought shelter under an old oak tree on the path.",
+  "The thick canopy of leaves shields forest walkers from the midday sun's strong rays.",
+  "Crystal-clear waters and white sands define the idyllic, unspoiled beach destination of your dreams.",
+  "A leopard stealthily navigates the snowy terrain, its spotted coat blending with the winter landscape.",
+  "Sunflowers turn their faces to the sun, creating a sea of yellow that stretches to the horizon."
+)
 ```
 
 Images without captions can be set as NA.
 
 ```{r}
+#| label: na-captions
 pixgallery(paths_a[1:4], caption = c("night", "forest", NA, "coconut trees"))
 ```
 
 ```{r}
+#| label: single-caption
 pixgallery(paths_a[1], caption = "night")
 ```
 
@@ -95,29 +126,47 @@ Captions have further properties `caption_valign` and `caption_halign` which all
 `caption_valign` options are `top`, `center`, `bottom` or `below`.
 
 ```{r}
+#| label: caption-valign
 pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "top")
 ```
 
 ```{r}
+#| label: caption-valign-center
 pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "center")
 ```
 
 ```{r}
+#| label: caption-valign-bottom
 pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "bottom")
 ```
 
 ```{r}
+#| label: caption-valign-below
 pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below")
 ```
 
 `caption_halign` options are `left`, `center` or `right`.
 
 ```{r}
+#| label: caption-halign-center
 pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "center", caption_halign = "center")
 ```
 
 ```{r}
-pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below", caption_halign = "center")
+#| label: caption-halign-right
+pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below", caption_halign = "right")
+```
+
+With long captions.
+
+```{r}
+#| label: long-caption-valign-top
+pixgallery(paths_a[1:4], caption = captions_long[1:4], caption_valign = "top")
+```
+
+```{r}
+#| label: long-caption-valign-below
+pixgallery(paths_a[1:4], caption = captions_long[1:4], caption_valign = "below")
 ```
 
 ## Link
@@ -125,12 +174,14 @@ pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below", capt
 The default is TRUE, which means that clicking on the thumbnail opens the image in a lightbox. Setting this to FALSE turns off links.
 
 ```{r}
+#| label: no-link
 pixgallery(paths_a[1:4], link = FALSE)
 ```
 
 By setting this to a character vector, you can add custom links.
 
 ```{r}
+#| label: custom-link
 pixgallery(paths_a[1:4], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest", "https://en.wikipedia.org/wiki/Shark", "https://en.wikipedia.org/wiki/Hawaii"))
 ```
 
@@ -139,10 +190,12 @@ pixgallery(paths_a[1:4], link = c("https://en.wikipedia.org/wiki/Milky_Way", "ht
 The parameters `h` and `w` is used to adjust the dimension of images in the grid. This value is a string in any valid CSS unit.
 
 ```{r}
+#| label: height-adjust
 pixgallery(paths_a, h = "50px")
 ```
 
 ```{r}
+#| label: width-adjust
 pixgallery(paths_b, w = "100px")
 ```
 
@@ -151,10 +204,12 @@ pixgallery(paths_b, w = "100px")
 The parameter `gap` is used to control spacing between images in the grid. This value is a string in any valid css unit.
 
 ```{r}
+#| label: gap-adjust
 pixgallery(paths_a[1:8], gap = "20px")
 ```
 
 ```{r}
+#| label: gap-no-spacing
 pixgallery(paths_a, gap = "0", w = "40px")
 ```
 
@@ -163,6 +218,7 @@ pixgallery(paths_a, gap = "0", w = "40px")
 Adjust the corner radius of image thumbnails.
 
 ```{r}
+#| label: border-radius
 pixgallery(paths_a, w = "100px", border_radius = "10px")
 ```
 
@@ -171,39 +227,13 @@ pixgallery(paths_a, w = "100px", border_radius = "10px")
 Randomly shuffle images around.
 
 ```{r}
+#| label: shuffle
 pixgallery(paths_a, w = "50px", shuffle = TRUE)
 ```
 
 ```{r}
+#| label: shuffle-with-captions
 pixgallery(paths_a, w = "50px", shuffle = TRUE, caption = c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower"))
-```
-
-## Local images
-
-Local images (not on the internet) can be provided as relative or absolute paths. The images do not show up in the RStudio notebook preview, but they should work in a rendered HTML document.
-
-<p style="color: #8a6d3b;background-color: #fcf8e3;border-color:#faebcc;padding: 6px;border-radius: 4px;" style="inline-block">
-&nbsp; <i class="fas fa-exclamation-circle"></i> &nbsp; Pixture does not move, copy or embed images. The images must be in their final intended destination. It is left to the user to handle images as assets. Images are not embedded into the HTML if you use `self_contained: true`.
-</p>
-
-### Relative path
-
-This example assumes your images are available next to the Rmd/qmd/HTML file in a directory named *images* and that you copy these assets if the Rmd/qmd/HTML is relocated.
-
-```{r}
-paths <- list.files("images", full.names = TRUE)
-paths
-pixgallery(paths)
-```
-
-### Absolute path
-
-Here is another example using sample images from the package. These should work locally, but may not work if the rendered HTML is relocated.
-
-```{r,eval=FALSE}
-paths <- list.files(system.file("extdata/images", package = "pixture"), full = TRUE)
-paths
-pixgallery(paths)
 ```
 
 ## Layout
@@ -215,11 +245,27 @@ You can set different layouts using the `layout` parameter, with the default bei
 With the default 'grid' layout, the height is fixed and the width is mostly fixed, but has some flexibility such that the whole gallery takes up the entire width of available parent space. In 'fixed' layout, the thumbnail dimensions are strictly fixed. Adjust the width of the page to see the difference in responsiveness compared to 'grid' layout.
 
 ```{r}
+#| label: fixed-layout
 pixgallery(paths_a[1:8], layout = "fixed")
 ```
 
+With customization.
+
 ```{r}
+#| label: fixed-layout-custom
 pixgallery(paths_a[1:8], layout = "fixed", caption = captions[1:8], caption_valign = "center", caption_halign = "center", border_radius = "50%", gap = "10px")
+```
+
+With long captions.
+
+```{r}
+#| label: fixed-layout-long-captions-top
+pixgallery(paths_a[1:8], layout = "fixed", caption = captions_long[1:8], caption_valign = "top")
+```
+
+```{r}
+#| label: fixed-layout-long-captions-below
+pixgallery(paths_a[1:8], layout = "fixed", caption = captions_long[1:8], caption_valign = "below")
 ```
 
 ### Mosaic
@@ -227,15 +273,32 @@ pixgallery(paths_a[1:8], layout = "fixed", caption = captions[1:8], caption_vali
 Similar to grid layout but with some mixed size cells.
 
 ```{r}
+#| label: mosaic-layout
 pixgallery(paths_b, layout = "mosaic")
 ```
 
+With customization.
+
 ```{r}
+#| label: mosaic-layout-custom-bottom
 pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "bottom", h = "100px", w = "100px")
 ```
 
 ```{r}
+#| label: mosaic-layout-custom-below
 pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "below", h = "100px", w = "100px", border_radius = "5px", shuffle = TRUE)
+```
+
+With long captions.
+
+```{r}
+#| label: mosaic-layout-long-captions-top
+pixgallery(paths_a[1:8], layout = "mosaic", caption = captions_long[1:8], caption_valign = "top")
+```
+
+```{r}
+#| label: mosaic-layout-long-captions-below
+pixgallery(paths_a[1:8], layout = "mosaic", caption = captions_long[1:8], caption_valign = "below")
 ```
 
 ### Masonry
@@ -243,15 +306,32 @@ pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "bel
 Column-wise layout with free height. The thumbnail width can be adjusted. This works best for a set of images with mixed aspect ratios, for example; a mix of portrait and landscape images.
 
 ```{r}
+#| label: masonry-layout
 pixgallery(paths_b, layout = "masonry")
 ```
 
+With customization.
+
 ```{r}
+#| label: masonry-layout-custom-bottom
 pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "bottom", w = "100px")
 ```
 
 ```{r}
+#| label: masonry-layout-custom-below
 pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "below", w = "100px", border_radius = "5px", shuffle = TRUE)
+```
+
+With long captions.
+
+```{r}
+#| label: masonry-layout-long-captions-top
+pixgallery(paths_a[1:8], layout = "masonry", caption = captions_long[1:8], caption_valign = "top")
+```
+
+```{r}
+#| label: masonry-layout-long-captions-below
+pixgallery(paths_a[1:8], layout = "masonry", caption = captions_long[1:8], caption_valign = "below")
 ```
 
 ### Justified
@@ -259,15 +339,32 @@ pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "be
 Row-wise layout with free width. The thumbnail height can be adjusted. This works best for a set of images with mixed aspect ratios, for example; a mix of portrait and landscape images.
 
 ```{r}
+#| label: justified-layout
 pixgallery(paths_b, layout = "justified")
 ```
 
+With customization.
+
 ```{r}
+#| label: justified-layout-custom-bottom
 pixgallery(paths_a, layout = "justified", caption = captions, caption_valign = "bottom", h = "100px")
 ```
 
 ```{r}
+#| label: justified-layout-custom-below
 pixgallery(paths_a, layout = "justified", caption = captions, caption_valign = "below", h = "100px", border_radius = "5px", shuffle = TRUE)
+```
+
+With long captions.
+
+```{r}
+#| label: justified-layout-long-captions-top
+pixgallery(paths_a[1:8], layout = "justified", caption = captions_long[1:8], caption_valign = "top")
+```
+
+```{r}
+#| label: justified-layout-long-captions-below
+pixgallery(paths_a[1:8], layout = "justified", caption = captions_long[1:8], caption_valign = "below")
 ```
 
 ### Scroll
@@ -275,49 +372,83 @@ pixgallery(paths_a, layout = "justified", caption = captions, caption_valign = "
 Single row layout with horizontal scrolling.
 
 ```{r}
+#| label: scroll-layout
 pixgallery(paths_b, layout = "scroll")
 ```
 
+With customization.
+
 ```{r}
+#| label: scroll-layout-custom-bottom
 pixgallery(paths_a, layout = "scroll", caption = captions, caption_valign = "bottom", h = "100px")
 ```
 
 ```{r}
+#| label: scroll-layout-custom-below
 pixgallery(paths_a, layout = "scroll", caption = captions, caption_valign = "below", h = "100px", w = "150px", border_radius = "5px", shuffle = TRUE)
+```
+
+With long captions.
+
+```{r}
+#| label: scroll-layout-long-captions-top
+pixgallery(paths_a[1:8], layout = "scroll", caption = captions_long[1:8], caption_valign = "top")
+```
+
+```{r}
+#| label: scroll-layout-long-captions-below
+pixgallery(paths_a[1:8], layout = "scroll", caption = captions_long[1:8], caption_valign = "below")
 ```
 
 ### Elastic
 
-Single row gallery where images expand on hover. `h` sets the height of the gallery. `gap` adjusts spacing between thumbnails.
+Single row gallery where images expand on hover. `h` sets the height of the gallery. `gap` adjusts spacing between thumbnails. `caption_valign` and `caption_halign` are disabled.
 
 ```{r}
+#| label: elastic-layout
 pixgallery(paths_b, layout = "elastic")
 ```
 
+With customization.
+
 ```{r}
+#| label: elastic-layout-custom
 pixgallery(paths_a, layout = "elastic", gap = "0", h = "50px")
 ```
 
 ```{r}
+#| label: elastic-layout-custom-border-radius
 pixgallery(paths_a, layout = "elastic", border_radius = "5px", caption = captions)
 ```
 
 Works better when there are more than a handful of images.
 
 ```{r}
+#| label: elastic-layout-few-images
 pixgallery(paths_a[1:4], layout = "elastic")
 ```
 
 ### Rhombus
 
-Thumbnails are diamond shaped. `gap` sets spacing between thumbnails. Thumbnail dimensions and number of items per row are fixed for now. This is a completely non-responsive layout.
+Thumbnails are diamond shaped. Options `caption_valign = "below"` and `w` are disabled.
 
 ```{r}
+#| label: rhombus-layout
 pixgallery(paths_b, layout = "rhombus")
 ```
 
+With customization.
+
 ```{r}
-pixgallery(paths_a, layout = "rhombus", gap = "0px", caption = captions, shuffle = TRUE)
+#| label: rhombus-layout-custom
+pixgallery(paths_a[1:6], layout = "rhombus", gap = "2px", caption = captions[1:6], caption_valign = "center", caption_halign = "center", border_radius = "8px", h = "250px", shuffle = TRUE)
+```
+
+With long captions.
+
+```{r}
+#| label: rhombus-layout-long-captions
+pixgallery(paths_a[1:6], layout = "rhombus", gap = "2px", caption = captions_long[1:6], caption_valign = "center", caption_halign = "center")
 ```
 
 ### Compatibility
@@ -327,6 +458,7 @@ All parameters are not applicable to every layout. The table below indicates whi
 :::{.column-body-outset}
 
 ```{r}
+#| label: layout-compatibility
 #| echo: false
 
 dfr <- data.frame(
@@ -338,12 +470,12 @@ dfr <- data.frame(
   "masonry"   = c("🟩", "🟩", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩", "🟩"),
   "justified" = c("🟩", "🟡", "🟠", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
   "elastic"   = c("🟩", "🔴", "🔴", "🔴", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
-  "scroll"    = c("🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
-  "rhombus"   = c("🟩", "🔴", "🔴", "🔴", "🟩", "🔴", "🔴", "🟩", "🔴", "🟩")
+  "scroll"    = c("🟩", "🟡", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
+  "rhombus"   = c("🟩", "🟡", "🔴", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩")
 )
 # rownames(dfr) <- dfr$parameter
 # dfr$parameter <- NULL
-knitr::kable(dfr)
+knitr::kable(dfr, escape = FALSE)
 ```
 
 ^1^ top/center/bottom  
@@ -411,6 +543,7 @@ Local images (not on the internet) can be provided as relative or absolute paths
 This example assumes your images are available next to the Rmd/qmd/HTML file in a directory named *images* and that you copy these assets if the Rmd/qmd/HTML is relocated.
 
 ```{r}
+#| label: relative-path
 paths <- list.files("images", full.names = TRUE)
 paths
 pixgallery(paths, h = "300px")
@@ -421,6 +554,7 @@ pixgallery(paths, h = "300px")
 Here is an example using sample images from the package. These should work locally, but may not work if the rendered HTML is relocated.
 
 ```{r}
+#| label: absolute-path
 paths <- list.files(system.file("extdata/images", package = "pixture"), full = TRUE)
 paths
 # pixgallery(paths)
@@ -429,5 +563,6 @@ paths
 ## Session
 
 ```{r}
+#| label: session-info
 sessionInfo()
 ```
