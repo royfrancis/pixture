@@ -3,7 +3,6 @@ title: "Pixgallery usage"
 subtitle: "Generate an image gallery"
 date: last-modified
 date-format: "DD-MMM-YYYY"
-encoding: "UTF-8"
 format:
   html:
     toc: true
@@ -20,7 +19,6 @@ This is a demo of the function `pixgallery()`. This creates an interactive galle
 #| label: image-paths
 
 library(pixture)
-options(encoding = "UTF-8")
 paths_a <- c(
   "https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   "https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -464,31 +462,30 @@ All parameters are not applicable to every layout. The table below indicates whi
 dfr <- data.frame(
   "parameter" = c("caption", "caption_valign", "", "caption_halign", "link", "h", "w", "gap", "border_radius", "shuffle"),
   "option"    = c("", "over^1^", "below", "", "", "", "", "", "", ""),
-  "grid"      = c("🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
-  "fixed"     = c("🟩", "🟡", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
-  "mosaic"    = c("🟩", "🟩", "🟩", "🟩", "🟩", "🔵", "🟩", "🟩", "🟩", "🟩"),
-  "masonry"   = c("🟩", "🟩", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩", "🟩"),
-  "justified" = c("🟩", "🟡", "🟠", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
-  "elastic"   = c("🟩", "🔴", "🔴", "🔴", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩"),
-  "scroll"    = c("🟩", "🟡", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩", "🟩"),
-  "rhombus"   = c("🟩", "🟡", "🔴", "🟩", "🟩", "🟩", "🔴", "🟩", "🟩", "🟩")
+  "grid"      = c("&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F535;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "fixed"     = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "mosaic"    = c("&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F535;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "masonry"   = c("&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "justified" = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E0;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "elastic"   = c("&#x1F7E9;", "&#x1F534;", "&#x1F534;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "scroll"    = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "rhombus"   = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;")
 )
 # rownames(dfr) <- dfr$parameter
 # dfr$parameter <- NULL
-knitr::kable(dfr, escape = FALSE)
+knitr::kable(dfr)
 ```
 
 ^1^ top/center/bottom  
 <br>
-🟩 *Functional*  
-🟡/🟠/🔵 *Known issues*  
-🔴 *Inactive/Disabled*  
+&#x1F7E9; *Functional*  
+&#x1F7E1;/&#x1F7E0;/&#x1F535; *Known issues*  
+&#x1F534; *Inactive/Disabled*  
   
-🟡 *Long captions may extend beyond the images and/or clipped. Set height/width manually (`h="300px"`, `h="100%"` etc)*  
-🟠 *Long captions force images to be stretched*  
-🔵 *Height cannot be adjusted when captions are displayed*  
+&#x1F7E1; *Long captions may extend beyond the images and/or clipped. Set height/width manually (`h="300px"`, `h="100%"` etc)*  
+&#x1F7E0; *Long captions force images to be stretched*  
+&#x1F535; *Height cannot be adjusted when captions are displayed*  
 
-This may not be complete. This is work in progress.
 
 ```{r}
 #| include: false
