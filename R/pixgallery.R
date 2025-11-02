@@ -19,21 +19,14 @@
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @details
 #' \strong{grid}: Grid responsive layout. Width is fluid to fit parent. When using \code{caption_valign} options 'top', 'bottom' or 'center', height cannot be adjusted. \cr
-#' \cr
 #' \strong{fixed}: Same as grid but with strictly fixed dimensions. Defaults to square image. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions may overflow. Manually set height in this case. \cr
-#' \cr
 #' \strong{mosaic}: Grid layout with mixed sizes. \cr
-#' \cr
 #' \strong{masonry}: Column layout where images flow vertically. Image height cannot be set. \cr
-#' \cr
 #' \strong{justified}: Similar to masonry but images flow horizontally. Image width cannot be set. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions are clipped. Option 'below' may cause images to be stretched if captions are too long. \cr
-#' \cr
 #' \strong{elastic}: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
-#' \cr
 #' \strong{scroll}: Single row layout with horizontal scrolling. Images go offscreen. Thumbnail height and width can be set. \cr
-#' \strong{rhombus}: Diamond shaped layout. \cr
-#' \cr
-#' \strong{hexagon}: Hexagon shaped layout. \cr
+#' \strong{rhombus}: Diamond shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions are clipped. Option 'below' is dsiabled. \cr
+#' \strong{hexagon}: Hexagon shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions are clipped. Option 'below' is dsiabled. \cr
 #'
 #' @examples
 #' library(pixture)

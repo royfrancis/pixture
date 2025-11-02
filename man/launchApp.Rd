@@ -7,7 +7,7 @@
 launchApp(app = "pixgallery", ...)
 }
 \arguments{
-\item{app}{A character string denoting the app. Options are "pixfigure", "pixgallery", "pixgallery-simple"}
+\item{app}{A character string denoting the app. Options are "pixfigure", "pixgallery", "pixgallery-simple", "pixcarousel".}
 
 \item{...}{Parameters are passed to \code{runApp()}.}
 }

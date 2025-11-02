@@ -40,7 +40,7 @@ pixgallery(
 
 \item{border_radius}{A character denoting corner radius of image thumbnails in valid CSS units.}
 
-\item{layout}{A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "scroll", "elastic" or "rhombus". See details.}
+\item{layout}{A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "scroll", "elastic", "rhombus" or "hexagon". See details.}
 
 \item{shuffle}{A logical indicating whether images are randomly shuffled.}
 
@@ -67,7 +67,9 @@ Create an image gallery
 \strong{elastic}: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
 \cr
 \strong{scroll}: Single row layout with horizontal scrolling. Images go offscreen. Thumbnail height and width can be set. \cr
-\strong{rhombus}: Diamond shaped layout with three columns. Image size and number of columns are fixed. Completely non-responsive without breakpoints. Captions cannot be displayed on thumbnails. \cr
+\strong{rhombus}: Diamond shaped layout. \cr
+\cr
+\strong{hexagon}: Hexagon shaped layout. \cr
 }
 \examples{
 library(pixture)
