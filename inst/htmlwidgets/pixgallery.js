@@ -78,6 +78,7 @@ function pixgallery_base(el,x){
   if(x.layout === "mosaic") pixgallery_mosaic(el,x);
   if(x.layout === "rhombus") pixgallery_rhombus(el,x);
   if(x.layout === "scroll") pixgallery_scroll(el,x);
+  if(x.layout === "hexagon") pixgallery_hexagon(el,x);
 }
 
 /* grid -- fixed ------------------------------------------------------------ */
@@ -815,6 +816,376 @@ function pixgallery_rhombus(el,x){
     });
   } else {
     initRhombusGallery('#' + el.id, h, gap, borderRadius);
+  }
+}
+
+/* hexagon ------------------------------------------------------------------ */
+/* function to create hexagon polygon with border radius */
+function createRoundedHexagon(size, radius) {
+  // Parse size (assume pixels if no unit provided)
+  const sizeValue = typeof size === 'number' ? size : parseFloat(size);
+  
+  // Parse radius and convert to pixels relative to size
+  let radiusValue;
+  if (typeof radius === 'number') {
+    radiusValue = radius;
+  } else if (typeof radius === 'string') {
+    const match = radius.match(/^([\d.]+)(.*)$/);
+    if (match) {
+      const value = parseFloat(match[1]);
+      const unit = match[2] || 'px';
+      
+      // Convert different units to pixels relative to size
+      switch(unit) {
+        case 'px':
+          radiusValue = value;
+          break;
+        case '%':
+          radiusValue = (value / 100) * sizeValue;
+          break;
+        case 'em':
+        case 'rem':
+          radiusValue = value * 16;
+          break;
+        default:
+          radiusValue = value;
+      }
+    }
+  }
+  
+  const width = sizeValue;
+  const height = sizeValue * 1.1547; // Hexagon height ratio
+  const cx = width / 2;
+  
+  // The 6 corner points of the hexagon
+  // Hexagon: 0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%
+  const points = [
+    { x: cx, y: 0 },                    // top (50% 0%)
+    { x: width, y: height * 0.25 },     // top-right (100% 25%)
+    { x: width, y: height * 0.75 },     // bottom-right (100% 75%)
+    { x: cx, y: height },               // bottom (50% 100%)
+    { x: 0, y: height * 0.75 },         // bottom-left (0% 75%)
+    { x: 0, y: height * 0.25 }          // top-left (0% 25%)
+  ];
+  
+  let path = '';
+  
+  for (let i = 0; i < points.length; i++) {
+    const current = points[i];
+    const next = points[(i + 1) % points.length];
+    const prev = points[(i - 1 + points.length) % points.length];
+    
+    // Vector from current to next
+    const dx1 = next.x - current.x;
+    const dy1 = next.y - current.y;
+    const len1 = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+    
+    // Vector from current to previous
+    const dx2 = prev.x - current.x;
+    const dy2 = prev.y - current.y;
+    const len2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+    
+    // Normalized vectors
+    const nx1 = dx1 / len1;
+    const ny1 = dy1 / len1;
+    const nx2 = dx2 / len2;
+    const ny2 = dy2 / len2;
+    
+    // Points offset from the corner
+    const p1 = {
+      x: current.x + nx2 * radiusValue,
+      y: current.y + ny2 * radiusValue
+    };
+    
+    const p2 = {
+      x: current.x + nx1 * radiusValue,
+      y: current.y + ny1 * radiusValue
+    };
+    
+    // Start with the first point
+    if (i === 0) {
+      path += `M ${p1.x} ${p1.y} `;
+    }
+    
+    // Quadratic curve around the corner
+    path += `Q ${current.x} ${current.y} ${p2.x} ${p2.y} `;
+    
+    // Line to the next corner's offset point
+    const nextCurrent = next;
+    const nextNext = points[(i + 2) % points.length];
+    const dx3 = nextNext.x - nextCurrent.x;
+    const dy3 = nextNext.y - nextCurrent.y;
+    const len3 = Math.sqrt(dx3 * dx3 + dy3 * dy3);
+    const nx3 = dx3 / len3;
+    const ny3 = dy3 / len3;
+    
+    const nextP1 = {
+      x: nextCurrent.x - nx1 * radiusValue,
+      y: nextCurrent.y - ny1 * radiusValue
+    };
+    
+    path += `L ${nextP1.x} ${nextP1.y} `;
+  }
+  
+  path += 'Z';
+  
+  return `path('${path}')`;
+}
+
+/* function to create hexagon layout */
+function initHexagonGallery(id, s = null, m = null, borderRadius = null) {
+  // Build selectors with the provided id
+  const gallerySelector = `${id} .pixgallery-hexagon`;
+  const containerSelector = `${id} .pixgallery-hexagon-container`;
+  const childSelector = `${id} .pixgallery-hexagon-child`;
+  
+  // Get elements
+  const gallery = document.querySelector(gallerySelector);
+  const container = document.querySelector(containerSelector);
+  const children = document.querySelectorAll(childSelector);
+  const outerEl = document.querySelector(id);
+  
+  if (!gallery || !container || children.length === 0) {
+    console.error(`Gallery elements not found for id: ${id}`);
+    return;
+  }
+  
+  // Function to normalize CSS values
+  function normalizeCSSValue(value, defaultValue) {
+    if (value == null) return defaultValue;
+    
+    // If it's a number, add 'px'
+    if (typeof value === 'number' && !isNaN(value)) {
+      return `${value}px`;
+    }
+    
+    // If it's a string, validate it's a valid CSS length
+    if (typeof value === 'string') {
+      const trimmed = value.trim();
+      // Check if it matches common CSS units
+      if (/^-?\d+\.?\d*(px|em|rem|vh|vw|%|pt|cm|mm|in|pc|ex|ch|vmin|vmax)$/.test(trimmed)) {
+        return trimmed;
+      }
+      // If it's just a number as string, add 'px'
+      const num = parseFloat(trimmed);
+      if (!isNaN(num)) {
+        return `${num}px`;
+      }
+    }
+    
+    return defaultValue;
+  }
+  
+  // Determine final values for s, m, and borderRadius with defaults
+  const finalS = normalizeCSSValue(s, '150px');
+  const finalM = normalizeCSSValue(m, '4px');
+  const finalBorderRadius = normalizeCSSValue(borderRadius, '0px');
+  
+  // Parse numeric values for calculations (assume px if no unit for calculations)
+  const sNumeric = parseFloat(finalS);
+  const mNumeric = parseFloat(finalM);
+  const f = 1.732 * sNumeric + 4 * mNumeric - 1; // calculated value for repeating gradient
+
+  // Apply calculated styles to children
+  children.forEach(child => {
+    // Calculate and apply child dimensions
+    child.style.width = finalS;
+    child.style.height = `calc(${finalS} * 1.1547)`;
+    child.style.margin = finalM;
+    child.style.marginBottom = `calc(${finalM} - ${finalS} * 0.2885)`;
+    
+    // Apply clip-path for hexagon shape
+    if (borderRadius && parseFloat(finalBorderRadius) > 0) {
+      child.style.clipPath = createRoundedHexagon(finalS, finalBorderRadius);
+    } else {
+      child.style.clipPath = 'polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%)';
+    }
+    
+    // Apply clip-path for caption
+    const captionDiv = child.querySelector('.pixgallery-caption');
+    if (captionDiv) {
+      if (borderRadius && parseFloat(finalBorderRadius) > 0) {
+        captionDiv.style.clipPath = createRoundedHexagon(finalS, finalBorderRadius);
+      } else {
+        captionDiv.style.clipPath = 'polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%)';
+      }
+    }
+    
+    // Find the anchor element
+    const anchor = child.querySelector('a');
+    if (anchor) {
+      anchor.style.position = 'absolute';
+      anchor.style.height = `calc(${finalS} * 1.1547)`;
+      anchor.style.width = finalS;
+      anchor.style.display = 'block';
+      anchor.style.borderRadius = finalBorderRadius;
+    }
+  });
+  
+  // Add clearfix element at the end of container
+  const clearfix = document.createElement('div');
+  clearfix.style.clear = 'both';
+  clearfix.style.height = '0';
+  container.appendChild(clearfix);
+  
+  // Apply container::before pseudo-element properties via a style element
+  const styleId = `hexagon-gallery-dynamic-styles-${id.replace(/[^a-zA-Z0-9]/g, '_')}`;
+  let styleEl = document.getElementById(styleId);
+  
+  if (!styleEl) {
+    styleEl = document.createElement('style');
+    styleEl.id = styleId;
+    document.head.appendChild(styleEl);
+  }
+  
+  styleEl.textContent = `
+    ${containerSelector} {
+      overflow: hidden;
+      font-size: 0;
+    }
+    ${childSelector} {
+      display: inline-block;
+      font-size: initial;
+    }
+    ${containerSelector}::before {
+      content: "";
+      width: calc(${finalS} / 2 + ${finalM});
+      float: left;
+      height: 120%;
+      shape-outside: repeating-linear-gradient(
+        #0000 0 calc(${f}px - 3px),
+        #000 0 ${f}px
+      );
+    }
+    ${containerSelector}::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    ${id} {
+      height: auto !important;
+      overflow: visible !important;
+    }
+    ${gallerySelector} {
+      overflow: visible;
+      display: flex;
+    }
+  `;
+  
+  // Function to calculate and update height
+  function updateHeight() {
+    // Find the last child's position
+    const lastChild = children[children.length - 1];
+    if (lastChild) {
+      const lastRect = lastChild.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      
+      // The bottom of the last element relative to container top
+      // Add back the negative margin since it's visually extending beyond
+      const actualBottom = lastRect.bottom - containerRect.top + (sNumeric * 0.2885 - mNumeric);
+      
+      container.style.minHeight = `${actualBottom}px`;
+      
+      if (outerEl) {
+        outerEl.style.setProperty('height', `${actualBottom + 20}px`, 'important');
+        outerEl.style.setProperty('overflow', 'visible', 'important');
+      }
+    }
+  }
+  
+  // Initial height calculation
+  setTimeout(updateHeight, 100);
+  
+  // Debounce function to limit resize calls
+  let resizeTimeout;
+  function handleResize() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(updateHeight, 150);
+  }
+  
+  // Add resize event listener
+  window.addEventListener('resize', handleResize);
+  
+  // Store cleanup function on the gallery element for potential cleanup later
+  gallery._hexagonCleanup = () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}
+
+function pixgallery_hexagon(el,x){
+
+  var urls = x.path;
+  var src = x.path;
+  var caption = x.caption;
+  var link = x.link;
+  var h = x.h;
+  var gap = x.gap;
+  var borderRadius = x.border_radius;
+  var captionValign = x.caption_valign;
+  var captionHalign = x.caption_halign;
+
+  if(typeof link[0] !== 'boolean') urls = x.link
+  if(h === null) h = "200px";
+
+  // initialize template
+  if(caption.length === 0){
+
+    // if captions are not used
+    var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}"><img class="pixgallery-hexagon-image" src="{src}"></a></div>';
+
+  } else {
+
+    if(captionValign == "none" || captionValign == "below"){
+
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-hexagon-image" src="{src}"></a></div>';
+
+    } else if(captionValign == "top") {
+
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-top" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
+
+    } else if(captionValign == "center") {
+
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-center" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
+
+    } else if(captionValign == "bottom") {
+
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" title="{caption}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-bottom" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
+
+    }
+  }
+  
+  var newValues = '', limitItem = urls.length;
+  for (let i = 0; i < limitItem; ++i) {
+
+    let newValue = '';
+    newValue = temp.replace("{id}",el.id).replace(/\{src\}/g, src[i]).replace(/\{captionHalign\}/g, captionHalign)
+
+    // if link is false or url is null, disable a
+    if(urls[i]== null || link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
+    } else {
+      newValue = newValue.replace(/\{url\}/g, urls[i])
+    }
+
+    // if caption is not empty
+    if(caption.length !== 0){
+      if(caption[i] === null || caption[i] === undefined) caption[i] = "";
+      newValue = newValue.replace(/\{caption\}/g, caption[i])
+    }
+
+    newValues += newValue
+  }
+
+  document.getElementById(el.id).innerHTML = '<div class="pixgallery-gallery pixgallery-hexagon"><div class="pixgallery-hexagon-container">' + newValues + '</div></div>';
+  
+  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixgallery-' + el.id + ' a'});
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initHexagonGallery('#' + el.id, h, gap, borderRadius);
+    });
+  } else {
+    initHexagonGallery('#' + el.id, h, gap, borderRadius);
   }
 }
 

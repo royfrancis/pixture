@@ -133,6 +133,7 @@ ui <- fluidPage(
           "justified",
           "elastic",
           "rhombus",
+          "hexagon",
           "scroll"
         ),
         selected = "grid"

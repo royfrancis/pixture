@@ -11,7 +11,7 @@
 #' @param w A character denoting width of the image thumbnails in valid CSS units.
 #' @param gap A character denoting spacing between thumbnails in valid CSS units.
 #' @param border_radius A character denoting corner radius of image thumbnails in valid CSS units.
-#' @param layout A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "scroll", "elastic" or "rhombus". See details.
+#' @param layout A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "scroll", "elastic", "rhombus" or "hexagon". See details.
 #' @param shuffle A logical indicating whether images are randomly shuffled.
 #' @param height A character denoting height of the widget in valid CSS units.
 #' @param width A character denoting width of the widget in valid CSS units.
@@ -31,7 +31,9 @@
 #' \strong{elastic}: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
 #' \cr
 #' \strong{scroll}: Single row layout with horizontal scrolling. Images go offscreen. Thumbnail height and width can be set. \cr
-#' \strong{rhombus}: Diamond shaped layout with three columns. Image size and number of columns are fixed. Completely non-responsive without breakpoints. Captions cannot be displayed on thumbnails. \cr
+#' \strong{rhombus}: Diamond shaped layout. \cr
+#' \cr
+#' \strong{hexagon}: Hexagon shaped layout. \cr
 #'
 #' @examples
 #' library(pixture)
@@ -135,7 +137,8 @@ pixgallery <- function(
     "masonry",
     "scroll",
     "justified",
-    "rhombus"
+    "rhombus",
+    "hexagon"
   )
   if (is.null(layout) || (!layout %in% layouts)) {
     stop(paste0(

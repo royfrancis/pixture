@@ -459,6 +459,101 @@
   pointer-events: auto;
 }
 
+/* gallery hexagon */
+/* https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ */
+
+.pixgallery-hexagon {
+  display: flex;
+  /* --s: 150px;
+  --m: 4px;
+  --f: calc(1.732 * var(--s) + 4 * var(--m)  - 1px); */
+}
+
+.pixgallery-hexagon .pixgallery-hexagon-container {
+  font-size: 0; /*disable white space between inline block element */
+}
+
+.pixgallery-hexagon .pixgallery-hexagon-container::before {
+  content: "";
+  float: left;
+  height: 140%;
+  /* width: calc(var(--s)/2 + var(--m));
+  shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px),#000  0 var(--f)); */
+}
+
+.pixgallery-hexagon-child {
+  /* width: var(--s);
+  margin: var(--m);
+  height: calc(var(--s)*1.1547);
+  margin-bottom: calc(var(--m) - var(--s)*0.2885);
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%); */
+  display: inline-block;
+  font-size: initial;
+  background: lightgrey;
+}
+
+.pixgallery-hexagon-child a {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  display: block;
+}
+
+.pixgallery-hexagon-image {
+  object-fit: cover;
+  -o-object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.pixgallery-hexagon-image-over {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.pixgallery-hexagon-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  pointer-events: none;
+}
+
+.pixgallery-hexagon-caption-top {
+  align-items: flex-start; /* Change to: flex-start (top), center (center), flex-end (bottom) */
+  justify-content: center; /* Change to: flex-start (left), center (center), flex-end (right) */
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.6)));
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+.pixgallery-hexagon-caption-center {
+  align-items: center; /* Change to: flex-start (top), center (center), flex-end (bottom) */
+  justify-content: center; /* Change to: flex-start (left), center (center), flex-end (right) */
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0)));
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+}
+
+.pixgallery-hexagon-caption-bottom {
+  align-items: flex-end; /* Change to: flex-start (top), center (center), flex-end (bottom) */
+  justify-content: center; /* Change to: flex-start (left), center (center), flex-end (right) */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.6)));
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+.pixgallery-hexagon-caption-inner {
+  color: white;
+  font-family: system-ui, sans-serif;
+  padding: 1em;
+  pointer-events: auto;
+}
+
 /* gallery scroll */
 
 .pixgallery-scroll {

@@ -145,6 +145,7 @@ test_that("Layouts default", {
   expect_no_error(pixgallery(paths, layout = "justified"))
   expect_no_error(pixgallery(paths, layout = "elastic"))
   expect_no_error(pixgallery(paths, layout = "rhombus"))
+  expect_no_error(pixgallery(paths, layout = "hexagon"))
   expect_no_error(pixgallery(paths, layout = "scroll"))
   expect_error(pixgallery(paths, layout = "bla"))
   expect_error(pixgallery(paths, layout = NA))
@@ -158,6 +159,7 @@ test_that("Layouts default with caption", {
   expect_no_error(pixgallery(paths, caption = captions, layout = "justified"))
   expect_no_error(pixgallery(paths, caption = captions, layout = "elastic"))
   expect_no_error(pixgallery(paths, caption = captions, layout = "rhombus"))
+  expect_no_error(pixgallery(paths, caption = captions, layout = "hexagon"))
   expect_no_error(pixgallery(paths, caption = captions, layout = "scroll"))
 })
 
@@ -174,6 +176,7 @@ test_that("Dimensions", {
   ))
   expect_no_error(pixgallery(paths, layout = "elastic", h = "50px", w = "50px"))
   expect_no_error(pixgallery(paths, layout = "rhombus", h = "50px", w = "50px"))
+  expect_no_error(pixgallery(paths, layout = "hexagon", h = "50px", w = "50px"))
   expect_no_error(pixgallery(paths, layout = "scroll", h = "50px", w = "50px"))
   expect_no_error(pixgallery(paths, h = NA, w = NA))
   expect_no_error(pixgallery(paths, h = NULL, w = NULL))

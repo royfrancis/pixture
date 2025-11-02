@@ -449,6 +449,29 @@ With long captions.
 pixgallery(paths_a[1:6], layout = "rhombus", gap = "2px", caption = captions_long[1:6], caption_valign = "center", caption_halign = "center")
 ```
 
+### Hexagon
+
+Thumbnails are hexagon shaped. Options `caption_valign = "below"` and `w` are disabled.
+
+```{r}
+#| label: hexagon-layout
+pixgallery(paths_b, layout = "hexagon")
+```
+
+With customization.
+
+```{r}
+#| label: hexagon-layout-custom
+pixgallery(paths_a[1:6], layout = "hexagon", gap = "2px", caption = captions[1:6], caption_valign = "center", caption_halign = "center", border_radius = "8px", h = "250px", shuffle = TRUE)
+```
+
+With long captions.
+
+```{r}
+#| label: hexagon-layout-long-captions
+pixgallery(paths_a[1:6], layout = "hexagon", gap = "2px", caption = captions_long[1:6], caption_valign = "center", caption_halign = "center")
+```
+
 ### Compatibility
 
 All parameters are not applicable to every layout. The table below indicates which parameters are active for each layout type.
@@ -469,7 +492,8 @@ dfr <- data.frame(
   "justified" = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E0;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
   "elastic"   = c("&#x1F7E9;", "&#x1F534;", "&#x1F534;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
   "scroll"    = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "rhombus"   = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;")
+  "rhombus"   = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
+  "hexagon"   = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;")
 )
 # rownames(dfr) <- dfr$parameter
 # dfr$parameter <- NULL
