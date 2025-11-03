@@ -149,8 +149,6 @@ ui <- fluidPage(
         value = 1
       ),
       checkboxInput("draggable", "Draggable", value = TRUE),
-      checkboxInput("show_buttons", "Show buttons", value = TRUE),
-      checkboxInput("show_dots", "Show dots", value = TRUE),
       checkboxInput("scroll_lock", "Scroll lock", value = TRUE),
       checkboxInput("rewind", "Rewind", value = FALSE),
       checkboxInput("shuffle", "Shuffle", value = FALSE),
@@ -188,7 +186,7 @@ server <- function(input, output) {
           "halign",
           "Horiz alignment",
           choices = c("left", "center", "right")
-        ),
+        )
       )
     }
   })
@@ -211,14 +209,14 @@ server <- function(input, output) {
           gap = paste0(input$gap, "px"),
           border_radius = paste0(input$border_radius, "px"),
           shuffle = input$shuffle,
-          slides_to_show = input$slides_to_show,
-          slides_to_scroll = input$slides_to_scroll,
-          draggable = input$draggable,
-          show_buttons = input$show_buttons,
-          show_dots = input$show_dots,
-          scroll_lock = input$scroll_lock,
-          rewind = input$rewind,
-          h = paste0(input$h, "px")
+          h = paste0(input$h, "px"),
+          carousel = list(
+            slidesToShow = input$slides_to_show,
+            slidesToScroll = input$slides_to_scroll,
+            draggable = input$draggable,
+            scrollLock = input$scroll_lock,
+            rewind = input$rewind
+          )
         )
       }
     } else {
@@ -228,14 +226,14 @@ server <- function(input, output) {
         gap = paste0(input$gap, "px"),
         border_radius = paste0(input$border_radius, "px"),
         shuffle = input$shuffle,
-        slides_to_show = input$slides_to_show,
-        slides_to_scroll = input$slides_to_scroll,
-        draggable = input$draggable,
-        show_buttons = input$show_buttons,
-        show_dots = input$show_dots,
-        scroll_lock = input$scroll_lock,
-        rewind = input$rewind,
-        h = paste0(input$h, "px")
+        h = paste0(input$h, "px"),
+        carousel = list(
+          slidesToShow = input$slides_to_show,
+          slidesToScroll = input$slides_to_scroll,
+          draggable = input$draggable,
+          scrollLock = input$scroll_lock,
+          rewind = input$rewind
+        )
       )
     }
   })

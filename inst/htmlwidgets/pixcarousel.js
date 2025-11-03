@@ -48,13 +48,6 @@ function pixcarousel(el,x){
   var link = x.link;
   var gap = x.gap;
   var borderRadius = x.border_radius;
-  var draggable = x.draggable;
-  var slidesToShow = x.slides_to_show;
-  var slidesToScroll = x.slides_to_scroll;
-  var scrollLock = x.scroll_lock;
-  var rewind = x.rewind;
-  var showButtons = x.show_buttons;
-  var showDots = x.show_dots;
 
   if(typeof link[0] !== 'boolean') urls = link
   var buttonLeft = '<svg height="40" viewBox="0 0 1792 1792" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M1037 1395l102-102q19-19 19-45t-19-45l-307-307 307-307q19-19 19-45t-19-45l-102-102q-19-19-45-19t-45 19l-454 454q-19 19-19 45t19 45l454 454q19 19 45 19t45-19zm627-499q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>';
@@ -109,32 +102,21 @@ function pixcarousel(el,x){
   }
 
   temp = '';
-  temp = temp + '<div class="pixcarousel glider-contain"><div id="pixcarousel-{id}" class="glider" style="border-radius:' + borderRadius + ';">' + newValues + '</div>';
-  if(showButtons) temp = temp + '<button aria-label="Previous" id="pixcarousel-{id}-glider-prev" class="glider-prev">' + buttonLeft + '</button>' + '<button aria-label="Next"  id="pixcarousel-{id}-glider-next" class="glider-next">' + buttonRight + '</button>';
-  
-  if(showDots) {
-    temp = temp + '<div role="tablist" id="pixcarousel-{id}-dots" class="dots"></div>';
-    var dots = '#pixcarousel-' + el.id + '-dots';
-  } else {
-    var dots = null;
-  }
-
-  temp = temp + '</div>';
+  temp = temp + '<div class="pixcarousel glider-contain"><div id="pixcarousel-{id}" class="glider" style="border-radius:' + borderRadius + ';">' + newValues + '</div>' + '<button aria-label="Previous" id="pixcarousel-{id}-glider-prev" class="glider-prev">' + buttonLeft + '</button>' + '<button aria-label="Next"  id="pixcarousel-{id}-glider-next" class="glider-next">' + buttonRight + '</button>' + '<div role="tablist" id="pixcarousel-{id}-dots" class="dots"></div>' + '</div>';
 
   document.getElementById(el.id).innerHTML = temp.replace(/\{id\}/g,el.id);
 
-  new Glider(document.querySelector('#pixcarousel-' + el.id + '.glider'), {
-    slidesToShow: slidesToShow,
-    slidesToScroll: slidesToScroll,
-    draggable: draggable,
-    scrollLock: scrollLock,
-    rewind: rewind,
-    dots: dots,
+  var carousel_default = {
+    dots: '#pixcarousel-' + el.id + '-dots',
     arrows: {
       prev: '#pixcarousel-' + el.id + '-glider-prev',
       next: '#pixcarousel-' + el.id + '-glider-next'
     }
-  })
+  }
+  var carousel_options = Object.assign({}, x.carousel, carousel_default);
+
+  console.log(carousel_options);
+  new Glider(document.querySelector('#pixcarousel-' + el.id + '.glider'), carousel_options);
 
   if(link[0] === true) {
     const lightbox_options = Object.assign(x.lightbox || {});

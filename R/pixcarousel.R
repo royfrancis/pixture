@@ -10,20 +10,27 @@
 #' @param gap A character denoting spacing between thumbnails in valid CSS units.
 #' @param border_radius A character denoting corner radius of the carousel in valid CSS units.
 #' @param shuffle A logical indicating whether images are randomly shuffled.
+#' @param carousel A list of options to customize the carousel. See details.
 #' @param lightbox A list of options to customize the lightbox. See details.
-#' @param slides_to_show Number of images to be displayed.
-#' @param slides_to_scroll Number of images to scroll.
-#' @param draggable Logical indicating if the carousal is draggable.
-#' @param show_buttons Logical indicating if buttons are displayed.
-#' @param show_dots Logical indicating if dots are displayed.
-#' @param scroll_lock Logical indicating if carousal scrolls to nearest image after interaction.
-#' @param rewind Logical indicating if carousal scrolls to beginning/end at endpoints.
 #' @param h A character denoting height of the image thumbnails in valid CSS units.
 #' @param height A character denoting height of the widget in valid CSS units.
 #' @param width A character denoting width of the widget in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @details
+#' \strong{carousel options}:\cr
+#' The carousel can be customized by passing a list of options to the \code{carousel} parameter. Here is an example; \cr
+#' \code{
+#' pixcarousel(
+#'  paths,
+#'  carousel = list(
+#'   slidesToShow = 3,
+#'   slidesToScroll = 2
+#'  )
+#')
+#'}\cr
+#' The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}.
+#' \cr
 #' \strong{lightbox options}:\cr
 #' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
 #' \code{
@@ -68,14 +75,8 @@ pixcarousel <- function(
   gap = "0px",
   border_radius = "0px",
   shuffle = FALSE,
+  carousel = list(),
   lightbox = list(),
-  slides_to_show = 1,
-  slides_to_scroll = 1,
-  draggable = TRUE,
-  show_buttons = TRUE,
-  show_dots = TRUE,
-  scroll_lock = TRUE,
-  rewind = FALSE,
   h = "400px",
   width = NULL,
   height = NULL,
@@ -146,13 +147,20 @@ pixcarousel <- function(
     stop("Parameter 'shuffle' must be a logical of length 1 (TRUE or FALSE).")
   }
 
+  # carousel options
+  # default list if user doesn't provide anything
+  carousel_defaults <- list(
+    draggable = TRUE,
+    scrollLock = TRUE
+  )
+
+  # merge defaults with user-supplied
+  carousel <- modifyList(carousel_defaults, carousel)
+
   # lightbox options
   # default list if user doesn't provide anything
   lightbox_defaults <- list(
-    selector = ".glightbox",
-    touchNavigation = TRUE,
-    loop = FALSE,
-    zoomable = TRUE
+    selector = ".glightbox"
   )
   # merge defaults with user-supplied
   lightbox <- modifyList(lightbox_defaults, lightbox)
@@ -167,14 +175,8 @@ pixcarousel <- function(
     gap = gap,
     border_radius = border_radius,
     shuffle = shuffle,
+    carousel = carousel,
     lightbox = lightbox,
-    slides_to_show = slides_to_show,
-    slides_to_scroll = slides_to_scroll,
-    draggable = draggable,
-    show_buttons = show_buttons,
-    show_dots = show_dots,
-    scroll_lock = scroll_lock,
-    rewind = rewind,
     h = h
   )
 
