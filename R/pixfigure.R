@@ -14,6 +14,7 @@
 #' @param width A character denoting width of the widget as a string in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
+#' @importFrom utils modifyList
 #' @details
 #' \strong{lightbox options}\cr
 #' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr

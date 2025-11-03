@@ -56,15 +56,16 @@ Creates an image carousel
 \details{
 \strong{carousel options}\cr
 The carousel can be customized by passing a list of options to the \code{carousel} parameter. Here is an example; \cr
-\dontrun{
-pixcarousel(
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{pixcarousel(
  paths,
  carousel = list(
   slidesToShow = 3,
   slidesToScroll = 2
  )
 )
-}
+}\if{html}{\out{</div>}}
+
 The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}. \cr
 \cr
 \strong{lightbox options}:\cr

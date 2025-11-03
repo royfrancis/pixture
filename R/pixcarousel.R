@@ -17,10 +17,11 @@
 #' @param width A character denoting width of the widget in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
+#' @importFrom utils modifyList
 #' @details
 #' \strong{carousel options}\cr
 #' The carousel can be customized by passing a list of options to the \code{carousel} parameter. Here is an example; \cr
-#' \dontrun{
+#' ```
 #' pixcarousel(
 #'  paths,
 #'  carousel = list(
@@ -28,7 +29,7 @@
 #'   slidesToScroll = 2
 #'  )
 #')
-#'}
+#'```
 #' The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}. \cr 
 #' \cr
 #' \strong{lightbox options}:\cr

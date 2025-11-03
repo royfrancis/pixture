@@ -18,6 +18,7 @@
 #' @param width A character denoting width of the widget in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
+#' @importFrom utils modifyList
 #' @details
 #' \strong{layout options}\cr
 #' \strong{grid}: Grid responsive layout. Width is fluid to fit parent. When using \code{caption_valign} options 'top', 'bottom' or 'center', height cannot be adjusted. \cr
