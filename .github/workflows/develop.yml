@@ -8,9 +8,8 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
-    tags:
-      - v*
+      - update
+      - develop
 
 jobs:
   linux:
