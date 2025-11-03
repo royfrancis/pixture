@@ -6,21 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Quotes • pixture</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="quotes_files/libs/quarto-html/popper.min.js"></script><script src="quotes_files/libs/quarto-html/tippy.umd.min.js"></script><link href="quotes_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="quotes_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<script src="quotes_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="quotes_files/libs/simplelightbox-2.1.0/css/simplelightbox.css" rel="stylesheet">
-<script src="quotes_files/libs/simplelightbox-2.1.0/js/simplelightbox.js"></script><link href="quotes_files/libs/pixgallery-0/css/pixgallery.css" rel="stylesheet">
-<script src="quotes_files/libs/pixgallery-binding-0.1.0/pixgallery.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<script src="quotes_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="quotes_files/libs/glightbox-3.3.1/css/glightbox.min.css" rel="stylesheet">
+<script src="quotes_files/libs/glightbox-3.3.1/js/glightbox.min.js"></script><link href="quotes_files/libs/pixgallery-0/css/pixgallery.css" rel="stylesheet">
+<script src="quotes_files/libs/pixgallery-binding-0.2.0/pixgallery.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Quotes">
 </head>
 <body>
@@ -31,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pixture</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +47,8 @@
     <li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
     <li><a class="dropdown-item" href="../articles/pixfigure.html">Pixfigure usage</a></li>
     <li><a class="dropdown-item" href="../articles/pixgallery.html">Pixgallery usage</a></li>
+    <li><a class="dropdown-item" href="../articles/pixcarousel.html">Pixcarousel usage</a></li>
+    <li><a class="dropdown-item" href="../articles/lightbox.html">Lightbox usage</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Shiny</h6></li>
     <li><a class="dropdown-item" href="../articles/shiny.html">Pixture in shiny</a></li>
@@ -76,7 +77,7 @@
       <h1>Quotes</h1>
       <p class="subtitle">Masonry grid gallery with text</p>
 
-      <p class="date">11-Aug-2024</p>
+      <p class="date">01-Nov-2025</p>
 
       <small class="dont-index">Source: <a href="https://github.com/royfrancis/pixture/blob/HEAD/vignettes/quotes.qmd"><code>vignettes/quotes.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
@@ -184,115 +185,97 @@
 <span>  shuffle <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-c635e1b7962ec7338248" style="width:100%;height:100%;" class="pixgallery html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c635e1b7962ec7338248">{"x":{"path":["https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/5943844/pexels-photo-5943844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/2743739/pexels-photo-2743739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4132337/pexels-photo-4132337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/1687093/pexels-photo-1687093.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4584387/pexels-photo-4584387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/5254061/pexels-photo-5254061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/7195272/pexels-photo-7195272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4587995/pexels-photo-4587995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4012670/pexels-photo-4012670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/1600757/pexels-photo-1600757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/8560383/pexels-photo-8560383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/3368844/pexels-photo-3368844.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/20316911/pexels-photo-20316911/free-photo-of-woman-driving-at-night.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4584462/pexels-photo-4584462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/7203718/pexels-photo-7203718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/1767434/pexels-photo-1767434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/15300927/pexels-photo-15300927/free-photo-of-flowers-in-boot.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/2304253/pexels-photo-2304253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/7114749/pexels-photo-7114749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"],"caption":["<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“The best way to appreciate your job is to imagine yourself without one.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Oscar Wilde<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“If at first you don't succeed, then skydiving definitely isn't for you.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Steven Wright<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“It could be that your purpose in life is to serve as a warning to others.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Ashleigh Brilliant<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Hard work never killed anybody, but why take a chance?”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Edgar Bergen<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“I always wanted to be somebody, but now I realize I should have been more specific.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Lily Tomlin<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“A pessimist is a person who has had to listen to too many optimists.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Don Marquis<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“If you think you are too small to make a difference, try sleeping with a mosquito.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Dalai Lama<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Remember, you are unique, just like everyone else.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Margaret Mead<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“If you try to fail, and succeed, which have you done?”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>George Carlin<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“I am not afraid of death, I just don't want to be there when it happens.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Woody Allen<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Why do they call it rush hour when nothing moves?”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Robin Williams<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“I love being married. It's so great to find one special person you want to annoy for the rest of your life.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Rita Rudner<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“A bank is a place that will lend you money if you can prove that you don't need it.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Bob Hope<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Speed has never killed anyone. Suddenly becoming stationary, that's what gets you.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Jeremy Clarkson<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Have you ever noticed that anybody driving slower than you is an idiot, and anyone going faster than you is a maniac?”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>George Carlin<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Always forgive your enemies; nothing annoys them so much.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Oscar Wilde<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“The trouble with having an open mind, of course, is that people will insist on coming along and trying to put things in it.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Terry Pratchett<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“My husband and I fell in love at first sight. Maybe I should have taken a second look.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Halley Reed<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Before you criticize someone, you should walk a mile in their shoes. That way when you criticize them, you are a mile away from them and you have their shoes.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Jack Handey<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“Everybody wants to save the earth. No one wants to help mom do the dishes.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>P J O'Rourke<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'>“I'm not crazy — I've just been in a very bad mood for 40 years.”<\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Ouiser Boudreaux<\/strong><\/div> <\/div>"],"caption_valign":"center","caption_halign":"center","link":[true],"h":null,"w":null,"gap":"5px","border_radius":"0px","layout":"masonry","shuffle":true},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e71cb4f3373103f7c16b" style="width:100%;height:100%;" class="pixgallery html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e71cb4f3373103f7c16b">{"x":{"path":["https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/5943844/pexels-photo-5943844.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/2743739/pexels-photo-2743739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4132337/pexels-photo-4132337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/1687093/pexels-photo-1687093.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4584387/pexels-photo-4584387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/5254061/pexels-photo-5254061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/7195272/pexels-photo-7195272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4587995/pexels-photo-4587995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4012670/pexels-photo-4012670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/1600757/pexels-photo-1600757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/8560383/pexels-photo-8560383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/3368844/pexels-photo-3368844.jpeg?auto=compress&cs=tinysrgb&w=1200","https://images.pexels.com/photos/20316911/pexels-photo-20316911/free-photo-of-woman-driving-at-night.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/4584462/pexels-photo-4584462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/7203718/pexels-photo-7203718.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/1767434/pexels-photo-1767434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/15300927/pexels-photo-15300927/free-photo-of-flowers-in-boot.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/2304253/pexels-photo-2304253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2","https://images.pexels.com/photos/7114749/pexels-photo-7114749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"],"caption":["<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>The best way to appreciate your job is to imagine yourself without one.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Oscar Wilde<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>If at first you don't succeed, then skydiving definitely isn't for you.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Steven Wright<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>It could be that your purpose in life is to serve as a warning to others.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Ashleigh Brilliant<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Hard work never killed anybody, but why take a chance?<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Edgar Bergen<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>I always wanted to be somebody, but now I realize I should have been more specific.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Lily Tomlin<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>A pessimist is a person who has had to listen to too many optimists.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Don Marquis<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>If you think you are too small to make a difference, try sleeping with a mosquito.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Dalai Lama<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Remember, you are unique, just like everyone else.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Margaret Mead<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>If you try to fail, and succeed, which have you done?<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>George Carlin<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>I am not afraid of death, I just don't want to be there when it happens.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Woody Allen<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Why do they call it rush hour when nothing moves?<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Robin Williams<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>I love being married. It's so great to find one special person you want to annoy for the rest of your life.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Rita Rudner<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>A bank is a place that will lend you money if you can prove that you don't need it.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Bob Hope<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Speed has never killed anyone. Suddenly becoming stationary, that's what gets you.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Jeremy Clarkson<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Have you ever noticed that anybody driving slower than you is an idiot, and anyone going faster than you is a maniac?<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>George Carlin<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Always forgive your enemies; nothing annoys them so much.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Oscar Wilde<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>The trouble with having an open mind, of course, is that people will insist on coming along and trying to put things in it.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Terry Pratchett<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>My husband and I fell in love at first sight. Maybe I should have taken a second look.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Halley Reed<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Before you criticize someone, you should walk a mile in their shoes. That way when you criticize them, you are a mile away from them and you have their shoes.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Jack Handey<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>Everybody wants to save the earth. No one wants to help mom do the dishes.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>P J O'Rourke<\/strong><\/div> <\/div>","<div style='text-shadow:1px 1px 4px gray;'> <div style='line-height:1.2;margin-bottom:0.5em;'><U+201C>I'm not crazy <U+2014> I've just been in a very bad mood for 40 years.<U+201D><\/div> <div style='text-transform:uppercase;letter-spacing:1.2px;font-size:0.7rem;'><strong>Ouiser Boudreaux<\/strong><\/div> <\/div>"],"caption_valign":"center","caption_halign":"center","link":[true],"h":null,"w":null,"gap":"5px","border_radius":"0px","layout":"masonry","shuffle":true,"lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
 
 
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config);
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
       }
-    } else {
-      return undefined;
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
         });
-        return popup.innerHTML;
-      });
+      }
     }
-  }
-});
-</script></main>
+  });
+  </script></main>
 </div>
 
 
@@ -301,7 +284,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>

@@ -6,21 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Pixfigure usage • pixture</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="pixfigure_files/libs/quarto-html/popper.min.js"></script><script src="pixfigure_files/libs/quarto-html/tippy.umd.min.js"></script><link href="pixfigure_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="pixfigure_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<script src="pixfigure_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="pixfigure_files/libs/simplelightbox-0/css/simplelightbox.css" rel="stylesheet">
-<script src="pixfigure_files/libs/simplelightbox-0/js/simplelightbox.js"></script><link href="pixfigure_files/libs/pixfigure-0/css/pixfigure.css" rel="stylesheet">
-<script src="pixfigure_files/libs/pixfigure-binding-0.1.0/pixfigure.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<script src="pixfigure_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="pixfigure_files/libs/glightbox-3.3.1/css/glightbox.min.css" rel="stylesheet">
+<script src="pixfigure_files/libs/glightbox-3.3.1/js/glightbox.min.js"></script><link href="pixfigure_files/libs/pixfigure-0/css/pixfigure.css" rel="stylesheet">
+<script src="pixfigure_files/libs/pixfigure-binding-0.2.0/pixfigure.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Pixfigure usage">
 </head>
 <body>
@@ -31,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pixture</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +47,8 @@
     <li><h6 class="dropdown-header" data-toc-skip>Usage</h6></li>
     <li><a class="dropdown-item" href="../articles/pixfigure.html">Pixfigure usage</a></li>
     <li><a class="dropdown-item" href="../articles/pixgallery.html">Pixgallery usage</a></li>
+    <li><a class="dropdown-item" href="../articles/pixcarousel.html">Pixcarousel usage</a></li>
+    <li><a class="dropdown-item" href="../articles/lightbox.html">Lightbox usage</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><h6 class="dropdown-header" data-toc-skip>Shiny</h6></li>
     <li><a class="dropdown-item" href="../articles/shiny.html">Pixture in shiny</a></li>
@@ -76,7 +77,7 @@
       <h1>Pixfigure usage</h1>
       <p class="subtitle">Generate a simple layout of images</p>
 
-      <p class="date">02-Aug-2024</p>
+      <p class="date">03-Nov-2025</p>
 
       <small class="dont-index">Source: <a href="https://github.com/royfrancis/pixture/blob/HEAD/vignettes/pixfigure.qmd"><code>vignettes/pixfigure.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
@@ -97,13 +98,13 @@
 <span>  <span class="st">"https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
-<p>Clicking on the thumbnail opens up the full image in a lightbox.</p>
+<p>Clicking on the thumbnail opens up the full image in a lightbox. To customize the lightbox, see the lightbox vignette.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-2ce0a7fc215a40d34c3a" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2ce0a7fc215a40d34c3a">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c625c2d00b26f5c2daa3" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c625c2d00b26f5c2daa3">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section class="level2" data-number="1"><h2 data-number="1" id="caption">
@@ -114,8 +115,8 @@
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, caption <span class="op">=</span> <span class="st">"Night sky over the mountains"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-20a153aa58a75de0ac61" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-20a153aa58a75de0ac61">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains"],"link":[true],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5413286630604bb23d7f" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5413286630604bb23d7f">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains"],"link":[true],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section><section class="level2" data-number="2"><h2 data-number="2" id="link">
@@ -126,33 +127,50 @@
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, link <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-99c73e996d7a5acac227" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-99c73e996d7a5acac227">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[false],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a94cf0135fd05011c82d" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a94cf0135fd05011c82d">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[false],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Night sky over the mountains"</span>, <span class="st">"Though the dense rainforest"</span><span class="op">)</span>, link <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span></span>
+<span>  <span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>,</span>
+<span>  caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Night sky over the mountains"</span>, <span class="st">"Though the dense rainforest"</span><span class="op">)</span>,</span>
+<span>  link <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-014b3f700264d989cc21" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-014b3f700264d989cc21">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Though the dense rainforest"],"link":[false],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8d8adbbbd76363b56b34" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8d8adbbbd76363b56b34">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Though the dense rainforest"],"link":[false],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>By setting this to a character vector, you can add custom links.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, link <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org/wiki/Milky_Way"</span>, <span class="st">"https://en.wikipedia.org/wiki/Rainforest"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span></span>
+<span>  <span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>,</span>
+<span>  link <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://en.wikipedia.org/wiki/Milky_Way"</span>,</span>
+<span>    <span class="st">"https://en.wikipedia.org/wiki/Rainforest"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-22c1c4a7063b25ae540c" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-22c1c4a7063b25ae540c">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":["https://en.wikipedia.org/wiki/Milky_Way","https://en.wikipedia.org/wiki/Rainforest"],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-32d217fcf340ffecaf9c" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-32d217fcf340ffecaf9c">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":["https://en.wikipedia.org/wiki/Milky_Way","https://en.wikipedia.org/wiki/Rainforest"],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Night sky over the mountains"</span>, <span class="st">"Through the dense rainforest"</span><span class="op">)</span>, link <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://en.wikipedia.org/wiki/Milky_Way"</span>, <span class="st">"https://en.wikipedia.org/wiki/Rainforest"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span></span>
+<span>  <span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>,</span>
+<span>  caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Night sky over the mountains"</span>, <span class="st">"Through the dense rainforest"</span><span class="op">)</span>,</span>
+<span>  link <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"https://en.wikipedia.org/wiki/Milky_Way"</span>,</span>
+<span>    <span class="st">"https://en.wikipedia.org/wiki/Rainforest"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-a5364bab930e1875a8aa" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a5364bab930e1875a8aa">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Through the dense rainforest"],"link":["https://en.wikipedia.org/wiki/Milky_Way","https://en.wikipedia.org/wiki/Rainforest"],"h":"auto","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0551d32bef4d70f6ebf9" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0551d32bef4d70f6ebf9">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Through the dense rainforest"],"link":["https://en.wikipedia.org/wiki/Milky_Way","https://en.wikipedia.org/wiki/Rainforest"],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section><section class="level2" data-number="3"><h2 data-number="3" id="dimensions">
@@ -163,16 +181,16 @@
 <div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, w <span class="op">=</span> <span class="st">"400px"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-e5269910c23e332e45d9" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e5269910c23e332e45d9">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"auto","w":"400px","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f0e59d4c4c5140abb04d" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f0e59d4c4c5140abb04d">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"auto","w":"400px","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>, h <span class="op">=</span> <span class="st">"400px"</span>, caption <span class="op">=</span> <span class="st">"shark"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-48c93710ed818f258a36" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-48c93710ed818f258a36">{"x":{"path":["https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["shark"],"link":[true],"h":"400px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e5059a19f154323b212d" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e5059a19f154323b212d">{"x":{"path":["https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["shark"],"link":[true],"h":"400px","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section><section class="level2" data-number="4"><h2 data-number="4" id="fit">
@@ -181,31 +199,40 @@
 <p>The argument <code>fit</code> is used to control css property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit" class="external-link"><code>object-fit</code></a>. It is set to <code>cover</code> by default.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h <span class="op">=</span> <span class="st">"600px"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h <span class="op">=</span> <span class="st">"400px"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-b791f2d426411e976c8c" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b791f2d426411e976c8c">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"600px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f35ab038360a8414d955" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f35ab038360a8414d955">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"400px","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<p>Resize the width of the page to see the effect of <code>fit="cover"</code>. The image scales within it’s frame rather than shrink. Explore css property <strong>object-fit</strong> for more details, for example, on <a href="https://www.w3schools.com/css/css3_object-fit.asp" class="external-link">w3schools</a>.</p>
+<p>The image scales within it’s frame rather than shrink. Now, let’s try <code>fit="contain"</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h <span class="op">=</span> <span class="st">"400px"</span>, fit <span class="op">=</span> <span class="st">"contain"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output-display">
+<div id="htmlwidget-02dff8f0b0d0f707745f" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-02dff8f0b0d0f707745f">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"400px","w":"100%","fit":"contain","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>Resize the width of the page to see the difference. Explore css property <strong>object-fit</strong> for more details, for example, on <a href="https://www.w3schools.com/css/css3_object-fit.asp" class="external-link">w3schools</a>.</p>
 </section><section class="level2" data-number="5"><h2 data-number="5" id="position">
 <span class="header-section-number">5</span> Position<a class="anchor" aria-label="anchor" href="#position"></a>
 </h2>
 <p>The argument <code>position</code> determines how the image is positioned within the frame. This controls css property <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-position" class="external-link"><code>object-position</code></a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h <span class="op">=</span> <span class="st">"400px"</span>, w <span class="op">=</span> <span class="st">"400px"</span>, position <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-37e44925e0b735dbe911" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-37e44925e0b735dbe911">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"400px","w":"400px","fit":"cover","position":"left"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9240c434f45371f550d5" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9240c434f45371f550d5">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"400px","w":"400px","fit":"cover","position":"left","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, h <span class="op">=</span> <span class="st">"400px"</span>, w <span class="op">=</span> <span class="st">"400px"</span>, position <span class="op">=</span> <span class="st">"right"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-ebd86499956605a861cc" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ebd86499956605a861cc">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"400px","w":"400px","fit":"cover","position":"right"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5d4f1177747e9dde4d49" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5d4f1177747e9dde4d49">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":[],"link":[true],"h":"400px","w":"400px","fit":"cover","position":"right","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Here is a <a href="https://www.youtube.com/watch?v=6yAAV-uP0po" class="external-link">youtube video</a> that discusses fit and position.</p>
@@ -214,11 +241,21 @@
 </h2>
 <p>Input can also be a vector images. Images are displayed one after the other.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span>, caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Night sky over the mountains"</span>, <span class="st">"Walking through dense woodland"</span>, <span class="st">"Out in the open seas"</span><span class="op">)</span>, h <span class="op">=</span> <span class="st">"200px"</span>, w <span class="op">=</span> <span class="st">"250px"</span>, position <span class="op">=</span> <span class="st">"left"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span></span>
+<span>  <span class="va">paths</span>,</span>
+<span>  caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Night sky over the mountains"</span>,</span>
+<span>    <span class="st">"Walking through dense woodland"</span>,</span>
+<span>    <span class="st">"Out in the open seas"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  h <span class="op">=</span> <span class="st">"200px"</span>,</span>
+<span>  w <span class="op">=</span> <span class="st">"250px"</span>,</span>
+<span>  position <span class="op">=</span> <span class="st">"left"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-3c75457db28d3cded7ec" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3c75457db28d3cded7ec">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Walking through dense woodland","Out in the open seas"],"link":[true],"h":"200px","w":"250px","fit":"cover","position":"left"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c32173118c5ecd48f982" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c32173118c5ecd48f982">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["Night sky over the mountains","Walking through dense woodland","Out in the open seas"],"link":[true],"h":"200px","w":"250px","fit":"cover","position":"left","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section><section class="level2" data-number="7"><h2 data-number="7" id="local-images">
@@ -233,11 +270,11 @@
 </h3>
 <p>This example assumes your images are available next to the Rmd/qmd/HTML file in a directory named <em>images</em> and that you copy these assets if the Rmd/qmd/HTML is relocated.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="st">"images/pexels-photo-3126574.jpg"</span>, h <span class="op">=</span> <span class="st">"300px"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-8a857f04b3a6f86e4c12" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8a857f04b3a6f86e4c12">{"x":{"path":["images/pexels-photo-3126574.jpg"],"caption":[],"link":[true],"h":"300px","w":"100%","fit":"cover","position":"center"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-501d0199ba6adbbf0205" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-501d0199ba6adbbf0205">{"x":{"path":["images/pexels-photo-3126574.jpg"],"caption":[],"link":[true],"h":"300px","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section><section class="level3" data-number="7.2"><h3 data-number="7.2" id="absolute-path">
@@ -245,158 +282,143 @@
 </h3>
 <p>Here is an example using sample images from the package. These should work locally, but may not work if the rendered HTML is relocated.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/images"</span>, package <span class="op">=</span> <span class="st">"pixture"</span><span class="op">)</span>, full <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/images"</span>, package <span class="op">=</span> <span class="st">"pixture"</span><span class="op">)</span>,</span>
+<span>  full <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">paths</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/opt/homebrew/Caskroom/miniforge/base/envs/r-4.4/lib/R/library/pixture/extdata/images/pexels-photo-3126574.jpg"
-[2] "/opt/homebrew/Caskroom/miniforge/base/envs/r-4.4/lib/R/library/pixture/extdata/images/pexels-photo-4210900.jpg"
-[3] "/opt/homebrew/Caskroom/miniforge/base/envs/r-4.4/lib/R/library/pixture/extdata/images/pexels-photo-4666748.jpg"
-[4] "/opt/homebrew/Caskroom/miniforge/base/envs/r-4.4/lib/R/library/pixture/extdata/images/pexels-photo-4932184.jpg"
-[5] "/opt/homebrew/Caskroom/miniforge/base/envs/r-4.4/lib/R/library/pixture/extdata/images/pexels-photo-572897.jpg"
-[6] "/opt/homebrew/Caskroom/miniforge/base/envs/r-4.4/lib/R/library/pixture/extdata/images/pexels-photo-7604425.jpg"</code></pre>
+<pre><code>[1] "/opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/R/library/pixture/extdata/images/pexels-photo-3126574.jpg"
+[2] "/opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/R/library/pixture/extdata/images/pexels-photo-4210900.jpg"
+[3] "/opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/R/library/pixture/extdata/images/pexels-photo-4666748.jpg"
+[4] "/opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/R/library/pixture/extdata/images/pexels-photo-4932184.jpg"
+[5] "/opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/R/library/pixture/extdata/images/pexels-photo-572897.jpg"
+[6] "/opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/R/library/pixture/extdata/images/pexels-photo-7604425.jpg"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># pixfigure(paths[1])</span></span></code></pre></div>
 </div>
 </section></section><section class="level2" data-number="8"><h2 data-number="8" id="session">
 <span class="header-section-number">8</span> Session<a class="anchor" aria-label="anchor" href="#session"></a>
 </h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.1 (2024-06-14)
-Platform: x86_64-apple-darwin13.4.0
-Running under: macOS Big Sur ... 10.16
+<pre><code>R version 4.5.1 (2025-06-13)
+Platform: aarch64-apple-darwin20.0.0
+Running under: macOS Sequoia 15.7.1
 
 Matrix products: default
-BLAS/LAPACK: /opt/homebrew/Caskroom/miniforge/base/envs/r-4.4/lib/libopenblasp-r0.3.21.dylib;  LAPACK version 3.9.0
+BLAS/LAPACK: /opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/libopenblas.0.dylib;  LAPACK version 3.12.0
 
 locale:
-[1] sv_SE.UTF-8/sv_SE.UTF-8/sv_SE.UTF-8/C/sv_SE.UTF-8/sv_SE.UTF-8
+[1] C
 
 time zone: Europe/Stockholm
-tzcode source: internal
+tzcode source: system (macOS)
 
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base
 
 other attached packages:
-[1] pixture_0.1.0
+[1] pixture_0.2.0
 
 loaded via a namespace (and not attached):
- [1] digest_0.6.36     later_1.3.2       R6_2.5.1          httpuv_1.6.15
- [5] fastmap_1.2.0     xfun_0.45         magrittr_2.0.3    shiny_1.8.1.1
- [9] knitr_1.48        htmltools_0.5.8.1 rmarkdown_2.27    lifecycle_1.0.4
-[13] promises_1.3.0    cli_3.6.3         xtable_1.8-4      compiler_4.4.1
-[17] rstudioapi_0.16.0 tools_4.4.1       mime_0.12         evaluate_0.24.0
-[21] Rcpp_1.0.12       yaml_2.3.9        rlang_1.1.4       jsonlite_1.8.8
+ [1] digest_0.6.37     later_1.4.4       R6_2.6.1          httpuv_1.6.16
+ [5] fastmap_1.2.0     xfun_0.54         magrittr_2.0.4    shiny_1.11.1
+ [9] knitr_1.50        htmltools_0.5.8.1 rmarkdown_2.30    lifecycle_1.0.4
+[13] promises_1.4.0    cli_3.6.5         xtable_1.8-4      compiler_4.5.1
+[17] tools_4.5.1       mime_0.13         evaluate_1.0.5    Rcpp_1.1.0
+[21] yaml_2.3.10       otel_0.2.0        rlang_1.1.6       jsonlite_2.0.0
 [25] htmlwidgets_1.6.4</code></pre>
 </div>
 </div>
 </section><script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'light-border',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config);
-  }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
       }
-    } else {
-      return undefined;
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
         });
-        return popup.innerHTML;
-      });
+      }
     }
-  }
-});
-</script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+  });
+  </script></main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -406,7 +428,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
