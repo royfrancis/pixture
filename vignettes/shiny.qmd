@@ -179,6 +179,7 @@ Pixcarousel can be used in shiny using `pixcarouselOutput()` and `renderPixcarou
 library(shiny)
 library(pixture)
 
+
 ids <- c(
   "572897",
   "7604425",
@@ -328,8 +329,6 @@ ui <- fluidPage(
         value = 1
       ),
       checkboxInput("draggable", "Draggable", value = TRUE),
-      checkboxInput("show_buttons", "Show buttons", value = TRUE),
-      checkboxInput("show_dots", "Show dots", value = TRUE),
       checkboxInput("scroll_lock", "Scroll lock", value = TRUE),
       checkboxInput("rewind", "Rewind", value = FALSE),
       checkboxInput("shuffle", "Shuffle", value = FALSE),
@@ -367,7 +366,7 @@ server <- function(input, output) {
           "halign",
           "Horiz alignment",
           choices = c("left", "center", "right")
-        ),
+        )
       )
     }
   })
@@ -390,14 +389,14 @@ server <- function(input, output) {
           gap = paste0(input$gap, "px"),
           border_radius = paste0(input$border_radius, "px"),
           shuffle = input$shuffle,
-          slides_to_show = input$slides_to_show,
-          slides_to_scroll = input$slides_to_scroll,
-          draggable = input$draggable,
-          show_buttons = input$show_buttons,
-          show_dots = input$show_dots,
-          scroll_lock = input$scroll_lock,
-          rewind = input$rewind,
-          h = paste0(input$h, "px")
+          h = paste0(input$h, "px"),
+          carousel = list(
+            slidesToShow = input$slides_to_show,
+            slidesToScroll = input$slides_to_scroll,
+            draggable = input$draggable,
+            scrollLock = input$scroll_lock,
+            rewind = input$rewind
+          )
         )
       }
     } else {
@@ -407,14 +406,14 @@ server <- function(input, output) {
         gap = paste0(input$gap, "px"),
         border_radius = paste0(input$border_radius, "px"),
         shuffle = input$shuffle,
-        slides_to_show = input$slides_to_show,
-        slides_to_scroll = input$slides_to_scroll,
-        draggable = input$draggable,
-        show_buttons = input$show_buttons,
-        show_dots = input$show_dots,
-        scroll_lock = input$scroll_lock,
-        rewind = input$rewind,
-        h = paste0(input$h, "px")
+        h = paste0(input$h, "px"),
+        carousel = list(
+          slidesToShow = input$slides_to_show,
+          slidesToScroll = input$slides_to_scroll,
+          draggable = input$draggable,
+          scrollLock = input$scroll_lock,
+          rewind = input$rewind
+        )
       )
     }
   })
@@ -435,6 +434,7 @@ Pixfigure can be used in shiny using `pixfigureOutput()` and `renderPixfigure()`
 library(shiny)
 library(pixture)
 
+
 path <- "https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940;https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940;https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 captions <- "Palm trees;Night sky;Woodland"
 
@@ -450,8 +450,28 @@ ui <- fluidPage(
       checkboxInput("link", "Use lightbox", value = TRUE),
       textInput("h", label = "Height", value = "auto"),
       textInput("w", label = "Width", value = "100%"),
-      textInput("fit", label = "Object fit", value = "cover"),
-      textInput("position", label = "Object position", value = "center"),
+      selectInput(
+        "fit",
+        label = "Object fit",
+        choices = c("cover", "contain", "fill", "none", "scale-down"),
+        selected = "cover"
+      ),
+      selectInput(
+        "position",
+        label = "Object position",
+        choices = c(
+          "center",
+          "top",
+          "bottom",
+          "left",
+          "right",
+          "top left",
+          "top right",
+          "bottom left",
+          "bottom right"
+        ),
+        selected = "center"
+      ),
       HTML("Image from <a href='https://www.pexels.com/'>Pexels.</a>")
     ),
     mainPanel(
@@ -469,16 +489,35 @@ server <- function(input, output) {
   })
 
   output$fig <- pixture::renderPixfigure({
-    if (!is.null(input$path)) path <- unlist(strsplit(input$path, input$sep))
+    if (!is.null(input$path)) {
+      path <- unlist(strsplit(input$path, input$sep))
+    }
 
     if (input$caption_check) {
       if (!is.null(input$caption)) {
         cpt <- unlist(strsplit(input$caption, ";"))
-        if (length(cpt) != length(path)) stop("Number of captions do not match number of images.")
-        pixture::pixfigure(path, caption = cpt, link = input$link, h = input$h, w = input$w, fit = input$fit, position = input$position)
+        if (length(cpt) != length(path)) {
+          stop("Number of captions do not match number of images.")
+        }
+        pixture::pixfigure(
+          path,
+          caption = cpt,
+          link = input$link,
+          h = input$h,
+          w = input$w,
+          fit = input$fit,
+          position = input$position
+        )
       }
     } else {
-      pixture::pixfigure(path, link = input$link, h = input$h, w = input$w, fit = input$fit, position = input$position)
+      pixture::pixfigure(
+        path,
+        link = input$link,
+        h = input$h,
+        w = input$w,
+        fit = input$fit,
+        position = input$position
+      )
     }
   })
 }

@@ -12,7 +12,7 @@ format:
       - images
 ---
 
-This is a demo of the function `pixcarousel()`. This creates a horizontal carousel gallery. The mandatory input required is one or more paths/URLs to image(s).
+This is a demo of the function `pixcarousel()`. This creates a horizontal carousel/slider gallery. The mandatory input required is one or more paths/URLs to image(s).
 
 ```{r}
 #| code-fold: true
@@ -168,18 +168,6 @@ Adjust the corner radius of the carousel.
 pixcarousel(paths, border_radius = "10px")
 ```
 
-## Slides
-
-Adjust the number of images displayed per slide using `slides_to_show` and the number of images to scroll when navigating using `slides_to_scroll`. Set the border radius of the carousel using `border_radius` (in valid CSS units).
-
-```{r}
-pixcarousel(
-  paths,
-  slides_to_show = 3,
-  slides_to_scroll = 2
-)
-```
-
 ## Gap
 
 The parameter `gap` is used to control spacing between images in the grid. This value is a string in any valid css unit.
@@ -187,37 +175,8 @@ The parameter `gap` is used to control spacing between images in the grid. This 
 ```{r}
 pixcarousel(
   paths,
-  slides_to_show = 4,
-  slides_to_scroll = 4,
   gap = "4px"
 )
-```
-
-## Hide buttons and dots
-
-You can also choose to hide the navigation buttons or the dots below the carousel using `show_buttons` and `show_dots`. Drag or swipe the images to navigate.
-
-```{r}
-pixcarousel(paths, show_buttons = FALSE, show_dots = FALSE)
-```
-
-```{r}
-pixcarousel(
-  paths,
-  slides_to_show = 4,
-  slides_to_scroll = 4,
-  gap = "4px",
-  show_buttons = FALSE,
-  show_dots = FALSE
-)
-```
-
-## Scroll lock and rewind
-
-Do not lock to nearest image when scrolling using `scroll_lock = FALSE`. ie; you can slide partially across images. Enable rewinding (`rewind = TRUE`) to jump to beginning or end at endpoints.
-
-```{r}
-pixcarousel(paths[1:4], scroll_lock = FALSE, rewind = TRUE)
 ```
 
 ## Dimensions
@@ -239,6 +198,42 @@ pixcarousel(paths, shuffle = TRUE)
 ```{r}
 pixcarousel(paths, caption = captions, shuffle = TRUE)
 ```
+
+## Carousel options
+
+This widget uses the [Glider.js](https://github.com/NickPiscitelli/Glider.js) library for carousel functionality. You can pass options to the carousel using the `carousel` parameter as a list. The available options for glider.js can be found under 'Settings' at [Glider.js](https://nickpiscitelli.github.io/Glider.js/). 
+
+::: {.callout-note}
+Note that `dots` and `arrows` parameters are set internally and cannot be overridden.
+:::
+
+### Slides
+
+Adjust the number of images displayed per slide using `slidesToShow` and the number of images to scroll when navigating using `slidesToScroll`.
+
+```{r}
+pixcarousel(
+  paths,
+  carousel = list(
+    slidesToShow = 3,
+    slidesToScroll = 2
+  )
+)
+```
+
+### Scroll lock and rewind
+
+Do not lock to nearest image when scrolling using `scrollLock = FALSE`. ie; you can slide partially across images. Enable rewinding (`rewind = TRUE`) to jump to beginning or end at endpoints.
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  link = FALSE,
+  carousel = list(scrollLock = FALSE, rewind = TRUE)
+)
+```
+
+Similarly, other carousel options can be passed as a list to the `carousel` parameter.
 
 ## Session
 

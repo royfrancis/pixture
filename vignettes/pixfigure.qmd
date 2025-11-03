@@ -46,17 +46,34 @@ pixfigure(paths[1:2], link = FALSE)
 ```
 
 ```{r}
-pixfigure(paths[1:2], caption = c("Night sky over the mountains", "Though the dense rainforest"), link = FALSE)
+pixfigure(
+  paths[1:2],
+  caption = c("Night sky over the mountains", "Though the dense rainforest"),
+  link = FALSE
+)
 ```
 
 By setting this to a character vector, you can add custom links.
 
 ```{r}
-pixfigure(paths[1:2], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest"))
+pixfigure(
+  paths[1:2],
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest"
+  )
+)
 ```
 
 ```{r}
-pixfigure(paths[1:2], caption = c("Night sky over the mountains", "Through the dense rainforest"), link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest"))
+pixfigure(
+  paths[1:2],
+  caption = c("Night sky over the mountains", "Through the dense rainforest"),
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest"
+  )
+)
 ```
 
 ## Dimensions
@@ -106,7 +123,17 @@ Here is a [youtube video](https://www.youtube.com/watch?v=6yAAV-uP0po) that disc
 Input can also be a vector images. Images are displayed one after the other.
 
 ```{r}
-pixfigure(paths, caption = c("Night sky over the mountains", "Walking through dense woodland", "Out in the open seas"), h = "200px", w = "250px", position = "left")
+pixfigure(
+  paths,
+  caption = c(
+    "Night sky over the mountains",
+    "Walking through dense woodland",
+    "Out in the open seas"
+  ),
+  h = "200px",
+  w = "250px",
+  position = "left"
+)
 ```
 
 ## Local images
@@ -130,7 +157,10 @@ pixfigure("images/pexels-photo-3126574.jpg", h = "300px")
 Here is an example using sample images from the package. These should work locally, but may not work if the rendered HTML is relocated.
 
 ```{r}
-paths <- list.files(system.file("extdata/images", package = "pixture"), full = TRUE)
+paths <- list.files(
+  system.file("extdata/images", package = "pixture"),
+  full = TRUE
+)
 paths
 # pixfigure(paths[1])
 ```

@@ -77,7 +77,24 @@ Optionally, captions can be added to the images which are visible when viewed in
 
 ```{r}
 #| label: caption-gallery
-captions <- c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower")
+captions <- c(
+  "night",
+  "forest",
+  "shark",
+  "coconut trees",
+  "flowers",
+  "field",
+  "misty",
+  "leaves",
+  "sunset",
+  "mountains",
+  "swamp",
+  "rainstorm",
+  "leaves",
+  "beach",
+  "leopard",
+  "sunflower"
+)
 pixgallery(paths_a, caption = captions)
 ```
 
@@ -147,12 +164,22 @@ pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below")
 
 ```{r}
 #| label: caption-halign-center
-pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "center", caption_halign = "center")
+pixgallery(
+  paths_a[1:4],
+  caption = captions[1:4],
+  caption_valign = "center",
+  caption_halign = "center"
+)
 ```
 
 ```{r}
 #| label: caption-halign-right
-pixgallery(paths_a[1:4], caption = captions[1:4], caption_valign = "below", caption_halign = "right")
+pixgallery(
+  paths_a[1:4],
+  caption = captions[1:4],
+  caption_valign = "below",
+  caption_halign = "right"
+)
 ```
 
 With long captions.
@@ -180,14 +207,31 @@ By setting this to a character vector, you can add custom links.
 
 ```{r}
 #| label: custom-link
-pixgallery(paths_a[1:4], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest", "https://en.wikipedia.org/wiki/Shark", "https://en.wikipedia.org/wiki/Hawaii"))
+pixgallery(
+  paths_a[1:4],
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest",
+    "https://en.wikipedia.org/wiki/Shark",
+    "https://en.wikipedia.org/wiki/Hawaii"
+  )
+)
 ```
 
 Custom links with captions.
 
 ```{r}
 #| label: custom-link-captions
-pixgallery(paths_a[1:4], caption = captions[1:4], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest", "https://en.wikipedia.org/wiki/Shark", "https://en.wikipedia.org/wiki/Hawaii"))
+pixgallery(
+  paths_a[1:4],
+  caption = captions[1:4],
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest",
+    "https://en.wikipedia.org/wiki/Shark",
+    "https://en.wikipedia.org/wiki/Hawaii"
+  )
+)
 ```
 
 ## Dimension
@@ -238,7 +282,29 @@ pixgallery(paths_a, w = "50px", shuffle = TRUE)
 
 ```{r}
 #| label: shuffle-with-captions
-pixgallery(paths_a, w = "50px", shuffle = TRUE, caption = c("night", "forest", "shark", "coconut trees", "flowers", "field", "misty", "leaves", "sunset", "mountains", "swamp", "rainstorm", "leaves", "beach", "leopard", "sunflower"))
+pixgallery(
+  paths_a,
+  w = "50px",
+  shuffle = TRUE,
+  caption = c(
+    "night",
+    "forest",
+    "shark",
+    "coconut trees",
+    "flowers",
+    "field",
+    "misty",
+    "leaves",
+    "sunset",
+    "mountains",
+    "swamp",
+    "rainstorm",
+    "leaves",
+    "beach",
+    "leopard",
+    "sunflower"
+  )
+)
 ```
 
 ## Layout
@@ -258,19 +324,37 @@ With customization.
 
 ```{r}
 #| label: fixed-layout-custom
-pixgallery(paths_a[1:8], layout = "fixed", caption = captions[1:8], caption_valign = "center", caption_halign = "center", border_radius = "50%", gap = "10px")
+pixgallery(
+  paths_a[1:8],
+  layout = "fixed",
+  caption = captions[1:8],
+  caption_valign = "center",
+  caption_halign = "center",
+  border_radius = "50%",
+  gap = "10px"
+)
 ```
 
 With long captions.
 
 ```{r}
 #| label: fixed-layout-long-captions-top
-pixgallery(paths_a[1:8], layout = "fixed", caption = captions_long[1:8], caption_valign = "top")
+pixgallery(
+  paths_a[1:8],
+  layout = "fixed",
+  caption = captions_long[1:8],
+  caption_valign = "top"
+)
 ```
 
 ```{r}
 #| label: fixed-layout-long-captions-below
-pixgallery(paths_a[1:8], layout = "fixed", caption = captions_long[1:8], caption_valign = "below")
+pixgallery(
+  paths_a[1:8],
+  layout = "fixed",
+  caption = captions_long[1:8],
+  caption_valign = "below"
+)
 ```
 
 ### Mosaic
@@ -286,24 +370,50 @@ With customization.
 
 ```{r}
 #| label: mosaic-layout-custom-bottom
-pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "bottom", h = "100px", w = "100px")
+pixgallery(
+  paths_a,
+  layout = "mosaic",
+  caption = captions,
+  caption_valign = "bottom",
+  h = "100px",
+  w = "100px"
+)
 ```
 
 ```{r}
 #| label: mosaic-layout-custom-below
-pixgallery(paths_a, layout = "mosaic", caption = captions, caption_valign = "below", h = "100px", w = "100px", border_radius = "5px", shuffle = TRUE)
+pixgallery(
+  paths_a,
+  layout = "mosaic",
+  caption = captions,
+  caption_valign = "below",
+  h = "100px",
+  w = "100px",
+  border_radius = "5px",
+  shuffle = TRUE
+)
 ```
 
 With long captions.
 
 ```{r}
 #| label: mosaic-layout-long-captions-top
-pixgallery(paths_a[1:8], layout = "mosaic", caption = captions_long[1:8], caption_valign = "top")
+pixgallery(
+  paths_a[1:8],
+  layout = "mosaic",
+  caption = captions_long[1:8],
+  caption_valign = "top"
+)
 ```
 
 ```{r}
 #| label: mosaic-layout-long-captions-below
-pixgallery(paths_a[1:8], layout = "mosaic", caption = captions_long[1:8], caption_valign = "below")
+pixgallery(
+  paths_a[1:8],
+  layout = "mosaic",
+  caption = captions_long[1:8],
+  caption_valign = "below"
+)
 ```
 
 ### Masonry
@@ -319,24 +429,48 @@ With customization.
 
 ```{r}
 #| label: masonry-layout-custom-bottom
-pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "bottom", w = "100px")
+pixgallery(
+  paths_a,
+  layout = "masonry",
+  caption = captions,
+  caption_valign = "bottom",
+  w = "100px"
+)
 ```
 
 ```{r}
 #| label: masonry-layout-custom-below
-pixgallery(paths_a, layout = "masonry", caption = captions, caption_valign = "below", w = "100px", border_radius = "5px", shuffle = TRUE)
+pixgallery(
+  paths_a,
+  layout = "masonry",
+  caption = captions,
+  caption_valign = "below",
+  w = "100px",
+  border_radius = "5px",
+  shuffle = TRUE
+)
 ```
 
 With long captions.
 
 ```{r}
 #| label: masonry-layout-long-captions-top
-pixgallery(paths_a[1:8], layout = "masonry", caption = captions_long[1:8], caption_valign = "top")
+pixgallery(
+  paths_a[1:8],
+  layout = "masonry",
+  caption = captions_long[1:8],
+  caption_valign = "top"
+)
 ```
 
 ```{r}
 #| label: masonry-layout-long-captions-below
-pixgallery(paths_a[1:8], layout = "masonry", caption = captions_long[1:8], caption_valign = "below")
+pixgallery(
+  paths_a[1:8],
+  layout = "masonry",
+  caption = captions_long[1:8],
+  caption_valign = "below"
+)
 ```
 
 ### Justified
@@ -352,24 +486,48 @@ With customization.
 
 ```{r}
 #| label: justified-layout-custom-bottom
-pixgallery(paths_a, layout = "justified", caption = captions, caption_valign = "bottom", h = "100px")
+pixgallery(
+  paths_a,
+  layout = "justified",
+  caption = captions,
+  caption_valign = "bottom",
+  h = "100px"
+)
 ```
 
 ```{r}
 #| label: justified-layout-custom-below
-pixgallery(paths_a, layout = "justified", caption = captions, caption_valign = "below", h = "100px", border_radius = "5px", shuffle = TRUE)
+pixgallery(
+  paths_a,
+  layout = "justified",
+  caption = captions,
+  caption_valign = "below",
+  h = "100px",
+  border_radius = "5px",
+  shuffle = TRUE
+)
 ```
 
 With long captions.
 
 ```{r}
 #| label: justified-layout-long-captions-top
-pixgallery(paths_a[1:8], layout = "justified", caption = captions_long[1:8], caption_valign = "top")
+pixgallery(
+  paths_a[1:8],
+  layout = "justified",
+  caption = captions_long[1:8],
+  caption_valign = "top"
+)
 ```
 
 ```{r}
 #| label: justified-layout-long-captions-below
-pixgallery(paths_a[1:8], layout = "justified", caption = captions_long[1:8], caption_valign = "below")
+pixgallery(
+  paths_a[1:8],
+  layout = "justified",
+  caption = captions_long[1:8],
+  caption_valign = "below"
+)
 ```
 
 ### Scroll
@@ -385,24 +543,49 @@ With customization.
 
 ```{r}
 #| label: scroll-layout-custom-bottom
-pixgallery(paths_a, layout = "scroll", caption = captions, caption_valign = "bottom", h = "100px")
+pixgallery(
+  paths_a,
+  layout = "scroll",
+  caption = captions,
+  caption_valign = "bottom",
+  h = "100px"
+)
 ```
 
 ```{r}
 #| label: scroll-layout-custom-below
-pixgallery(paths_a, layout = "scroll", caption = captions, caption_valign = "below", h = "100px", w = "150px", border_radius = "5px", shuffle = TRUE)
+pixgallery(
+  paths_a,
+  layout = "scroll",
+  caption = captions,
+  caption_valign = "below",
+  h = "100px",
+  w = "150px",
+  border_radius = "5px",
+  shuffle = TRUE
+)
 ```
 
 With long captions.
 
 ```{r}
 #| label: scroll-layout-long-captions-top
-pixgallery(paths_a[1:8], layout = "scroll", caption = captions_long[1:8], caption_valign = "top")
+pixgallery(
+  paths_a[1:8],
+  layout = "scroll",
+  caption = captions_long[1:8],
+  caption_valign = "top"
+)
 ```
 
 ```{r}
 #| label: scroll-layout-long-captions-below
-pixgallery(paths_a[1:8], layout = "scroll", caption = captions_long[1:8], caption_valign = "below")
+pixgallery(
+  paths_a[1:8],
+  layout = "scroll",
+  caption = captions_long[1:8],
+  caption_valign = "below"
+)
 ```
 
 ### Elastic
@@ -423,7 +606,12 @@ pixgallery(paths_a, layout = "elastic", gap = "0", h = "50px")
 
 ```{r}
 #| label: elastic-layout-custom-border-radius
-pixgallery(paths_a, layout = "elastic", border_radius = "5px", caption = captions)
+pixgallery(
+  paths_a,
+  layout = "elastic",
+  border_radius = "5px",
+  caption = captions
+)
 ```
 
 Works better when there are more than a handful of images.
@@ -446,14 +634,31 @@ With customization.
 
 ```{r}
 #| label: rhombus-layout-custom
-pixgallery(paths_a[1:6], layout = "rhombus", gap = "2px", caption = captions[1:6], caption_valign = "center", caption_halign = "center", border_radius = "8px", h = "250px", shuffle = TRUE)
+pixgallery(
+  paths_a[1:6],
+  layout = "rhombus",
+  gap = "2px",
+  caption = captions[1:6],
+  caption_valign = "center",
+  caption_halign = "center",
+  border_radius = "8px",
+  h = "250px",
+  shuffle = TRUE
+)
 ```
 
 With long captions.
 
 ```{r}
 #| label: rhombus-layout-long-captions
-pixgallery(paths_a[1:6], layout = "rhombus", gap = "2px", caption = captions_long[1:6], caption_valign = "center", caption_halign = "center")
+pixgallery(
+  paths_a[1:6],
+  layout = "rhombus",
+  gap = "2px",
+  caption = captions_long[1:6],
+  caption_valign = "center",
+  caption_halign = "center"
+)
 ```
 
 ### Hexagon
@@ -469,14 +674,31 @@ With customization.
 
 ```{r}
 #| label: hexagon-layout-custom
-pixgallery(paths_a[1:6], layout = "hexagon", gap = "2px", caption = captions[1:6], caption_valign = "center", caption_halign = "center", border_radius = "8px", h = "250px", shuffle = TRUE)
+pixgallery(
+  paths_a[1:6],
+  layout = "hexagon",
+  gap = "2px",
+  caption = captions[1:6],
+  caption_valign = "center",
+  caption_halign = "center",
+  border_radius = "8px",
+  h = "250px",
+  shuffle = TRUE
+)
 ```
 
 With long captions.
 
 ```{r}
 #| label: hexagon-layout-long-captions
-pixgallery(paths_a[1:6], layout = "hexagon", gap = "2px", caption = captions_long[1:6], caption_valign = "center", caption_halign = "center")
+pixgallery(
+  paths_a[1:6],
+  layout = "hexagon",
+  gap = "2px",
+  caption = captions_long[1:6],
+  caption_valign = "center",
+  caption_halign = "center"
+)
 ```
 
 ### Compatibility
@@ -490,17 +712,127 @@ All parameters are not applicable to every layout. The table below indicates whi
 #| echo: false
 
 dfr <- data.frame(
-  "parameter" = c("caption", "caption_valign", "", "caption_halign", "link", "h", "w", "gap", "border_radius", "shuffle"),
-  "option"    = c("", "over^1^", "below", "", "", "", "", "", "", ""),
-  "grid"      = c("&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F535;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "fixed"     = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "mosaic"    = c("&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F535;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "masonry"   = c("&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "justified" = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E0;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "elastic"   = c("&#x1F7E9;", "&#x1F534;", "&#x1F534;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "scroll"    = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "rhombus"   = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;"),
-  "hexagon"   = c("&#x1F7E9;", "&#x1F7E1;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F534;", "&#x1F7E9;", "&#x1F7E9;", "&#x1F7E9;")
+  "parameter" = c(
+    "caption",
+    "caption_valign",
+    "",
+    "caption_halign",
+    "link",
+    "h",
+    "w",
+    "gap",
+    "border_radius",
+    "shuffle"
+  ),
+  "option" = c("", "over^1^", "below", "", "", "", "", "", "", ""),
+  "grid" = c(
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F535;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "fixed" = c(
+    "&#x1F7E9;",
+    "&#x1F7E1;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "mosaic" = c(
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F535;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "masonry" = c(
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "justified" = c(
+    "&#x1F7E9;",
+    "&#x1F7E1;",
+    "&#x1F7E0;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "elastic" = c(
+    "&#x1F7E9;",
+    "&#x1F534;",
+    "&#x1F534;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "scroll" = c(
+    "&#x1F7E9;",
+    "&#x1F7E1;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "rhombus" = c(
+    "&#x1F7E9;",
+    "&#x1F7E1;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  ),
+  "hexagon" = c(
+    "&#x1F7E9;",
+    "&#x1F7E1;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F534;",
+    "&#x1F7E9;",
+    "&#x1F7E9;",
+    "&#x1F7E9;"
+  )
 )
 # rownames(dfr) <- dfr$parameter
 # dfr$parameter <- NULL
@@ -523,34 +855,146 @@ knitr::kable(dfr)
 #| eval: false
 
 dfr <- setNames(
-  as.data.frame(matrix(c(
-    "🟩", "🟩", "🟩", "🟩", "🟩", "🟩",
-    "🟩", "🟡", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🟩", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🟩", "🟩", "🟩", "🟩",
-    "🟩", "🔴", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🔴", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🔴", "🟩", "🟩", "🟩", "🟩",
-    "🟩", "🔴", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🔴", "🟡", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🔴", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🔴", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🔴", "🟩", "🟩", "🟩",
-    "🟩", "🟩", "🔴", "🟩", "🟩", "🟩",
-    "", "", "", "", "", "",
-    "", "", "", "", "", "",
-    "🟩", "🔴", "🔴", "🟩", "🔴", "🟩",
-    "", "", "", "", "", "",
-    "", "", "", "", "", ""
-  ), ncol = 6, byrow = TRUE)),
+  as.data.frame(matrix(
+    c(
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟡",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟡",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🟩",
+      "🔴",
+      "🟩",
+      "🟩",
+      "🟩",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "🟩",
+      "🔴",
+      "🔴",
+      "🟩",
+      "🔴",
+      "🟩",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ),
+    ncol = 6,
+    byrow = TRUE
+  )),
   c("link", "h", "w", "gap", "border_radius", "shuffle")
 )
 
 rownames(dfr) <- paste(
-  rep(c("grid", "fixed", "mosaic", "masonry", "justified", "elastic", "rhombus"), each = 3),
+  rep(
+    c("grid", "fixed", "mosaic", "masonry", "justified", "elastic", "rhombus"),
+    each = 3
+  ),
   rep(c("no caption/valign none", "caption over", "caption below"), 3)
 )
 knitr::kable(dfr)
@@ -583,7 +1027,10 @@ Here is an example using sample images from the package. These should work local
 
 ```{r}
 #| label: absolute-path
-paths <- list.files(system.file("extdata/images", package = "pixture"), full = TRUE)
+paths <- list.files(
+  system.file("extdata/images", package = "pixture"),
+  full = TRUE
+)
 paths
 # pixgallery(paths)
 ```
