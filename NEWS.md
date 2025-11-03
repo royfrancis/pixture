@@ -1,3 +1,14 @@
+# pixture 0.2.0
+
+- 04-Nov-2025
+- Replaced simplelightbox with glightbox
+- Added new function `pixcarousel()` to create image carousels
+- Added new layouts 'scroll' and 'hexagon' to pixgallery
+- Improved 'rhombus' layout with size, gap, border radius and captions
+- Added shiny app demo for pixcarousel
+- Updated vignettes
+- Removed deprecated arguments 'type' and 'dim' from `pixgallery()`
+
 # pixture 0.1.0
 
 - 03-Aug-2024
