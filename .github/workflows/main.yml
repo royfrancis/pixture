@@ -7,8 +7,8 @@ name: r-cmd-check
 on:
   workflow_dispatch:
   push:
-    tags:
-      - v*
+    # tags:
+    #   - v*
 
 jobs:
   linux:
@@ -17,9 +17,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        r: [4.0,4.4]
+        r: [4.4,4.5]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{matrix.r}}
@@ -60,9 +60,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        r: [4.0,4.4]
+        r: [4.4,4.5]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{matrix.r}}
