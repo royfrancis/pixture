@@ -165,10 +165,7 @@ pixgallery <- function(
   # lightbox options
   # default list if user doesn't provide anything
   lightbox_defaults <- list(
-    selector = ".glightbox",
-    touchNavigation = TRUE,
-    loop = FALSE,
-    zoomable = TRUE
+    selector = ".glightbox"
   )
   # merge defaults with user-supplied
   lightbox <- modifyList(lightbox_defaults, lightbox)

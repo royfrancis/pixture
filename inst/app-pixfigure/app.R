@@ -15,8 +15,8 @@ ui <- fluidPage(
       checkboxInput("link", "Use lightbox", value = TRUE),
       textInput("h", label = "Height", value = "auto"),
       textInput("w", label = "Width", value = "100%"),
-      textInput("fit", label = "Object fit", value = "cover"),
-      textInput("position", label = "Object position", value = "center"),
+      selectInput("fit", label = "Object fit", choices = c("cover", "contain", "fill", "none", "scale-down"), selected = "cover"),
+      selectInput("position", label = "Object position", choices = c("center", "top", "bottom", "left", "right", "top left", "top right", "bottom left", "bottom right"), selected = "center"),
       HTML("Image from <a href='https://www.pexels.com/'>Pexels.</a>")
     ),
     mainPanel(
