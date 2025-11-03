@@ -39,10 +39,11 @@ reference:
 
 - title: Core functions
   desc: >
-    Functions to generate simple and complex layouts
+    Functions to display simple images, galleries and carousels
   contents:
   - pixfigure
   - pixgallery
+  - pixcarousel
 
 - title: Usage in Shiny Apps
   desc: >
@@ -52,6 +53,8 @@ reference:
   - renderPixfigure
   - pixgalleryOutput
   - renderPixgallery
+  - pixcarouselOutput
+  - renderPixcarousel
 
 - title: Demo shiny apps
   desc: >
@@ -66,6 +69,8 @@ articles:
   contents:
   - pixfigure
   - pixgallery
+  - pixcarousel
+  - lightbox
 
 - title: Shiny
   navbar: Shiny

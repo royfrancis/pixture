@@ -19,9 +19,10 @@ This R package is offered free and without warranty of any kind, either expresse
 
 ## Acknowledgements
 
-- [simplelightbox](https://github.com/dbrekalo/simpleLightbox) created by [Damir Brekalo](https://dbrekalo.github.io/simpleLightbox/).
-- [Diamond gallery layout ](https://dev.to/alvaromontoro/creating-an-interactive-image-gallery-with-html-and-css-35pi) by Alvaro Montoro. 
-- Images from [Pexels](https://www.pexels.com/).
+- [glider.js](https://nickpiscitelli.github.io/Glider.js/) by Nick Piscitelli for carousel functionality
+- [glightbox](https://github.com/biati-digital/glightbox) by [Biati Digital](https://www.biati.com.mx/) for lightbox functionality
+- Rhombus and Hexagon gallery layout by [Temani Afif](https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/)
+- Images from [Pexels](https://www.pexels.com/)
 
 ## Contact
 

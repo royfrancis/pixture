@@ -13,13 +13,8 @@ pixcarousel(
   gap = "0px",
   border_radius = "0px",
   shuffle = FALSE,
-  slides_to_show = 1,
-  slides_to_scroll = 1,
-  draggable = TRUE,
-  show_buttons = TRUE,
-  show_dots = TRUE,
-  scroll_lock = TRUE,
-  rewind = FALSE,
+  carousel = list(),
+  lightbox = list(),
   h = "400px",
   width = NULL,
   height = NULL,
@@ -43,19 +38,9 @@ pixcarousel(
 
 \item{shuffle}{A logical indicating whether images are randomly shuffled.}
 
-\item{slides_to_show}{Number of images to be displayed.}
+\item{carousel}{A list of options to customize the carousel. See details.}
 
-\item{slides_to_scroll}{Number of images to scroll.}
-
-\item{draggable}{Logical indicating if the carousal is draggable.}
-
-\item{show_buttons}{Logical indicating if buttons are displayed.}
-
-\item{show_dots}{Logical indicating if dots are displayed.}
-
-\item{scroll_lock}{Logical indicating if carousal scrolls to nearest image after interaction.}
-
-\item{rewind}{Logical indicating if carousal scrolls to beginning/end at endpoints.}
+\item{lightbox}{A list of options to customize the lightbox. See details.}
 
 \item{h}{A character denoting height of the image thumbnails in valid CSS units.}
 
@@ -67,6 +52,34 @@ pixcarousel(
 }
 \description{
 Creates an image carousel
+}
+\details{
+\strong{carousel options}\cr
+The carousel can be customized by passing a list of options to the \code{carousel} parameter. Here is an example; \cr
+\dontrun{
+pixcarousel(
+ paths,
+ carousel = list(
+  slidesToShow = 3,
+  slidesToScroll = 2
+ )
+)
+}
+The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}. \cr
+\cr
+\strong{lightbox options}:\cr
+The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{pixcarousel(
+ paths,
+ lightbox = list(
+   touchNavigation = FALSE,
+   loop = TRUE
+ )
+)
+}\if{html}{\out{</div>}}
+
+The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
 }
 \examples{
 library(pixture)
@@ -80,7 +93,7 @@ paths <- c(
  "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg",
  "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg"
 )
-pixgallery(paths)
+pixcarousel(paths)
 
 # local example
 \dontrun{

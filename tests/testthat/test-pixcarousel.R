@@ -143,17 +143,17 @@ test_that("Captions and link", {
 })
 
 test_that("Slides", {
-  expect_no_error(pixcarousel(paths, slides_to_show = 5, slides_to_scroll = 2))
+  expect_no_error(pixcarousel(paths, carousel = list(slidesToShow = 5, slidesToScroll = 2)))
 })
 
 test_that("Other", {
   expect_no_error(pixcarousel(
     paths,
-    draggable = TRUE,
-    show_buttons = FALSE,
-    show_dots = FALSE,
-    scroll_lock = FALSE,
-    rewind = TRUE
+    carousel = list(
+      draggable = TRUE,
+      scrollLock = FALSE,
+      rewind = TRUE
+    )
   ))
 })
 

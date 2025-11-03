@@ -4,8 +4,8 @@ bibentry(
   author = c(
     person("Roy", "Francis")
   ),
-  year = 2024,
-  version = "0.1.0",
-  note = "R package version 0.1.0",
+  year = 2025,
+  version = "0.2.0",
+  note = "R package version 0.2.0",
   url = "https://github.com/royfrancis/pixture"
 )

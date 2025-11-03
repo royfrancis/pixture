@@ -18,9 +18,9 @@
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @details
-#' \strong{carousel options}:\cr
+#' \strong{carousel options}\cr
 #' The carousel can be customized by passing a list of options to the \code{carousel} parameter. Here is an example; \cr
-#' \code{
+#' \dontrun{
 #' pixcarousel(
 #'  paths,
 #'  carousel = list(
@@ -28,12 +28,12 @@
 #'   slidesToScroll = 2
 #'  )
 #')
-#'}\cr
-#' The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}.
+#'}
+#' The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}. \cr 
 #' \cr
 #' \strong{lightbox options}:\cr
 #' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
-#' \code{
+#' ```
 #' pixcarousel(
 #'  paths,
 #'  lightbox = list(
@@ -41,7 +41,7 @@
 #'    loop = TRUE
 #'  )
 #')
-#'}\cr
+#'```
 #' The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
 #'
 #' @examples
@@ -56,7 +56,7 @@
 #'  "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg",
 #'  "https://images.pexels.com/photos/1376201/pexels-photo-1376201.jpeg"
 #' )
-#' pixgallery(paths)
+#' pixcarousel(paths)
 #'
 #' # local example
 #' \dontrun{

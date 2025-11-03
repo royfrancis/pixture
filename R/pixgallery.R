@@ -19,7 +19,7 @@
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @details
-#' \strong{layout options}:\cr
+#' \strong{layout options}\cr
 #' \strong{grid}: Grid responsive layout. Width is fluid to fit parent. When using \code{caption_valign} options 'top', 'bottom' or 'center', height cannot be adjusted. \cr
 #' \strong{fixed}: Same as grid but with strictly fixed dimensions. Defaults to square image. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions may overflow. Manually set height in this case. \cr
 #' \strong{mosaic}: Grid layout with mixed sizes. \cr
@@ -30,9 +30,9 @@
 #' \strong{rhombus}: Diamond shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', long captions are clipped. Option 'below' is disabled. \cr
 #' \strong{hexagon}: Hexagon shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', long captions are clipped. Option 'below' is disabled. \cr
 #' \cr
-#' \strong{lightbox options}:\cr
+#' \strong{lightbox options}\cr
 #' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr 
-#' \code{
+#' ```
 #' pixgallery(
 #'  paths,
 #'  lightbox = list(
@@ -40,7 +40,7 @@
 #'    loop = TRUE
 #'  )
 #')
-#'}\cr
+#'```
 #' The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
 #'
 #' @examples

@@ -12,6 +12,7 @@ pixfigure(
   w = "100\%",
   fit = "cover",
   position = "center",
+  lightbox = list(),
   width = "100\%",
   height = "100\%",
   elementId = NULL
@@ -32,6 +33,8 @@ pixfigure(
 
 \item{position}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} CSS property.}
 
+\item{lightbox}{A list of options to customize the lightbox. See details.}
+
 \item{width}{A character denoting width of the widget as a string in valid CSS units.}
 
 \item{height}{A character denoting height of the widget as a string in valid CSS units.}
@@ -40,6 +43,21 @@ pixfigure(
 }
 \description{
 Create a simple sequential layout of images
+}
+\details{
+\strong{lightbox options}\cr
+The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{pixfigure(
+ paths,
+ lightbox = list(
+   touchNavigation = FALSE,
+   loop = TRUE
+ )
+)
+}\if{html}{\out{</div>}}
+
+The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
 }
 \examples{
 library(pixture)

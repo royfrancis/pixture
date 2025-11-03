@@ -15,9 +15,9 @@
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @details
-#' \strong{lightbox options}:\cr
+#' \strong{lightbox options}\cr
 #' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
-#' \code{
+#' ```
 #' pixfigure(
 #'  paths,
 #'  lightbox = list(
@@ -25,7 +25,7 @@
 #'    loop = TRUE
 #'  )
 #')
-#'}\cr
+#'```
 #' The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
 #'
 #' @examples
