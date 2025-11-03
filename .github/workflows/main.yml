@@ -7,8 +7,6 @@ name: r-cmd-check
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
     tags:
       - v*
 
