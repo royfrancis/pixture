@@ -13,11 +13,13 @@
 #' @param border_radius A character denoting corner radius of image thumbnails in valid CSS units.
 #' @param layout A character denoting gallery layout type. Options are "grid", "fixed", "mosaic", "masonry", "justified", "scroll", "elastic", "rhombus" or "hexagon". See details.
 #' @param shuffle A logical indicating whether images are randomly shuffled.
+#' @param lightbox A list of options to customize the lightbox. See details.
 #' @param height A character denoting height of the widget in valid CSS units.
 #' @param width A character denoting width of the widget in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
 #' @details
+#' \strong{layout options}:\cr
 #' \strong{grid}: Grid responsive layout. Width is fluid to fit parent. When using \code{caption_valign} options 'top', 'bottom' or 'center', height cannot be adjusted. \cr
 #' \strong{fixed}: Same as grid but with strictly fixed dimensions. Defaults to square image. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions may overflow. Manually set height in this case. \cr
 #' \strong{mosaic}: Grid layout with mixed sizes. \cr
@@ -25,8 +27,21 @@
 #' \strong{justified}: Similar to masonry but images flow horizontally. Image width cannot be set. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions are clipped. Option 'below' may cause images to be stretched if captions are too long. \cr
 #' \strong{elastic}: Single row layout where images are magnified on hover. Image width cannot be set. Captions cannot be displayed on thumbnails. \cr
 #' \strong{scroll}: Single row layout with horizontal scrolling. Images go offscreen. Thumbnail height and width can be set. \cr
-#' \strong{rhombus}: Diamond shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions are clipped. Option 'below' is dsiabled. \cr
-#' \strong{hexagon}: Hexagon shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', note that long captions are clipped. Option 'below' is dsiabled. \cr
+#' \strong{rhombus}: Diamond shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', long captions are clipped. Option 'below' is disabled. \cr
+#' \strong{hexagon}: Hexagon shaped layout. When using \code{caption_valign} options 'top', 'bottom' or 'center', long captions are clipped. Option 'below' is disabled. \cr
+#' \cr
+#' \strong{lightbox options}:\cr
+#' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr 
+#' \code{
+#' pixgallery(
+#'  paths,
+#'  lightbox = list(
+#'    touchNavigation = FALSE,
+#'    loop = TRUE
+#'  )
+#')
+#'}\cr
+#' The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
 #'
 #' @examples
 #' library(pixture)
@@ -62,6 +77,7 @@ pixgallery <- function(
   border_radius = "0px",
   layout = "grid",
   shuffle = FALSE,
+  lightbox = list(),
   width = "100%",
   height = "100%",
   elementId = NULL
@@ -146,6 +162,17 @@ pixgallery <- function(
     stop("Parameter 'shuffle' must be a logical. TRUE or FALSE.")
   }
 
+  # lightbox options
+  # default list if user doesn't provide anything
+  lightbox_defaults <- list(
+    selector = ".glightbox",
+    touchNavigation = TRUE,
+    loop = FALSE,
+    zoomable = TRUE
+  )
+  # merge defaults with user-supplied
+  lightbox <- modifyList(lightbox_defaults, lightbox)
+
   # forward options using x
   x <- list(
     path = as.list(path),
@@ -158,13 +185,14 @@ pixgallery <- function(
     gap = gap,
     border_radius = border_radius,
     layout = layout,
-    shuffle = shuffle
+    shuffle = shuffle,
+    lightbox = lightbox
   )
 
   # create widget
   createWidget(
     name = "pixgallery",
-    x,
+    x = x,
     width = width,
     height = height,
     package = "pixture",

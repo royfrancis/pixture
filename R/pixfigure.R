@@ -9,10 +9,24 @@
 #' @param w A character denoting width of the image in valid CSS units.
 #' @param fit String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} CSS property.
 #' @param position String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} CSS property.
+#' @param lightbox A list of options to customize the lightbox. See details.
 #' @param height A character denoting height of the widget as a string in valid CSS units.
 #' @param width A character denoting width of the widget as a string in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
+#' @details
+#' \strong{lightbox options}:\cr
+#' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
+#' \code{
+#' pixfigure(
+#'  paths,
+#'  lightbox = list(
+#'    touchNavigation = FALSE,
+#'    loop = TRUE
+#'  )
+#')
+#'}\cr
+#' The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
 #'
 #' @examples
 #' library(pixture)
@@ -39,6 +53,7 @@ pixfigure <- function(
   w = "100%",
   fit = "cover",
   position = "center",
+  lightbox = list(),
   width = "100%",
   height = "100%",
   elementId = NULL
@@ -78,6 +93,17 @@ pixfigure <- function(
     }
   }
 
+  # lightbox options
+  # default list if user doesn't provide anything
+  lightbox_defaults <- list(
+    selector = ".glightbox",
+    touchNavigation = TRUE,
+    loop = FALSE,
+    zoomable = TRUE
+  )
+  # merge defaults with user-supplied
+  lightbox <- modifyList(lightbox_defaults, lightbox)
+
   # forward options using x
   x <- list(
     path = as.list(path),
@@ -86,13 +112,14 @@ pixfigure <- function(
     h = h,
     w = w,
     fit = fit,
-    position = position
+    position = position,
+    lightbox = lightbox
   )
 
   # create widget
   createWidget(
     name = "pixfigure",
-    x,
+    x = x,
     width = width,
     height = height,
     package = "pixture",

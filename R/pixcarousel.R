@@ -10,6 +10,7 @@
 #' @param gap A character denoting spacing between thumbnails in valid CSS units.
 #' @param border_radius A character denoting corner radius of the carousel in valid CSS units.
 #' @param shuffle A logical indicating whether images are randomly shuffled.
+#' @param lightbox A list of options to customize the lightbox. See details.
 #' @param slides_to_show Number of images to be displayed.
 #' @param slides_to_scroll Number of images to scroll.
 #' @param draggable Logical indicating if the carousal is draggable.
@@ -22,6 +23,20 @@
 #' @param width A character denoting width of the widget in valid CSS units.
 #' @param elementId A character string denoting parent container ID.
 #' @importFrom htmlwidgets createWidget sizingPolicy
+#' @details
+#' \strong{lightbox options}:\cr
+#' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
+#' \code{
+#' pixcarousel(
+#'  paths,
+#'  lightbox = list(
+#'    touchNavigation = FALSE,
+#'    loop = TRUE
+#'  )
+#')
+#'}\cr
+#' The available options for glightbox can be found at \url{https://github.com/biati-digital/glightbox?tab=readme-ov-file#lightbox-options}.
+#'
 #' @examples
 #' library(pixture)
 #' paths <- c(
@@ -53,6 +68,7 @@ pixcarousel <- function(
   gap = "0px",
   border_radius = "0px",
   shuffle = FALSE,
+  lightbox = list(),
   slides_to_show = 1,
   slides_to_scroll = 1,
   draggable = TRUE,
@@ -130,6 +146,17 @@ pixcarousel <- function(
     stop("Parameter 'shuffle' must be a logical of length 1 (TRUE or FALSE).")
   }
 
+  # lightbox options
+  # default list if user doesn't provide anything
+  lightbox_defaults <- list(
+    selector = ".glightbox",
+    touchNavigation = TRUE,
+    loop = FALSE,
+    zoomable = TRUE
+  )
+  # merge defaults with user-supplied
+  lightbox <- modifyList(lightbox_defaults, lightbox)
+
   # forward options using x
   x = list(
     path = as.list(path),
@@ -140,6 +167,7 @@ pixcarousel <- function(
     gap = gap,
     border_radius = border_radius,
     shuffle = shuffle,
+    lightbox = lightbox,
     slides_to_show = slides_to_show,
     slides_to_scroll = slides_to_scroll,
     draggable = draggable,
@@ -153,7 +181,7 @@ pixcarousel <- function(
   # create widget
   htmlwidgets::createWidget(
     name = 'pixcarousel',
-    x,
+    x = x,
     width = width,
     height = height,
     package = 'pixture',

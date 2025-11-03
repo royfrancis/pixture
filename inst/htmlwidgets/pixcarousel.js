@@ -5,14 +5,14 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
 
-    // TODO: define shared variables for this instance
+    /* TODO: define shared variables for this instance */
 
     return {
       renderValue: function(opts) {
         pixcarousel(el,opts);
       },
       resize: function(width, height) {
-        // TODO: code to re-render the widget with a new size
+        /* TODO: code to re-render the widget with a new size */
       }
     };
   }
@@ -56,62 +56,69 @@ function pixcarousel(el,x){
   var showButtons = x.show_buttons;
   var showDots = x.show_dots;
 
-  if(typeof link[0] !== 'boolean') urls = x.link
+  if(typeof link[0] !== 'boolean') urls = link
   var buttonLeft = '<svg height="40" viewBox="0 0 1792 1792" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M1037 1395l102-102q19-19 19-45t-19-45l-307-307 307-307q19-19 19-45t-19-45l-102-102q-19-19-45-19t-45 19l-454 454q-19 19-19 45t19 45l454 454q19 19 45 19t45-19zm627-499q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>';
   var buttonRight = '<svg height="40" viewBox="0 0 1792 1792" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M845 1395l454-454q19-19 19-45t-19-45l-454-454q-19-19-45-19t-45 19l-102 102q-19 19-19 45t19 45l307 307-307 307q-19 19-19 45t19 45l102 102q19 19 45 19t45-19zm819-499q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z"/></svg>'
 
-  // initialize template
+  /* Initialize template */
   if(caption.length === 0){
 
-    // if captions are not used
-    var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" style="height:{h};"><img style="height:{h};padding-right:{gap};" class="pixcarousel-image" src="{src}"></a></div>';
+    /* If captions are not used */
+    var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a></div>';
 
   } else {
     if(captionValign == "none"){
 
-      // if captions are not displayed
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" title="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a></div>';
+      /* If captions are not displayed */
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a></div>';
 
     } else if(captionValign == "top") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-top" style="text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-top" style="text-align:{captionHalign};">{caption}</div></div>';
       
     } else if(captionValign == "center") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-center" style="text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-center" style="text-align:{captionHalign};">{caption}</div></div>';
 
     } else if(captionValign == "bottom") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" title="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-bottom" style="text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-bottom" style="text-align:{captionHalign};">{caption}</div></div>';
     }
   }
 
-  var newValues = '', limitItem = urls.length;
+  var newValues = '', limitItem = src.length;
   for (let i = 0; i < limitItem; ++i) {
 
     let newValue = '';
-    newValue = temp.replace("{id}",el.id).replace(/\{src\}/g, src[i]).replace(/\{h\}/g, h).replace(/\{gap\}/g, gap)
+    newValue = temp.replace(/\{id\}/g, el.id).replace(/\{src\}/g, src[i]).replace(/\{h\}/g, h).replace(/\{gap\}/g, gap)
 
-    // if link is false or url is null, disable link
-    if(urls[i]== null || link[0] === false){
-      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("title=\"{caption}\"","")
-    } else {
-      newValue = newValue.replace(/\{url\}/g, urls[i])
+    /* Link based fix */
+    if(typeof link[0] !== 'boolean'){
+      newValue = newValue.replace("class=\"glightbox\"","target=\"_blank\"")
+    } else if (typeof(link[0]) == 'boolean' && link[0] === false){
+      newValue = newValue.replace('href="{url}"', 'class="disabled"').replace("class=\"glightbox\"","")
     }
 
-    // if caption is not empty
+    /* If caption is not empty */
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
     }
 
-    newValues += newValue
+    newValues += newValue.replace(/\{url\}/g, urls[i])
   }
 
   temp = '';
   temp = temp + '<div class="pixcarousel glider-contain"><div id="pixcarousel-{id}" class="glider" style="border-radius:' + borderRadius + ';">' + newValues + '</div>';
   if(showButtons) temp = temp + '<button aria-label="Previous" id="pixcarousel-{id}-glider-prev" class="glider-prev">' + buttonLeft + '</button>' + '<button aria-label="Next"  id="pixcarousel-{id}-glider-next" class="glider-next">' + buttonRight + '</button>';
-  if(showDots) temp = temp + '<div role="tablist" id="pixcarousel-{id}-dots" class="dots"></div>';
+  
+  if(showDots) {
+    temp = temp + '<div role="tablist" id="pixcarousel-{id}-dots" class="dots"></div>';
+    var dots = '#pixcarousel-' + el.id + '-dots';
+  } else {
+    var dots = null;
+  }
+
   temp = temp + '</div>';
 
   document.getElementById(el.id).innerHTML = temp.replace(/\{id\}/g,el.id);
@@ -122,12 +129,15 @@ function pixcarousel(el,x){
     draggable: draggable,
     scrollLock: scrollLock,
     rewind: rewind,
-    dots: '#pixcarousel-' + el.id + '-dots',
+    dots: dots,
     arrows: {
       prev: '#pixcarousel-' + el.id + '-glider-prev',
       next: '#pixcarousel-' + el.id + '-glider-next'
     }
   })
 
-  if(link[0] === true) var lightbox = new SimpleLightbox({elements: '#pixcarousel-' + el.id + '-child a'});
+  if(link[0] === true) {
+    const lightbox_options = Object.assign(x.lightbox || {});
+    const lightbox = GLightbox(lightbox_options);
+  }
 }
