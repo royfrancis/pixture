@@ -23,7 +23,7 @@ paths <- c(
 )
 ```
 
-Clicking on the thumbnail opens up the full image in a lightbox.
+Clicking on the thumbnail opens up the full image in a lightbox. To customize the lightbox, see the lightbox vignette.
 
 ```{r}
 pixfigure(paths[1])
@@ -76,10 +76,16 @@ pixfigure(paths[3], h = "400px", caption = "shark")
 The argument `fit` is used to control css property [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit). It is set to `cover` by default.
 
 ```{r}
-pixfigure(paths[1], h = "600px")
+pixfigure(paths[1], h = "400px")
 ```
 
-Resize the width of the page to see the effect of `fit="cover"`. The image scales within it's frame rather than shrink. Explore css property **object-fit** for more details, for example, on [w3schools](https://www.w3schools.com/css/css3_object-fit.asp).
+The image scales within it's frame rather than shrink. Now, let's try `fit="contain"`.
+
+```{r}
+pixfigure(paths[1], h = "400px", fit = "contain")
+```
+
+Resize the width of the page to see the difference. Explore css property **object-fit** for more details, for example, on [w3schools](https://www.w3schools.com/css/css3_object-fit.asp).
 
 ## Position
 

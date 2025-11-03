@@ -64,7 +64,7 @@ paths_b <- c(
 )
 ```
 
-Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys.
+Clicking on the thumbnail opens up the full image in a lightbox. The whole gallery can be browsed through the lightbox using left or right arrow keys. To customize the lightbox, see the lightbox vignette.
 
 ```{r}
 #| label: default-gallery
@@ -93,7 +93,7 @@ captions_long <- c(
   "Blooming flowers in the meadow create a splash of color and a perfect photo opportunity.",
   "Children laughed and played in the vast field of golden wheat under the summer sun.",
   "Misty mornings in the valley offer a surreal, almost dreamlike atmosphere to early risers.",
-  "Autumn leaves crunch underfoot as you hike through the serene woodland trails.",
+  "Lush green leaves glisten in the rain, showcasing nature's resilience and beauty.",
   "A breathtaking sunset paints the sky in hues of orange, pink, and purple.",
   "Snow-capped mountains tower majestically over the valley below, inviting explorers to their icy peaks.",
   "The dense swamp is teeming with life, from croaking frogs to towering mangroves.",
@@ -181,6 +181,13 @@ By setting this to a character vector, you can add custom links.
 ```{r}
 #| label: custom-link
 pixgallery(paths_a[1:4], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest", "https://en.wikipedia.org/wiki/Shark", "https://en.wikipedia.org/wiki/Hawaii"))
+```
+
+Custom links with captions.
+
+```{r}
+#| label: custom-link-captions
+pixgallery(paths_a[1:4], caption = captions[1:4], link = c("https://en.wikipedia.org/wiki/Milky_Way", "https://en.wikipedia.org/wiki/Rainforest", "https://en.wikipedia.org/wiki/Shark", "https://en.wikipedia.org/wiki/Hawaii"))
 ```
 
 ## Dimension

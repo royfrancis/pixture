@@ -38,7 +38,7 @@ paths <- c(
 )
 ```
 
-Clicking on the image opens up the full image in a lightbox. The whole gallery can be browsed through in the lightbox using left or right arrow keys.
+Clicking on the image opens up the full image in a lightbox. The whole gallery can be browsed through in the lightbox using left or right arrow keys. To customize the lightbox, see the lightbox vignette.
 
 ```{r}
 pixcarousel(paths)
@@ -136,6 +136,21 @@ By setting this to a character vector, you can add custom links.
 ```{r}
 pixcarousel(
   paths[1:4],
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest",
+    "https://en.wikipedia.org/wiki/Shark",
+    "https://en.wikipedia.org/wiki/Hawaii"
+  )
+)
+```
+
+Custom links with captions.
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption = captions[1:4],
   link = c(
     "https://en.wikipedia.org/wiki/Milky_Way",
     "https://en.wikipedia.org/wiki/Rainforest",
