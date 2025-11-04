@@ -1,7 +1,6 @@
 ## GITHUB ACTION FOR R PACKAGE
-## Build, check, test, code coverage
-## Required secrets
-## CODECOV_TOKEN
+## Build, check, test on ubuntu and windows
+## Runs on any branch develop for any push
 
 name: r-cmd-check
 on:
@@ -39,7 +38,6 @@ jobs:
           extra-packages: |
             any::rcmdcheck
             any::pkgdepends
-            any::covr
           needs: check
 
       - name: R CMD check
@@ -48,12 +46,6 @@ jobs:
           args: 'c("--no-manual", "--as-cran")'
           error-on: '"warning"'
           check-dir: '"check"'
-
-      - name: Code coverage
-        if: matrix.r == '4.4'
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: Rscript -e 'covr::codecov(token="${{ secrets.CODECOV_TOKEN }}",quiet=FALSE)'
 
   windows:
     runs-on: windows-latest
@@ -74,7 +66,6 @@ jobs:
           extra-packages: |
             any::rcmdcheck
             any::pkgdepends
-            any::covr
           needs: check
 
       - name: R CMD check

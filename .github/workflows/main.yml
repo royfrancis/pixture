@@ -1,7 +1,7 @@
 ## GITHUB ACTION FOR R PACKAGE
-## Build, check, test, code coverage
-## Required secrets
-## CODECOV_TOKEN
+## Build, check, test, code coverage on ubuntu and windows
+## Runs on any pushed branch but only when a tag starting with v is pushed
+## Required secrets: CODECOV_TOKEN
 
 name: r-cmd-check
 on:
@@ -50,7 +50,7 @@ jobs:
           check-dir: '"check"'
 
       - name: Code coverage
-        if: matrix.r == '4.4'
+        if: matrix.r == '4.5'
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: Rscript -e 'covr::codecov(token="${{ secrets.CODECOV_TOKEN }}",quiet=FALSE)'
