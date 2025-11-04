@@ -4,9 +4,27 @@
 
 # pixture
 
-[![ci_badge](https://github.com/royfrancis/pixture/workflows/r-cmd-check/badge.svg)](https://github.com/royfrancis/pixture/actions?workflow=r-cmd-check) [![codecov](https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK)](https://app.codecov.io/gh/royfrancis/pixture/) [![lifecycle_badge](https://lifecycle.r-lib.org/articles/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) 
+[![ci_badge](https://github.com/royfrancis/pixture/workflows/r-cmd-check/badge.svg)](https://github.com/royfrancis/pixture/actions?workflow=r-cmd-check) [![codecov](https://codecov.io/gh/royfrancis/pixture/branch/main/graph/badge.svg?token=4DOQ8HNQFK)](https://app.codecov.io/gh/royfrancis/pixture/) [![r-universe status](https://royfrancis.r-universe.dev/pixture/badges/checks)](https://royfrancis.r-universe.dev/pixture) [![r-universe version](https://royfrancis.r-universe.dev/pixture/badges/version)](https://royfrancis.r-universe.dev/pixture) 
 
-`pixture` is an R package designed to create HTML image galleries. The galleries can be standalone, included in an Rmarkdown/Quarto document or incorporated into a Shiny app. See the [project website](http://royfrancis.github.io/pixture) for more details.
+`pixture` is an R package designed to create HTML image galleries. The galleries can be standalone, included in an Rmarkdown/Quarto document or incorporated into a Shiny app. 
+
+![](man/figures/concept.webp)
+
+- Create image galleries with multiple layouts: grid, mosaic, masonry, justified, elastic, rhombus, scroll and hexagon
+- Create image carousels with touch and drag support
+- Lightbox support with captions and navigation
+- Customizable captions, borders, gaps, and more
+
+See the [project website](http://royfrancis.github.io/pixture) for more details.
+
+Install from **R Universe**:
+
+```r
+options(repos = c(getOption("repos"), royfrancis = "https://royfrancis.r-universe.dev"))
+install.packages('pixture')
+```
+
+Install from **GitHub**:
 
 ```r
 install.packages(c("htmlwidgets","shiny","remotes"))
@@ -30,4 +48,4 @@ If you have an comments, suggestions, corrections or enchancements, kindly submi
 
 ---
 
-2026 • Roy M Francis  
+2026 • Roy Francis  

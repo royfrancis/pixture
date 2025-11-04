@@ -6,7 +6,10 @@ Date: 2025-11-04
 Author: Roy Francis
 Maintainer: Roy Francis <zydoosu@gmail.com>
 Description: HTML image gallery in R with responsive layout and lightbox.
-URL: https://github.com/royfrancis/pixture
+URL: 
+ https://github.com/royfrancis/pixture
+ https://royfrancis.r-universe.dev/pixture
+ http://royfrancis.github.io/pixture/
 License: GPL (>= 3)
 Encoding: UTF-8
 Depends:
@@ -19,3 +22,4 @@ Suggests:
 BugReports: https://github.com/royfrancis/pixture/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
+Language: en-US

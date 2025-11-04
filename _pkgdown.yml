@@ -3,6 +3,10 @@ url: https://github.com/royfrancis/pixture
 template:
   bootstrap: 5
   bootswatch: zephyr
+  opengraph:
+    image:
+      src: man/figures/seo.png
+      alt: "Pixture card"
 
 authors:
   Roy Francis:
