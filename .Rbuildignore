@@ -10,10 +10,10 @@ NEWS.md
 ^LICENSE\.md$
 ^\.github/
 ^\.git/
-vignettes/
-vignettes/*
+^vignettes/
 ^\.\.Rcheck/
 Dockerfile
 man/figures
 to-do.txt
 .quarto/
+.DS_Store
