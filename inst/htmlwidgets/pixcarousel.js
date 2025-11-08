@@ -48,6 +48,8 @@ function pixcarousel(el,x){
   var link = x.link;
   var gap = x.gap;
   var borderRadius = x.border_radius;
+  var fit = x.fit;
+  var position = x.position;
 
   if(typeof link[0] !== 'boolean') urls = link
   var buttonLeft = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" xml:space="preserve"><g><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"></path></g></svg>';
@@ -59,25 +61,25 @@ function pixcarousel(el,x){
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a></div>';
+    var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};padding-left:{gap};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a></div>';
 
   } else {
     if(captionValign == "none"){
 
       /* If captions are not displayed */
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};padding-left:{gap};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a></div>';
 
     } else if(captionValign == "top") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-top" style="text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};padding-left:{gap};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-top" style="text-align:{captionHalign};margin-right:{gap};margin-left:{gap};">{caption}</div></div>';
       
     } else if(captionValign == "center") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-center" style="text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};padding-left:{gap};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-center" style="text-align:{captionHalign};margin-right:{gap};margin-left:{gap};">{caption}</div></div>';
 
     } else if(captionValign == "bottom") {
 
-      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-bottom" style="text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div id="pixcarousel-{id}-child" class="pixcarousel-child pixcarousel-child-over"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixcarousel-image" style="height:{h};padding-right:{gap};padding-left:{gap};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a><div class="pixcarousel-caption pixcarousel-caption-bottom" style="text-align:{captionHalign};margin-right:{gap};margin-left:{gap};">{caption}</div></div>';
     }
   }
 
@@ -85,7 +87,7 @@ function pixcarousel(el,x){
   for (let i = 0; i < limitItem; ++i) {
 
     let newValue = '';
-    newValue = temp.replace(/\{id\}/g, el.id).replace(/\{src\}/g, src[i]).replace(/\{h\}/g, h).replace(/\{gap\}/g, gap)
+    newValue = temp.replace(/\{id\}/g, el.id).replace(/\{src\}/g, src[i]).replace(/\{h\}/g, h).replace(/\{gap\}/g, gap).replace(/\{fit\}/g, fit).replace(/\{position\}/g, position);
 
     /* Link based fix */
     if(typeof link[0] !== 'boolean'){

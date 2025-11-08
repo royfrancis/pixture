@@ -90,7 +90,7 @@ pixfigure(paths[3], h = "400px", caption = "shark")
 
 ## Fit
 
-The argument `fit` is used to control css property [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit). It is set to `cover` by default.
+The argument `fit` is used to control css property [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).  The differences between these options are easily visible when handling images with mixed dimensions and aspect ratios. It is set to `cover` by default.
 
 ```{r}
 pixfigure(paths[1], h = "400px")

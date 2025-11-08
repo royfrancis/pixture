@@ -13,6 +13,8 @@ pixcarousel(
   gap = "0px",
   border_radius = "0px",
   shuffle = FALSE,
+  fit = "cover",
+  position = "center",
   carousel = list(),
   lightbox = list(),
   h = "400px",
@@ -32,11 +34,15 @@ pixcarousel(
 
 \item{link}{A logical or character vector. What happens when you click on the thumbnail? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.}
 
-\item{gap}{A character denoting spacing between thumbnails in valid CSS units.}
+\item{gap}{A character denoting spacing between thumbnails in valid CSS units. Applied to left and right of each image.}
 
 \item{border_radius}{A character denoting corner radius of the carousel in valid CSS units.}
 
 \item{shuffle}{A logical indicating whether images are randomly shuffled.}
+
+\item{fit}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} CSS property.}
+
+\item{position}{String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} CSS property.}
 
 \item{carousel}{A list of options to customize the carousel. See details.}
 

@@ -1,0 +1,124 @@
+---
+title: IKEA Arm Chairs
+subtitle: Carousel gallery with captions
+date: last-modified
+date-format: "DD-MMM-YYYY"
+format:
+  html:
+    toc: false
+---
+
+```{r}
+#| code-fold: true
+
+dfr <- data.frame(
+  paths = c(
+    "https://www.ikea.com/se/en/images/products/strandmon-wing-chair-nordvalla-dark-grey__0325432_pe517964_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/ekenaeset-armchair-kilanda-light-beige__1109687_pe870153_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/oskarshamn-wing-chair-with-footstool-tibbleby-beige-grey__1123966_pe874941_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/poaeng-armchair-birch-veneer-knisa-light-beige__0571500_pe666933_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/rocksjoen-armchair-kilanda-light-beige__1247350_pe922624_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/ekeroe-armchair-skiftebo-dark-blue__0204749_pe359788_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/muren-recliner-remmarn-dark-grey__0908536_pe783303_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/dyvlinge-swivel-easy-chair-kelinge-black__1205899_pe907271_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/tullsta-armchair-nordvalla-medium-grey__0386142_pe559174_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/havberg-swivel-armchair-lejde-grey-black__1048595_pe843795_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/aeleby-armchair-with-footstool__1365346_pe956320_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/vimle-armchair-gunnared-beige__1068011_pe852869_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/landskrona-armchair-gunnared-light-green-wood__0602091_pe680160_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/herrakra-armchair-vissle-grey__1213671_pe911201_s5.jpg?f=xs",
+    "https://www.ikea.com/se/en/images/products/remsta-armchair-hakebo-beige__0908599_pe783322_s5.jpg?f=xs"
+  ),
+  name = c(
+    "STRANDMON",
+    "EKENÄSET",
+    "OSKARSHAMN",
+    "POÄNG",
+    "ROCKSJÖN",
+    "EKERÖ",
+    "MUREN",
+    "DYVLINGE",
+    "TULLSTA",
+    "HAVBERG",
+    "ÄLEBY",
+    "VIMLE",
+    "LANDSKRONA",
+    "HERRAKRÄ",
+    "REMSTA"
+  ),
+  description = c(
+    "Wing chair, Nordvalla dark grey",
+    "Armchair, Kilanda light beige",
+    "Wing chair with footstool, Tibbleby beige grey",
+    "Armchair, Birch veneer Knisa light beige",
+    "Armchair, Kilanda light beige",
+    "Armchair, Skiftebo dark blue",
+    "Recliner, Remmarn dark grey",
+    "Swivel easy chair, Kelinge black",
+    "Armchair, Nordvalla medium grey",
+    "Swivel armchair, Lejde grey black",
+    "Armchair with footstool",
+    "Armchair, Gunnared beige",
+    "Armchair, Gunnared light green wood",
+    "Armchair, Vissle grey",
+    "Armchair, Hakebo beige"
+  ),
+  cost = c(
+    2495,
+    1995,
+    3790,
+    995,
+    1895,
+    1995,
+    3495,
+    1995,
+    1595,
+    2995,
+    3795,
+    4000,
+    3295,
+    1495,
+    1695
+  )
+)
+```
+
+```{r}
+#| code-fold: true
+library(htmltools)
+
+captions <- sapply(1:nrow(dfr), function(i) {
+  paste(
+    "<div style='text-shadow:1px 1px 4px gray;'>\n",
+    paste0(
+      "<div><strong>",
+      dfr$name[i],
+      "</strong></div>\n"
+    ),
+    paste0("<div>", dfr$description[i], "</div>\n"),
+    paste0(
+      "<div style='font-size:1.4rem; font-weight:bold; margin-top:0.1em;'>",
+      formatC(dfr$cost[i], format = "f", big.mark = ",", digits = 0),
+      "<span style='font-size:1rem;'>:-</span></div>\n"
+    ),
+    "</div>",
+    sep = ""
+  )
+})
+```
+
+```{r}
+library(pixture)
+
+pixcarousel(
+  path = dfr$paths,
+  caption = captions,
+  caption_valign = "bottom",
+  fit = "contain",
+  gap = "4px",
+  carousel = list(
+    slidesToShow = 3,
+    slidesToScroll = 1
+  )
+)
+```

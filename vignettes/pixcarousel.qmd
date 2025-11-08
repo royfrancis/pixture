@@ -179,6 +179,43 @@ pixcarousel(
 )
 ```
 
+With captions.
+
+```{r}
+pixcarousel(
+  paths,
+  caption = captions,
+  caption_valign = "bottom",
+  gap = "4px",
+)
+```
+
+## Fit
+
+The argument `fit` is used to control css property [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit). The differences between these options are easily visible when handling images with mixed dimensions and aspect ratios. 
+
+It is set to `cover` by default in which case, the image scales within it's frame rather than shrink. Now, let's try `fit="contain"` for example. This will ensure the whole image is visible within the frame.
+
+```{r}
+pixcarousel(paths, fit = "contain")
+```
+
+Explore css property **object-fit** for more details, for example, on [w3schools](https://www.w3schools.com/css/css3_object-fit.asp).
+
+## Position
+
+The argument `position` determines how the image is positioned within the frame. This controls css property [`object-position`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position).
+
+```{r}
+pixcarousel(paths[c(3, 5, 6)], position = "top")
+```
+
+```{r}
+pixcarousel(paths[c(3, 5, 6)], position = "bottom")
+```
+
+Here is a [youtube video](https://www.youtube.com/watch?v=6yAAV-uP0po) that discusses fit and position.
+
 ## Dimensions
 
 Control the height of the image thumbnails using `h` (in valid CSS units). `h` defaults to "400px". You can also set the width of the carousel using `w`.
@@ -214,6 +251,21 @@ Adjust the number of images displayed per slide using `slidesToShow` and the num
 ```{r}
 pixcarousel(
   paths,
+  carousel = list(
+    slidesToShow = 3,
+    slidesToScroll = 2
+  )
+)
+```
+
+With gap and captions.
+
+```{r}
+pixcarousel(
+  paths,
+  caption = captions,
+  caption_valign = "bottom",
+  gap = "4px",
   carousel = list(
     slidesToShow = 3,
     slidesToScroll = 2

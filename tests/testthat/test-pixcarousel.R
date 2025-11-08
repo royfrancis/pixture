@@ -142,6 +142,15 @@ test_that("Captions and link", {
   expect_error(pixcarousel(paths, caption = captions, link = c(T, F)))
 })
 
+test_that("fit and position", {
+  expect_no_error(pixcarousel(paths, fit = "contain"))
+  expect_no_error(pixcarousel(paths, position = "left"))
+  expect_no_error(pixcarousel(paths, caption = captions, fit = "contain"))
+  expect_no_error(pixcarousel(paths, caption = captions, position = "right"))
+  expect_no_error(pixcarousel(paths, caption = captions, fit = "fill", position = "top"))
+  expect_no_error(pixcarousel(paths, caption = captions, fit = "none", position = "bottom"))
+})
+
 test_that("Slides", {
   expect_no_error(pixcarousel(paths, carousel = list(slidesToShow = 5, slidesToScroll = 2)))
 })

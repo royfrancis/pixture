@@ -7,9 +7,11 @@
 #' @param caption_valign A character denoting position of the caption. Options are 'none', 'top', 'center' or 'bottom'.
 #' @param caption_halign A character denoting horizontal justification of the caption. Options are 'left', 'center' or 'right'.
 #' @param link A logical or character vector. What happens when you click on the thumbnail? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.
-#' @param gap A character denoting spacing between thumbnails in valid CSS units.
+#' @param gap A character denoting spacing between thumbnails in valid CSS units. Applied to left and right of each image.
 #' @param border_radius A character denoting corner radius of the carousel in valid CSS units.
 #' @param shuffle A logical indicating whether images are randomly shuffled.
+#' @param fit String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit}{object-fit} CSS property.
+#' @param position String. Passed to \href{https://developer.mozilla.org/en-US/docs/Web/CSS/object-position}{object-position} CSS property.
 #' @param carousel A list of options to customize the carousel. See details.
 #' @param lightbox A list of options to customize the lightbox. See details.
 #' @param h A character denoting height of the image thumbnails in valid CSS units.
@@ -30,7 +32,7 @@
 #'  )
 #')
 #'```
-#' The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}. \cr 
+#' The available options for carousel can be found at \url{https://github.com/NickPiscitelli/Glider.js} or \url{https://nickpiscitelli.github.io/Glider.js/}. \cr
 #' \cr
 #' \strong{lightbox options}:\cr
 #' The lightbox can be customized by passing a list of options to the \code{lightbox} parameter. Here is an example; \cr
@@ -76,6 +78,8 @@ pixcarousel <- function(
   gap = "0px",
   border_radius = "0px",
   shuffle = FALSE,
+  fit = "cover",
+  position = "center",
   carousel = list(),
   lightbox = list(),
   h = "400px",
@@ -176,6 +180,8 @@ pixcarousel <- function(
     gap = gap,
     border_radius = border_radius,
     shuffle = shuffle,
+    fit = fit,
+    position = position,
     carousel = carousel,
     lightbox = lightbox,
     h = h
