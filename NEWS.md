@@ -1,3 +1,12 @@
+# pixture 0.2.1
+
+- 09-Nov-2025
+- Pixcarousel
+  - Added new parameters `fit` and `position`
+  - Moved carousel buttons to bottom, dots hidden for narrow screens
+  - Corrected caption overlay when using `gap` parameter
+- Added showcase 'furniture' to documentation
+
 # pixture 0.2.0
 
 - 04-Nov-2025
