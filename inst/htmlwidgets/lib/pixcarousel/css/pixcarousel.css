@@ -9,10 +9,6 @@
   position: relative;
 }
 
-.pixcarousel .dots {
-  margin-top: 10px;
-}
-
 .pixcarousel-child {
   -webkit-transition: -webkit-filter 0.25s;
   transition: -webkit-filter 0.25s;
@@ -43,33 +39,33 @@
   width: 100%;
 }
 
+.pixcarousel-child a {
+  display: block;
+}
+
+/* dots and buttons */
+
+.pixcarousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
 .glider-prev,
 .glider-next {
-  position: absolute;
-  top: calc(50% - 29px);
-  -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
-  width: 40px;
-  height: 50px;
-  padding-left: 8px !important;
-  border-radius: 5px;
-  background-color: rgba(0,0,0,.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
   border: none;
   cursor: pointer;
-  opacity: 0;
   -webkit-transition: opacity 0.3s ease;
   -o-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
   z-index: 10;
-}
-
-.glider-prev {
-  left: 20px;
-}
-
-.glider-next {
-  right: 20px;
 }
 
 .glider-next.disabled,
@@ -78,7 +74,7 @@
 .glider-contain:hover .glider-next.disabled,
 .glider-prev.disabled:hover,
 .glider-next.disabled:hover {
-  opacity: 0;
+  opacity: 0.2;
 }
 
 .glider-contain:hover .glider-prev,
@@ -89,14 +85,13 @@
 .glider-prev:hover,
 .glider-next:hover {
   opacity: 0.9;
-  background-color: rgba(0,0,0,.8);
 }
 
 .glider-prev svg,
 .glider-next svg {
     width: 100%;
     height: 100%;
-    fill: #ccc;
+    fill: #808080;
     display: block;
     width: 25px;
     height: auto;
@@ -104,13 +99,30 @@
     padding: 0;
 }
 
+.glider-dot {
+  width: 10px;
+  height: 10px;
+  margin: 6px;
+}
+
 .glider-dot:hover,
 .glider-dot.active {
   background: #808080;
 }
 
-.pixcarousel-child a {
-  display: block;
+@media screen and (max-width: 576px) {
+  .glider-dots {
+    display: none;
+  }
+}
+
+/* caption */
+
+.pixcarousel-caption {
+  white-space: normal;
+  font-family: system-ui, sans-serif;
+  font-weight: normal;
+  padding: 1em;
 }
 
 .pixcarousel-child-over {
@@ -125,15 +137,6 @@
   grid-column: 1;
   -ms-grid-row: 1;
   grid-row: 1;
-}
-
-/* caption */
-
-.pixcarousel-caption {
-  white-space: normal;
-  font-family: system-ui, sans-serif;
-  font-weight: normal;
-  padding: 1em;
 }
 
 .pixcarousel-caption-top {

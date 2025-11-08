@@ -47,16 +47,16 @@
 }
 .glider-prev,.glider-next {
   user-select: none;
-  position: absolute;
+  /* position: absolute; */
   outline: none;
   background: none;
   padding: 0;
   z-index: 2;
   font-size: 40px;
   text-decoration: none;
-  left: -23px;
+  /* left: -23px; */
   border: 0;
-  top: 30%;
+  /* top: 30%; */
   cursor: pointer;
   color: #666;
   opacity: 1;
@@ -91,7 +91,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 auto;
+  align-items: center;
+  /* margin: 0 auto; */
   padding: 0;
 }
 .glider-dot {
