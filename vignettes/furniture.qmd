@@ -117,8 +117,8 @@ pixcarousel(
   fit = "contain",
   gap = "4px",
   carousel = list(
-    slidesToShow = 3,
-    slidesToScroll = 1
+    slidesToShow = 2,
+    slidesToScroll = 2
   )
 )
 ```
