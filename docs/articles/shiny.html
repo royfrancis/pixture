@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pixture</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,6 +58,7 @@
     <li><a class="dropdown-item" href="../articles/cities.html">100 Cities</a></li>
     <li><a class="dropdown-item" href="../articles/cities-1.html">100 Cities Variant</a></li>
     <li><a class="dropdown-item" href="../articles/quotes.html">Quotes</a></li>
+    <li><a class="dropdown-item" href="../articles/furniture.html">Ikea Armchairs</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -77,7 +78,7 @@
       <h1>Pixture in shiny</h1>
 
 
-      <p class="date">04-Nov-2025</p>
+      <p class="date">09-Nov-2025</p>
 
       <small class="dont-index">Source: <a href="https://github.com/royfrancis/pixture/blob/HEAD/vignettes/shiny.qmd"><code>vignettes/shiny.qmd</code></a></small>
       <div class="d-none name"><code></code></div>
@@ -100,20 +101,69 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/royfrancis/pixture">pixture</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>  <span class="st">"572897"</span>, <span class="st">"7604425"</span>, <span class="st">"4666748"</span>, <span class="st">"4932184"</span>, <span class="st">"4210900"</span>, <span class="st">"3126574"</span>, <span class="st">"167699"</span>,</span>
-<span>  <span class="st">"1376201"</span>, <span class="st">"2437291"</span>, <span class="st">"1679772"</span>, <span class="st">"1183099"</span>, <span class="st">"1813513"</span>, <span class="st">"931018"</span>, <span class="st">"267074"</span>,</span>
-<span>  <span class="st">"4622893"</span>, <span class="st">"10519597"</span>, <span class="st">"1717071"</span>, <span class="st">"1933239"</span>, <span class="st">"1374064"</span>, <span class="st">"2379653"</span>, <span class="st">"845619"</span>,</span>
-<span>  <span class="st">"2854416"</span>, <span class="st">"3540375"</span>, <span class="st">"1142984"</span>, <span class="st">"1378723"</span>, <span class="st">"2033994"</span>, <span class="st">"1582818"</span>, <span class="st">"1535288"</span></span>
+<span>  <span class="st">"572897"</span>,</span>
+<span>  <span class="st">"7604425"</span>,</span>
+<span>  <span class="st">"4666748"</span>,</span>
+<span>  <span class="st">"4932184"</span>,</span>
+<span>  <span class="st">"4210900"</span>,</span>
+<span>  <span class="st">"3126574"</span>,</span>
+<span>  <span class="st">"167699"</span>,</span>
+<span>  <span class="st">"1376201"</span>,</span>
+<span>  <span class="st">"2437291"</span>,</span>
+<span>  <span class="st">"1679772"</span>,</span>
+<span>  <span class="st">"1183099"</span>,</span>
+<span>  <span class="st">"1813513"</span>,</span>
+<span>  <span class="st">"931018"</span>,</span>
+<span>  <span class="st">"267074"</span>,</span>
+<span>  <span class="st">"4622893"</span>,</span>
+<span>  <span class="st">"10519597"</span>,</span>
+<span>  <span class="st">"1717071"</span>,</span>
+<span>  <span class="st">"1933239"</span>,</span>
+<span>  <span class="st">"1374064"</span>,</span>
+<span>  <span class="st">"2379653"</span>,</span>
+<span>  <span class="st">"845619"</span>,</span>
+<span>  <span class="st">"2854416"</span>,</span>
+<span>  <span class="st">"3540375"</span>,</span>
+<span>  <span class="st">"1142984"</span>,</span>
+<span>  <span class="st">"1378723"</span>,</span>
+<span>  <span class="st">"2033994"</span>,</span>
+<span>  <span class="st">"1582818"</span>,</span>
+<span>  <span class="st">"1535288"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://images.pexels.com/photos/"</span>, <span class="va">ids</span>, <span class="st">"/pexels-photo-"</span>, <span class="va">ids</span>, <span class="st">".jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span><span class="op">)</span></span>
+<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://images.pexels.com/photos/"</span>,</span>
+<span>  <span class="va">ids</span>,</span>
+<span>  <span class="st">"/pexels-photo-"</span>,</span>
+<span>  <span class="va">ids</span>,</span>
+<span>  <span class="st">".jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html" class="external-link">fluidPage</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/titlePanel.html" class="external-link">titlePanel</a></span><span class="op">(</span><span class="st">"Pixgallery"</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarLayout</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarPanel</a></span><span class="op">(</span></span>
 <span>      width <span class="op">=</span> <span class="fl">3</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html" class="external-link">textAreaInput</a></span><span class="op">(</span><span class="st">"paths"</span>, <span class="st">"Image paths"</span>, value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">urls</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>, width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"200px"</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span><span class="st">"layout"</span>, label <span class="op">=</span> <span class="st">"Layout"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grid"</span>, <span class="st">"fixed"</span>, <span class="st">"mosaic"</span>, <span class="st">"masonry"</span>, <span class="st">"justified"</span>, <span class="st">"elastic"</span>, <span class="st">"rhombus"</span><span class="op">)</span>, selected <span class="op">=</span> <span class="st">"grid"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html" class="external-link">textAreaInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"paths"</span>,</span>
+<span>        <span class="st">"Image paths"</span>,</span>
+<span>        value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">urls</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>,</span>
+<span>        width <span class="op">=</span> <span class="st">"100%"</span>,</span>
+<span>        height <span class="op">=</span> <span class="st">"200px"</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"layout"</span>,</span>
+<span>        label <span class="op">=</span> <span class="st">"Layout"</span>,</span>
+<span>        choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>          <span class="st">"grid"</span>,</span>
+<span>          <span class="st">"fixed"</span>,</span>
+<span>          <span class="st">"mosaic"</span>,</span>
+<span>          <span class="st">"masonry"</span>,</span>
+<span>          <span class="st">"justified"</span>,</span>
+<span>          <span class="st">"elastic"</span>,</span>
+<span>          <span class="st">"rhombus"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        selected <span class="op">=</span> <span class="st">"grid"</span></span>
+<span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/HTML.html" class="external-link">HTML</a></span><span class="op">(</span><span class="st">"Images from &lt;a href='https://www.pexels.com/'&gt;Pexels.&lt;/a&gt;"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">mainPanel</a></span><span class="op">(</span></span>
@@ -144,14 +194,73 @@
 <span></span>
 <span></span>
 <span><span class="va">ids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>  <span class="st">"572897"</span>, <span class="st">"7604425"</span>, <span class="st">"4666748"</span>, <span class="st">"4932184"</span>, <span class="st">"4210900"</span>, <span class="st">"3126574"</span>, <span class="st">"167699"</span>,</span>
-<span>  <span class="st">"1376201"</span>, <span class="st">"2437291"</span>, <span class="st">"1679772"</span>, <span class="st">"1183099"</span>, <span class="st">"1813513"</span>, <span class="st">"931018"</span>, <span class="st">"267074"</span>,</span>
-<span>  <span class="st">"4622893"</span>, <span class="st">"10519597"</span>, <span class="st">"1717071"</span>, <span class="st">"1933239"</span>, <span class="st">"1374064"</span>, <span class="st">"2379653"</span>, <span class="st">"845619"</span>,</span>
-<span>  <span class="st">"2854416"</span>, <span class="st">"3540375"</span>, <span class="st">"1142984"</span>, <span class="st">"1378723"</span>, <span class="st">"2033994"</span>, <span class="st">"1582818"</span>, <span class="st">"1535288"</span></span>
+<span>  <span class="st">"572897"</span>,</span>
+<span>  <span class="st">"7604425"</span>,</span>
+<span>  <span class="st">"4666748"</span>,</span>
+<span>  <span class="st">"4932184"</span>,</span>
+<span>  <span class="st">"4210900"</span>,</span>
+<span>  <span class="st">"3126574"</span>,</span>
+<span>  <span class="st">"167699"</span>,</span>
+<span>  <span class="st">"1376201"</span>,</span>
+<span>  <span class="st">"2437291"</span>,</span>
+<span>  <span class="st">"1679772"</span>,</span>
+<span>  <span class="st">"1183099"</span>,</span>
+<span>  <span class="st">"1813513"</span>,</span>
+<span>  <span class="st">"931018"</span>,</span>
+<span>  <span class="st">"267074"</span>,</span>
+<span>  <span class="st">"4622893"</span>,</span>
+<span>  <span class="st">"10519597"</span>,</span>
+<span>  <span class="st">"1717071"</span>,</span>
+<span>  <span class="st">"1933239"</span>,</span>
+<span>  <span class="st">"1374064"</span>,</span>
+<span>  <span class="st">"2379653"</span>,</span>
+<span>  <span class="st">"845619"</span>,</span>
+<span>  <span class="st">"2854416"</span>,</span>
+<span>  <span class="st">"3540375"</span>,</span>
+<span>  <span class="st">"1142984"</span>,</span>
+<span>  <span class="st">"1378723"</span>,</span>
+<span>  <span class="st">"2033994"</span>,</span>
+<span>  <span class="st">"1582818"</span>,</span>
+<span>  <span class="st">"1535288"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"https://images.pexels.com/photos/"</span>, <span class="va">ids</span>, <span class="st">"/pexels-photo-"</span>, <span class="va">ids</span>, <span class="st">".jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span><span class="op">)</span></span>
+<span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://images.pexels.com/photos/"</span>,</span>
+<span>  <span class="va">ids</span>,</span>
+<span>  <span class="st">"/pexels-photo-"</span>,</span>
+<span>  <span class="va">ids</span>,</span>
+<span>  <span class="st">".jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">captions_short</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"night"</span>, <span class="st">"forest"</span>, <span class="st">"shark"</span>, <span class="st">"coconut trees"</span>, <span class="st">"flowers"</span>, <span class="st">"field"</span>, <span class="st">"misty"</span>, <span class="st">"leaves"</span>, <span class="st">"mountains"</span>, <span class="st">"swamp"</span>, <span class="st">"rainstorm"</span>, <span class="st">"leaves"</span>, <span class="st">"beach"</span>, <span class="st">"leopard"</span>, <span class="st">"sunflower"</span>, <span class="st">"homely"</span>, <span class="st">"countryside"</span>, <span class="st">"aurora"</span>, <span class="st">"cliff"</span>, <span class="st">"poppy"</span>, <span class="st">"swan"</span>, <span class="st">"aerial"</span>, <span class="st">"snowy"</span>, <span class="st">"beach"</span>, <span class="st">"hands"</span>, <span class="st">"glass"</span>, <span class="st">"autumn"</span>, <span class="st">"love"</span><span class="op">)</span></span>
+<span><span class="va">captions_short</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"night"</span>,</span>
+<span>  <span class="st">"forest"</span>,</span>
+<span>  <span class="st">"shark"</span>,</span>
+<span>  <span class="st">"coconut trees"</span>,</span>
+<span>  <span class="st">"flowers"</span>,</span>
+<span>  <span class="st">"field"</span>,</span>
+<span>  <span class="st">"misty"</span>,</span>
+<span>  <span class="st">"leaves"</span>,</span>
+<span>  <span class="st">"mountains"</span>,</span>
+<span>  <span class="st">"swamp"</span>,</span>
+<span>  <span class="st">"rainstorm"</span>,</span>
+<span>  <span class="st">"leaves"</span>,</span>
+<span>  <span class="st">"beach"</span>,</span>
+<span>  <span class="st">"leopard"</span>,</span>
+<span>  <span class="st">"sunflower"</span>,</span>
+<span>  <span class="st">"homely"</span>,</span>
+<span>  <span class="st">"countryside"</span>,</span>
+<span>  <span class="st">"aurora"</span>,</span>
+<span>  <span class="st">"cliff"</span>,</span>
+<span>  <span class="st">"poppy"</span>,</span>
+<span>  <span class="st">"swan"</span>,</span>
+<span>  <span class="st">"aerial"</span>,</span>
+<span>  <span class="st">"snowy"</span>,</span>
+<span>  <span class="st">"beach"</span>,</span>
+<span>  <span class="st">"hands"</span>,</span>
+<span>  <span class="st">"glass"</span>,</span>
+<span>  <span class="st">"autumn"</span>,</span>
+<span>  <span class="st">"love"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">captions_long</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"The night sky blanketed the quiet village as stars twinkled in the peaceful darkness."</span>,</span>
@@ -189,17 +298,51 @@
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarLayout</a></span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarPanel</a></span><span class="op">(</span></span>
 <span>      width <span class="op">=</span> <span class="fl">3</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html" class="external-link">textAreaInput</a></span><span class="op">(</span><span class="st">"paths"</span>, <span class="st">"Image paths"</span>, value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">urls</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>, width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"200px"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html" class="external-link">textAreaInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"paths"</span>,</span>
+<span>        <span class="st">"Image paths"</span>,</span>
+<span>        value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">urls</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>,</span>
+<span>        width <span class="op">=</span> <span class="st">"100%"</span>,</span>
+<span>        height <span class="op">=</span> <span class="st">"200px"</span></span>
+<span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">hr</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span><span class="st">"caption_check"</span>, <span class="st">"Use captions"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"None"</span>, <span class="st">"Short"</span>, <span class="st">"Long"</span><span class="op">)</span>, selected <span class="op">=</span> <span class="st">"None"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"caption_check"</span>,</span>
+<span>        <span class="st">"Use captions"</span>,</span>
+<span>        choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"None"</span>, <span class="st">"Short"</span>, <span class="st">"Long"</span><span class="op">)</span>,</span>
+<span>        selected <span class="op">=</span> <span class="st">"None"</span></span>
+<span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html" class="external-link">uiOutput</a></span><span class="op">(</span><span class="st">"caption_ui"</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">hr</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"link"</span>, <span class="st">"Use lightbox"</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span><span class="st">"layout"</span>, <span class="st">"Layout"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"grid"</span>, <span class="st">"fixed"</span>, <span class="st">"mosaic"</span>, <span class="st">"masonry"</span>, <span class="st">"justified"</span>, <span class="st">"elastic"</span>, <span class="st">"rhombus"</span>, <span class="st">"hexagon"</span><span class="op">)</span>, selected <span class="op">=</span> <span class="st">"grid"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"caption_lightbox"</span>, <span class="st">"Use lightbox caption"</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"layout"</span>,</span>
+<span>        <span class="st">"Layout"</span>,</span>
+<span>        choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>          <span class="st">"grid"</span>,</span>
+<span>          <span class="st">"fixed"</span>,</span>
+<span>          <span class="st">"mosaic"</span>,</span>
+<span>          <span class="st">"masonry"</span>,</span>
+<span>          <span class="st">"justified"</span>,</span>
+<span>          <span class="st">"elastic"</span>,</span>
+<span>          <span class="st">"rhombus"</span>,</span>
+<span>          <span class="st">"hexagon"</span>,</span>
+<span>          <span class="st">"scroll"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        selected <span class="op">=</span> <span class="st">"grid"</span></span>
+<span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"h"</span>, <span class="st">"Height"</span>, min <span class="op">=</span> <span class="fl">10</span>, max <span class="op">=</span> <span class="fl">500</span>, step <span class="op">=</span> <span class="fl">5</span>, value <span class="op">=</span> <span class="fl">120</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"w"</span>, <span class="st">"Width"</span>, min <span class="op">=</span> <span class="fl">10</span>, max <span class="op">=</span> <span class="fl">500</span>, step <span class="op">=</span> <span class="fl">5</span>, value <span class="op">=</span> <span class="fl">120</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"gap"</span>, <span class="st">"Grid gap"</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">30</span>, step <span class="op">=</span> <span class="fl">1</span>, value <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"border_radius"</span>, <span class="st">"Border radius"</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">50</span>, step <span class="op">=</span> <span class="fl">1</span>, value <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"border_radius"</span>,</span>
+<span>        <span class="st">"Border radius"</span>,</span>
+<span>        min <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>        max <span class="op">=</span> <span class="fl">50</span>,</span>
+<span>        step <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>        value <span class="op">=</span> <span class="fl">0</span></span>
+<span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"shuffle"</span>, <span class="st">"Shuffle"</span>, value <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/HTML.html" class="external-link">HTML</a></span><span class="op">(</span><span class="st">"Images from &lt;a href='https://www.pexels.com/'&gt;Pexels.&lt;/a&gt;"</span><span class="op">)</span></span>
 <span>    <span class="op">)</span>,</span>
@@ -213,11 +356,29 @@
 <span><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">output</span><span class="op">$</span><span class="va">caption_ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/renderUI.html" class="external-link">renderUI</a></span><span class="op">(</span><span class="op">{</span></span>
 <span>    <span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption_check</span> <span class="op">!=</span> <span class="st">"None"</span><span class="op">)</span> <span class="op">{</span></span>
-<span>      <span class="va">captions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption_check</span> <span class="op">==</span> <span class="st">"Short"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">captions_short</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">captions_long</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span>
+<span>      <span class="va">captions</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span></span>
+<span>        <span class="va">input</span><span class="op">$</span><span class="va">caption_check</span> <span class="op">==</span> <span class="st">"Short"</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">captions_short</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">captions_long</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span></span>
+<span>      <span class="op">)</span></span>
 <span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">div</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html" class="external-link">textAreaInput</a></span><span class="op">(</span><span class="st">"caption"</span>, <span class="st">"Caption"</span>, value <span class="op">=</span> <span class="va">captions</span>, width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"150px"</span><span class="op">)</span>,</span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span><span class="st">"valign"</span>, <span class="st">"Vertical alignment"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"top"</span>, <span class="st">"center"</span>, <span class="st">"bottom"</span>, <span class="st">"below"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span><span class="st">"halign"</span>, <span class="st">"Horiz alignment"</span>, choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span>, <span class="st">"right"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html" class="external-link">textAreaInput</a></span><span class="op">(</span></span>
+<span>          <span class="st">"caption"</span>,</span>
+<span>          <span class="st">"Caption"</span>,</span>
+<span>          value <span class="op">=</span> <span class="va">captions</span>,</span>
+<span>          width <span class="op">=</span> <span class="st">"100%"</span>,</span>
+<span>          height <span class="op">=</span> <span class="st">"150px"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
+<span>          <span class="st">"valign"</span>,</span>
+<span>          <span class="st">"Vertical alignment"</span>,</span>
+<span>          choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"top"</span>, <span class="st">"center"</span>, <span class="st">"bottom"</span>, <span class="st">"below"</span><span class="op">)</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
+<span>          <span class="st">"halign"</span>,</span>
+<span>          <span class="st">"Horiz alignment"</span>,</span>
+<span>          choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"left"</span>, <span class="st">"center"</span>, <span class="st">"right"</span><span class="op">)</span></span>
+<span>        <span class="op">)</span>,</span>
 <span>      <span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
@@ -228,11 +389,36 @@
 <span>    <span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption_check</span> <span class="op">!=</span> <span class="st">"None"</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>        <span class="va">cpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption</span>, split <span class="op">=</span> <span class="st">"\\n"</span><span class="op">)</span><span class="op">)</span></span>
-<span>        <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">cpt</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Number of captions do not match number of images."</span><span class="op">)</span></span>
-<span>        <span class="fu">pixture</span><span class="fu">::</span><span class="fu"><a href="../reference/pixgallery.html">pixgallery</a></span><span class="op">(</span><span class="va">paths</span>, caption <span class="op">=</span> <span class="va">cpt</span>, caption_valign <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">valign</span>, caption_halign <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">halign</span>, link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>, h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">h</span>, <span class="st">"px"</span><span class="op">)</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">w</span>, <span class="st">"px"</span><span class="op">)</span>, gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">gap</span>, <span class="st">"px"</span><span class="op">)</span>, border_radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">border_radius</span>, <span class="st">"px"</span><span class="op">)</span>, layout <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">layout</span>, shuffle <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">shuffle</span><span class="op">)</span></span>
+<span>        <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">cpt</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>          <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Number of captions do not match number of images."</span><span class="op">)</span></span>
+<span>        <span class="op">}</span></span>
+<span>        <span class="fu">pixture</span><span class="fu">::</span><span class="fu"><a href="../reference/pixgallery.html">pixgallery</a></span><span class="op">(</span></span>
+<span>          <span class="va">paths</span>,</span>
+<span>          caption <span class="op">=</span> <span class="va">cpt</span>,</span>
+<span>          caption_valign <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">valign</span>,</span>
+<span>          caption_halign <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">halign</span>,</span>
+<span>          link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>,</span>
+<span>          caption_lightbox <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">caption_lightbox</span>,</span>
+<span>          h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">h</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>          w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">w</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>          gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">gap</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>          border_radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">border_radius</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>          layout <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">layout</span>,</span>
+<span>          shuffle <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">shuffle</span></span>
+<span>        <span class="op">)</span></span>
 <span>      <span class="op">}</span></span>
 <span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span>      <span class="fu">pixture</span><span class="fu">::</span><span class="fu"><a href="../reference/pixgallery.html">pixgallery</a></span><span class="op">(</span><span class="va">paths</span>, link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>, h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">h</span>, <span class="st">"px"</span><span class="op">)</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">w</span>, <span class="st">"px"</span><span class="op">)</span>, gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">gap</span>, <span class="st">"px"</span><span class="op">)</span>, border_radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">border_radius</span>, <span class="st">"px"</span><span class="op">)</span>, layout <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">layout</span>, shuffle <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">shuffle</span><span class="op">)</span></span>
+<span>      <span class="fu">pixture</span><span class="fu">::</span><span class="fu"><a href="../reference/pixgallery.html">pixgallery</a></span><span class="op">(</span></span>
+<span>        <span class="va">paths</span>,</span>
+<span>        link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>,</span>
+<span>        caption_lightbox <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">caption_lightbox</span>,</span>
+<span>        h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">h</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>        w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">w</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>        gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">gap</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>        border_radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">border_radius</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>        layout <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">layout</span>,</span>
+<span>        shuffle <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">shuffle</span></span>
+<span>      <span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -372,6 +558,7 @@
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html" class="external-link">uiOutput</a></span><span class="op">(</span><span class="st">"caption_ui"</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">hr</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"link"</span>, <span class="st">"Use lightbox"</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"caption_lightbox"</span>, <span class="st">"Show lightbox caption"</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"h"</span>, <span class="st">"Height"</span>, min <span class="op">=</span> <span class="fl">50</span>, max <span class="op">=</span> <span class="fl">1000</span>, step <span class="op">=</span> <span class="fl">5</span>, value <span class="op">=</span> <span class="fl">400</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span><span class="st">"gap"</span>, <span class="st">"Grid gap"</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">30</span>, step <span class="op">=</span> <span class="fl">1</span>, value <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
@@ -381,6 +568,28 @@
 <span>        max <span class="op">=</span> <span class="fl">50</span>,</span>
 <span>        step <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>        value <span class="op">=</span> <span class="fl">0</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"fit"</span>,</span>
+<span>        label <span class="op">=</span> <span class="st">"Object fit"</span>,</span>
+<span>        choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cover"</span>, <span class="st">"contain"</span>, <span class="st">"fill"</span>, <span class="st">"none"</span>, <span class="st">"scale-down"</span><span class="op">)</span>,</span>
+<span>        selected <span class="op">=</span> <span class="st">"cover"</span></span>
+<span>      <span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
+<span>        <span class="st">"position"</span>,</span>
+<span>        label <span class="op">=</span> <span class="st">"Object position"</span>,</span>
+<span>        choices <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>          <span class="st">"center"</span>,</span>
+<span>          <span class="st">"top"</span>,</span>
+<span>          <span class="st">"bottom"</span>,</span>
+<span>          <span class="st">"left"</span>,</span>
+<span>          <span class="st">"right"</span>,</span>
+<span>          <span class="st">"top left"</span>,</span>
+<span>          <span class="st">"top right"</span>,</span>
+<span>          <span class="st">"bottom left"</span>,</span>
+<span>          <span class="st">"bottom right"</span></span>
+<span>        <span class="op">)</span>,</span>
+<span>        selected <span class="op">=</span> <span class="st">"center"</span></span>
 <span>      <span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sliderInput.html" class="external-link">sliderInput</a></span><span class="op">(</span></span>
 <span>        <span class="st">"slides_to_show"</span>,</span>
@@ -456,10 +665,13 @@
 <span>          caption_valign <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">valign</span>,</span>
 <span>          caption_halign <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">halign</span>,</span>
 <span>          link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>,</span>
+<span>          caption_lightbox <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">caption_lightbox</span>,</span>
 <span>          gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">gap</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
 <span>          border_radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">border_radius</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
 <span>          shuffle <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">shuffle</span>,</span>
 <span>          h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">h</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>          fit <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">fit</span>,</span>
+<span>          position <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">position</span>,</span>
 <span>          carousel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>            slidesToShow <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">slides_to_show</span>,</span>
 <span>            slidesToScroll <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">slides_to_scroll</span>,</span>
@@ -473,10 +685,13 @@
 <span>      <span class="fu">pixture</span><span class="fu">::</span><span class="fu"><a href="../reference/pixcarousel.html">pixcarousel</a></span><span class="op">(</span></span>
 <span>        <span class="va">paths</span>,</span>
 <span>        link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>,</span>
+<span>        caption_lightbox <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">caption_lightbox</span>,</span>
 <span>        gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">gap</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
 <span>        border_radius <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">border_radius</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
 <span>        shuffle <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">shuffle</span>,</span>
 <span>        h <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">h</span>, <span class="st">"px"</span><span class="op">)</span>,</span>
+<span>        fit <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">fit</span>,</span>
+<span>        position <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">position</span>,</span>
 <span>        carousel <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>          slidesToShow <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">slides_to_show</span>,</span>
 <span>          slidesToScroll <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">slides_to_scroll</span>,</span>
@@ -501,7 +716,6 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.posit.co/" class="external-link">shiny</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/royfrancis/pixture">pixture</a></span><span class="op">)</span></span>
 <span></span>
-<span></span>
 <span><span class="va">path</span> <span class="op">&lt;-</span> <span class="st">"https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940;https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940;https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940"</span></span>
 <span><span class="va">captions</span> <span class="op">&lt;-</span> <span class="st">"Palm trees;Night sky;Woodland"</span></span>
 <span></span>
@@ -511,10 +725,11 @@
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/sidebarLayout.html" class="external-link">sidebarPanel</a></span><span class="op">(</span></span>
 <span>      width <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textAreaInput.html" class="external-link">textAreaInput</a></span><span class="op">(</span><span class="st">"path"</span>, <span class="st">"Image paths"</span>, value <span class="op">=</span> <span class="va">path</span>, height <span class="op">=</span> <span class="st">"200px"</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html" class="external-link">textInput</a></span><span class="op">(</span><span class="st">"sep"</span>, <span class="st">"Separator"</span>, value <span class="op">=</span> <span class="st">";"</span><span class="op">)</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"caption_check"</span>, <span class="st">"Use captions"</span>, value <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html" class="external-link">textInput</a></span><span class="op">(</span><span class="st">"sep"</span>, <span class="st">"Path and caption separator"</span>, value <span class="op">=</span> <span class="st">";"</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"caption_check"</span>, <span class="st">"Use caption"</span>, value <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/htmlOutput.html" class="external-link">uiOutput</a></span><span class="op">(</span><span class="st">"caption_ui"</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"link"</span>, <span class="st">"Use lightbox"</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/checkboxInput.html" class="external-link">checkboxInput</a></span><span class="op">(</span><span class="st">"caption_lightbox"</span>, <span class="st">"Use lightbox caption"</span>, value <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html" class="external-link">textInput</a></span><span class="op">(</span><span class="st">"h"</span>, label <span class="op">=</span> <span class="st">"Height"</span>, value <span class="op">=</span> <span class="st">"auto"</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/textInput.html" class="external-link">textInput</a></span><span class="op">(</span><span class="st">"w"</span>, label <span class="op">=</span> <span class="st">"Width"</span>, value <span class="op">=</span> <span class="st">"100%"</span><span class="op">)</span>,</span>
 <span>      <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/selectInput.html" class="external-link">selectInput</a></span><span class="op">(</span></span>
@@ -562,7 +777,7 @@
 <span></span>
 <span>    <span class="kw">if</span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption_check</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>        <span class="va">cpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption</span>, <span class="st">";"</span><span class="op">)</span><span class="op">)</span></span>
+<span>        <span class="va">cpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html" class="external-link">strsplit</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">caption</span>, <span class="va">input</span><span class="op">$</span><span class="va">sep</span><span class="op">)</span><span class="op">)</span></span>
 <span>        <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">cpt</span><span class="op">)</span> <span class="op">!=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>          <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Number of captions do not match number of images."</span><span class="op">)</span></span>
 <span>        <span class="op">}</span></span>
@@ -570,6 +785,7 @@
 <span>          <span class="va">path</span>,</span>
 <span>          caption <span class="op">=</span> <span class="va">cpt</span>,</span>
 <span>          link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>,</span>
+<span>          caption_lightbox <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">caption_lightbox</span>,</span>
 <span>          h <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">h</span>,</span>
 <span>          w <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">w</span>,</span>
 <span>          fit <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">fit</span>,</span>
@@ -580,6 +796,7 @@
 <span>      <span class="fu">pixture</span><span class="fu">::</span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span></span>
 <span>        <span class="va">path</span>,</span>
 <span>        link <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">link</span>,</span>
+<span>        caption_lightbox <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">caption_lightbox</span>,</span>
 <span>        h <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">h</span>,</span>
 <span>        w <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">w</span>,</span>
 <span>        fit <span class="op">=</span> <span class="va">input</span><span class="op">$</span><span class="va">fit</span>,</span>

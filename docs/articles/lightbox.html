@@ -19,11 +19,11 @@
 <link href="lightbox_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <script src="lightbox_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="lightbox_files/libs/glightbox-3.3.1/css/glightbox.min.css" rel="stylesheet">
 <script src="lightbox_files/libs/glightbox-3.3.1/js/glightbox.min.js"></script><link href="lightbox_files/libs/pixfigure-0/css/pixfigure.css" rel="stylesheet">
-<script src="lightbox_files/libs/pixfigure-binding-0.2.0/pixfigure.js"></script><link href="lightbox_files/libs/pixgallery-0/css/pixgallery.css" rel="stylesheet">
-<script src="lightbox_files/libs/pixgallery-binding-0.2.0/pixgallery.js"></script><link href="lightbox_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="lightbox_files/libs/pixfigure-binding-0.2.1/pixfigure.js"></script><link href="lightbox_files/libs/pixgallery-0/css/pixgallery.css" rel="stylesheet">
+<script src="lightbox_files/libs/pixgallery-binding-0.2.1/pixgallery.js"></script><link href="lightbox_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
 <link href="lightbox_files/libs/glider-1.7.4/css/glider.css" rel="stylesheet">
 <script src="lightbox_files/libs/glider-1.7.4/js/glider.js"></script><link href="lightbox_files/libs/pixcarousel-0/css/pixcarousel.css" rel="stylesheet">
-<script src="lightbox_files/libs/pixcarousel-binding-0.2.0/pixcarousel.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<script src="lightbox_files/libs/pixcarousel-binding-0.2.1/pixcarousel.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Lightbox usage">
 <meta property="og:image" content="https://github.com/royfrancis/pixture/reference/figures/seo.png">
 <meta property="og:image:alt" content="Pixture card">
@@ -36,7 +36,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">pixture</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,6 +64,7 @@
     <li><a class="dropdown-item" href="../articles/cities.html">100 Cities</a></li>
     <li><a class="dropdown-item" href="../articles/cities-1.html">100 Cities Variant</a></li>
     <li><a class="dropdown-item" href="../articles/quotes.html">Quotes</a></li>
+    <li><a class="dropdown-item" href="../articles/furniture.html">Ikea Armchairs</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -141,20 +142,20 @@
 <div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixfigure.html">pixfigure</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>, caption <span class="op">=</span> <span class="va">captions</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-f7e9c60558c3506d725b" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f7e9c60558c3506d725b">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees."],"link":[true],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c999f559735deb442f4a" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c999f559735deb442f4a">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees."],"link":[true],"caption_lightbox":[true],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixgallery.html">pixgallery</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, caption <span class="op">=</span> <span class="va">captions</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-44e0dec82500f42a520e" style="width:100%;height:100%;" class="pixgallery html-widget"></div>
-<script type="application/json" data-for="htmlwidget-44e0dec82500f42a520e">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"h":null,"w":null,"gap":"5px","border_radius":"0px","layout":"grid","shuffle":false,"lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6a1102bd00dde87f173e" style="width:100%;height:100%;" class="pixgallery html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6a1102bd00dde87f173e">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"caption_lightbox":[true],"h":null,"w":null,"gap":"5px","border_radius":"0px","layout":"grid","shuffle":false,"lightbox":{"selector":".glightbox"}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixcarousel.html">pixcarousel</a></span><span class="op">(</span><span class="va">paths</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span>, caption <span class="op">=</span> <span class="va">captions</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div class="pixcarousel html-widget html-fill-item" id="htmlwidget-7c1f5065fc88a5e54185" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-7c1f5065fc88a5e54185">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"gap":"0px","border_radius":"0px","shuffle":false,"carousel":{"draggable":true,"scrollLock":true},"lightbox":{"selector":".glightbox"},"h":"400px"},"evals":[],"jsHooks":[]}</script>
+<div class="pixcarousel html-widget html-fill-item" id="htmlwidget-398087e0c1c5cea0f3a3" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-398087e0c1c5cea0f3a3">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"caption_lightbox":[true],"gap":"0px","border_radius":"0px","shuffle":false,"fit":"cover","position":"center","carousel":{"draggable":true,"scrollLock":true},"lightbox":{"selector":".glightbox"},"h":"400px"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><strong>glightbox</strong> options can be passed as a list to the <code>lightbox</code> parameter. Below are some examples of customizing the lightbox.</p>
@@ -167,8 +168,8 @@
 <span>  lightbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>loop <span class="op">=</span> <span class="cn">TRUE</span>, zoomable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-d95a8a632867409ab472" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d95a8a632867409ab472">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees."],"link":[true],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox","loop":true,"zoomable":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c968dece57705eb8a316" style="width:100%;height:100%;" class="pixfigure html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c968dece57705eb8a316">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees."],"link":[true],"caption_lightbox":[true],"h":"auto","w":"100%","fit":"cover","position":"center","lightbox":{"selector":".glightbox","loop":true,"zoomable":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixgallery.html">pixgallery</a></span><span class="op">(</span></span>
@@ -177,8 +178,8 @@
 <span>  lightbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>loop <span class="op">=</span> <span class="cn">TRUE</span>, zoomable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-f6672add66961ead9c7c" style="width:100%;height:100%;" class="pixgallery html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6672add66961ead9c7c">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"h":null,"w":null,"gap":"5px","border_radius":"0px","layout":"grid","shuffle":false,"lightbox":{"selector":".glightbox","loop":true,"zoomable":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f7419067cdc2953b9add" style="width:100%;height:100%;" class="pixgallery html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f7419067cdc2953b9add">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"caption_lightbox":[true],"h":null,"w":null,"gap":"5px","border_radius":"0px","layout":"grid","shuffle":false,"lightbox":{"selector":".glightbox","loop":true,"zoomable":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pixcarousel.html">pixcarousel</a></span><span class="op">(</span></span>
@@ -187,8 +188,8 @@
 <span>  lightbox <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>loop <span class="op">=</span> <span class="cn">TRUE</span>, zoomable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
-<div class="pixcarousel html-widget html-fill-item" id="htmlwidget-b150f3b53855661031f6" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-b150f3b53855661031f6">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"gap":"0px","border_radius":"0px","shuffle":false,"carousel":{"draggable":true,"scrollLock":true},"lightbox":{"selector":".glightbox","loop":true,"zoomable":false},"h":"400px"},"evals":[],"jsHooks":[]}</script>
+<div class="pixcarousel html-widget html-fill-item" id="htmlwidget-7316636fbcddb88c95cd" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-7316636fbcddb88c95cd">{"x":{"path":["https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/7604425/pexels-photo-7604425.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4666748/pexels-photo-4666748.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4932184/pexels-photo-4932184.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/4210900/pexels-photo-4210900.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/3126574/pexels-photo-3126574.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],"caption":["A beautiful night sky filled with stars.","A dense forest with tall trees.","A shark swimming in the ocean.","Coconut trees swaying in the breeze.","A vibrant field of flowers in bloom.","A vast field under a clear sky."],"caption_valign":"none","caption_halign":"left","link":[true],"caption_lightbox":[true],"gap":"0px","border_radius":"0px","shuffle":false,"fit":"cover","position":"center","carousel":{"draggable":true,"scrollLock":true},"lightbox":{"selector":".glightbox","loop":true,"zoomable":false},"h":"400px"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <section class="level2" data-number="1"><h2 data-number="1" id="session">
@@ -206,7 +207,7 @@ Matrix products: default
 BLAS/LAPACK: /opt/homebrew/Caskroom/miniforge/envs/r-4.5-arm/lib/libopenblas.0.dylib;  LAPACK version 3.12.0
 
 locale:
-[1] C
+[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
 
 time zone: Europe/Stockholm
 tzcode source: system (macOS)
@@ -215,13 +216,13 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base
 
 other attached packages:
-[1] pixture_0.2.0
+[1] pixture_0.2.1
 
 loaded via a namespace (and not attached):
  [1] digest_0.6.37     later_1.4.4       R6_2.6.1          httpuv_1.6.16
  [5] fastmap_1.2.0     xfun_0.54         magrittr_2.0.4    shiny_1.11.1
  [9] knitr_1.50        htmltools_0.5.8.1 rmarkdown_2.30    lifecycle_1.0.4
-[13] promises_1.4.0    cli_3.6.5         xtable_1.8-4      compiler_4.5.1
+[13] promises_1.5.0    cli_3.6.5         xtable_1.8-4      compiler_4.5.1
 [17] tools_4.5.1       mime_0.13         evaluate_1.0.5    Rcpp_1.1.0
 [21] yaml_2.3.10       otel_0.2.0        rlang_1.1.6       jsonlite_2.0.0
 [25] htmlwidgets_1.6.4</code></pre>

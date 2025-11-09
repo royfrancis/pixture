@@ -8,9 +8,7 @@
 }
 
 .pixfigure a {
-  -webkit-transition: -webkit-filter 0.25s;
   transition: -webkit-filter 0.25s;
-  -o-transition: filter 0.25s;
   transition: filter 0.25s;
   transition: filter 0.25s, -webkit-filter 0.25s;
 }
@@ -18,11 +16,9 @@
 .pixfigure a:hover,
 .pixfigure a:focus,
 .pixfigure a:active {
-  -webkit-filter: brightness(0.8) contrast(0.8);
-  filter: brightness(0.8) contrast(0.8);
-  -webkit-transition: -webkit-filter 0.25s;
+  -webkit-filter: brightness(0.9) contrast(0.9);
+  filter: brightness(0.9) contrast(0.9);
   transition: -webkit-filter 0.25s;
-  -o-transition: filter 0.25s;
   transition: filter 0.25s;
   transition: filter 0.25s, -webkit-filter 0.25s;
 }
