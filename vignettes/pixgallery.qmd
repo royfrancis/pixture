@@ -758,7 +758,7 @@ pixgallery(
   caption_valign = "center",
   caption_halign = "center",
   border_radius = "8px",
-  h = "250px",
+  h = "100px",
   shuffle = TRUE
 )
 ```
@@ -828,7 +828,7 @@ dfr <- data.frame(
   "mosaic" = c(
     "&#x1F7E9;",
     "&#x1F7E9;",
-    "&#x1F7E9;",
+    "&#x1F7E0;",
     "&#x1F7E9;",
     "&#x1F7E9;",
     "&#x1F535;",

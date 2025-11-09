@@ -7,7 +7,10 @@
   - Corrected caption overlay when using `gap` parameter
 - Added 'caption_lightbox' parameter to set custom captions in lightbox
 - Improved shuffle option to work with captions, links and lightbox captions
+- Weakened hover effect on images
+- Added more variability to mosaic layout
 - Added showcase 'furniture' to documentation
+- Updated vignettes, shiny apps and tests
 
 # pixture 0.2.0
 

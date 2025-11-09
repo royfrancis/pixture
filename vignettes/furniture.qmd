@@ -1,5 +1,5 @@
 ---
-title: IKEA Arm Chairs
+title: Ikea Armchairs
 subtitle: Carousel gallery with captions
 date: last-modified
 date-format: "DD-MMM-YYYY"
