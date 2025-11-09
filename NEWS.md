@@ -5,7 +5,7 @@
   - Added new parameters `fit` and `position`
   - Moved carousel buttons to bottom, dots hidden for narrow screens
   - Corrected caption overlay when using `gap` parameter
-- Added 'caption_lightbox' parameter to set different captions in lightbox
+- Added 'caption_lightbox' parameter to set custom captions in lightbox
 - Improved shuffle option to work with captions, links and lightbox captions
 - Added showcase 'furniture' to documentation
 

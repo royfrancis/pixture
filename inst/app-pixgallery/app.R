@@ -122,6 +122,7 @@ ui <- fluidPage(
       uiOutput("caption_ui"),
       hr(),
       checkboxInput("link", "Use lightbox", value = TRUE),
+      checkboxInput("caption_lightbox", "Use lightbox caption", value = TRUE),
       selectInput(
         "layout",
         "Layout",
@@ -204,6 +205,7 @@ server <- function(input, output) {
           caption_valign = input$valign,
           caption_halign = input$halign,
           link = input$link,
+          caption_lightbox = input$caption_lightbox,
           h = paste0(input$h, "px"),
           w = paste0(input$w, "px"),
           gap = paste0(input$gap, "px"),
@@ -216,6 +218,7 @@ server <- function(input, output) {
       pixture::pixgallery(
         paths,
         link = input$link,
+        caption_lightbox = input$caption_lightbox,
         h = paste0(input$h, "px"),
         w = paste0(input$w, "px"),
         gap = paste0(input$gap, "px"),

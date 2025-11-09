@@ -122,6 +122,7 @@ ui <- fluidPage(
       uiOutput("caption_ui"),
       hr(),
       checkboxInput("link", "Use lightbox", value = TRUE),
+      checkboxInput("caption_lightbox", "Show lightbox caption", value = TRUE),
       sliderInput("h", "Height", min = 50, max = 1000, step = 5, value = 400),
       sliderInput("gap", "Grid gap", min = 0, max = 30, step = 1, value = 0),
       sliderInput(
@@ -131,6 +132,28 @@ ui <- fluidPage(
         max = 50,
         step = 1,
         value = 0
+      ),
+      selectInput(
+        "fit",
+        label = "Object fit",
+        choices = c("cover", "contain", "fill", "none", "scale-down"),
+        selected = "cover"
+      ),
+      selectInput(
+        "position",
+        label = "Object position",
+        choices = c(
+          "center",
+          "top",
+          "bottom",
+          "left",
+          "right",
+          "top left",
+          "top right",
+          "bottom left",
+          "bottom right"
+        ),
+        selected = "center"
       ),
       sliderInput(
         "slides_to_show",
@@ -206,10 +229,13 @@ server <- function(input, output) {
           caption_valign = input$valign,
           caption_halign = input$halign,
           link = input$link,
+          caption_lightbox = input$caption_lightbox,
           gap = paste0(input$gap, "px"),
           border_radius = paste0(input$border_radius, "px"),
           shuffle = input$shuffle,
           h = paste0(input$h, "px"),
+          fit = input$fit,
+          position = input$position,
           carousel = list(
             slidesToShow = input$slides_to_show,
             slidesToScroll = input$slides_to_scroll,
@@ -223,10 +249,13 @@ server <- function(input, output) {
       pixture::pixcarousel(
         paths,
         link = input$link,
+        caption_lightbox = input$caption_lightbox,
         gap = paste0(input$gap, "px"),
         border_radius = paste0(input$border_radius, "px"),
         shuffle = input$shuffle,
         h = paste0(input$h, "px"),
+        fit = input$fit,
+        position = input$position,
         carousel = list(
           slidesToShow = input$slides_to_show,
           slidesToScroll = input$slides_to_scroll,
