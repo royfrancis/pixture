@@ -48,7 +48,7 @@ ui <- fluidPage(
         "Image paths",
         value = paste0(urls, collapse = "\n"),
         width = "100%",
-        height = "200px"
+        height = "150px"
       ),
       selectInput(
         "layout",
@@ -60,8 +60,10 @@ ui <- fluidPage(
           "masonry",
           "justified",
           "elastic",
+          "scroll",
           "rhombus",
-          "scroll"
+          "hexagon"
+          
         ),
         selected = "grid"
       ),
