@@ -142,6 +142,29 @@ test_that("Captions and link", {
   expect_error(pixcarousel(paths, caption = captions, link = c(T, F)))
 })
 
+test_that("Captions and caption_lightbox", {
+  expect_no_error(pixcarousel(paths, caption = captions, caption_lightbox = FALSE))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_valign = "bottom",
+    caption_lightbox = FALSE
+  ))
+  expect_no_error(pixcarousel(
+    paths,
+    caption_lightbox = rep("bla", length(captions))
+  ))
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    caption_lightbox = rep("bla", length(captions))
+  ))
+  expect_error(pixcarousel(paths, caption = captions, caption_lightbox = "bla"))
+  expect_error(pixcarousel(paths, caption = captions, caption_lightbox = NA))
+  expect_error(pixcarousel(paths, caption = captions, caption_lightbox = NULL))
+  expect_error(pixcarousel(paths, caption = captions, caption_lightbox = c(T, F)))
+})
+
 test_that("fit and position", {
   expect_no_error(pixcarousel(paths, fit = "contain"))
   expect_no_error(pixcarousel(paths, position = "left"))
@@ -187,4 +210,40 @@ test_that("Shuffle with caption", {
 test_that("Shuffle incorrect input", {
   expect_error(pixcarousel(paths, shuffle = NA))
   expect_error(pixcarousel(paths, shuffle = NULL))
+})
+
+test_that("Shuffle with link and caption_lightbox", {
+  expect_no_error(pixcarousel(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions)),
+    caption_lightbox = rep("bli", length(captions)),
+    shuffle = TRUE
+  ))
+  obj <- pixcarousel(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions)),
+    caption_lightbox = rep("bli", length(captions)),
+    shuffle = TRUE
+  )
+  expect_equal(length(obj$x$path), length(paths))
+})
+
+test_that("Shuffle check order of path, caption, link and caption_lightbox", {
+  obj <- pixcarousel(
+    paths,
+    caption = captions,
+    link = paste0("link_", seq_along(paths)),
+    caption_lightbox = paste0("lightbox_", seq_along(paths)),
+    shuffle = TRUE
+  )
+  expect_equal(length(obj$x$path), length(paths))
+  for (i in seq_along(paths)) {
+    path_i <- obj$x$path[[i]]
+    index <- which(paths == path_i)
+    expect_equal(obj$x$caption[[i]], captions[index])
+    expect_equal(obj$x$link[[i]], paste0("link_", index))
+    expect_equal(obj$x$caption_lightbox[[i]], paste0("lightbox_", index))
+  }
 })

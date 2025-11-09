@@ -98,6 +98,29 @@ test_that("Captions and captions as path names", {
   expect_no_error(pixfigure(paths1, caption = captions))
 })
 
+test_that("Caption_lightbox", {
+  expect_no_error(pixfigure(paths, caption_lightbox = FALSE))
+  expect_no_error(pixfigure(paths, caption_lightbox = rep("bla", length(paths))))
+  expect_error(pixfigure(paths, caption_lightbox = NULL))
+  expect_error(pixfigure(paths, caption_lightbox = NA))
+  expect_error(pixfigure(paths, caption_lightbox = "bla"))
+  expect_error(pixfigure(paths, caption_lightbox = c(FALSE, FALSE)))
+})
+
+test_that("Caption_lightbox with captions", {
+  expect_no_error(pixfigure(paths, caption = captions, caption_lightbox = captions))
+  obj <- pixfigure(paths, caption = captions, caption_lightbox = captions)
+  expect_equal(length(obj$x$caption_lightbox), length(paths))
+  expect_error(pixfigure(paths, caption = captions, caption_lightbox = captions[-1]))
+})
+
+test_that("Caption_lightbox without captions", {
+  expect_no_error(pixfigure(paths, caption_lightbox = captions))
+  obj <- pixfigure(paths, caption_lightbox = captions)
+  expect_equal(length(obj$x$caption_lightbox), length(paths))
+  expect_error(pixfigure(paths, caption_lightbox = captions[-1]))
+})
+
 test_that("Dimensions", {
   expect_no_error(pixfigure(paths[1], h = "200px"))
   expect_no_error(pixfigure(paths[1], h = "100vh"))

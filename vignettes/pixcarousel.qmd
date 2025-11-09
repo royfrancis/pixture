@@ -44,7 +44,7 @@ Clicking on the image opens up the full image in a lightbox. The whole gallery c
 pixcarousel(paths)
 ```
 
-## Captions
+## Caption
 
 Optionally, captions can be added to the images which are visible when viewed in the lightbox.
 
@@ -160,6 +160,48 @@ pixcarousel(
 )
 ```
 
+## Lightbox caption
+
+By default, captions are shown in the lightbox when images are clicked (`caption_lightbox=TRUE`). You can disable this by setting `caption_lightbox = FALSE`.
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption = captions[1:4],
+  caption_lightbox = FALSE
+)
+```
+
+You can also provide a character vector of captions to be shown in the lightbox which can be different from the ones shown on the thumbnails.
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption = captions[1:4],
+  caption_valign = "bottom",
+  caption_lightbox = c(
+    "Milky Way Galaxy",
+    "Rainforest",
+    "Shark in the Ocean",
+    "Hawaii Beach"
+  )
+)
+```
+
+You could also provide only the captions for the lightbox.
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption_lightbox = c(
+    "Milky Way Galaxy",
+    "Rainforest",
+    "Shark in the Ocean",
+    "Hawaii Beach"
+  )
+)
+```
+
 ## Border radius
 
 Adjust the corner radius of the carousel.
@@ -234,6 +276,35 @@ pixcarousel(paths, shuffle = TRUE)
 
 ```{r}
 pixcarousel(paths, caption = captions, shuffle = TRUE)
+```
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption = captions[1:4],
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest",
+    "https://en.wikipedia.org/wiki/Shark",
+    "https://en.wikipedia.org/wiki/Hawaii"
+  ),
+  shuffle = TRUE
+)
+```
+
+```{r}
+pixcarousel(
+  paths[1:4],
+  caption = captions[1:4],
+  caption_valign = "bottom",
+  caption_lightbox = c(
+    "Milky Way Galaxy",
+    "Rainforest",
+    "Shark in the Ocean",
+    "Hawaii Beach"
+  ),
+  shuffle = TRUE
+)
 ```
 
 ## Carousel options

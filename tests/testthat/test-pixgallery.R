@@ -138,6 +138,22 @@ test_that("Captions and link", {
   expect_error(pixgallery(paths, caption = captions, link = c(T, F)))
 })
 
+test_that("Captions and caption_lightbox", {
+  expect_no_error(pixgallery(paths, caption = captions, caption_lightbox = captions))
+  obj <- pixgallery(paths, caption = captions, caption_lightbox = captions)
+  expect_equal(length(obj$x$caption_lightbox), length(paths))
+  expect_error(pixgallery(paths, caption = captions, caption_lightbox = captions[-1]))
+})
+
+test_that("Caption_lightbox", {
+  expect_no_error(pixgallery(paths, caption_lightbox = FALSE))
+  expect_no_error(pixgallery(paths, caption_lightbox = rep("bla", length(paths))))
+  expect_error(pixgallery(paths, caption_lightbox = NULL))
+  expect_error(pixgallery(paths, caption_lightbox = NA))
+  expect_error(pixgallery(paths, caption_lightbox = "bla"))
+  expect_error(pixgallery(paths, caption_lightbox = c(FALSE, FALSE)))
+})
+
 test_that("Layouts default", {
   expect_no_error(pixgallery(paths, layout = "fixed"))
   expect_no_error(pixgallery(paths, layout = "mosaic"))
@@ -197,4 +213,46 @@ test_that("Shuffle with caption", {
 test_that("Shuffle incorrect input", {
   expect_error(pixgallery(paths, shuffle = NA))
   expect_error(pixgallery(paths, shuffle = NULL))
+})
+
+test_that("Shuffle with caption_lightbox", {
+  expect_no_error(pixgallery(paths, caption = captions, caption_lightbox = captions, shuffle = TRUE))
+  obj <- pixgallery(paths, caption = captions, caption_lightbox = captions, shuffle = TRUE)
+  expect_equal(length(obj$x$path), length(paths))
+})
+
+test_that("Shuffle with link and caption_lightbox", {
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions)),
+    caption_lightbox = rep("bli", length(captions)),
+    shuffle = TRUE
+  ))
+  obj <- pixgallery(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions)),
+    caption_lightbox = rep("bli", length(captions)),
+    shuffle = TRUE
+  )
+  expect_equal(length(obj$x$path), length(paths))
+})
+
+test_that("Shuffle with caption, link and caption_lightbox", {
+  expect_no_error(pixgallery(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions)),
+    caption_lightbox = rep("bli", length(captions)),
+    shuffle = TRUE
+  ))
+  obj <- pixgallery(
+    paths,
+    caption = captions,
+    link = rep("bla", length(captions)),
+    caption_lightbox = rep("bli", length(captions)),
+    shuffle = TRUE
+  )
+  expect_equal(length(obj$x$path), length(paths))
 })

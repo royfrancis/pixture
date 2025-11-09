@@ -18,19 +18,44 @@ HTMLWidgets.widget({
   }
 });
 
-function shuffle(obj1, obj2) {
-  var index = obj1.length;
-  var rnd, tmp1, tmp2;
+function shuffle(path, caption, link, caption_lightbox) {
+  var index = path.length;
+  var rnd, tmp1, tmp2, tmp3, tmp4;
+  
+  // Determine which arrays need shuffling
+  var shuffleCaption = caption !== null && caption.length === path.length;
+  var shuffleLink = link !== null && link.length === path.length;
+  var shuffleCaptionLightbox = caption_lightbox !== null && caption_lightbox.length === path.length;
 
   while (index) {
     rnd = Math.floor(Math.random() * index);
     index -= 1;
-    tmp1 = obj1[index];
-    tmp2 = obj2[index];
-    obj1[index] = obj1[rnd];
-    obj2[index] = obj2[rnd];
-    obj1[rnd] = tmp1;
-    obj2[rnd] = tmp2;
+    
+    // Always shuffle path
+    tmp1 = path[index];
+    path[index] = path[rnd];
+    path[rnd] = tmp1;
+    
+    // Shuffle caption if it's an array of same length
+    if (shuffleCaption) {
+      tmp2 = caption[index];
+      caption[index] = caption[rnd];
+      caption[rnd] = tmp2;
+    }
+    
+    // Shuffle link if it's an array of same length
+    if (shuffleLink) {
+      tmp3 = link[index];
+      link[index] = link[rnd];
+      link[rnd] = tmp3;
+    }
+    
+    // Shuffle caption_lightbox if it's an array of same length
+    if (shuffleCaptionLightbox) {
+      tmp4 = caption_lightbox[index];
+      caption_lightbox[index] = caption_lightbox[rnd];
+      caption_lightbox[rnd] = tmp4;
+    }
   }
 }
 
@@ -63,7 +88,7 @@ function getGridCaptionAlign(x) {
 }
 
 function pixgallery_base(el,x){
-  if(x.shuffle) shuffle(x.path, x.caption);
+  if(x.shuffle) shuffle(x.path, x.caption, x.link, x.caption_lightbox);
   if(x.layout === "grid") {
     var fixed = false;
     pixgallery_grid(el,x,fixed);
@@ -91,6 +116,7 @@ function pixgallery_grid(el,x,fixed){
   var captionValign = x.caption_valign;
   var captionHalign = x.caption_halign;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var w = x.w;
   var gap = x.gap;
@@ -99,49 +125,58 @@ function pixgallery_grid(el,x,fixed){
   if(typeof link[0] !== 'boolean') urls = link
   if(h === null) h = "200px";
   if(w === null) w = "200px";
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
   /* Initialize template */
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div class="pixgallery-child pixgallery-grid-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixgallery-grid-image" style="border-radius:{borderRadius};height:{h};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-grid-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image" style="border-radius:{borderRadius};height:{h};" src="{src}"></a></div>';
 
   } else {
     if(captionValign == "none"){
 
       /* If captions are not displayed */
-      var temp = '<div class="pixgallery-child pixgallery-grid-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image" style="border-radius:{borderRadius};height:{h};" src="{src}"></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-grid-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image" style="border-radius:{borderRadius};height:{h};" src="{src}"></a></div>';
 
     } else if(captionValign == "below") {
 
       if(fixed) {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-below" id="pixgallery-{id}" style="grid-template-rows:{h} 1fr;"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-below" id="pixgallery-{id}" style="grid-template-rows:{h} 1fr;"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       } else {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-grid-child-below" id="pixgallery-{id}" style="grid-template-rows:{h} 1fr;"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-grid-child-below" id="pixgallery-{id}" style="grid-template-rows:{h} 1fr;"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       }
       
     } else if(captionValign == "top") {
 
       if(fixed) {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       } else {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       }
       
     } else if(captionValign == "center") {
 
       if(fixed) {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       } else {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       }
 
     } else {
 
       if(fixed) {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:{h};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       } else {
-        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+        var temp = '<div class="pixgallery-child pixgallery-grid-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-grid-image pixgallery-grid-image-over" style="border-radius:{borderRadius};height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       }
     }
   }
@@ -163,6 +198,14 @@ function pixgallery_grid(el,x,fixed){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])
@@ -196,6 +239,7 @@ function pixgallery_mosaic(el,x){
   var captionValign = x.caption_valign;
   var captionHalign = x.caption_halign;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var w = x.w;
   var gap = x.gap;
@@ -204,35 +248,44 @@ function pixgallery_mosaic(el,x){
   if(typeof link[0] !== 'boolean') urls = link
   if(h === null) h = "200px";
   if(w === null) w = "200px";
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
   /* Initialize template */
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child" id="pixgallery-{id}"><a class="glightbox" data-gallery="{id}" href="{url}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child" id="pixgallery-{id}"><a class="glightbox" data-gallery="{id}" data-description="{caption2}" href="{url}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
 
   } else {
     if(captionValign == "none"){
 
     /* If captions are not displayed */
-    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
 
     } else if(captionValign == "below") {
 
-    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-mosaic-child-below" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-mosaic-child-below" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
       
     } else if(captionValign == "top") {
 
-    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       
     } else if(captionValign == "center") {
 
-    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     } else {
 
-    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+    var temp = '<div class="pixgallery-child pixgallery-mosaic-child pixgallery-mosaic-child pixgallery-child-over" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-mosaic-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     }
   }
@@ -254,6 +307,14 @@ function pixgallery_mosaic(el,x){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])
@@ -281,41 +342,51 @@ function pixgallery_masonry(el,x){
   var captionValign = x.caption_valign;
   var captionHalign = x.caption_halign;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var w = x.w;
   var gap = x.gap;
   var borderRadius = x.border_radius;
 
   if(typeof link[0] !== 'boolean') urls = link
   if(w === null) w = "200px";
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
     /* Initialize template */
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div class="pixgallery-child pixgallery-masonry-child" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-masonry-child" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
 
   } else {
 
     if(captionValign == "none"){
 
       /* If captions are not displayed */
-      var temp = '<div class="pixgallery-child pixgallery-masonry-child" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
 
     } else if(captionValign == "below") {
 
-      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-below" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-below" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     } else if(captionValign == "top") {
 
-      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius}; height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius}; height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     } else if(captionValign == "center") {
 
-      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius}; height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius}; height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     } else {
 
-      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius}; height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-masonry-child pixgallery-child-over" id="pixgallery-{id}" style="margin-bottom:{gap};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-masonry-image" style="border-radius:{borderRadius}; height:100%;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
     }
   }
 
@@ -336,6 +407,14 @@ function pixgallery_masonry(el,x){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])
@@ -359,40 +438,50 @@ function pixgallery_justified(el,x){
   var captionValign = x.caption_valign;
   var captionHalign = x.caption_halign;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var gap = x.gap;
   var borderRadius = x.border_radius;
 
   if(typeof link[0] !== 'boolean') urls = link
   if(h === null) h = "200px";
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
   /* Initialize template */
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div class="pixgallery-child pixgallery-justified-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-justified-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a></div>';
 
   } else {
     if(captionValign == "none"){
 
       /* If captions are not displayed */
-      var temp = '<div class="pixgallery-child pixgallery-justified-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-justified-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius};" src="{src}"></a></div>';
 
     } else  if(captionValign == "below") {
 
-      var temp = '<div class="pixgallery-child pixgallery-justified-child pixgallery-child-below" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-justified-child pixgallery-child-below" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-justified-image" style="height:{h};border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     } else if(captionValign == "top") {
 
-      var temp = '<div class="pixgallery-child pixgallery-justified-over-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}" style="height:{h};"><img class="pixgallery-justified-over-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-justified-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-justified-over-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}" style="height:{h};"><img class="pixgallery-justified-over-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-justified-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     } else if(captionValign == "center") {
 
-      var temp = '<div class="pixgallery-child pixgallery-justified-over-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}" style="height:{h};"><img class="pixgallery-justified-over-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-justified-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-justified-over-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}" style="height:{h};"><img class="pixgallery-justified-over-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-justified-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
 
     } else {
 
-      var temp = '<div class="pixgallery-child pixgallery-justified-over-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}" style="height:{h};"><img class="pixgallery-justified-over-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-justified-caption-bottom" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-justified-over-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}" style="height:{h};"><img class="pixgallery-justified-over-image" style="border-radius:{borderRadius};" src="{src}"></a><div class="pixgallery-caption pixgallery-justified-caption-bottom" style="border-radius:{borderRadius};text-align:{captionHalign};">{caption}</div></div>';
     }
   }
   
@@ -415,6 +504,14 @@ function pixgallery_justified(el,x){
       newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
     }
 
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
+    }
+
     newValues += newValue.replace(/\{url\}/g, urls[i])
   }
 
@@ -434,18 +531,28 @@ function pixgallery_elastic(el,x){
   var src = x.path;
   var caption = x.caption;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var gap = x.gap;
   var borderRadius = x.border_radius;
 
   if(typeof link[0] !== 'boolean') urls = link
   if(h === null) h = "200px";
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
     /* Initialize template */
   if(caption.length === 0){
-    var temp = '<div class="pixgallery-child pixgallery-elastic-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixgallery-elastic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-elastic-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-elastic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
   } else {
-    var temp = '<div class="pixgallery-child pixgallery-elastic-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-elastic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-elastic-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-elastic-image" style="border-radius:{borderRadius};" src="{src}"></a></div>';
   }
   
   var newValues = '', limitItem = src.length;
@@ -465,6 +572,14 @@ function pixgallery_elastic(el,x){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i])
+    }
+
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])
@@ -766,6 +881,7 @@ function pixgallery_rhombus(el,x){
   var src = x.path;
   var caption = x.caption;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var gap = x.gap;
   var borderRadius = x.border_radius;
@@ -774,30 +890,40 @@ function pixgallery_rhombus(el,x){
 
   if(typeof link[0] !== 'boolean') urls = link
   if(h === null) h = "200px";
+  if(typeof link[0] !== 'boolean') urls = link
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
   /* Initialize template */
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixgallery-rhombus-image" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-rhombus-image" src="{src}"></a></div>';
 
   } else {
 
     if(captionValign == "none"){
 
-      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-rhombus-image" src="{src}"></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-rhombus-image" src="{src}"></a></div>';
 
     } else if(captionValign == "top") {
 
-      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-rhombus-image" src="{src}"><div class="pixgallery-rhombus-caption pixgallery-rhombus-caption-top" style="justify-content:{captionHalign};"><div class="pixgallery-rhombus-caption-inner">{caption}</div></div></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-rhombus-image" src="{src}"><div class="pixgallery-rhombus-caption pixgallery-rhombus-caption-top" style="justify-content:{captionHalign};"><div class="pixgallery-rhombus-caption-inner">{caption}</div></div></a></div>';
 
     } else if(captionValign == "center") {
 
-      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-rhombus-image" src="{src}"><div class="pixgallery-rhombus-caption pixgallery-rhombus-caption-center" style="justify-content:{captionHalign};"><div class="pixgallery-rhombus-caption-inner">{caption}</div></div></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-rhombus-image" src="{src}"><div class="pixgallery-rhombus-caption pixgallery-rhombus-caption-center" style="justify-content:{captionHalign};"><div class="pixgallery-rhombus-caption-inner">{caption}</div></div></a></div>';
 
     } else {
 
-      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-rhombus-image" src="{src}"><div class="pixgallery-rhombus-caption pixgallery-rhombus-caption-bottom" style="justify-content:{captionHalign};"><div class="pixgallery-rhombus-caption-inner">{caption}</div></div></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-rhombus-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-rhombus-image" src="{src}"><div class="pixgallery-rhombus-caption pixgallery-rhombus-caption-bottom" style="justify-content:{captionHalign};"><div class="pixgallery-rhombus-caption-inner">{caption}</div></div></a></div>';
 
     }
   }
@@ -819,6 +945,14 @@ function pixgallery_rhombus(el,x){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i])
+    }
+
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])
@@ -1138,6 +1272,7 @@ function pixgallery_hexagon(el,x){
   var src = x.path;
   var caption = x.caption;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var gap = x.gap;
   var borderRadius = x.border_radius;
@@ -1146,30 +1281,40 @@ function pixgallery_hexagon(el,x){
 
   if(typeof link[0] !== 'boolean') urls = link
   if(h === null) h = "200px";
+  if(typeof link[0] !== 'boolean') urls = link
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
   /* Initialize template */
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixgallery-hexagon-image" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-hexagon-image" src="{src}"></a></div>';
 
   } else {
 
     if(captionValign == "none"){
 
-      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-hexagon-image" src="{src}"></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-hexagon-image" src="{src}"></a></div>';
 
     } else if(captionValign == "top") {
 
-      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-top" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-top" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
 
     } else if(captionValign == "center") {
 
-      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-center" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-center" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
 
     } else {
 
-      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-bottom" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-hexagon-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-hexagon-image" src="{src}"><div class="pixgallery-hexagon-caption pixgallery-hexagon-caption-bottom" style="justify-content:{captionHalign};"><div class="pixgallery-hexagon-caption-inner">{caption}</div></div></a></div>';
 
     }
   }
@@ -1191,6 +1336,14 @@ function pixgallery_hexagon(el,x){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i])
+    }
+
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])
@@ -1222,6 +1375,7 @@ function pixgallery_scroll(el,x,fixed){
   var captionValign = x.caption_valign;
   var captionHalign = x.caption_halign;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var w = x.w;
   var gap = x.gap;
@@ -1230,34 +1384,44 @@ function pixgallery_scroll(el,x,fixed){
   if(typeof link[0] !== 'boolean') urls = link
   if(h === null) h = "200px";
   if(w === null) w = "200px";
+    if(typeof link[0] !== 'boolean') urls = link
+  if(typeof captionLightbox[0] === 'boolean') {
+  if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
 
   /* Initialize template */
   if(caption.length === 0){
 
     /* If captions are not used */
-    var temp = '<div class="pixgallery-child pixgallery-scroll-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixgallery-scroll-image" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a></div>';
+    var temp = '<div class="pixgallery-child pixgallery-scroll-child" id="pixgallery-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-scroll-image" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a></div>';
 
   } else {
     if(captionValign == "none"){
 
       /* If captions are not displayed */
-      var temp = '<div class="pixgallery-child pixgallery-scroll-child" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-scroll-image" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a></div>';
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-scroll-image" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a></div>';
 
     } else if(captionValign == "below") {
 
-      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-scroll-child-below" id="pixgallery-{id}" style="grid-template-rows:{h} 1fr;width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-scroll-child-below" id="pixgallery-{id}" style="grid-template-rows:{h} 1fr;width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-scroll-image pixgallery-scroll-image-below" style="border-radius:{borderRadius} {borderRadius} 0 0;" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-below" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};">{caption}</div></div>';
       
     } else if(captionValign == "top") {
 
-      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-top" style="border-radius:{borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
       
     } else if(captionValign == "center") {
 
-      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-center" style="border-radius:{borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
 
     } else {
 
-      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
+      var temp = '<div class="pixgallery-child pixgallery-scroll-child pixgallery-child-over" id="pixgallery-{id}" style="height:{h};width:{w};"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixgallery-scroll-image pixgallery-scroll-image-over" style="border-radius:{borderRadius};height:{h};width:{w};" src="{src}"></a><div class="pixgallery-caption pixgallery-caption-bottom" style="border-radius:0 0 {borderRadius} {borderRadius};text-align:{captionHalign};height:{h};">{caption}</div></div>';
     }
   }
 
@@ -1278,6 +1442,14 @@ function pixgallery_scroll(el,x,fixed){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i]).replace(/\{captionHalign\}/g, captionHalign)
+    }
+
+    /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])

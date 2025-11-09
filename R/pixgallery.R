@@ -3,10 +3,11 @@
 #' @description
 #' Create an image gallery
 #' @param path A character vector of full paths to images.
-#' @param caption A character vector of captions for the images (Optional). It must be equal to the length of path.
+#' @param caption A character vector of captions for the images. If used, it must be equal to the length of path.
 #' @param caption_valign A character denoting position of the caption. Options are 'none', 'top', 'center', 'bottom' or 'below'.
 #' @param caption_halign A character denoting horizontal justification of the caption. Options are 'left', 'center' or 'right'.
 #' @param link A logical or character vector. What happens when you click on the thumbnail? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.
+#' @param caption_lightbox A logical or character vector. TRUE shows caption in lightbox, FALSE disables caption in lightbox. A character vector of characters equal to length of path.
 #' @param h A character denoting height of the image thumbnails in valid CSS units.
 #' @param w A character denoting width of the image thumbnails in valid CSS units.
 #' @param gap A character denoting spacing between thumbnails in valid CSS units.
@@ -72,6 +73,7 @@ pixgallery <- function(
   caption_valign = "none",
   caption_halign = "left",
   link = TRUE,
+  caption_lightbox = TRUE,
   h = NULL,
   w = NULL,
   gap = "5px",
@@ -138,6 +140,25 @@ pixgallery <- function(
     }
   }
 
+  # check caption_lightbox
+  if (is.null(caption_lightbox) || all(is.na(caption_lightbox))) {
+    stop("Parameter 'caption_lightbox' must be a logical or a character vector.")
+  }
+  if (is.logical(caption_lightbox) && (length(caption_lightbox) != 1)) {
+    stop("Parameter 'caption_lightbox' must be of length 1. TRUE or FALSE.")
+  }
+  if (is.character(caption_lightbox)) {
+    if (length(caption_lightbox) != length(path)) {
+      stop(paste0(
+        "Length of 'caption_lightbox' (",
+        length(caption_lightbox),
+        ") is not not equal to the length of 'path' (",
+        length(path),
+        "). If 'caption_lightbox' is a character, it must be the same length as 'path'."
+      ))
+    }
+  }
+
   # check layout
   layouts <- c(
     "grid",
@@ -178,6 +199,7 @@ pixgallery <- function(
     caption_valign = caption_valign,
     caption_halign = caption_halign,
     link = as.list(link),
+    caption_lightbox = as.list(caption_lightbox),
     h = h,
     w = w,
     gap = gap,

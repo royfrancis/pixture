@@ -8,6 +8,7 @@ pixfigure(
   path,
   caption = NULL,
   link = TRUE,
+  caption_lightbox = TRUE,
   h = "auto",
   w = "100\%",
   fit = "cover",
@@ -21,9 +22,11 @@ pixfigure(
 \arguments{
 \item{path}{A character vector of full paths to images.}
 
-\item{caption}{A character vector of captions for the images (Optional).}
+\item{caption}{A character vector of captions for the images. If used, it must be equal to the length of path.}
 
 \item{link}{A logical or character vector. What happens when you click on the image? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.}
+
+\item{caption_lightbox}{A logical or character vector. TRUE shows caption in lightbox, FALSE disables caption in lightbox. A character vector of characters equal to length of path.}
 
 \item{h}{A character denoting height of the image in valid CSS units.}
 

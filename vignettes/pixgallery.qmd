@@ -71,7 +71,7 @@ Clicking on the thumbnail opens up the full image in a lightbox. The whole galle
 pixgallery(paths_a)
 ```
 
-## Captions
+## Caption
 
 Optionally, captions can be added to the images which are visible when viewed in the lightbox.
 
@@ -234,6 +234,50 @@ pixgallery(
 )
 ```
 
+## Lightbox caption
+
+By default, the caption shown in the lightbox is the same as the caption shown below the image (`caption_lightbox=TRUE`). Setting this to FALSE will remove captions from the lightbox.
+
+```{r}
+#| label: no-lightbox-caption
+pixgallery(
+  paths_a[1:4],
+  caption = captions[1:4],
+  caption_lightbox = FALSE
+)
+```
+
+By providing a character vector, you can set custom captions for the lightbox.
+
+```{r}
+#| label: custom-lightbox-caption
+pixgallery(
+  paths_a[1:4],
+  caption = captions[1:4],
+  caption_lightbox = c(
+    "The night sky over the mountains",
+    "Through the dense rainforest",
+    "Swimming with a shark",
+    "Relaxing in Hawaii"
+  )
+)
+```
+
+You could also provide only the captions for the lightbox.
+
+```{r}
+#| label: only-lightbox-caption
+pixgallery(
+  paths_a[1:4],
+  caption_lightbox = c(
+    "The night sky over the mountains",
+    "Through the dense rainforest",
+    "Swimming with a shark",
+    "Relaxing in Hawaii"
+  )
+)
+```
+
 ## Dimension
 
 The parameters `h` and `w` is used to adjust the dimension of images in the grid. This value is a string in any valid CSS unit.
@@ -280,6 +324,8 @@ Randomly shuffle images around.
 pixgallery(paths_a, w = "50px", shuffle = TRUE)
 ```
 
+Shuffle with captions.
+
 ```{r}
 #| label: shuffle-with-captions
 pixgallery(
@@ -303,6 +349,36 @@ pixgallery(
     "beach",
     "leopard",
     "sunflower"
+  )
+)
+```
+
+Shuffle with captions and custom lightbox captions.
+
+```{r}
+#| label: shuffle-with-captions-lightbox-captions
+pixgallery(
+  paths_a[1:6],
+  shuffle = TRUE,
+  caption = captions[1:6],
+  caption_lightbox = captions_long[1:6]
+)
+```
+
+Shuffle with links.
+
+```{r}
+#| label: shuffle-with-links
+pixgallery(
+  paths_a[1:6],
+  shuffle = TRUE,
+  link = c(
+    "https://en.wikipedia.org/wiki/Milky_Way",
+    "https://en.wikipedia.org/wiki/Rainforest",
+    "https://en.wikipedia.org/wiki/Shark",
+    "https://en.wikipedia.org/wiki/Hawaii",
+    "https://en.wikipedia.org/wiki/Flower",
+    "https://en.wikipedia.org/wiki/Field"
   )
 )
 ```

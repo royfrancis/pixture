@@ -10,6 +10,7 @@ pixcarousel(
   caption_valign = "none",
   caption_halign = "left",
   link = TRUE,
+  caption_lightbox = TRUE,
   gap = "0px",
   border_radius = "0px",
   shuffle = FALSE,
@@ -26,13 +27,15 @@ pixcarousel(
 \arguments{
 \item{path}{A character vector of full paths to images.}
 
-\item{caption}{A character vector of captions for the images (Optional). It must be equal to the length of path.}
+\item{caption}{A character vector of captions for the images. If used, it must be equal to the length of path.}
 
 \item{caption_valign}{A character denoting position of the caption. Options are 'none', 'top', 'center' or 'bottom'.}
 
 \item{caption_halign}{A character denoting horizontal justification of the caption. Options are 'left', 'center' or 'right'.}
 
 \item{link}{A logical or character vector. What happens when you click on the thumbnail? TRUE opens up the lightbox, FALSE to disable the lightbox. A character vector of custom URLs equal to length of path.}
+
+\item{caption_lightbox}{A logical or character vector. TRUE shows caption in lightbox, FALSE disables caption in lightbox. A character vector of characters equal to length of path.}
 
 \item{gap}{A character denoting spacing between thumbnails in valid CSS units. Applied to left and right of each image.}
 

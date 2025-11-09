@@ -24,19 +24,30 @@ function pixfigure_basic(el,x){
   var src = x.path;
   var caption = x.caption;
   var link = x.link;
+  var captionLightbox = x.caption_lightbox;
   var h = x.h;
   var w = x.w;
   var fit = x.fit;
   var position = x.position;
+
   if(typeof link[0] !== 'boolean') urls = link;
+  if(typeof captionLightbox[0] === 'boolean') {
+    if(captionLightbox[0] === true) {
+      var caption2 = caption;
+    } else {
+      var caption2 = new Array(1).fill("");
+    }
+  } else {
+    caption2 = captionLightbox;
+  }
   
   if(caption.length === 0){
 
-      var temp = '<div class="pixfigure" id="pixfigure-{id}"><a href="{url}" class="glightbox" data-gallery="{id}"><img class="pixfigure-image" style="height:{h};width:{w};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a></div>';
+      var temp = '<div class="pixfigure" id="pixfigure-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixfigure-image" style="height:{h};width:{w};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a></div>';
     
   } else {
 
-    var temp = '<div class="pixfigure" id="pixfigure-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption}"><img class="pixfigure-image" style="height:{h};width:{w};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a><figcaption>{caption}</figcaption></div>';
+    var temp = '<div class="pixfigure" id="pixfigure-{id}"><a href="{url}" class="glightbox" data-gallery="{id}" data-description="{caption2}"><img class="pixfigure-image" style="height:{h};width:{w};object-fit:{fit};-o-object-fit:{fit};object-position:{position};" src="{src}"></a><figcaption>{caption}</figcaption></div>';
 
   }
 
@@ -57,6 +68,14 @@ function pixfigure_basic(el,x){
     if(caption.length !== 0){
       if(caption[i] === null || caption[i] === undefined) caption[i] = "";
       newValue = newValue.replace(/\{caption\}/g, caption[i])
+    }
+
+     /* If caption2 is not empty */
+    if(caption2.length !== 0){
+      if(caption2[i] === null || caption2[i] === undefined) caption2[i] = "";
+      newValue = newValue.replace(/\{caption2\}/g, caption2[i])
+    } else {
+      newValue = newValue.replace("data\-description\=\"\{caption2\}\"", "")
     }
 
     newValues += newValue.replace(/\{url\}/g, urls[i])

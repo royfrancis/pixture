@@ -76,6 +76,37 @@ pixfigure(
 )
 ```
 
+## Lightbox caption
+
+By default, the caption shown in the lightbox is the same as the caption shown below the image (`caption_lightbox=TRUE`). Setting this to FALSE will remove captions from the lightbox.
+
+```{r}
+pixfigure(
+  paths[1],
+  caption = "Night sky over the mountains",
+  caption_lightbox = FALSE
+)
+```
+
+By providing a character vector, you can set custom captions for the lightbox.
+
+```{r}
+pixfigure(
+  paths[1:2],
+  caption = c("Night sky over the mountains", "Through the dense rainforest"),
+  caption_lightbox = c("Milky Way galaxy as seen from Earth", "A walk in the jungle")
+)
+```
+
+You can also only set captions for the lightbox by providing a character vector equal in length to the number of images in `paths`.
+
+```{r}
+pixfigure(
+  paths[1:2],
+  caption_lightbox = c("Milky Way galaxy as seen from Earth", "A walk in the jungle")
+)
+```
+
 ## Dimensions
 
 The argument `h` and `w` is used to adjust the dimension of the image. This value is a string in any valid css unit.
