@@ -20,8 +20,8 @@
 .pixgallery-child:hover,
 .pixgallery-child:focus,
 .pixgallery-child:active {
-  -webkit-filter: brightness(0.8) contrast(0.8);
-  filter: brightness(0.8) contrast(0.8);
+  -webkit-filter: brightness(0.9) contrast(0.9);
+  filter: brightness(0.9) contrast(0.9);
   -webkit-transition: -webkit-filter 0.25s;
   transition: -webkit-filter 0.25s;
   -o-transition: filter 0.25s;
