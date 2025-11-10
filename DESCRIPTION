@@ -3,8 +3,11 @@ Type: Package
 Title: Responsive HTML Image Gallery
 Version: 0.2.1
 Date: 2025-11-09
-Author: Roy Francis
-Maintainer: Roy Francis <zydoosu@gmail.com>
+Authors@R: c(
+    person("Roy", "Francis", , "roy.m.francis@outlook.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-8654-3580"))
+  )
+Maintainer: Roy Francis <roy.m.francis@outlook.com>
 Description: HTML image gallery in R with responsive layout and lightbox.
 URL: 
  https://github.com/royfrancis/pixture
